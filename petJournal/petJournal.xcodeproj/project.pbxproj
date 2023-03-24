@@ -13,6 +13,8 @@
 		1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608529C8E8740026F680 /* LaunchScreen.storyboard */; };
 		1FF4609429C8ECDE0026F680 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF4609229C8ECDE0026F680 /* LoginViewController.swift */; };
 		1FF4609529C8ECDE0026F680 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4609329C8ECDE0026F680 /* LoginViewController.xib */; };
+		C9A17F8B29CDB52800BEE7F6 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A17F8929CDB52800BEE7F6 /* CreateAccountViewController.swift */; };
+		C9A17F8C29CDB52900BEE7F6 /* CreateAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9A17F8A29CDB52800BEE7F6 /* CreateAccountViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		1FF4608829C8E8740026F680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FF4609229C8ECDE0026F680 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1FF4609329C8ECDE0026F680 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		C9A17F8929CDB52800BEE7F6 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		C9A17F8A29CDB52800BEE7F6 /* CreateAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAccountViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +71,8 @@
 		1FF4608E29C8E9CF0026F680 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				1FF4609229C8ECDE0026F680 /* LoginViewController.swift */,
-				1FF4609329C8ECDE0026F680 /* LoginViewController.xib */,
+				C9A17F8529CDB46B00BEE7F6 /* Authentication */,
+				C9A17F8429CDB45E00BEE7F6 /* NonAuthentication */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -97,6 +101,48 @@
 				1FF4608829C8E8740026F680 /* Info.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		C9A17F8429CDB45E00BEE7F6 /* NonAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				C9A17F8829CDB48C00BEE7F6 /* ForgotPassword */,
+				C9A17F8729CDB48400BEE7F6 /* AccessAccount */,
+				C9A17F8629CDB47600BEE7F6 /* CreateAccount */,
+			);
+			path = NonAuthentication;
+			sourceTree = "<group>";
+		};
+		C9A17F8529CDB46B00BEE7F6 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		C9A17F8629CDB47600BEE7F6 /* CreateAccount */ = {
+			isa = PBXGroup;
+			children = (
+				C9A17F8929CDB52800BEE7F6 /* CreateAccountViewController.swift */,
+				C9A17F8A29CDB52800BEE7F6 /* CreateAccountViewController.xib */,
+			);
+			path = CreateAccount;
+			sourceTree = "<group>";
+		};
+		C9A17F8729CDB48400BEE7F6 /* AccessAccount */ = {
+			isa = PBXGroup;
+			children = (
+				1FF4609229C8ECDE0026F680 /* LoginViewController.swift */,
+				1FF4609329C8ECDE0026F680 /* LoginViewController.xib */,
+			);
+			path = AccessAccount;
+			sourceTree = "<group>";
+		};
+		C9A17F8829CDB48C00BEE7F6 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9A17F8C29CDB52900BEE7F6 /* CreateAccountViewController.xib in Resources */,
 				1FF4609529C8ECDE0026F680 /* LoginViewController.xib in Resources */,
 				1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */,
 				1FF4608429C8E8740026F680 /* Assets.xcassets in Resources */,
@@ -170,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9A17F8B29CDB52800BEE7F6 /* CreateAccountViewController.swift in Sources */,
 				1FF4609429C8ECDE0026F680 /* LoginViewController.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
