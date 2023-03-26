@@ -17,6 +17,8 @@
 		C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94A240729CE491E00C71D01 /* HomeViewController.xib */; };
 		C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240A29CE494D00C71D01 /* UserModel.swift */; };
 		C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */; };
+		C9817D0029CFB11B009029D6 /* AccessAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9817CFE29CFB11B009029D6 /* AccessAccountViewController.swift */; };
+		C9817D0129CFB11B009029D6 /* AccessAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9817CFF29CFB11B009029D6 /* AccessAccountViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		C94A240729CE491E00C71D01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C94A240A29CE494D00C71D01 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVM.swift; sourceTree = "<group>"; };
+		C9817CFE29CFB11B009029D6 /* AccessAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountViewController.swift; sourceTree = "<group>"; };
+		C9817CFF29CFB11B009029D6 /* AccessAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccessAccountViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */,
+				C9817CFE29CFB11B009029D6 /* AccessAccountViewController.swift */,
+				C9817CFF29CFB11B009029D6 /* AccessAccountViewController.xib */,
 			);
 			path = AccessAccount;
 			sourceTree = "<group>";
@@ -227,6 +233,7 @@
 			files = (
 				1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */,
 				1FF4608429C8E8740026F680 /* Assets.xcassets in Resources */,
+				C9817D0129CFB11B009029D6 /* AccessAccountViewController.xib in Resources */,
 				C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +251,7 @@
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
 				C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */,
+				C9817D0029CFB11B009029D6 /* AccessAccountViewController.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
