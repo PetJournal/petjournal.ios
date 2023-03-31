@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F550F3429D61EA700095A17 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */; };
+		1F550F3529D61EA700095A17 /* CreateAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */; };
 		1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF4607A29C8E8720026F680 /* AppDelegate.swift */; };
 		1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF4607C29C8E8720026F680 /* SceneDelegate.swift */; };
 		1FF4608429C8E8740026F680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608329C8E8740026F680 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAccountViewController.xib; sourceTree = "<group>"; };
 		1FF4607729C8E8720026F680 /* petJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF4607A29C8E8720026F680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FF4607C29C8E8720026F680 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				C94A240429CE48D800C71D01 /* CreateAccountVM.swift */,
+				1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */,
+				1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */,
 			);
 			path = CreateAccount;
 			sourceTree = "<group>";
@@ -225,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F550F3529D61EA700095A17 /* CreateAccountViewController.xib in Resources */,
 				1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */,
 				1FF4608429C8E8740026F680 /* Assets.xcassets in Resources */,
 				C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */,
@@ -242,6 +249,7 @@
 				C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */,
 				C94A240529CE48D800C71D01 /* CreateAccountVM.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
+				1F550F3429D61EA700095A17 /* CreateAccountViewController.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
 				C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
