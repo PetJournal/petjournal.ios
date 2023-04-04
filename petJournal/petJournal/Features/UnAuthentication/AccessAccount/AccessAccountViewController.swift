@@ -25,31 +25,40 @@ class AccessAccountViewController: UIViewController {
     private var authViewModel: AccessAccountViewModel = AccessAccountViewModel()
     private var subscriptions = Set<AnyCancellable>()
     
-    private var textFieldInput = BaseTextField.fromXib()
+    private let baseTextFieldViewEmail = BaseTextField.fromXib()
+    private let baseTextFieldViewPassword = BaseTextField.fromXib()
     
     weak var delegate: AccessAccountDelegate?
     
-    @IBOutlet weak var textFieldEmail: UITextField!
-    @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet weak var errorMsg: UILabel!
+    @IBOutlet weak var viewTextFieldEmail: UIView!
+    @IBOutlet weak var viewTextFieldPassword: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonLogin.isHidden = true
+        setupUI()
         bindingsEvent(authViewModel)
     }
     
+    private func setupUI() {
+        setupViewTextFieldName()
+        setupViewTextFieldPassword()
+    }
+    
     func bindingsEvent(_ viewModel: AccessAccountViewModel) {
-        viewModel.validFields(textFieldEmail.textPublisher,
-                              password: textFieldPassword.textPublisher)
+        viewModel.validFields(baseTextFieldViewEmail.textFieldView.textPublisher,
+                              password: baseTextFieldViewPassword.textFieldView.textPublisher)
         .sink(receiveValue: { [weak self] in
             self?.buttonLogin.isHidden = $0
         })
         .store(in: &subscriptions)
         
         // Error Description
-        viewModel.textFieldsErrorMsg(textFieldEmail.textPublisher, password: textFieldPassword.textPublisher)
+        viewModel.textFieldsErrorMsg(baseTextFieldViewEmail.textFieldView.textPublisher,
+                                     password: baseTextFieldViewPassword.textFieldView.textPublisher)
             .sink(receiveValue: { [weak self] in
                 self?.errorMsg.text = $0.errorDescription
             })
@@ -60,6 +69,18 @@ class AccessAccountViewController: UIViewController {
             self.delegate?.viewController(self, didPerformAction: .accessAccount)
         }
         .store(in: &subscriptions)
+    }
+    
+    private func setupViewTextFieldName() {
+        viewTextFieldEmail.addSubview(baseTextFieldViewEmail)
+        baseTextFieldViewEmail.fillSuperView()
+        baseTextFieldViewEmail.setup(type: .defaultType, title: "Nome")
+    }
+    
+    private func setupViewTextFieldPassword() {
+        viewTextFieldPassword.addSubview(baseTextFieldViewPassword)
+        baseTextFieldViewPassword.fillSuperView()
+        baseTextFieldViewPassword.setup(type: .securityType, title: "Senha")
     }
     
     @IBAction func forgotPassword(_ sender: UIButton) {
