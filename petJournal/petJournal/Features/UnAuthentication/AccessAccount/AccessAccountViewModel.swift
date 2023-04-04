@@ -44,25 +44,12 @@ struct AccessAccountViewModel {
     }
     
     func textFieldsErrorMsg(_ email: AnyPublisher<String?, Never>,
-                            password: AnyPublisher<String?, Never>) -> AnyPublisher<ErrorEmail, Never> {
+                            password: AnyPublisher<String?, Never>) -> AnyPublisher<ErrorAuth, Never> {
         validFields(email, password: password)
             .map({ value in
-                value ? .invalidEmail : .noResult
+                value ? .invalidInput : .blank
             })
             .eraseToAnyPublisher()
     }
     
 }
-
-enum ErrorEmail: LocalizedError {
-    case invalidEmail
-    case noResult
-    
-    var errorDescription: String? {
-        switch self {
-        case .invalidEmail: return "Usuário ou senha incorretos"
-        case .noResult: return ""
-        }
-    }
-}
-

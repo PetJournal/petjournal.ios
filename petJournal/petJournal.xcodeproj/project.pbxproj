@@ -32,6 +32,9 @@
 		C989ACA229D4DB9E00057421 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C989ACA129D4DB9E00057421 /* AuthenticationService.swift */; };
 		C98CBCC529D3797D001594FD /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98CBCC429D3797D001594FD /* UIView.swift */; };
 		C98CBCC829D38D32001594FD /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98CBCC729D38D32001594FD /* Extension+UIViewController.swift */; };
+		C9C25C0429DCAE9300E6D300 /* ErrorAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C25C0329DCAE9300E6D300 /* ErrorAuth.swift */; };
+		C9C25C0629DCB08600E6D300 /* Extension+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C25C0529DCB08600E6D300 /* Extension+TextField.swift */; };
+		C9C25C0829DCB0A700E6D300 /* Extension+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C25C0729DCB0A700E6D300 /* Extension+UIButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,9 @@
 		C989ACA129D4DB9E00057421 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		C98CBCC429D3797D001594FD /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		C98CBCC729D38D32001594FD /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		C9C25C0329DCAE9300E6D300 /* ErrorAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAuth.swift; sourceTree = "<group>"; };
+		C9C25C0529DCB08600E6D300 /* Extension+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+TextField.swift"; sourceTree = "<group>"; };
+		C9C25C0729DCB0A700E6D300 /* Extension+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIButton.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,7 @@
 		1FF4608F29C8E9E30026F680 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				C9C25C0229DCAE6B00E6D300 /* Enuns */,
 				C99D743429D51E8D00839A2E /* UIComponents */,
 				C98CBCC629D37F21001594FD /* Manager */,
 				C98CBCC329D37969001594FD /* Extensions */,
@@ -240,6 +247,8 @@
 			children = (
 				C98CBCC429D3797D001594FD /* UIView.swift */,
 				C98CBCC729D38D32001594FD /* Extension+UIViewController.swift */,
+				C9C25C0529DCB08600E6D300 /* Extension+TextField.swift */,
+				C9C25C0729DCB0A700E6D300 /* Extension+UIButton.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -258,6 +267,14 @@
 				C978BA1C29DBA4CD00090455 /* BaseTextField.xib */,
 			);
 			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		C9C25C0229DCAE6B00E6D300 /* Enuns */ = {
+			isa = PBXGroup;
+			children = (
+				C9C25C0329DCAE9300E6D300 /* ErrorAuth.swift */,
+			);
+			path = Enuns;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +358,7 @@
 				C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */,
 				C92A8C6F29D73E08006FB790 /* AccessAccountCordinator.swift in Sources */,
 				C92A8C6D29D73D62006FB790 /* ControlSubscription.swift in Sources */,
+				C9C25C0429DCAE9300E6D300 /* ErrorAuth.swift in Sources */,
 				C98CBCC529D3797D001594FD /* UIView.swift in Sources */,
 				C92A8C7329D74670006FB790 /* ForgotPasswordViewController.swift in Sources */,
 				C94A240529CE48D800C71D01 /* CreateAccountVM.swift in Sources */,
@@ -351,8 +369,10 @@
 				C92A8C6B29D73D50006FB790 /* ControlPublisher.swift in Sources */,
 				C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */,
 				C9817D0029CFB11B009029D6 /* AccessAccountViewController.swift in Sources */,
+				C9C25C0629DCB08600E6D300 /* Extension+TextField.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				C989ACA229D4DB9E00057421 /* AuthenticationService.swift in Sources */,
+				C9C25C0829DCB0A700E6D300 /* Extension+UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

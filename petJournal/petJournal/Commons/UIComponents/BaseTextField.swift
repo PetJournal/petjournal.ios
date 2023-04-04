@@ -32,7 +32,6 @@ class BaseTextField: UIView {
     
     // MARK: - Action
     @IBAction func buttonPassword(_ sender: UIButton) {
-        
         imageRight.image = isTogleEye ? openEye : closedEye
         textFieldView.isSecureTextEntry = !isTogleEye
         isTogleEye.toggle()
@@ -77,31 +76,5 @@ class BaseTextField: UIView {
     private func setupViewTextField(state: TextFieldState) {
         viewTextField.layer.borderWidth = 1
         viewTextField.layer.cornerRadius = 4
-    }
-}
-
-
-// MARK: - TextField
-extension UITextField {
-    var textPublisher: AnyPublisher<String?, Never> {
-        ControlPublisher(self,
-                         controlEvents: [.allEditingEvents, .valueChanged],
-                         keyPath: \.text)
-            .eraseToAnyPublisher()
-    }
-}
-
-extension UIButton {
-    var tapPublisher: AnyPublisher<Void, Never> {
-        ControlEvent(control: self, events: .touchUpInside).eraseToAnyPublisher()
-    }
-}
-
-extension UIView {
-    static func fromXib() -> Self {
-        let bundle = Bundle(for: Self.self)
-        let views = UINib(nibName: String(describing: Self.self), bundle: bundle)
-            .instantiate(withOwner: nil, options: nil) as! [UIView]
-        return views.first as! Self
     }
 }
