@@ -11,14 +11,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    private var accessCordinator: AccessAccountCordinator?
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        let viewController = AccessAccountViewController()
-                let navigationController = UINavigationController(rootViewController: viewController)
-                guard let scene = (scene as? UIWindowScene) else { return }
-                window = UIWindow(windowScene: scene)
-                window?.rootViewController = navigationController
-                window?.makeKeyAndVisible()
+        let navigationController = UINavigationController()
+        let accessCordinator = AccessAccountCordinator(navigationController)
+        self.accessCordinator = accessCordinator
+        accessCordinator.start()
+        
+        guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: scene)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
