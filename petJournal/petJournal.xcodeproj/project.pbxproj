@@ -17,6 +17,7 @@
 		C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94A240729CE491E00C71D01 /* HomeViewController.xib */; };
 		C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240A29CE494D00C71D01 /* UserModel.swift */; };
 		C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */; };
+		C9BAE60D29DE298900542620 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BAE60C29DE298900542620 /* Extension+UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C94A240729CE491E00C71D01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C94A240A29CE494D00C71D01 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVM.swift; sourceTree = "<group>"; };
+		C9BAE60C29DE298900542620 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		1FF4608F29C8E9E30026F680 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				C9BAE60B29DE296100542620 /* Extensions */,
 				C94A23F729CE230A00C71D01 /* Models */,
 			);
 			path = Commons;
@@ -167,6 +170,14 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		C9BAE60B29DE296100542620 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C9BAE60C29DE298900542620 /* Extension+UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -245,6 +256,7 @@
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
 				C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
+				C9BAE60D29DE298900542620 /* Extension+UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
