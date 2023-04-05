@@ -12,7 +12,7 @@ import Combine
 struct AccessAccountViewModel {
     func validFields(_ username: AnyPublisher<String?, Never>,
                      password: AnyPublisher<String?, Never>) -> AnyPublisher<Bool, Never> {
-        validUsername(username)
+        validEmail(username)
             .combineLatest(validPassword(password))
             .map({ (validUsername, validPassword) in
                 return !(validUsername && validPassword)
@@ -30,7 +30,7 @@ struct AccessAccountViewModel {
         return password.count >= 8
     }
     
-    func validUsername(_ username: AnyPublisher<String?, Never>) -> AnyPublisher<Bool, Never> {
+    func validEmail(_ username: AnyPublisher<String?, Never>) -> AnyPublisher<Bool, Never> {
         username.map { value in
             isValidEmail(value)
         }
@@ -51,5 +51,4 @@ struct AccessAccountViewModel {
             })
             .eraseToAnyPublisher()
     }
-    
 }

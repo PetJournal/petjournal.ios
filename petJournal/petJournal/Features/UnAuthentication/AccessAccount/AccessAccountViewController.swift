@@ -38,6 +38,7 @@ class AccessAccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         buttonLogin.isHidden = true
         setupUI()
         bindingsEvent(authViewModel)
@@ -56,13 +57,8 @@ class AccessAccountViewController: UIViewController {
         })
         .store(in: &subscriptions)
         
-        // Error Description
-        viewModel.textFieldsErrorMsg(baseTextFieldViewEmail.textFieldView.textPublisher,
-                                     password: baseTextFieldViewPassword.textFieldView.textPublisher)
-            .sink(receiveValue: { [weak self] in
-                self?.errorMsg.text = $0.errorDescription
-            })
-            .store(in: &subscriptions)
+        errorValidPassword(viewModel)
+        errorValidEmail(viewModel)
         
         buttonLogin.tapPublisher.sink { [weak self] (_) in
             guard let self = self else { return }
@@ -71,10 +67,42 @@ class AccessAccountViewController: UIViewController {
         .store(in: &subscriptions)
     }
     
+    // MARK: - Error's
+    private func errorValidPassword(_ viewModel: AccessAccountViewModel) {
+        viewModel.validPassword(baseTextFieldViewPassword.textFieldView.textPublisher)
+            .sink { value in
+                switch value {
+                case true:
+                    self.baseTextFieldViewPassword.update(state: .defaultState)
+                    self.baseTextFieldViewPassword.labelError.text = ""
+                case false:
+                    self.baseTextFieldViewPassword.update(state: .errorState)
+                    self.baseTextFieldViewPassword.labelError.text = "Senha invalida"
+                }
+            }
+            .store(in: &subscriptions)
+    }
+    
+    private func errorValidEmail(_ viewModel: AccessAccountViewModel) {
+        viewModel.validEmail(baseTextFieldViewEmail.textFieldView.textPublisher)
+            .sink { value in
+                switch value {
+                case true:
+                    self.baseTextFieldViewEmail.labelError.text = ""
+                    self.baseTextFieldViewEmail.update(state: .defaultState)
+                case false:
+                    self.baseTextFieldViewEmail.update(state: .errorState)
+                    self.baseTextFieldViewEmail.labelError.text = "Usuario invalido"
+                }
+            }
+            .store(in: &subscriptions)
+    }
+    
+    // MARK: - Setup TextField's
     private func setupViewTextFieldName() {
         viewTextFieldEmail.addSubview(baseTextFieldViewEmail)
         baseTextFieldViewEmail.fillSuperView()
-        baseTextFieldViewEmail.setup(type: .defaultType, title: "Nome")
+        baseTextFieldViewEmail.setup(type: .defaultType, title: "Login")
     }
     
     private func setupViewTextFieldPassword() {
@@ -83,6 +111,7 @@ class AccessAccountViewController: UIViewController {
         baseTextFieldViewPassword.setup(type: .securityType, title: "Senha")
     }
     
+    // MARK: - Action
     @IBAction func forgotPassword(_ sender: UIButton) {
         self.delegate?.viewController(ForgotPasswordViewController(), didPerformAction: .forgotPassword)
     }
@@ -98,6 +127,4 @@ class AccessAccountViewController: UIViewController {
     @IBAction func buttonCreateAccount(_ sender: UIButton) {
         self.delegate?.viewController(CreateAccountViewController(), didPerformAction: .createAccount)
     }
-    
 }
-

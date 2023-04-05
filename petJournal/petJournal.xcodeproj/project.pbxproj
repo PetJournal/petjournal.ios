@@ -56,7 +56,7 @@
 		C94A240729CE491E00C71D01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C94A240A29CE494D00C71D01 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVM.swift; sourceTree = "<group>"; };
-		C978BA1A29DBA41100090455 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
+		C978BA1A29DBA41100090455 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BaseTextField.swift; path = "../New Group/BaseTextField.swift"; sourceTree = "<group>"; };
 		C978BA1C29DBA4CD00090455 /* BaseTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTextField.xib; sourceTree = "<group>"; };
 		C97AEE0129D11FBC00C22BDC /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		C9817CFE29CFB11B009029D6 /* AccessAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountViewController.swift; sourceTree = "<group>"; };
@@ -263,10 +263,18 @@
 		C99D743429D51E8D00839A2E /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				C9BAE60A29DDC7F900542620 /* TextField */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		C9BAE60A29DDC7F900542620 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
 				C978BA1A29DBA41100090455 /* BaseTextField.swift */,
 				C978BA1C29DBA4CD00090455 /* BaseTextField.xib */,
 			);
-			path = UIComponents;
+			path = TextField;
 			sourceTree = "<group>";
 		};
 		C9C25C0229DCAE6B00E6D300 /* Enuns */ = {
