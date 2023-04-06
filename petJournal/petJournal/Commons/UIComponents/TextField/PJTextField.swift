@@ -12,7 +12,9 @@ class PJTextField: UIView {
     // MARK: - Properties
     private let openEye = UIImage(named: "ic_openEye")
     private let closedEye = UIImage(named: "ic_closeEye")
+    private let errorAlert = UIImage(named: "ic_error")
     private var isToggleImg = true
+    private var errorValid: Bool = true
     
     // MARK: - Enums
     enum TextFieldType {
@@ -64,6 +66,7 @@ class PJTextField: UIView {
         case .errorState:
             labelError.text = errorMessage
             viewTextField.layer.borderColor = UIColor.theme.petError?.cgColor
+            imageToggled.image = errorValid ? errorAlert : closedEye
         }
     }
     
