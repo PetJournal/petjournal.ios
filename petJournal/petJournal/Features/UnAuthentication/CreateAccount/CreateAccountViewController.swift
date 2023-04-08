@@ -93,7 +93,7 @@ class CreateAccountViewController: UIViewController {
     }
     
     
-    @IBAction func emailChanged(_ sender: UITextField) {
+    @IBAction func emailDidEnd(_ sender: UITextField) {
         if let email = textFieldEmail.text {
             if let errorMessage = invalidEmail(email){
                 labelEmailError.text = errorMessage
@@ -105,6 +105,8 @@ class CreateAccountViewController: UIViewController {
         }
         checkForValidForm()
     }
+    
+    
     
     func invalidEmail(_ value: String) -> String? {
         let regularExpression = #"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"#
@@ -154,28 +156,53 @@ class CreateAccountViewController: UIViewController {
     }
     
     
+    
     @IBAction func phoneChanged(_ sender: UITextField) {
         if let phoneNumber = textFieldPhone.text{
+            
+//            if phoneNumber.count > 11 {
+//                textFieldPhone.text = String(phoneNumber.prefix(11))
+//            }
             if let errorMessage = invalidPhoneNumber(phoneNumber){
                 labelPhoneError.text = errorMessage
                 labelPhoneError.isHidden = false
             }
             else{
                 labelPhoneError.isHidden = true
+                textFieldPhone.text = formatPhoneNumber(phoneNumber)
             }
         }
         checkForValidForm()
     }
-    
+    //1234567891
     func invalidPhoneNumber(_ value: String) -> String? {
-        let set = CharacterSet(charactersIn: value)
-        if !CharacterSet.decimalDigits.isSuperset(of: set){
+        if value.count < 11 {
             return "Campo inválido"
         }
-        if value.count != 11 {
-            return "Campo inválido"
+        if value.count > 11 {
+            let truncatedPhoneNumber = value.prefix(11)
+            textFieldPhone.text = String(truncatedPhoneNumber)
         }
         return nil
+    }
+    
+    
+    func formatPhoneNumber(_ phoneNumber: String) -> String {
+        let cleanPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let mask = "(##) # ####-####"
+        var result = ""
+        var index = cleanPhoneNumber.startIndex
+        
+        for ch in mask where index < cleanPhoneNumber.endIndex {
+            if ch == "#" {
+                result.append(cleanPhoneNumber[index])
+                index = cleanPhoneNumber.index(after: index)
+            } else {
+               
+                result.append(ch)
+            }
+        }
+        return result
     }
     
     func checkForValidForm () {
@@ -208,8 +235,8 @@ class CreateAccountViewController: UIViewController {
     
     @IBAction func privacyButton(_ sender: UIButton) {
         if let url = URL(string: "https://docs.google.com/document/d/1HdrmsLrBFqr3AsnsGCk_PERXvqaMjGSoMRxOH_03C5k/edit?usp=sharing") {
-                UIApplication.shared.open(url)
-            }
+            UIApplication.shared.open(url)
+        }
     }
     
 }
