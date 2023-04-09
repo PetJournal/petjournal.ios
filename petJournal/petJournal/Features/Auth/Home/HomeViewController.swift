@@ -9,10 +9,13 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var labelTest: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.labelTest.font = FontType.regular.size(30)
     }
 
 
