@@ -27,7 +27,6 @@ class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         resetForm()
-        
     }
     
     func resetForm () {
@@ -45,12 +44,10 @@ class CreateAccountViewController: UIViewController {
         labelPasswordError.text = "Obrigatório"
         labelConfirmPassword.text = "Obrigatório"
         
-        
         textFieldName.text = ""
         textFieldLastName.text = ""
         textFieldPhone.text = ""
         textFieldEmail.text = ""
-        
     }
     
     @IBAction func nameChanged(_ sender: UITextField) {
@@ -78,7 +75,6 @@ class CreateAccountViewController: UIViewController {
         return nil
     }
     
-    
     @IBAction func lastNameChanged(_ sender: UITextField) {
         if let lastName = textFieldLastName.text {
             if let errorMessage = invalidName(lastName){
@@ -105,8 +101,6 @@ class CreateAccountViewController: UIViewController {
         }
         checkForValidForm()
     }
-    
-    
     
     func invalidEmail(_ value: String) -> String? {
         let regularExpression = #"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"#
@@ -155,14 +149,8 @@ class CreateAccountViewController: UIViewController {
         return !passwordPredicate.evaluate(with: value)
     }
     
-    
-    
     @IBAction func phoneChanged(_ sender: UITextField) {
         if let phoneNumber = textFieldPhone.text{
-            
-//            if phoneNumber.count > 11 {
-//                textFieldPhone.text = String(phoneNumber.prefix(11))
-//            }
             if let errorMessage = invalidPhoneNumber(phoneNumber){
                 labelPhoneError.text = errorMessage
                 labelPhoneError.isHidden = false
@@ -174,7 +162,7 @@ class CreateAccountViewController: UIViewController {
         }
         checkForValidForm()
     }
-    //1234567891
+    
     func invalidPhoneNumber(_ value: String) -> String? {
         if value.count < 11 {
             return "Campo inválido"
@@ -185,7 +173,6 @@ class CreateAccountViewController: UIViewController {
         }
         return nil
     }
-    
     
     func formatPhoneNumber(_ phoneNumber: String) -> String {
         let cleanPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
@@ -198,7 +185,7 @@ class CreateAccountViewController: UIViewController {
                 result.append(cleanPhoneNumber[index])
                 index = cleanPhoneNumber.index(after: index)
             } else {
-               
+                
                 result.append(ch)
             }
         }
@@ -231,12 +218,9 @@ class CreateAccountViewController: UIViewController {
         checkForValidForm()
     }
     
-    
-    
     @IBAction func privacyButton(_ sender: UIButton) {
         if let url = URL(string: "https://docs.google.com/document/d/1HdrmsLrBFqr3AsnsGCk_PERXvqaMjGSoMRxOH_03C5k/edit?usp=sharing") {
             UIApplication.shared.open(url)
         }
     }
-    
 }
