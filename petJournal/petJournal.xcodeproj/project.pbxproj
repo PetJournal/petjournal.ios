@@ -17,13 +17,14 @@
 		C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94A240729CE491E00C71D01 /* HomeViewController.xib */; };
 		C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240A29CE494D00C71D01 /* UserModel.swift */; };
 		C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */; };
-		C96BFB2A29E1D119003D3827 /* FontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96BFB2929E1D119003D3827 /* FontType.swift */; };
 		C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */; };
 		C96BFB3C29E1D714003D3827 /* Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */; };
 		C96BFB3D29E1D714003D3827 /* Fredoka-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */; };
 		C96BFB3E29E1D714003D3827 /* Fredoka-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */; };
 		C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */; };
 		C9BAE60D29DE298900542620 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BAE60C29DE298900542620 /* Extension+UIColor.swift */; };
+		C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */; };
+		C9FD536D29E4B3CB003033FB /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD536C29E4B3CB003033FB /* CustomFont.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,13 +40,14 @@
 		C94A240729CE491E00C71D01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C94A240A29CE494D00C71D01 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVM.swift; sourceTree = "<group>"; };
-		C96BFB2929E1D119003D3827 /* FontType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontType.swift; sourceTree = "<group>"; };
 		C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
 		C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Bold.ttf"; sourceTree = "<group>"; };
 		C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Light.ttf"; sourceTree = "<group>"; };
 		C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Medium.ttf"; sourceTree = "<group>"; };
 		C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-SemiBold.ttf"; sourceTree = "<group>"; };
 		C9BAE60C29DE298900542620 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
+		C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIFont.swift"; sourceTree = "<group>"; };
+		C9FD536C29E4B3CB003033FB /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		1FF4608F29C8E9E30026F680 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				C9FD536629E4B294003033FB /* Enums */,
 				C9BAE60B29DE296100542620 /* Extensions */,
 				C94A23F729CE230A00C71D01 /* Models */,
 			);
@@ -120,7 +123,6 @@
 				1FF4608329C8E8740026F680 /* Assets.xcassets */,
 				1FF4608529C8E8740026F680 /* LaunchScreen.storyboard */,
 				1FF4608829C8E8740026F680 /* Info.plist */,
-				C96BFB2929E1D119003D3827 /* FontType.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -200,8 +202,17 @@
 			isa = PBXGroup;
 			children = (
 				C9BAE60C29DE298900542620 /* Extension+UIColor.swift */,
+				C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C9FD536629E4B294003033FB /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				C9FD536C29E4B3CB003033FB /* CustomFont.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,10 +291,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */,
 				C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */,
 				C94A240529CE48D800C71D01 /* CreateAccountVM.swift in Sources */,
-				C96BFB2A29E1D119003D3827 /* FontType.swift in Sources */,
+				C9FD536D29E4B3CB003033FB /* CustomFont.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
 				C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */,

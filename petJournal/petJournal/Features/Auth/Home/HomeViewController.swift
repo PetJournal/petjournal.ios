@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.labelTest.font = FontType.regular.size(30)
+        self.labelTest.font = UIFont.fredoka(.regular, fontSize: 32)
     }
 
 
