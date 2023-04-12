@@ -8,11 +8,10 @@
 import UIKit
 
 extension UIFont {
-    static func fredoka(_ font: FontType, fontSize: CGFloat) -> UIFont {
-        let familyName = "Fredoka"
-        guard let customFont = UIFont(name: "\(familyName)-\(font)", size: fontSize) else {
-            fatalError("Failed to load font.")
+    static func customFont(_ fontFamily: FontFamily, font: FontType, fontSize: CGFloat) -> UIFont {
+        guard let myFont = UIFont(name: "\(fontFamily)-\(font)", size: fontSize) else {
+            return UIFont.systemFont(ofSize: fontSize)
         }
-        return customFont
+        return myFont
     }
 }
