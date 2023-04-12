@@ -29,4 +29,3 @@ struct ColorTheme {
     let petGray300 = UIColor(named: "petGray300")
     let petGray800 = UIColor(named: "petGray800")
 }
-
