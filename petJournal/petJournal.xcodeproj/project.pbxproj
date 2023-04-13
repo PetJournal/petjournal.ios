@@ -24,6 +24,9 @@
 		C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */; };
 		C9BAE60D29DE298900542620 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BAE60C29DE298900542620 /* Extension+UIColor.swift */; };
 		C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017029E72D7D0014F9C4 /* FontFamily.swift */; };
+		C9E5017529E76FFE0014F9C4 /* PJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017429E76FFE0014F9C4 /* PJTextField.swift */; };
+		C9E5017729E770620014F9C4 /* PJTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E5017629E770620014F9C4 /* PJTextField.xib */; };
+		C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */; };
 		C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */; };
 		C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD536C29E4B3CB003033FB /* FontType.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +51,9 @@
 		C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-SemiBold.ttf"; sourceTree = "<group>"; };
 		C9BAE60C29DE298900542620 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		C9E5017029E72D7D0014F9C4 /* FontFamily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFamily.swift; sourceTree = "<group>"; };
+		C9E5017429E76FFE0014F9C4 /* PJTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJTextField.swift; sourceTree = "<group>"; };
+		C9E5017629E770620014F9C4 /* PJTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJTextField.xib; sourceTree = "<group>"; };
+		C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIFont.swift"; sourceTree = "<group>"; };
 		C9FD536C29E4B3CB003033FB /* FontType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +108,7 @@
 		1FF4608F29C8E9E30026F680 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				C9E5017329E76FDA0014F9C4 /* UIComponent */,
 				C9FD536629E4B294003033FB /* Enums */,
 				C9BAE60B29DE296100542620 /* Extensions */,
 				C94A23F729CE230A00C71D01 /* Models */,
@@ -205,6 +212,7 @@
 			children = (
 				C9BAE60C29DE298900542620 /* Extension+UIColor.swift */,
 				C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */,
+				C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -216,6 +224,15 @@
 				C9E5017029E72D7D0014F9C4 /* FontFamily.swift */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C9E5017329E76FDA0014F9C4 /* UIComponent */ = {
+			isa = PBXGroup;
+			children = (
+				C9E5017429E76FFE0014F9C4 /* PJTextField.swift */,
+				C9E5017629E770620014F9C4 /* PJTextField.xib */,
+			);
+			path = UIComponent;
 			sourceTree = "<group>";
 		};
 		C9FD536629E4B294003033FB /* Enums */ = {
@@ -292,6 +309,7 @@
 				C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */,
 				C96BFB3D29E1D714003D3827 /* Fredoka-Light.ttf in Resources */,
 				C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */,
+				C9E5017729E770620014F9C4 /* PJTextField.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +323,7 @@
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */,
 				C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */,
+				C9E5017529E76FFE0014F9C4 /* PJTextField.swift in Sources */,
 				C94A240529CE48D800C71D01 /* CreateAccountVM.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
@@ -313,6 +332,7 @@
 				C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+UIColor.swift in Sources */,
+				C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="petJournal" customModuleProvider="target">
             <connections>
                 <outlet property="labelTest" destination="Qf2-3W-WzK" id="KmO-9z-XwU"/>
+                <outlet property="test2TextField" destination="04M-5y-wea" id="HtZ-qR-7Ln"/>
+                <outlet property="testTextField" destination="eFv-1A-CUT" id="Qqa-gd-Zn6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,21 +22,47 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fredoka" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf2-3W-WzK">
-                    <rect key="frame" x="165.33333333333334" y="401" width="62.333333333333343" height="50"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qf2-3W-WzK">
+                    <rect key="frame" x="100" y="259" width="193" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="VV0-tT-VKf"/>
+                        <constraint firstAttribute="height" constant="50" id="kNa-59-tmP"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ecw-qi-yci">
+                    <rect key="frame" x="16" y="339" width="361" height="200"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFv-1A-CUT">
+                            <rect key="frame" x="0.0" y="0.0" width="361" height="95"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="95" id="kdv-30-tkp"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04M-5y-wea">
+                            <rect key="frame" x="0.0" y="105" width="361" height="95"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="eFv-1A-CUT" firstAttribute="top" secondItem="Ecw-qi-yci" secondAttribute="top" id="75S-Pa-7Yt"/>
+                        <constraint firstAttribute="height" constant="200" id="AYt-Je-XS5"/>
+                        <constraint firstItem="eFv-1A-CUT" firstAttribute="leading" secondItem="Ecw-qi-yci" secondAttribute="leading" id="GCk-Bq-PMW"/>
+                        <constraint firstAttribute="trailing" secondItem="eFv-1A-CUT" secondAttribute="trailing" id="qNf-bP-AwX"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Qf2-3W-WzK" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="1HY-qW-lr4"/>
-                <constraint firstItem="Qf2-3W-WzK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QNv-Ek-LoZ"/>
+                <constraint firstItem="Ecw-qi-yci" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="1s5-vE-GzZ"/>
+                <constraint firstItem="Qf2-3W-WzK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="200" id="4hJ-2n-aHz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ecw-qi-yci" secondAttribute="trailing" constant="16" id="Z1A-f0-XYa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Qf2-3W-WzK" secondAttribute="trailing" constant="100" id="esB-ct-agn"/>
+                <constraint firstItem="Ecw-qi-yci" firstAttribute="top" secondItem="Qf2-3W-WzK" secondAttribute="bottom" constant="30" id="pOA-8r-TtE"/>
+                <constraint firstItem="Qf2-3W-WzK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="vBk-35-MAI"/>
             </constraints>
             <point key="canvasLocation" x="112" y="-11"/>
         </view>
