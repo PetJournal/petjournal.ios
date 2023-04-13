@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Logo fundo cor primária.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

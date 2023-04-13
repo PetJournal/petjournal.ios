@@ -9,21 +9,30 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    private var textFieldPassword = PJTextField.fromXib()
+    private var textFieldEmail = PJTextField.fromXib()
+    
+    @IBOutlet weak var labelTest: UILabel!
+    @IBOutlet weak var testTextField: UIView!
+    @IBOutlet weak var test2TextField: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.theme.petGray300
+        self.labelTest.font = .customFont(.fredoka, font: .regular, fontSize: 32)
+        setupViewTextFieldEmail()
+        setupViewTextFieldPassword()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func setupViewTextFieldEmail() {
+        testTextField.addSubview(textFieldEmail)
+        textFieldEmail.fillSuperView()
+        textFieldEmail.setupTextField(type: .defaultType, title: "Email", placeholder: "Your placeholder")
     }
-    */
-
+    
+    private func setupViewTextFieldPassword() {
+        test2TextField.addSubview(textFieldPassword)
+        textFieldPassword.fillSuperView()
+        textFieldPassword.setupTextField(type: .securityType, title: "Password", placeholder: "Your placeholder")
+    }
 }
