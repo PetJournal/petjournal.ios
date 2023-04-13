@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		1F550F3429D61EA700095A17 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */; };
 		1F550F3529D61EA700095A17 /* CreateAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */; };
+		1FED054A29E7329E005411D1 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED054929E7329E005411D1 /* CreateAccountViewModel.swift */; };
 		1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF4607A29C8E8720026F680 /* AppDelegate.swift */; };
 		1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF4607C29C8E8720026F680 /* SceneDelegate.swift */; };
 		1FF4608429C8E8740026F680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608329C8E8740026F680 /* Assets.xcassets */; };
 		1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608529C8E8740026F680 /* LaunchScreen.storyboard */; };
 		C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */; };
-		C94A240529CE48D800C71D01 /* CreateAccountVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240429CE48D800C71D01 /* CreateAccountVM.swift */; };
 		C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240629CE491E00C71D01 /* HomeViewController.swift */; };
 		C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94A240729CE491E00C71D01 /* HomeViewController.xib */; };
 		C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240A29CE494D00C71D01 /* UserModel.swift */; };
@@ -24,6 +24,7 @@
 /* Begin PBXFileReference section */
 		1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAccountViewController.xib; sourceTree = "<group>"; };
+		1FED054929E7329E005411D1 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		1FF4607729C8E8720026F680 /* petJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF4607A29C8E8720026F680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FF4607C29C8E8720026F680 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,7 +32,6 @@
 		1FF4608629C8E8740026F680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FF4608829C8E8740026F680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountViewModel.swift; sourceTree = "<group>"; };
-		C94A240429CE48D800C71D01 /* CreateAccountVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVM.swift; sourceTree = "<group>"; };
 		C94A240629CE491E00C71D01 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C94A240729CE491E00C71D01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C94A240A29CE494D00C71D01 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		C94A23FA29CE237B00C71D01 /* CreateAccount */ = {
 			isa = PBXGroup;
 			children = (
-				C94A240429CE48D800C71D01 /* CreateAccountVM.swift */,
+				1FED054929E7329E005411D1 /* CreateAccountViewModel.swift */,
 				1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */,
 				1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */,
 			);
@@ -247,9 +247,9 @@
 			files = (
 				C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */,
 				C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */,
-				C94A240529CE48D800C71D01 /* CreateAccountVM.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				1F550F3429D61EA700095A17 /* CreateAccountViewController.swift in Sources */,
+				1FED054A29E7329E005411D1 /* CreateAccountViewModel.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
 				C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,

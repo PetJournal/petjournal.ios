@@ -9,6 +9,8 @@ import UIKit
 
 class CreateAccountViewController: UIViewController {
     
+    var viewModel: CreateAccountViewModel = .init()
+    
     
     @IBOutlet var textFieldName: UITextField!
     @IBOutlet var labelNameError: UILabel!
@@ -48,11 +50,13 @@ class CreateAccountViewController: UIViewController {
         textFieldLastName.text = ""
         textFieldPhone.text = ""
         textFieldEmail.text = ""
+        textFieldPassword.text = ""
+        textFieldConfirmPassword.text = ""
     }
     
     @IBAction func nameChanged(_ sender: UITextField) {
         if let name = textFieldName.text {
-            if let errorMessage = invalidName(name){
+            if let errorMessage = viewModel.isValidName(value: name){
                 labelNameError.text = errorMessage
                 labelNameError.isHidden = false
             }
@@ -63,21 +67,9 @@ class CreateAccountViewController: UIViewController {
         checkForValidForm()
     }
     
-    func invalidName(_ value: String) -> String? {
-        let regularExpression = "^[A-Za-z]+$"
-        let namePredicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
-        if !namePredicate.evaluate(with: value){
-            return "Nome inválido"
-        }
-        if value.count < 3 {
-            return "A senha deve ter pelo menos 3 caracteres"
-        }
-        return nil
-    }
-    
     @IBAction func lastNameChanged(_ sender: UITextField) {
         if let lastName = textFieldLastName.text {
-            if let errorMessage = invalidName(lastName){
+            if let errorMessage = viewModel.isValidName(value: lastName){
                 labelLastNameError.text = errorMessage
                 labelLastNameError.isHidden = false
             }
@@ -88,10 +80,9 @@ class CreateAccountViewController: UIViewController {
         checkForValidForm()
     }
     
-    
     @IBAction func emailDidEnd(_ sender: UITextField) {
         if let email = textFieldEmail.text {
-            if let errorMessage = invalidEmail(email){
+            if let errorMessage = viewModel.isValidEmail(value: email){
                 labelEmailError.text = errorMessage
                 labelEmailError.isHidden = false
             }
@@ -102,18 +93,9 @@ class CreateAccountViewController: UIViewController {
         checkForValidForm()
     }
     
-    func invalidEmail(_ value: String) -> String? {
-        let regularExpression = #"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"#
-        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
-        if !emailPredicate.evaluate(with: value){
-            return "E-mail inválido"
-        }
-        return nil
-    }
-    
     @IBAction func passwordChanged(_ sender: UITextField) {
         if let password = textFieldPassword.text {
-            if let errorMessage = invalidPassword(password){
+            if let errorMessage = viewModel.isValidPassword(value: password){
                 labelPasswordError.text = errorMessage
                 labelPasswordError.isHidden = false
             }
@@ -124,72 +106,18 @@ class CreateAccountViewController: UIViewController {
         checkForValidForm()
     }
     
-    func invalidPassword(_ value: String) -> String? {
-        if value.count < 8 {
-            return "A senha deve ter pelo menos 8 caracteres. Para torná-la mais forte, use letras maiúsculas e minúsculas, números e símbolos como ! @ # $ % & * ="
-        }
-        if containsDigit(value) {
-            return "A senha deve ter pelo menos 1 caractere alfanumérico"
-        }
-        if containsEspecial(value) {
-            return "A senha deve ter pelo menos 1 caractere especial"
-        }
-        return nil
-    }
-    
-    func containsDigit(_ value: String) -> Bool {
-        let regularExpression = "^(?=.*[A-Za-z0-9])(?=.*[0-9]).*$"
-        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
-        return !passwordPredicate.evaluate(with: value)
-    }
-    
-    func containsEspecial(_ value: String) -> Bool {
-        let regularExpression = "^(?=.*[!@#$%^&*()_+={};':\\|,.<>/?-]).*$"
-        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
-        return !passwordPredicate.evaluate(with: value)
-    }
-    
     @IBAction func phoneChanged(_ sender: UITextField) {
         if let phoneNumber = textFieldPhone.text{
-            if let errorMessage = invalidPhoneNumber(phoneNumber){
+            if let errorMessage = viewModel.isValidPhone(phoneNumber){
                 labelPhoneError.text = errorMessage
                 labelPhoneError.isHidden = false
             }
             else{
                 labelPhoneError.isHidden = true
-                textFieldPhone.text = formatPhoneNumber(phoneNumber)
+                textFieldPhone.text = viewModel.isformatPhoneNumber(phoneNumber)
             }
         }
         checkForValidForm()
-    }
-    
-    func invalidPhoneNumber(_ value: String) -> String? {
-        if value.count < 11 {
-            return "Campo inválido"
-        }
-        if value.count > 11 {
-            let truncatedPhoneNumber = value.prefix(11)
-            textFieldPhone.text = String(truncatedPhoneNumber)
-        }
-        return nil
-    }
-    
-    func formatPhoneNumber(_ phoneNumber: String) -> String {
-        let cleanPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        let mask = "(##) # ####-####"
-        var result = ""
-        var index = cleanPhoneNumber.startIndex
-        
-        for ch in mask where index < cleanPhoneNumber.endIndex {
-            if ch == "#" {
-                result.append(cleanPhoneNumber[index])
-                index = cleanPhoneNumber.index(after: index)
-            } else {
-                
-                result.append(ch)
-            }
-        }
-        return result
     }
     
     func checkForValidForm () {
