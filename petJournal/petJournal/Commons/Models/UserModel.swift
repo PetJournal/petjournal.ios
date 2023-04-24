@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+public struct UserModel: Decodable {
+    let email: String?
+    let password: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case email
+        case password
+    }
+}

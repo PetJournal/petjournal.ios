@@ -11,17 +11,24 @@
 		1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF4607C29C8E8720026F680 /* SceneDelegate.swift */; };
 		1FF4608429C8E8740026F680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608329C8E8740026F680 /* Assets.xcassets */; };
 		1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608529C8E8740026F680 /* LaunchScreen.storyboard */; };
+		C946F54929EF4CCE00045097 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C946F54829EF4CCE00045097 /* LoginService.swift */; };
+		C946F54B29EF69A000045097 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C946F54A29EF69A000045097 /* UserResponse.swift */; };
 		C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */; };
 		C94A240529CE48D800C71D01 /* CreateAccountVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240429CE48D800C71D01 /* CreateAccountVM.swift */; };
 		C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240629CE491E00C71D01 /* HomeViewController.swift */; };
 		C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94A240729CE491E00C71D01 /* HomeViewController.xib */; };
 		C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240A29CE494D00C71D01 /* UserModel.swift */; };
 		C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */; };
+		C953C54A29F1B0CE00E70D86 /* ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953C54929F1B0CE00E70D86 /* ObservableObject.swift */; };
+		C95B837F29E9D68D00F803BC /* AccessAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B837D29E9D68D00F803BC /* AccessAccountViewController.swift */; };
+		C95B838029E9D68D00F803BC /* AccessAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C95B837E29E9D68D00F803BC /* AccessAccountViewController.xib */; };
 		C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */; };
 		C96BFB3C29E1D714003D3827 /* Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */; };
 		C96BFB3D29E1D714003D3827 /* Fredoka-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */; };
 		C96BFB3E29E1D714003D3827 /* Fredoka-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */; };
 		C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */; };
+		C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9FD9429EDE27900C7C52B /* Validations.swift */; };
+		C9B9FD9729EDE67100C7C52B /* AccessAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B9FD9629EDE67100C7C52B /* AccessAccountCoordinator.swift */; };
 		C9BAE60D29DE298900542620 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BAE60C29DE298900542620 /* Extension+UIColor.swift */; };
 		C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017029E72D7D0014F9C4 /* FontFamily.swift */; };
 		C9E5017529E76FFE0014F9C4 /* PJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017429E76FFE0014F9C4 /* PJTextField.swift */; };
@@ -38,17 +45,24 @@
 		1FF4608329C8E8740026F680 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FF4608629C8E8740026F680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FF4608829C8E8740026F680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C946F54829EF4CCE00045097 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		C946F54A29EF69A000045097 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountViewModel.swift; sourceTree = "<group>"; };
 		C94A240429CE48D800C71D01 /* CreateAccountVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVM.swift; sourceTree = "<group>"; };
 		C94A240629CE491E00C71D01 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C94A240729CE491E00C71D01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C94A240A29CE494D00C71D01 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVM.swift; sourceTree = "<group>"; };
+		C953C54929F1B0CE00E70D86 /* ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObject.swift; sourceTree = "<group>"; };
+		C95B837D29E9D68D00F803BC /* AccessAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountViewController.swift; sourceTree = "<group>"; };
+		C95B837E29E9D68D00F803BC /* AccessAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccessAccountViewController.xib; sourceTree = "<group>"; };
 		C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
 		C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Bold.ttf"; sourceTree = "<group>"; };
 		C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Light.ttf"; sourceTree = "<group>"; };
 		C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Medium.ttf"; sourceTree = "<group>"; };
 		C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-SemiBold.ttf"; sourceTree = "<group>"; };
+		C9B9FD9429EDE27900C7C52B /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
+		C9B9FD9629EDE67100C7C52B /* AccessAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountCoordinator.swift; sourceTree = "<group>"; };
 		C9BAE60C29DE298900542620 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		C9E5017029E72D7D0014F9C4 /* FontFamily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFamily.swift; sourceTree = "<group>"; };
 		C9E5017429E76FFE0014F9C4 /* PJTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJTextField.swift; sourceTree = "<group>"; };
@@ -108,6 +122,8 @@
 		1FF4608F29C8E9E30026F680 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				C946F54729EF4CB600045097 /* Service */,
+				C9B9FD9329EDE25B00C7C52B /* Utils */,
 				C9E5017329E76FDA0014F9C4 /* UIComponent */,
 				C9FD536629E4B294003033FB /* Enums */,
 				C9BAE60B29DE296100542620 /* Extensions */,
@@ -136,6 +152,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		C946F54729EF4CB600045097 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C946F54829EF4CCE00045097 /* LoginService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		C94A23F629CE22CA00C71D01 /* UnAuthentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				C94A240A29CE494D00C71D01 /* UserModel.swift */,
+				C946F54A29EF69A000045097 /* UserResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,6 +191,9 @@
 			isa = PBXGroup;
 			children = (
 				C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */,
+				C95B837D29E9D68D00F803BC /* AccessAccountViewController.swift */,
+				C95B837E29E9D68D00F803BC /* AccessAccountViewController.xib */,
+				C9B9FD9629EDE67100C7C52B /* AccessAccountCoordinator.swift */,
 			);
 			path = AccessAccount;
 			sourceTree = "<group>";
@@ -205,6 +233,15 @@
 				C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */,
 			);
 			name = Font;
+			sourceTree = "<group>";
+		};
+		C9B9FD9329EDE25B00C7C52B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C9B9FD9429EDE27900C7C52B /* Validations.swift */,
+				C953C54929F1B0CE00E70D86 /* ObservableObject.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		C9BAE60B29DE296100542620 /* Extensions */ = {
@@ -301,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95B838029E9D68D00F803BC /* AccessAccountViewController.xib in Resources */,
 				C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */,
 				C96BFB3E29E1D714003D3827 /* Fredoka-Medium.ttf in Resources */,
 				1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */,
@@ -320,19 +358,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C946F54929EF4CCE00045097 /* LoginService.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */,
 				C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */,
 				C9E5017529E76FFE0014F9C4 /* PJTextField.swift in Sources */,
+				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
+				C95B837F29E9D68D00F803BC /* AccessAccountViewController.swift in Sources */,
 				C94A240529CE48D800C71D01 /* CreateAccountVM.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
 				C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */,
+				C9B9FD9729EDE67100C7C52B /* AccessAccountCoordinator.swift in Sources */,
+				C953C54A29F1B0CE00E70D86 /* ObservableObject.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+UIColor.swift in Sources */,
 				C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */,
+				C946F54B29EF69A000045097 /* UserResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
