@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1F550F3429D61EA700095A17 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */; };
 		1F550F3529D61EA700095A17 /* CreateAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */; };
+		1F8A24E329E9DCB600B696AB /* testeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A24E129E9DCB600B696AB /* testeViewController.swift */; };
+		1F8A24E429E9DCB600B696AB /* testeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8A24E229E9DCB600B696AB /* testeViewController.xib */; };
+		1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7998329F1C8CC00673233 /* UserPJModel.swift */; };
 		1FED054A29E7329E005411D1 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED054929E7329E005411D1 /* CreateAccountViewModel.swift */; };
 		1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF4607A29C8E8720026F680 /* AppDelegate.swift */; };
 		1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF4607C29C8E8720026F680 /* SceneDelegate.swift */; };
@@ -17,7 +20,6 @@
 		C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */; };
 		C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240629CE491E00C71D01 /* HomeViewController.swift */; };
 		C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94A240729CE491E00C71D01 /* HomeViewController.xib */; };
-		C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240A29CE494D00C71D01 /* UserModel.swift */; };
 		C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */; };
 		C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */; };
 		C96BFB3C29E1D714003D3827 /* Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */; };
@@ -36,6 +38,9 @@
 /* Begin PBXFileReference section */
 		1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAccountViewController.xib; sourceTree = "<group>"; };
+		1F8A24E129E9DCB600B696AB /* testeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testeViewController.swift; sourceTree = "<group>"; };
+		1F8A24E229E9DCB600B696AB /* testeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = testeViewController.xib; sourceTree = "<group>"; };
+		1FB7998329F1C8CC00673233 /* UserPJModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPJModel.swift; sourceTree = "<group>"; };
 		1FED054929E7329E005411D1 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		1FF4607729C8E8720026F680 /* petJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF4607A29C8E8720026F680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +51,6 @@
 		C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountViewModel.swift; sourceTree = "<group>"; };
 		C94A240629CE491E00C71D01 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C94A240729CE491E00C71D01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		C94A240A29CE494D00C71D01 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVM.swift; sourceTree = "<group>"; };
 		C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
 		C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Bold.ttf"; sourceTree = "<group>"; };
@@ -73,6 +77,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FB7998529F1E1A300673233 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		1FF4606E29C8E8720026F680 = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +126,6 @@
 				C9E5017329E76FDA0014F9C4 /* UIComponent */,
 				C9FD536629E4B294003033FB /* Enums */,
 				C9BAE60B29DE296100542620 /* Extensions */,
-				C94A23F729CE230A00C71D01 /* Models */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -153,7 +163,7 @@
 		C94A23F729CE230A00C71D01 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C94A240A29CE494D00C71D01 /* UserModel.swift */,
+				1FB7998329F1C8CC00673233 /* UserPJModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,6 +187,8 @@
 		C94A23FA29CE237B00C71D01 /* CreateAccount */ = {
 			isa = PBXGroup;
 			children = (
+				1FB7998529F1E1A300673233 /* Subviews */,
+				C94A23F729CE230A00C71D01 /* Models */,
 				1FED054929E7329E005411D1 /* CreateAccountViewModel.swift */,
 				1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */,
 				1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */,
@@ -188,6 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */,
+				1F8A24E129E9DCB600B696AB /* testeViewController.swift */,
+				1F8A24E229E9DCB600B696AB /* testeViewController.xib */,
 			);
 			path = ForgotPassword;
 			sourceTree = "<group>";
@@ -307,6 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8A24E429E9DCB600B696AB /* testeViewController.xib in Resources */,
 				1F550F3529D61EA700095A17 /* CreateAccountViewController.xib in Resources */,
 				C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */,
 				C96BFB3E29E1D714003D3827 /* Fredoka-Medium.ttf in Resources */,
@@ -327,18 +342,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */,
 				C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */,
 				1F550F3429D61EA700095A17 /* CreateAccountViewController.swift in Sources */,
+				1F8A24E329E9DCB600B696AB /* testeViewController.swift in Sources */,
 				1FED054A29E7329E005411D1 /* CreateAccountViewModel.swift in Sources */,
 				C9E5017529E76FFE0014F9C4 /* PJTextField.swift in Sources */,
-				C94A240529CE48D800C71D01 /* CreateAccountVM.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
-				C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+UIColor.swift in Sources */,
 				C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */,

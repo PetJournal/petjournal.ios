@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import WebKit
 
 class CreateAccountViewController: UIViewController {
     
     var viewModel: CreateAccountViewModel = .init()
     
+//    var webView: WKWebView!
     
     @IBOutlet var textFieldName: UITextField!
     @IBOutlet var labelNameError: UILabel!
@@ -25,10 +27,26 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet var labelConfirmPassword: UILabel!
     @IBOutlet var labelPasswordError: UILabel!
     @IBOutlet var buttonCreateAccount: UIButton!
+    @IBOutlet weak var policyWebView: WKWebView!
+    
+    
+//    override func loadView() {
+//        webView = WKWebView()
+//        webView.navigationDelegate = self
+//        view = webView
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+      
+//        let url = URL(string: "https://docs.google.com/document/d/1HdrmsLrBFqr3AsnsGCk_PERXvqaMjGSoMRxOH_03C5k/edit?usp=sharing")!
+//        webView.load(URLRequest(url: url))
+//        webView.allowsBackForwardNavigationGestures = true
+//
         resetForm()
+        //        webViewPrivacy()
+   
     }
     
     func resetForm () {
@@ -55,6 +73,8 @@ class CreateAccountViewController: UIViewController {
     }
     
     @IBAction func nameChanged(_ sender: UITextField) {
+        textFieldName.textContentType = .givenName
+        textFieldName.autocorrectionType = .no
         if let name = textFieldName.text {
             if let errorMessage = viewModel.isValidName(value: name){
                 labelNameError.text = errorMessage
@@ -68,6 +88,8 @@ class CreateAccountViewController: UIViewController {
     }
     
     @IBAction func lastNameChanged(_ sender: UITextField) {
+        textFieldLastName.textContentType = .familyName
+        textFieldName.autocorrectionType = .no
         if let lastName = textFieldLastName.text {
             if let errorMessage = viewModel.isValidName(value: lastName){
                 labelLastNameError.text = errorMessage
@@ -81,6 +103,9 @@ class CreateAccountViewController: UIViewController {
     }
     
     @IBAction func emailDidEnd(_ sender: UITextField) {
+        textFieldEmail.textContentType = .username
+        textFieldName.autocapitalizationType = .none
+        textFieldName.autocorrectionType = .no
         if let email = textFieldEmail.text {
             if let errorMessage = viewModel.isValidEmail(value: email){
                 labelEmailError.text = errorMessage
@@ -131,12 +156,14 @@ class CreateAccountViewController: UIViewController {
     
     @IBAction func createAccountAction(_ sender: UIButton) {
         resetForm()
+        //validar quando todas as validoes estiverem ok fazer em cima de funcao retorno ou com flag.tentar fazer em cima de fun ção
     }
     
     @IBAction func confirmPasswordChanged(_ sender: UITextField) {
         if let confirmPassword = textFieldConfirmPassword.text {
             if confirmPassword != textFieldPassword.text{
                 labelConfirmPassword.text = "As senhas devem ser idênticas"
+                //colocar na label de senha tbm
                 labelConfirmPassword.isHidden = false
             }
             else{
@@ -147,8 +174,28 @@ class CreateAccountViewController: UIViewController {
     }
     
     @IBAction func privacyButton(_ sender: UIButton) {
-        if let url = URL(string: "https://docs.google.com/document/d/1HdrmsLrBFqr3AsnsGCk_PERXvqaMjGSoMRxOH_03C5k/edit?usp=sharing") {
-            UIApplication.shared.open(url)
+        let url: URL? = URL(string: "https://www.google.com")
+        if let value = url {
+            self.policyWebView.load(URLRequest(url: value))
+            self.policyWebView.allowsBackForwardNavigationGestures = true
         }
+//        policyWebView.load(request)
+//        policyWebView.allowsBackForwardNavigationGestures = true
+            
+            
+            //pesquisar webview swift
+            //        if let url = URL(string: "https://docs.google.com/document/d/1HdrmsLrBFqr3AsnsGCk_PERXvqaMjGSoMRxOH_03C5k/edit?usp=sharing") {
+            //            UIApplication.shared.open(url)
+            //            webViewPrivacy()
+            
+        }
+        
+        //    func webViewPrivacy () {
+        //        let url = URL(string: "https://docs.google.com/document/d/1HdrmsLrBFqr3AsnsGCk_PERXvqaMjGSoMRxOH_03C5k/edit?usp=sharing")!
+        //        webView.load(URLRequest(url: url))
+        //        webView.allowsBackForwardNavigationGestures = true
+        //    }
     }
-}
+    
+    
+

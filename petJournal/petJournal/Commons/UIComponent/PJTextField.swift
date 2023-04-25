@@ -51,8 +51,8 @@ class PJTextField: UIView {
         }
         labelTitle.text = title
         labelError.textColor = UIColor.theme.petError
-        labelError.font = UIFont.systemFont(ofSize: 13)
-        textFieldInput.font = UIFont.systemFont(ofSize: 16)
+        labelError.font = UIFont.customFont(.fredoka, font: .medium, fontSize: 13)
+        textFieldInput.font = UIFont.customFont(.fredoka, font: .medium, fontSize: 16)
         textFieldInput.placeholder = placeholder
         setupViewTextField(state: .defaultState)
         updateTextField(state: .defaultState)

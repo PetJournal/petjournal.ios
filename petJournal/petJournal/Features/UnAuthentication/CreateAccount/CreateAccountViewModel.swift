@@ -9,13 +9,14 @@ import Foundation
 
 class CreateAccountViewModel {
     
+
     func isValidName (value: String) -> String? {
-        let regularExpression = "^[A-Za-z]+$"
+        let regularExpression = "^[A-Za-z]{3,}.*+$"
         let namePredicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
         if !namePredicate.evaluate(with: value){
             return "Nome inválido"
         }
-        if value.count < 3 {
+        if value.count < 3  {
             return "O nome deve ter pelo menos 3 caracteres"
         }
         return nil
@@ -82,4 +83,13 @@ class CreateAccountViewModel {
         }
         return result
     }
+}
+
+extension CreateAccountViewModel {
+    
+    func getMockUserPJModel () -> UserPJModel {
+        let model = UserPJModel(name: "Eistein", lastName: "Silva", email: "ssa@fd.com", phoneNumber: "21312123")
+        return model
+    }
+    
 }
