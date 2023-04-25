@@ -77,7 +77,6 @@ class CreateAccountViewModel {
                 result.append(cleanPhoneNumber[index])
                 index = cleanPhoneNumber.index(after: index)
             } else {
-                
                 result.append(ch)
             }
         }
@@ -91,5 +90,4 @@ extension CreateAccountViewModel {
         let model = UserPJModel(name: "Eistein", lastName: "Silva", email: "ssa@fd.com", phoneNumber: "21312123")
         return model
     }
-    
 }

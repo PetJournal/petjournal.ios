@@ -8,11 +8,11 @@
 import UIKit
 import WebKit
 
-class CreateAccountViewController: UIViewController {
+class CreateAccountViewController: UIViewController, WKNavigationDelegate {
     
     var viewModel: CreateAccountViewModel = .init()
     
-//    var webView: WKWebView!
+    var webView: WKWebView?
     
     @IBOutlet var textFieldName: UITextField!
     @IBOutlet var labelNameError: UILabel!
@@ -27,26 +27,23 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet var labelConfirmPassword: UILabel!
     @IBOutlet var labelPasswordError: UILabel!
     @IBOutlet var buttonCreateAccount: UIButton!
-    @IBOutlet weak var policyWebView: WKWebView!
     
     
 //    override func loadView() {
-//        webView = WKWebView()
-//        webView.navigationDelegate = self
-//        view = webView
+////        webView = WKWebView()
+////        webView?.navigationDelegate = self
+////        view = webView
 //    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      
+        
 //        let url = URL(string: "https://docs.google.com/document/d/1HdrmsLrBFqr3AsnsGCk_PERXvqaMjGSoMRxOH_03C5k/edit?usp=sharing")!
 //        webView.load(URLRequest(url: url))
 //        webView.allowsBackForwardNavigationGestures = true
-//
+        
         resetForm()
-        //        webViewPrivacy()
-   
     }
     
     func resetForm () {
@@ -174,28 +171,31 @@ class CreateAccountViewController: UIViewController {
     }
     
     @IBAction func privacyButton(_ sender: UIButton) {
-        let url: URL? = URL(string: "https://www.google.com")
-        if let value = url {
-            self.policyWebView.load(URLRequest(url: value))
-            self.policyWebView.allowsBackForwardNavigationGestures = true
-        }
-//        policyWebView.load(request)
-//        policyWebView.allowsBackForwardNavigationGestures = true
-            
-            
-            //pesquisar webview swift
-            //        if let url = URL(string: "https://docs.google.com/document/d/1HdrmsLrBFqr3AsnsGCk_PERXvqaMjGSoMRxOH_03C5k/edit?usp=sharing") {
-            //            UIApplication.shared.open(url)
-            //            webViewPrivacy()
-            
-        }
+        let vc = webView ?? CreateAccountViewController()
+        present(vc as UIViewController, animated: true, completion: nil)
         
-        //    func webViewPrivacy () {
-        //        let url = URL(string: "https://docs.google.com/document/d/1HdrmsLrBFqr3AsnsGCk_PERXvqaMjGSoMRxOH_03C5k/edit?usp=sharing")!
-        //        webView.load(URLRequest(url: url))
-        //        webView.allowsBackForwardNavigationGestures = true
-        //    }
+        webView = WKWebView(frame: view.frame)
+            view.addSubview(webView!)
+                
+            // carregue a URL desejada
+            let url = URL(string: "https://www.google.com")!
+            webView!.load(URLRequest(url: url))
+            
+            let closeButton = UIButton(type: .system)
+            closeButton.setTitle("Fechar", for: .normal)
+            closeButton.addTarget(self, action: #selector(closeWebView), for: .touchUpInside)
+            view.addSubview(closeButton)
+            
+            // adicione as restrições do botão "Fechar"
+            closeButton.translatesAutoresizingMaskIntoConstraints = false
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
+    }
+    
+    @objc func closeWebView() {
+        webView?.removeFromSuperview()
     }
     
     
+}
 
