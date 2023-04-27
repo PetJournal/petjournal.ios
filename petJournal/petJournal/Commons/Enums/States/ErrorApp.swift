@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum ErrorApp: LocalizedError {
+    case errorSignIn
+    case errorAuthentication
+}

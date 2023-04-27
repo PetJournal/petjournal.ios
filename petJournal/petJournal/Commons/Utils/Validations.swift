@@ -17,7 +17,7 @@ class Validations {
     }
     
     func isValidPassword(_ password: String) -> Bool {
-        if validPassword(password) {
+        if isEmptyValue(password) && validateQuantityPassword(password) {
             return true
         }
         return false
@@ -32,11 +32,15 @@ class Validations {
     
     func validateQuantityPassword(_ password: String?) -> Bool  {
         guard let password = password else { return false }
-        return password.count < 8
+        return password.count > 8
+    }
+    
+    func isEmptyValue(_ value: String) -> Bool {
+        return !value.isEmpty
     }
     
     func validEmail(_ email: String) -> Bool {
-        if isValidEmail(email) {
+        if isValidEmail(email) && isEmptyValue(email) {
             return true
         }
         return false

@@ -31,41 +31,25 @@ class AccessAccountViewController: UIViewController {
     @IBOutlet weak var createAccountComp: UIView!
     
     weak var delegate: AccessAccountDelegate?
-    private let viewModel = AccessAccountViewModel()
+    let viewModel = AccessAccountViewModel(service: AccessAccountService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         isEnableButton()
-        bind()
         setupViewTextFieldPassword()
         setupViewTextFieldEmail()
         setupViewComponent()
         setupComponentCreateAccount()
     }
     
-    func bind() {
-        viewModel.error.binding { [weak self] err in
-            if let error = err {
-                print("\(error)")
-            } else {
-                self?.delegate?.viewController(HomeViewController(), didPerformAction: .accessAccount)
-            }
-        }
-    }
-    
     @IBAction func handleLoginButton(_ sender: UIButton) {
         guard let email = pjTextFieldEmail.textFieldInput.text, let password = pjTextFieldPassword.textFieldInput.text else { return }
         viewModel.authUser(email, pass: password)
-        clearInputs()
+        self.delegate?.viewController(HomeViewController(), didPerformAction: .accessAccount)
+
     }
-        
-    func clearInputs() {
-        loginButton.isEnabled = false
-        pjTextFieldEmail.updateTextField(state: .defaultState)
-        pjTextFieldPassword.updateTextField(state: .defaultState)
-    }
-    
+            
     // MARK: - Setup Views in SwiftUI
     func setupViewComponent() {
         let actionUser = ActionsUser {
@@ -89,7 +73,7 @@ class AccessAccountViewController: UIViewController {
     
     // MARK: - Setup TextField's
     private func setupViewTextFieldEmail() {
-        pjTextFieldEmail.tag = 0
+        pjTextFieldEmail.textFieldInput.tag = 0
         pjTextFieldEmail.textFieldInput.delegate = self
         textFieldEmail.addSubview(pjTextFieldEmail)
         pjTextFieldEmail.fillSuperView()
@@ -99,7 +83,7 @@ class AccessAccountViewController: UIViewController {
     }
     
     private func setupViewTextFieldPassword() {
-        pjTextFieldPassword.tag = 1
+        pjTextFieldPassword.textFieldInput.tag = 1
         pjTextFieldPassword.textFieldInput.delegate = self
         textFieldPassword.addSubview(pjTextFieldPassword)
         pjTextFieldPassword.fillSuperView()
@@ -128,23 +112,27 @@ class AccessAccountViewController: UIViewController {
     
     func invalidEmail(_ value: String) -> String? {
         if !Validations().validEmail(value) {
-            return "Invalid Email"
+            return "Usuário Incorreto"
         }
         return nil
     }
     
     func invalidPassword(_ value: String) -> String? {
-//        if value.count >= 8  {
-            return "Invalid Quantity"
-//        }
-//        return nil
+        if !Validations().isValidPassword(value)  {
+            return "Senha Incorreta"
+        }
+        return nil
     }
     
     func checkValidFields() {
-        if pjTextFieldEmail.labelError.isHidden && pjTextFieldPassword.labelError.isHidden {
-            loginButton.isEnabled = true
-        } else {
-            loginButton.isEnabled = false
+        guard let mail = pjTextFieldEmail.textFieldInput.text else {return}
+        guard let pass = pjTextFieldPassword.textFieldInput.text else {return}
+        if !mail.isEmpty && !pass.isEmpty {
+            if pjTextFieldEmail.labelError.isHidden && pjTextFieldPassword.labelError.isHidden {
+                loginButton.isEnabled = true
+            } else {
+                loginButton.isEnabled = false
+            }
         }
     }
 

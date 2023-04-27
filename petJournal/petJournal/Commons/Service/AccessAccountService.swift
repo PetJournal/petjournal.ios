@@ -7,18 +7,19 @@
 
 import Foundation
 
-final class AccessAccountService {
-    static let shared = AccessAccountService()
-    private var user = UserModel(email: "", password: "")
+protocol AccessAccountServiceProtocol {
+    func loginUser(email: String, password: String, completion: @escaping(Result<Bool,ErrorApp>) -> Void)
+}
+
+final class AccessAccountService: AccessAccountServiceProtocol {
     
-    private init() { }
-    
-    func loginUser(email: String, password: String, completion: @escaping(Bool) -> Void) {
+    func loginUser(email: String, password: String, completion: @escaping (Result<Bool, ErrorApp>) -> Void) {
+        let valid = Validations()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if email == "test@mail.com" && password == "password" {
-                completion(true)
+            if valid.validFields(email, password: password) {
+                completion(.success(true))
             } else {
-                completion(false)
+                completion(.failure(ErrorApp.errorAuthentication))
             }
         }
     }

@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+enum SignState {
+    case signedIn
+    case signedOut
+    case unknown
+}
+
+enum ErrorState {
+    case domainErr
+    case none
+}
