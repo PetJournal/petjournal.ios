@@ -15,15 +15,12 @@ struct ActionsUser: View {
         VStack {
             HStack {
                 Button(action: {
-                    if isRemember {
-                        print("Remember")
-                    }
                     isRemember.toggle()
                 }) {
                     Image(isRemember ? "ic_checkBox_clear" : "ic_checkBox_select")
                         .resizable()
                         .frame(width: 20, height: 20)
-                }// Button
+                }
                 
                 Text("Lembrar?")
                     .foregroundColor(.black)
@@ -33,8 +30,8 @@ struct ActionsUser: View {
                 Button(action: { action() }) {
                     Text("Esqueceu sua senha?")
                         .foregroundColor(.black)
-                }// Button
-            }// HStack
-        }// VStack
+                }
+            }
+        }
     }
 }

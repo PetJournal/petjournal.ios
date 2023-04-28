@@ -7,9 +7,10 @@
 
 import UIKit
 
-class AccessAccountCordinator {
+class AccessAccountCordinator: Coordinator {
+    
     // MARK: - Private Properties
-    private let navigationController: UINavigationController?
+    var navigationController: UINavigationController?
 
     // MARK: - Intialization
     init(_ navigationController: UINavigationController?) {
@@ -35,11 +36,4 @@ extension AccessAccountCordinator: AccessAccountDelegate {
             navigationController?.show(ForgotPasswordViewController(), sender: self)
         }
     }
-}
-
-protocol Coordinator: AnyObject {
-    var navigationController: UINavigationController { get set }
-    var child: Coordinator? { get set }
-    
-    func start()
 }

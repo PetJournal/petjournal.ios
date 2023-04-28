@@ -12,7 +12,6 @@ protocol AccessAccountServiceProtocol {
 }
 
 final class AccessAccountService: AccessAccountServiceProtocol {
-    
     func loginUser(email: String, password: String, completion: @escaping (Result<Bool, ErrorApp>) -> Void) {
         let valid = Validations()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

@@ -10,10 +10,7 @@ import Foundation
 class Validations {
     func validFields(_ email: String,
                      password: String) -> Bool {
-        if isValidEmail(email) && isValidPassword(password) {
-            return true
-        }
-        return false
+        return isValidEmail(email) && isValidPassword(password)
     }
     
     func isValidPassword(_ password: String) -> Bool {

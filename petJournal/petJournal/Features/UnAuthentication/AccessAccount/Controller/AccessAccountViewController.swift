@@ -5,7 +5,6 @@
 //  Created by Marcylene Barreto on 14/04/23.
 //
 
-import UIKit
 import SwiftUI
 
 enum AccessAccountAction {
@@ -47,7 +46,6 @@ class AccessAccountViewController: UIViewController {
         guard let email = pjTextFieldEmail.textFieldInput.text, let password = pjTextFieldPassword.textFieldInput.text else { return }
         viewModel.authUser(email, pass: password)
         self.delegate?.viewController(HomeViewController(), didPerformAction: .accessAccount)
-
     }
             
     // MARK: - Setup Views in SwiftUI
