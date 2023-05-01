@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Fredoka-Regular.ttf">
+            <string>Fredoka-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -38,7 +43,7 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F27-hc-5UZ">
                                                     <rect key="frame" x="0.0" y="0.0" width="319" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Fredoka-Regular" family="Fredoka" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oN-UH-sXi">
@@ -103,29 +108,38 @@
                                         <constraint firstAttribute="trailing" secondItem="iBZ-bc-1Sp" secondAttribute="trailing" id="jRp-fu-7Iy"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TH7-mF-gGD">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTd-GT-t52">
                                     <rect key="frame" x="0.0" y="80" width="379" height="15"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TH7-mF-gGD">
+                                            <rect key="frame" x="0.0" y="0.0" width="379" height="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="15" id="fAO-6m-MBc"/>
+                                        <constraint firstItem="TH7-mF-gGD" firstAttribute="leading" secondItem="YTd-GT-t52" secondAttribute="leading" id="5O7-mx-cSc"/>
+                                        <constraint firstAttribute="trailing" secondItem="TH7-mF-gGD" secondAttribute="trailing" id="B3I-bs-epW"/>
+                                        <constraint firstAttribute="bottom" secondItem="TH7-mF-gGD" secondAttribute="bottom" id="NJu-7Z-4au"/>
+                                        <constraint firstAttribute="height" constant="15" id="O6S-XT-gW5"/>
+                                        <constraint firstItem="TH7-mF-gGD" firstAttribute="top" secondItem="YTd-GT-t52" secondAttribute="top" id="vEL-Da-knI"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                </view>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="lt7-yj-g5g" firstAttribute="leading" secondItem="JRk-mb-BbG" secondAttribute="leading" id="2HU-G5-7sx"/>
+                                <constraint firstAttribute="bottom" secondItem="YTd-GT-t52" secondAttribute="bottom" id="2WL-lR-sic"/>
                                 <constraint firstItem="P6k-oi-ore" firstAttribute="top" secondItem="lt7-yj-g5g" secondAttribute="bottom" id="8cN-Di-YQa"/>
                                 <constraint firstAttribute="trailing" secondItem="lt7-yj-g5g" secondAttribute="trailing" id="F4Z-Uh-gz1"/>
-                                <constraint firstAttribute="bottom" secondItem="TH7-mF-gGD" secondAttribute="bottom" id="Gxu-nV-Q2R"/>
                                 <constraint firstItem="P6k-oi-ore" firstAttribute="leading" secondItem="JRk-mb-BbG" secondAttribute="leading" id="Hga-g2-qpW"/>
                                 <constraint firstAttribute="trailing" secondItem="P6k-oi-ore" secondAttribute="trailing" id="Ife-F4-Dyq"/>
-                                <constraint firstItem="TH7-mF-gGD" firstAttribute="top" secondItem="P6k-oi-ore" secondAttribute="bottom" id="Um3-Cm-huX"/>
                                 <constraint firstItem="lt7-yj-g5g" firstAttribute="top" secondItem="JRk-mb-BbG" secondAttribute="top" id="Zco-uW-Kby"/>
                                 <constraint firstItem="P6k-oi-ore" firstAttribute="top" secondItem="lt7-yj-g5g" secondAttribute="bottom" id="b38-qN-f8u"/>
-                                <constraint firstItem="TH7-mF-gGD" firstAttribute="leading" secondItem="JRk-mb-BbG" secondAttribute="leading" id="fPB-z8-BHw"/>
-                                <constraint firstItem="TH7-mF-gGD" firstAttribute="top" secondItem="P6k-oi-ore" secondAttribute="bottom" id="sBK-vs-8m9"/>
-                                <constraint firstAttribute="trailing" secondItem="TH7-mF-gGD" secondAttribute="trailing" id="vE1-x9-1io"/>
+                                <constraint firstItem="YTd-GT-t52" firstAttribute="leading" secondItem="JRk-mb-BbG" secondAttribute="leading" id="bMS-j1-yHk"/>
+                                <constraint firstItem="YTd-GT-t52" firstAttribute="top" secondItem="P6k-oi-ore" secondAttribute="bottom" id="w5k-VR-riY"/>
+                                <constraint firstAttribute="trailing" secondItem="YTd-GT-t52" secondAttribute="trailing" id="znA-sw-OqM"/>
                             </constraints>
                         </stackView>
                     </subviews>
@@ -149,7 +163,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="imageState" destination="k2F-1i-923" id="v0c-Yb-za5"/>
-                <outlet property="labelError" destination="TH7-mF-gGD" id="5FU-qX-kAM"/>
+                <outlet property="labelError" destination="TH7-mF-gGD" id="8Rg-1W-iIj"/>
                 <outlet property="labelTitle" destination="lt7-yj-g5g" id="P2q-Pn-W5m"/>
                 <outlet property="textFieldInput" destination="F27-hc-5UZ" id="pNo-J5-7wR"/>
                 <outlet property="viewActionState" destination="4oN-UH-sXi" id="bH9-ka-u6w"/>
