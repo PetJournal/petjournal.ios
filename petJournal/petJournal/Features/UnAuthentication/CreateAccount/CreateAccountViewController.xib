@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateAccountViewController" customModule="petJournal" customModuleProvider="target">
             <connections>
                 <outlet property="buttonCreateAccount" destination="qpD-hf-9Q4" id="feb-J6-SPv"/>
+                <outlet property="buttonPrivacyPolicy" destination="Wws-SG-OPN" id="nFN-NU-F1A"/>
                 <outlet property="labelConfirmPassword" destination="9e2-qe-0tV" id="Z1a-UC-2Jf"/>
                 <outlet property="labelEmailError" destination="GjW-WB-4Ru" id="HlH-wJ-awN"/>
                 <outlet property="labelLastNameError" destination="cfn-U3-ddr" id="gYP-Ia-0Nv"/>

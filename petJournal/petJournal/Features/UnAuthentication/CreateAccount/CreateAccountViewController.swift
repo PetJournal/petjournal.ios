@@ -9,10 +9,19 @@ import UIKit
 import WebKit
 
 class CreateAccountViewController: UIViewController, WKNavigationDelegate {
-    
     var viewModel: CreateAccountViewModel = .init()
+    var webView: WKWebView!
+    let url: URL
     
-    var webView: WKWebView?
+    init(url: URL) {
+        self.url = url
+        super.init(nibName: nil, bundle: nil)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     @IBOutlet var textFieldName: UITextField!
     @IBOutlet var labelNameError: UILabel!
@@ -27,24 +36,24 @@ class CreateAccountViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet var labelConfirmPassword: UILabel!
     @IBOutlet var labelPasswordError: UILabel!
     @IBOutlet var buttonCreateAccount: UIButton!
+    @IBOutlet weak var buttonPrivacyPolicy: UIButton!
     
+    override func loadView() {
+        webView = WKWebView()
+        webView.navigationDelegate = self
+        view = webView
+    }
     
-//    override func loadView() {
-////        webView = WKWebView()
-////        webView?.navigationDelegate = self
-////        view = webView
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-//        let url = URL(string: "https://docs.google.com/document/d/1HdrmsLrBFqr3AsnsGCk_PERXvqaMjGSoMRxOH_03C5k/edit?usp=sharing")!
-//        webView.load(URLRequest(url: url))
-//        webView.allowsBackForwardNavigationGestures = true
-        
         resetForm()
+        
+        webView.load(URLRequest(url: url))
+        webView.allowsBackForwardNavigationGestures = true
     }
+    
+    
     
     func resetForm () {
         buttonCreateAccount.isEnabled = false
@@ -120,6 +129,7 @@ class CreateAccountViewController: UIViewController, WKNavigationDelegate {
             if let errorMessage = viewModel.isValidPassword(value: password){
                 labelPasswordError.text = errorMessage
                 labelPasswordError.isHidden = false
+                labelConfirmPassword.text = "As senhas devem ser idênticas"
             }
             else{
                 labelPasswordError.isHidden = true
@@ -171,30 +181,12 @@ class CreateAccountViewController: UIViewController, WKNavigationDelegate {
     }
     
     @IBAction func privacyButton(_ sender: UIButton) {
-        let vc = webView ?? CreateAccountViewController()
-        present(vc as UIViewController, animated: true, completion: nil)
+        guard let url = URL(string: "https://www.hackingwithswift.com") else {return}
+        let webView = CreateAccountViewController(url: url)
+        self.present(webView, animated: true)
         
-        webView = WKWebView(frame: view.frame)
-            view.addSubview(webView!)
-                
-            // carregue a URL desejada
-            let url = URL(string: "https://www.google.com")!
-            webView!.load(URLRequest(url: url))
-            
-            let closeButton = UIButton(type: .system)
-            closeButton.setTitle("Fechar", for: .normal)
-            closeButton.addTarget(self, action: #selector(closeWebView), for: .touchUpInside)
-            view.addSubview(closeButton)
-            
-            // adicione as restrições do botão "Fechar"
-            closeButton.translatesAutoresizingMaskIntoConstraints = false
-            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true
-            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
     }
     
-    @objc func closeWebView() {
-        webView?.removeFromSuperview()
-    }
     
     
 }
