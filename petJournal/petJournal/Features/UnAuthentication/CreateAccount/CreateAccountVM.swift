@@ -1,5 +1,5 @@
 //
-//  ForgotPasswordVM.swift
+//  CreateAccountVM.swift
 //  petJournal
 //
 //  Created by Marcylene Barreto on 24/03/23.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController {
+class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .cyan
     }
 }

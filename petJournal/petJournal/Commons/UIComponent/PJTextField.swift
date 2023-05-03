@@ -63,10 +63,11 @@ class PJTextField: UIView {
         case .defaultState:
             labelError.text = " "
             viewTextField.layer.borderColor = UIColor.theme.petGray800?.cgColor
+            labelError.isHidden = true
         case .errorState:
             labelError.text = errorMessage
             viewTextField.layer.borderColor = UIColor.theme.petError?.cgColor
-            imageState.image = errorValid ? errorAlert : closedEye
+            labelError.isHidden = false
         }
     }
     
