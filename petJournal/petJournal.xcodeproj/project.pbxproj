@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1F550F3429D61EA700095A17 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */; };
 		1F550F3529D61EA700095A17 /* CreateAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */; };
+		1F5AD68E2A030C4A004B8309 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5AD68D2A030C4A004B8309 /* WebViewController.swift */; };
+		1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F656E212A1410AE004D4D99 /* CreateAccountView.swift */; };
 		1F8A24E329E9DCB600B696AB /* testeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A24E129E9DCB600B696AB /* testeViewController.swift */; };
 		1F8A24E429E9DCB600B696AB /* testeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8A24E229E9DCB600B696AB /* testeViewController.xib */; };
 		1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7998329F1C8CC00673233 /* UserPJModel.swift */; };
@@ -19,7 +21,6 @@
 		1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608529C8E8740026F680 /* LaunchScreen.storyboard */; };
 		C91D4A5329FABC640005B73B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91D4A5229FABC640005B73B /* Coordinator.swift */; };
 		C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C946F54829EF4CCE00045097 /* AccessAccountService.swift */; };
-		C946F54B29EF69A000045097 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C946F54A29EF69A000045097 /* UserResponse.swift */; };
 		C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */; };
 		C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240629CE491E00C71D01 /* HomeViewController.swift */; };
 		C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94A240729CE491E00C71D01 /* HomeViewController.xib */; };
@@ -63,6 +64,8 @@
 /* Begin PBXFileReference section */
 		1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAccountViewController.xib; sourceTree = "<group>"; };
+		1F5AD68D2A030C4A004B8309 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		1F656E212A1410AE004D4D99 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		1F8A24E129E9DCB600B696AB /* testeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testeViewController.swift; sourceTree = "<group>"; };
 		1F8A24E229E9DCB600B696AB /* testeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = testeViewController.xib; sourceTree = "<group>"; };
 		1FB7998329F1C8CC00673233 /* UserPJModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPJModel.swift; sourceTree = "<group>"; };
@@ -75,7 +78,6 @@
 		1FF4608829C8E8740026F680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C91D4A5229FABC640005B73B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C946F54829EF4CCE00045097 /* AccessAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountService.swift; sourceTree = "<group>"; };
-		C946F54A29EF69A000045097 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountViewModel.swift; sourceTree = "<group>"; };
 		C94A240629CE491E00C71D01 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C94A240729CE491E00C71D01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -125,6 +127,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F5AD68C2A030C1A004B8309 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				1F5AD68D2A030C4A004B8309 /* WebViewController.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		1FB7998529F1E1A300673233 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +183,7 @@
 		1FF4608F29C8E9E30026F680 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				1F5AD68C2A030C1A004B8309 /* WebView */,
 				C91D4A5029FABC360005B73B /* Protocols */,
 				C946F54729EF4CB600045097 /* Service */,
 				C9B9FD9329EDE25B00C7C52B /* Utils */,
@@ -241,8 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				1FB7998329F1C8CC00673233 /* UserPJModel.swift */,
-				C94A240A29CE494D00C71D01 /* UserModel.swift */,
-				C946F54A29EF69A000045097 /* UserResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -274,6 +283,7 @@
 				1FED054929E7329E005411D1 /* CreateAccountViewModel.swift */,
 				1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */,
 				1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */,
+				1F656E212A1410AE004D4D99 /* CreateAccountView.swift */,
 			);
 			path = CreateAccount;
 			sourceTree = "<group>";
@@ -556,20 +566,19 @@
 				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
 				C91D4A5329FABC640005B73B /* Coordinator.swift in Sources */,
 				C95B837F29E9D68D00F803BC /* AccessAccountViewController.swift in Sources */,
-				C94A240529CE48D800C71D01 /* CreateAccountVM.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
+				1F5AD68E2A030C4A004B8309 /* WebViewController.swift in Sources */,
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
 				C980DE3329F8876C003DFA8A /* CreateAccountComponent.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
-				C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */,
 				C9B9FD9729EDE67100C7C52B /* AccessAccountCoordinator.swift in Sources */,
+				1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */,
 				C953C54A29F1B0CE00E70D86 /* ObservableObject.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				C980DE2D29F86D25003DFA8A /* ActionsUser.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+UIColor.swift in Sources */,
 				C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */,
-				C946F54B29EF69A000045097 /* UserResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

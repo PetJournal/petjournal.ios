@@ -6,22 +6,10 @@
 //
 
 import UIKit
-import WebKit
 
-class CreateAccountViewController: UIViewController, WKNavigationDelegate {
+class CreateAccountViewController: UIViewController {
+    
     var viewModel: CreateAccountViewModel = .init()
-    var webView: WKWebView!
-    let url: URL
-    
-    init(url: URL) {
-        self.url = url
-        super.init(nibName: nil, bundle: nil)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     @IBOutlet var textFieldName: UITextField!
     @IBOutlet var labelNameError: UILabel!
@@ -36,24 +24,12 @@ class CreateAccountViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet var labelConfirmPassword: UILabel!
     @IBOutlet var labelPasswordError: UILabel!
     @IBOutlet var buttonCreateAccount: UIButton!
-    @IBOutlet weak var buttonPrivacyPolicy: UIButton!
-    
-    override func loadView() {
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        view = webView
-    }
-    
+    @IBOutlet var buttonPrivacyPolicy: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         resetForm()
-        
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
     }
-    
-    
     
     func resetForm () {
         buttonCreateAccount.isEnabled = false
@@ -182,12 +158,7 @@ class CreateAccountViewController: UIViewController, WKNavigationDelegate {
     
     @IBAction func privacyButton(_ sender: UIButton) {
         guard let url = URL(string: "https://www.hackingwithswift.com") else {return}
-        let webView = CreateAccountViewController(url: url)
+        let webView = WebViewController(url: url)
         self.present(webView, animated: true)
-        
     }
-    
-    
-    
 }
-
