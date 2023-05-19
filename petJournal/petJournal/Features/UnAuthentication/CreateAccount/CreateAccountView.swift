@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CreateAccountView: View {
     
+    @StateObject var viewModel: CreateAccountViewModel = .init()
+    
+    
     @State var email: String = ""
     
     var body: some View {

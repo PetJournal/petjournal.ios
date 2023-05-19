@@ -7,7 +7,8 @@
 
 import Foundation
 
-class CreateAccountViewModel {
+class CreateAccountViewModel: ObservableObject {
+    
     
 
     func isValidName (value: String) -> String? {

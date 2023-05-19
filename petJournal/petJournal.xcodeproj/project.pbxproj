@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1F550F3429D61EA700095A17 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */; };
-		1F550F3529D61EA700095A17 /* CreateAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */; };
 		1F5AD68E2A030C4A004B8309 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5AD68D2A030C4A004B8309 /* WebViewController.swift */; };
 		1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F656E212A1410AE004D4D99 /* CreateAccountView.swift */; };
-		1F8A24E329E9DCB600B696AB /* testeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8A24E129E9DCB600B696AB /* testeViewController.swift */; };
-		1F8A24E429E9DCB600B696AB /* testeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8A24E229E9DCB600B696AB /* testeViewController.xib */; };
+		1F8298312A18151500595FB7 /* CreateAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8298302A18151500595FB7 /* CreateAccountService.swift */; };
 		1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7998329F1C8CC00673233 /* UserPJModel.swift */; };
 		1FED054A29E7329E005411D1 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED054929E7329E005411D1 /* CreateAccountViewModel.swift */; };
 		1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF4607A29C8E8720026F680 /* AppDelegate.swift */; };
@@ -64,6 +62,7 @@
 		1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateAccountViewController.xib; sourceTree = "<group>"; };
 		1F5AD68D2A030C4A004B8309 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1F656E212A1410AE004D4D99 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		1F8298302A18151500595FB7 /* CreateAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountService.swift; sourceTree = "<group>"; };
 		1F8A24E129E9DCB600B696AB /* testeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testeViewController.swift; sourceTree = "<group>"; };
 		1F8A24E229E9DCB600B696AB /* testeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = testeViewController.xib; sourceTree = "<group>"; };
 		1FB7998329F1C8CC00673233 /* UserPJModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPJModel.swift; sourceTree = "<group>"; };
@@ -278,6 +277,7 @@
 				1F550F3229D61EA700095A17 /* CreateAccountViewController.swift */,
 				1F550F3329D61EA700095A17 /* CreateAccountViewController.xib */,
 				1F656E212A1410AE004D4D99 /* CreateAccountView.swift */,
+				1F8298302A18151500595FB7 /* CreateAccountService.swift */,
 			);
 			path = CreateAccount;
 			sourceTree = "<group>";
@@ -517,12 +517,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				1F8A24E429E9DCB600B696AB /* testeViewController.xib in Resources */,
-				1F550F3529D61EA700095A17 /* CreateAccountViewController.xib in Resources */,
-				C95B838029E9D68D00F803BC /* AccessAccountViewController.xib in Resources */,
-=======
->>>>>>> improvement/componentSwiftUI
 				C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */,
 				C96BFB3E29E1D714003D3827 /* Fredoka-Medium.ttf in Resources */,
 				1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */,
@@ -548,48 +542,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
 				1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */,
-=======
 				C9F9D8352A14244B00DD72F1 /* CustomTextField.swift in Sources */,
->>>>>>> improvement/componentSwiftUI
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				C9B1C8A829F9FDC0002C7B00 /* ErrorApp.swift in Sources */,
 				C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */,
 				C9B1C8AA29F9FE71002C7B00 /* SignState.swift in Sources */,
 				C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */,
-<<<<<<< HEAD
 				1F550F3429D61EA700095A17 /* CreateAccountViewController.swift in Sources */,
-				1F8A24E329E9DCB600B696AB /* testeViewController.swift in Sources */,
 				1FED054A29E7329E005411D1 /* CreateAccountViewModel.swift in Sources */,
-				C9E5017529E76FFE0014F9C4 /* PJTextField.swift in Sources */,
-				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
-				C91D4A5329FABC640005B73B /* Coordinator.swift in Sources */,
-				C95B837F29E9D68D00F803BC /* AccessAccountViewController.swift in Sources */,
-				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
-				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				1F5AD68E2A030C4A004B8309 /* WebViewController.swift in Sources */,
-=======
 				C9F9D8372A1424E700DD72F1 /* PJButton.swift in Sources */,
+				1F8298312A18151500595FB7 /* CreateAccountService.swift in Sources */,
 				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
 				C91D4A5329FABC640005B73B /* Coordinator.swift in Sources */,
 				C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */,
-				C94A240529CE48D800C71D01 /* CreateAccountVM.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */,
->>>>>>> improvement/componentSwiftUI
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
 				C9F9D8312A14234A00DD72F1 /* TextFieldView.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
-<<<<<<< HEAD
-				C9B9FD9729EDE67100C7C52B /* AccessAccountCoordinator.swift in Sources */,
 				1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */,
-				C953C54A29F1B0CE00E70D86 /* ObservableObject.swift in Sources */,
-=======
-				C94A240B29CE494D00C71D01 /* UserModel.swift in Sources */,
->>>>>>> improvement/componentSwiftUI
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				C9F9D8332A14241700DD72F1 /* SecuredTextFieldView.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+Color.swift in Sources */,
