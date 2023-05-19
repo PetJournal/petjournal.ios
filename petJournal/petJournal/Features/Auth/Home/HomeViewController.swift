@@ -13,7 +13,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.theme.petGray300
         self.labelTest.font = .customFont(.fredoka, font: .regular, fontSize: 32)
         self.labelTest.text = "Welcome"
     }
