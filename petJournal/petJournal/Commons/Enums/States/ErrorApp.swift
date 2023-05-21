@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ErrorApp: LocalizedError {
-    case errorSignIn
+enum ErrorApp: Error {
+    case errorDomain
     case errorAuthentication
 }

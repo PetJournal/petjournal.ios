@@ -7,12 +7,21 @@
 
 import Foundation
 
-public struct UserModel: Decodable {
-    let email: String
-    let password: String
+public struct UserModel: Decodable, Identifiable {
+    public var id = UUID().uuidString
+    var email: String
+    var password: String
+    var passwordMatch: String
     
     enum CodingKeys: String, CodingKey {
-        case email
-        case password
+        case email, password, passwordMatch
+    }
+}
+
+extension UserModel {
+    static var newUser: UserModel {
+        UserModel(email: "",
+                  password: "",
+                  passwordMatch: "")
     }
 }

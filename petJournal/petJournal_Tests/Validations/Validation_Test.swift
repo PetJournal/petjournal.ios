@@ -11,26 +11,26 @@ import XCTest
 final class Validation_Test: XCTestCase {
     
     func testEmailCorrect() {
-        let email = "mar@gmail.com"
-        let validation = Validations().validEmail(email)
+        let email = "mar@petjournal.com"
+        let validation = Validations.shared.validEmail(email)
         XCTAssertTrue(validation)
     }
     
     func testEmailIncorrect() {
         let incorrectEmail = "mar@gmail"
-        let validation = Validations().validEmail(incorrectEmail)
+        let validation = Validations.shared.validEmail(incorrectEmail)
         XCTAssertFalse(validation)
     }
     
     func testPasswordCorrect() {
-        let correctPass = "password123"
-        let validation = Validations().isValidPassword(correctPass)
+        let correctPass = "password@123"
+        let validation = Validations.shared.isValidPassword(correctPass)
         XCTAssertTrue(validation)
     }
     
     func testPasswordInvalid() {
         let incorrectPass = "pass"
-        let validation = Validations().isValidPassword(incorrectPass)
+        let validation = Validations.shared.isValidPassword(incorrectPass)
         XCTAssertFalse(validation)
     }
 }

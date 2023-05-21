@@ -13,7 +13,21 @@ enum SignState {
     case unknown
 }
 
-enum ErrorState {
+enum ErrorState: Error {
     case domainErr
     case none
+    case errorValues
+}
+
+extension ErrorState: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .domainErr:
+            return "Your domain is different from petjournal.com."
+        case .none:
+            return ""
+        case .errorValues:
+            return "Error logging in. Please check the email is correct and try again."
+        }
+    }
 }

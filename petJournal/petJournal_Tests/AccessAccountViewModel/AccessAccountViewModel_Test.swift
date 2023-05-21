@@ -13,9 +13,6 @@ final class AccessAccountViewModel_Test: XCTestCase {
     var authViewModel: AccessAccountViewModel!
     var mockService: AuthMock!
     
-    let email = "test@email.com"
-    let password = "password"
-    
     override func setUp() {
         super.setUp()
         mockService = AuthMock()
@@ -24,14 +21,16 @@ final class AccessAccountViewModel_Test: XCTestCase {
     
     func testSignInUser_Success() {
         mockService.signInSuccess = true
-        authViewModel.authUser(email, pass: password)
-        XCTAssertEqual(SignState.signedIn, authViewModel.singState.value)
+        authViewModel.loginUser { state in
+            XCTAssertEqual(SignState.signedIn, state)
+        }
     }
     
     func testSignInUser_Failure() {
         mockService.signInSuccess = false
         mockService.error = ErrorApp.errorAuthentication
-        authViewModel.authUser(email, pass: password)
-        XCTAssertEqual(SignState.signedOut, authViewModel.singState.value)
+        authViewModel.loginUser { state in
+            XCTAssertEqual(SignState.signedOut, state)
+        }
     }
 }

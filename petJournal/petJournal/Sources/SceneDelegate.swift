@@ -5,25 +5,26 @@
 //  Created by Daiane Goncalves on 20/03/23.
 //
 
-import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
-    private var accessCordinator: AccessAccountCordinator?
+    private var vm = SessionVM()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        let navigationController = UINavigationController()
-        let accessCordinator = AccessAccountCordinator(navigationController)
-        self.accessCordinator = accessCordinator
-        accessCordinator.start()
+        let mainActor = MainActor().environmentObject(vm)
         
-        guard let scene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(windowScene: scene)
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        let hostViewController = UIHostingController(rootView: mainActor)
+        
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = hostViewController
+            self.window = window
+            window.makeKeyAndVisible()
+        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
