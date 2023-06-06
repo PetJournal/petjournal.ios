@@ -7,9 +7,30 @@
 
 import Foundation
 
-public struct UserPJModel{
-    let name: String?
-    let lastName: String?
-    let email: String?
-    let phoneNumber: String?
+public struct UserModel: Codable, Identifiable, Equatable {
+    public var id = UUID().uuidString
+    var name: String
+    var lastName: String
+    var email: String
+    var phoneNumber: String
+    var password: String
+    var passwordMatch: String
+//    var polityAndPrivacy: Bool
+    
+    enum CodingKeys: String, CodingKey {
+        case name, lastName, email, phoneNumber, password, passwordMatch
+//        case polityAndPrivacy
+    }
 }
+
+extension UserModel {
+    static var newUser: UserModel {
+        UserModel(name: "",
+                  lastName: "",
+                  email: "",
+                  phoneNumber: "",
+                  password: "",
+                  passwordMatch: "")
+    }
+}
+

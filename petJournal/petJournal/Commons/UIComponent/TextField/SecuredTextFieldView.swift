@@ -26,6 +26,7 @@ struct SecuredTextFieldView: View {
             .autocapitalization(.none)
             .padding()
             .frame(maxWidth: .infinity)
+            .background(Color.theme.petWhite)
             .overlay(
                 RoundedRectangle(cornerRadius: 30)
                     .stroke(Color.theme.petGray300,

@@ -8,9 +8,18 @@
 import Foundation
 
 class Validations {
-    func validFields(_ email: String,
-                     password: String) -> Bool {
+    static var shared = Validations()
+    
+    func validFieldsLogin(_ email: String,
+                          password: String) -> Bool {
         return isValidEmail(email) && isValidPassword(password)
+    }
+    
+    func validFieldsRegister(_ name: String,
+                             email: String,
+                             phone: String,
+                             password: String) -> Bool {
+        return isValidPhone(phone) && isValidName(value: name) && isValidEmail(email) && isValidPassword(password)
     }
     
     func isValidPassword(_ password: String) -> Bool {
@@ -27,12 +36,12 @@ class Validations {
         return result
     }
     
-    func validateQuantityPassword(_ password: String?) -> Bool  {
+    private func validateQuantityPassword(_ password: String?) -> Bool  {
         guard let password = password else { return false }
         return password.count > 8
     }
     
-    func isEmptyValue(_ value: String) -> Bool {
+    private func isEmptyValue(_ value: String) -> Bool {
         return !value.isEmpty
     }
     
@@ -48,4 +57,48 @@ class Validations {
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
+    
+    func matchPasswords(_ passwordMatch: String, pass: String) -> Bool {
+        if passwordMatch == pass && isValidPassword(passwordMatch) {
+            return true
+        }
+        return false
+    }
+    
+    // Register
+    
+    private func isValidName(value: String) -> Bool {
+        let regularExpression = "^[A-Za-z]{3,}.*+$"
+        let namePredicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
+        return namePredicate.evaluate(with: value)
+    }
+    
+    func isValidPhone(_ value: String) -> Bool {
+        if value.count < 11 {
+            return true
+        }
+        if value.count > 11 {
+            let truncatedPhoneNumber = value.prefix(11)
+        }
+        return false
+    }
+    
+    func isformatPhoneNumber(_ phoneNumber: String) -> String {
+        let cleanPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let mask = "(##) # ####-####"
+        var result = ""
+        var index = cleanPhoneNumber.startIndex
+        
+        for ch in mask where index < cleanPhoneNumber.endIndex {
+            if ch == "#" {
+                result.append(cleanPhoneNumber[index])
+                index = cleanPhoneNumber.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
+    }
 }
+
+

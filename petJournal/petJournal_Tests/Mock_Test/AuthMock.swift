@@ -18,7 +18,7 @@ final class AuthMock: AccessAccountServiceProtocol {
         self.error = error
     }
     
-    func loginUser(email: String, password: String, completion: @escaping (Result<Bool, ErrorApp>) -> Void) {
+    func loginUser(email: String, password: String, completion: @escaping (Result<Bool, ErrorRegisterApp>) -> Void) {
         if signInSuccess! {
             isLogged = true
             completion(.success(true))
