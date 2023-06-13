@@ -23,7 +23,7 @@ final class AuthMock: AccessAccountServiceProtocol {
             isLogged = true
             completion(.success(true))
         } else {
-            completion(.failure(.errorAuthentication))
+            completion(.failure(.errorRegister))
         }
     }
 }

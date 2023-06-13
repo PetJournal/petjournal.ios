@@ -10,11 +10,16 @@ import XCTest
 
 final class CreateAccountViewModel_Test: XCTestCase {
 
-    var registerViewModel: CreateAccountViewModel!
-    var mockService: RegisterService!
+    var registerViewModel: CreateAccountViewModel
+    var mockService: RegisterService
+    var usermodel: UserModel
     
-    let email = "test@email.com"
-    let password = "password"
+    init(registerViewModel: CreateAccountViewModel, mockService: RegisterService, usermodel: UserModel) {
+        self.registerViewModel = registerViewModel
+        self.mockService = mockService
+        self.usermodel = usermodel
+        super.init()
+    }
     
     override func setUp() {
         super.setUp()
@@ -23,10 +28,14 @@ final class CreateAccountViewModel_Test: XCTestCase {
     }
 
     func testRegisterUser_Success() {
-        
+        mockService.signUpSuccess = true
+        registerViewModel.registerUser()
+        XCTAssertEqual(RegisterState.success, registerViewModel.states)
     }
     
     func testRegisterUser_Failure() {
-        
+        mockService.signUpSuccess = false
+        registerViewModel.registerUser()
+        XCTAssertEqual(RegisterState.failure, registerViewModel.states)
     }
 }

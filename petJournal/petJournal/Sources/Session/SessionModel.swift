@@ -9,4 +9,5 @@ import Foundation
 
 struct SessionModel {
     var userName: String?
+    var model: UserModel?
 }

@@ -15,11 +15,9 @@ public struct UserModel: Codable, Identifiable, Equatable {
     var phoneNumber: String
     var password: String
     var passwordMatch: String
-//    var polityAndPrivacy: Bool
     
     enum CodingKeys: String, CodingKey {
         case name, lastName, email, phoneNumber, password, passwordMatch
-//        case polityAndPrivacy
     }
 }
 

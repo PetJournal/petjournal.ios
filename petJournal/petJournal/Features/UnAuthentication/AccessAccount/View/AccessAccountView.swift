@@ -11,6 +11,7 @@ struct AccessAccountView: View {
     @State private var isPasswordVisible: Bool = false
     @State private var email: String = ""
     @State private var password: String = ""
+    @EnvironmentObject var vm: SessionManager
     
     var body: some View {
         VStack {

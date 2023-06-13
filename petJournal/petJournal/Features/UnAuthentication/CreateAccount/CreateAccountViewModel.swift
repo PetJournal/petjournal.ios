@@ -9,7 +9,7 @@ import Foundation
 
 class CreateAccountViewModel: ObservableObject {
     @Published var states: RegisterState = .unknown
-    @Published var error: RegisterError = .none
+    @Published var error: RegisterError = .register
     @Published var user: UserModel = UserModel.newUser
     @Published var cancel: Bool = false
     
@@ -24,8 +24,8 @@ class CreateAccountViewModel: ObservableObject {
                 switch result {
                 case .success:
                     self.states = .success
-                    self.error = .register
-                    self.cancel.toggle()
+                    let sessionModel = SessionModel(userName: self.user.name, model: self.user)
+                    SessionManager.shared.updateValidation(with: sessionModel)
                 case .failure(let failure):
                     self.states = .failure
                     print("Error \(failure.localizedDescription)")

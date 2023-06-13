@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ComponentPrivacy: View {
     @State var isRemember: Bool
-    var user: UserModel
     var action: () -> Void
     
     var body: some View {

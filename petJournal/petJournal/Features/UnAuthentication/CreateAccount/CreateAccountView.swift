@@ -8,45 +8,24 @@
 import SwiftUI
 
 struct CreateAccountView: View {
-    
     @StateObject var viewModel = CreateAccountViewModel(service: CreateAccountService())
-    private var userModel = UserModel(name: "", lastName: "", email: "", phoneNumber: "", password: "", passwordMatch: "")
-
+    
     @State var showWebview = false
     @State var privacyConfirm = false
-    @State private var isLoginView: Bool = false
-    
     @State var visiblePassword = false
     @State var visiblePasswordMacth = false
+    @State private var isLoginView: Bool = false
+    @State private var showAlert: Bool = false
     
     var body: some View {
+        ZStack {
             VStack {
                 HeaderView
                 TextFieldsRegister
                 
-                ComponentPrivacy(isRemember: privacyConfirm, user: userModel) {
-                    self.showWebview = true
-                }
+                ComponentPrivacy(isRemember: privacyConfirm) { self.showWebview = true }
                 
-                VStack {
-                    PJButton(title: "Cadastrar", buttonType: .primaryType) {
-                        viewModel.registerUser()
-                        
-                    }
-                    .disabled(!viewModel.completeRegister)
-                    .opacity(viewModel.completeRegister ? 1 : 0.4)
-                    .actionSheet(isPresented: $viewModel.cancel) {
-                        ActionSheet(title: Text("Registro"),
-                                    message: Text("Registration successfully completed. \nLog in to the app."),
-                                    buttons: [
-                            .default(Text("OK"), action: {
-                                self.isLoginView = true
-                            })
-                        ])
-                    }
-                }
-                .frame(width: 300)
-                
+                RegisterView
                 Spacer()
                 LoginNavigation
             }
@@ -54,8 +33,15 @@ struct CreateAccountView: View {
                 WebView()
                 ButtonsPrivacyPolicy
             }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .background(Color.theme.petWhite)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .background(Color.theme.petWhite)
+            
+            if showAlert {
+                CustomAlert(show: $showAlert, titleAlert: "Register", descriptionAlert: "Registration successfully completed. \nLog in to the app.", buttonTitle: "OK") {
+                    isLoginView = true
+                }
+            }
+        }
     }
 }
 
@@ -83,8 +69,22 @@ extension CreateAccountView {
             CustomTextField(isPasswordVisible: $visiblePasswordMacth, text: $viewModel.user.passwordMatch, hint: "Confirmar senha", prompt: "Senha", title: "Confirmar senha")
         }
         .padding(16)
-        .background(Color.theme.petWhite)
-
+    }
+    
+    private var RegisterView: some View {
+        VStack {
+            PJButton(title: "Cadastrar", buttonType: .primaryType) {
+                viewModel.registerUser()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    withAnimation {
+                        showAlert = true
+                    }
+                }
+            }
+            .disabled(!viewModel.completeRegister)
+            .opacity(viewModel.completeRegister ? 1 : 0.4)
+        }
+        .frame(width: 300)
     }
     
     private var ButtonsPrivacyPolicy: some View {

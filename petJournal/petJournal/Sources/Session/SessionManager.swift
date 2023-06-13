@@ -10,12 +10,15 @@ import SwiftUI
 class SessionManager: ObservableObject {
     static let shared = SessionManager()
     
-    @Published var singState: SessionState = .init()
+    @Published var singState: UserSession = .init()
         
-    func updateValidation(with model: SessionModel) {
+    func updateValidation(with sessionModel: SessionModel) {
         withAnimation {
-            if let userName: String = model.userName {
-                singState.userName = userName
+            if let model: UserModel = sessionModel.model {
+                singState.firstName = model.name
+                singState.lastName = model.lastName
+                singState.email = model.email
+                singState.phone = model.phoneNumber
             }
             singState.token = UUID().uuidString
             singState.hasSession = true
@@ -24,7 +27,7 @@ class SessionManager: ObservableObject {
     
     func endSession() {
         UserDefaults.standard.removeObject(forKey: KeysGeneral.token.rawValue)
-        UserDefaults.standard.removeObject(forKey: KeysUser.userName.rawValue)
+        UserDefaults.standard.removeObject(forKey: KeysUser.firstName.rawValue)
         singState.hasSession = false
     }
 }
