@@ -66,14 +66,7 @@ class ForgotPasswordViewModel: ObservableObject {
 }
 
 // MARK: - Extension
-extension ForgotPasswordViewModel {
-    var isInvalidEmail: String {
-        if !user.email.isEmpty && Validations.shared.validEmail(user.email) {
-            return ""
-        }
-        return "Invalid Email adress"
-    }
-    
+extension ForgotPasswordViewModel {    
     var isCorrectEmail: Bool {
         if !Validations.shared.validEmail(user.email) {
             return false

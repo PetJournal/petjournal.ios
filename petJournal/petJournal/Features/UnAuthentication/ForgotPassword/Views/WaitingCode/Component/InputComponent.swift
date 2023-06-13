@@ -23,8 +23,8 @@ struct InputComponent: View {
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(corners ? Color.theme.petCTA : Color.theme.petCTA.opacity(0.5),
-                        lineWidth: 2)
+                .stroke(corners ? Color.theme.petPrimary : Color.theme.petSecondary,
+                        lineWidth: 3)
         )
     }
 }

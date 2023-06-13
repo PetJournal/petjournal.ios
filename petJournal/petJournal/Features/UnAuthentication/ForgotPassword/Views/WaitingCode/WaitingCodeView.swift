@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WaitingCode: View {
+struct WaitingCodeView: View {
     @StateObject var viewModel: WaitingViewModel = .init()
     @FocusState var activeField: FocusStateOTP?
     @State private var isEditPassword: Bool = false
@@ -25,7 +25,6 @@ struct WaitingCode: View {
                     Text("Acabamos de enviar um código para seu e-mail")
                         .font(.title2)
                         .multilineTextAlignment(.center)
-
                     
                     Text("Insira no campo abaixo o código de verificação de 6 dígitos enviado para o seu email.")
                         .font(.footnote)
@@ -46,7 +45,6 @@ struct WaitingCode: View {
                             .font(.footnote)
                             .fontWeight(.light)
                     }
-
                 }
                 Spacer()
                 
@@ -74,7 +72,23 @@ struct WaitingCode: View {
             .environment(\.rootPresentationMode, self.$isEditPassword)
         }
     }
-    
+}
+
+// MARK: - View
+extension WaitingCodeView {
+    private var editPassword: some View {
+        HStack {
+            NavigationLink(
+                destination: EditPasswordView(viewModel: EditPasswordViewModel()).navigationBarHidden(true),
+                isActive: self.$isEditPassword) {EmptyView()}
+                .isDetailLink(false)
+                .navigationBarHidden(true)
+        }
+    }
+}
+
+// MARK: - Functions
+extension WaitingCodeView {
     func nextField(value: [String]) {
         for index in 0..<5 {
             if value[index].count == 1 && viewModel.activeState(index: index) == activeField {
@@ -92,18 +106,6 @@ struct WaitingCode: View {
                         .focused($activeField, equals: viewModel.activeState(index: code))
                 }
             }
-        }
-    }
-}
-
-extension WaitingCode {
-    private var editPassword: some View {
-        HStack {
-            NavigationLink(
-                destination: EditPasswordView(viewModel: EditPasswordViewModel()).navigationBarHidden(true),
-                isActive: self.$isEditPassword) {EmptyView()}
-                .isDetailLink(false)
-                .navigationBarHidden(true)
         }
     }
 }

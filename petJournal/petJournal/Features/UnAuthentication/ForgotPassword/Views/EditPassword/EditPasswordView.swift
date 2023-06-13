@@ -31,7 +31,7 @@ struct EditPasswordView: View {
                 VStack(spacing: 10) {
                     CustomTextField(isPasswordVisible: $isPasswordPrimary, text: $viewModel.user.password, hint: "Your password", prompt: "", title: "Nova Senha")
                     
-                    CustomTextField(isPasswordVisible: $isPasswordSecudary, text: $viewModel.user.passwordMatch, hint: "Repeat your password", prompt: "", title: "Confirme nova senha")
+                    CustomTextField(isPasswordVisible: $isPasswordSecudary, text: $viewModel.user.passwordMatch, hint: "Repeat your password", prompt: "Error", title: "Confirme nova senha")
                 }
                 
                 HStack {
@@ -53,7 +53,7 @@ struct EditPasswordView: View {
                     PJButton(title: "Redefinir Senha", buttonType: .primaryType) {
                         viewModel.checkMatchPassword()
                     }
-                    .disabled(viewModel.passwordSemelhante)
+                    .disabled(viewModel.passwordsMatch)
                     .opacity(viewModel.passwordCheck ? 0.5 : 1)
                 }
                 .padding([.leading,.trailing], 60)

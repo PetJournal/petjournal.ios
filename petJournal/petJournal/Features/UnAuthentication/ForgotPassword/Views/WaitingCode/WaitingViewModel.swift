@@ -22,7 +22,6 @@ class WaitingViewModel: ObservableObject {
     @FocusState var activeField: FocusStateOTP?
     
     func checkValueField(value: [String]) {
-        // verificar se esta vazio
         for index in 0..<5 {
             if value[index].isEmpty && !value[index - 1].isEmpty {
                 activeField = activeState(index: index - 1)

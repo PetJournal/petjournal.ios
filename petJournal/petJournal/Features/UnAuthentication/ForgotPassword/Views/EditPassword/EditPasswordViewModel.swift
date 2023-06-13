@@ -24,7 +24,7 @@ class EditPasswordViewModel: ObservableObject {
         return true
     }
     
-    var passwordSemelhante: Bool {
+    var passwordsMatch: Bool {
         if !Validations.shared.passwordMatch(user.passwordMatch) {
             return false
         }
@@ -32,7 +32,7 @@ class EditPasswordViewModel: ObservableObject {
     }
     
     func checkMatchPassword() {
-        if !passwordSemelhante {
+        if !passwordsMatch {
             error = .confirm
         } else {
             error = .noMatch
