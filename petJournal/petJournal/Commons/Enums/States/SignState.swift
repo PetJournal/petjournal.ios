@@ -12,8 +12,3 @@ enum SignState {
     case signedOut
     case unknown
 }
-
-enum ErrorState {
-    case domainErr
-    case none
-}

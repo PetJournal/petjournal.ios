@@ -25,7 +25,7 @@ struct TextFieldView: View {
             .autocapitalization(.none)
             .padding()
             .frame(maxWidth: .infinity)
-            .background(Color.theme.petGray300)
+            .background(Color.theme.petWhite)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
