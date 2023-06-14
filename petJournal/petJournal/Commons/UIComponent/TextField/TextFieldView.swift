@@ -2,7 +2,7 @@
 //  TextFieldView.swift
 //  petJournal
 //
-//  Created by Marcylene Barreto on 10/05/23.
+//  Created by Marcylene Barreto on 16/05/23.
 //
 
 import SwiftUI
@@ -25,7 +25,7 @@ struct TextFieldView: View {
             .autocapitalization(.none)
             .padding()
             .frame(maxWidth: .infinity)
-            .background(Color.theme.petGray300)
+            .background(Color.theme.petWhite)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
@@ -39,5 +39,11 @@ struct TextFieldView: View {
                 .font(.caption)
                 
         }
+    }
+}
+
+struct TextFieldView_Previews: PreviewProvider {
+    static var previews: some View {
+        TextFieldView(title: "Name", placeholder: "your name", text: .constant(""), prompt: "")
     }
 }

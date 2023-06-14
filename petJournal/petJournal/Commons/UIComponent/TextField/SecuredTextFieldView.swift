@@ -2,7 +2,7 @@
 //  SecuredTextFieldView.swift
 //  petJournal
 //
-//  Created by Marcylene Barreto on 10/05/23.
+//  Created by Marcylene Barreto on 16/05/23.
 //
 
 import SwiftUI
@@ -26,6 +26,7 @@ struct SecuredTextFieldView: View {
             .autocapitalization(.none)
             .padding()
             .frame(maxWidth: .infinity)
+            .background(Color.theme.petWhite)
             .overlay(
                 RoundedRectangle(cornerRadius: 30)
                     .stroke(Color.theme.petGray300,
@@ -38,5 +39,11 @@ struct SecuredTextFieldView: View {
                 .font(.caption)
                 .frame(alignment: .leading)
         }
+    }
+}
+
+struct SecuredTextFieldView_Previews: PreviewProvider {
+    static var previews: some View {
+        SecuredTextFieldView(title: "Password", placeholder: "you password", text: .constant(""), prompt: "")
     }
 }

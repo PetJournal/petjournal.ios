@@ -18,12 +18,12 @@ final class AuthMock: AccessAccountServiceProtocol {
         self.error = error
     }
     
-    func authenticationUser(email: String, password: String, completion: @escaping (Result<petJournal.SignState, petJournal.ErrorApp>) -> Void) {
+    func loginUser(email: String, password: String, completion: @escaping (Result<Bool, ErrorRegisterApp>) -> Void) {
         if signInSuccess! {
             isLogged = true
             completion(.success(.signedIn))
         } else {
-            completion(.failure(.errorAuthentication))
+            completion(.failure(.errorRegister))
         }
     }
 }

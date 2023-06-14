@@ -8,17 +8,17 @@
 import Foundation
 
 protocol AccessAccountServiceProtocol {
-    func authenticationUser(email: String, password: String, completion: @escaping (Result<SignState, ErrorApp>) -> Void)
+    func loginUser(email: String, password: String, completion: @escaping(Result<Bool,ErrorRegisterApp>) -> Void)
 }
 
 final class AccessAccountService: AccessAccountServiceProtocol {
-    
-    func authenticationUser(email: String, password: String, completion: @escaping (Result<SignState, ErrorApp>) -> Void) {
+    func loginUser(email: String, password: String, completion: @escaping (Result<Bool, ErrorRegisterApp>) -> Void) {
+        let valid = Validations()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if !email.isEmpty && !password.isEmpty {
-                completion(.success(.signedIn))
+            if valid.validFieldsLogin(email, password: password) {
+                completion(.success(true))
             } else {
-                completion(.failure(.errorAuthentication))
+                completion(.failure(ErrorRegisterApp.errorRegister))
             }
         }
     }

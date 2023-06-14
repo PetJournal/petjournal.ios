@@ -1,8 +1,8 @@
 //
-//  PasswordTextField.swift
+//  CustomTextField.swift
 //  petJournal
 //
-//  Created by Marcylene Barreto on 10/05/23.
+//  Created by Marcylene Barreto on 16/05/23.
 //
 
 import SwiftUI
@@ -41,5 +41,11 @@ struct CustomTextField: View {
                 }
             ,alignment: .trailing
         )
+    }
+}
+
+struct CustomTextField_Previews: PreviewProvider {
+    static var previews: some View {
+        CustomTextField(isPasswordVisible: .constant(false), text: .constant(""), hint: "", prompt: "Your password", title: "Password")
     }
 }
