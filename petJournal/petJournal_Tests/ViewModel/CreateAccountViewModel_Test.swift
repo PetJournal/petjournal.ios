@@ -11,10 +11,10 @@ import XCTest
 final class CreateAccountViewModel_Test: XCTestCase {
 
     var registerViewModel: CreateAccountViewModel
-    var mockService: RegisterService
+    var mockService: SpyRegisterService
     var usermodel: UserModel
     
-    init(registerViewModel: CreateAccountViewModel, mockService: RegisterService, usermodel: UserModel) {
+    init(registerViewModel: CreateAccountViewModel, mockService: SpyRegisterService, usermodel: UserModel) {
         self.registerViewModel = registerViewModel
         self.mockService = mockService
         self.usermodel = usermodel
@@ -23,7 +23,7 @@ final class CreateAccountViewModel_Test: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mockService = RegisterService()
+        mockService = SpyRegisterService()
         registerViewModel = CreateAccountViewModel(service: mockService)
     }
 

@@ -14,10 +14,7 @@ protocol CreateAccountServiceProtocol {
 class CreateAccountService: CreateAccountServiceProtocol {
     func registerUser(userModel: UserModel, completion: @escaping (Result<UserModel, ErrorRegisterApp>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if !userModel.email.isEmpty &&
-                !userModel.password.isEmpty &&
-                !userModel.name.isEmpty &&
-                !userModel.phoneNumber.isEmpty {
+            if userModel.email == "user@petjournal.com" && userModel.password == "password@123" {
                 completion(.success(userModel))
             } else {
                 completion(.failure(.errorRegister))

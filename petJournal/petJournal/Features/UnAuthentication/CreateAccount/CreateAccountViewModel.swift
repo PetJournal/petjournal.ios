@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CreateAccountViewModel: ObservableObject {
+final class CreateAccountViewModel: ObservableObject {
     @Published var states: RegisterState = .unknown
     @Published var error: RegisterError = .register
     @Published var user: UserModel = UserModel.newUser
@@ -24,15 +24,22 @@ class CreateAccountViewModel: ObservableObject {
                 switch result {
                 case .success:
                     self.states = .success
+                    self.error = .register
                     let sessionModel = SessionModel(userName: self.user.name, model: self.user)
                     SessionManager.shared.updateValidation(with: sessionModel)
                 case .failure(let failure):
-                    self.states = .failure
-                    print("Error \(failure.localizedDescription)")
+                    switch failure {
+                    case .errorRegister:
+                        self.states = .failure
+                        self.error = .none
+                    case .error:
+                        self.error = .none
+                        print("Error \(failure.localizedDescription)")
+                    }
                 }
             }
         } else {
-            
+            self.error = .none
         }
     }
 }

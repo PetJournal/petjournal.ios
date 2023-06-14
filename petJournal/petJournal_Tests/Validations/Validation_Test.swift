@@ -10,51 +10,51 @@ import XCTest
 
 final class Validation_Test: XCTestCase {
     
-    func testEmailCorrect() {
+    func test_whenTheEmailIsCorrectFormat() {
         let email = "mar@gmail.com"
         let validation = Validations.shared.validEmail(email)
         XCTAssertTrue(validation)
     }
     
-    func testEmailIncorrect() {
+    func test_whenTheEmailIsIncorrectFormat() {
         let incorrectEmail = "mar@gmail"
         let validation = Validations.shared.validEmail(incorrectEmail)
         XCTAssertFalse(validation)
     }
     
-    func testPasswordCorrect() {
+    func test_passwordCorrectFormat() {
         let correctPass = "password123"
         let validation = Validations.shared.isValidPassword(correctPass)
         XCTAssertTrue(validation)
     }
     
-    func testPasswordInvalid() {
+    func test_passwordIncorrectFormat() {
         let incorrectPass = "pass"
         let validation = Validations.shared.isValidPassword(incorrectPass)
         XCTAssertFalse(validation)
     }
     
-    func testLoginFields_Success() {
+    func test_whenLoginData_areCorrect() {
         let email = "mar@gmail.com"
         let password = "password123"
         XCTAssertTrue(Validations.shared.validFieldsLogin(email, password: password))
     }
     
-    func testLoginFields_Failure() {
+    func test_whenLoginData_areIncorrect() {
         let email = "mar@gmail"
         let password = "pass"
         XCTAssertFalse(Validations.shared.validFieldsLogin(email, password: password))
     }
     
-    func testRegisterFields_Success() {
-        let name = "Ivo"
+    func test_whenRegisterData_areCorrect() {
+        let name = "Mar"
         let phone = "19999999999"
         let email = "mar@gmail.com"
         let password = "password123"
-        XCTAssertTrue(Validations.shared.validFieldsLogin(email, password: password))
+        XCTAssertTrue(Validations.shared.validFieldsRegister(name, email: email, phone: phone, password: password))
     }
-    
-    func testRegisterFields_Failure() {
+
+    func test_whenRegisterData_areIncorrect() {
         let name = "Io"
         let phone = "19999"
         let email = "mar@gmail"

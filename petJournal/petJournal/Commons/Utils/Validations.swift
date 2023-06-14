@@ -65,8 +65,6 @@ class Validations {
         return false
     }
     
-    // Register
-    
     private func isValidName(value: String) -> Bool {
         let regularExpression = "^[A-Za-z]{3,}.*+$"
         let namePredicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
@@ -74,7 +72,7 @@ class Validations {
     }
     
     func isValidPhone(_ value: String) -> Bool {
-        if value.count < 11 {
+        if value.count <= 11 {
             return true
         }
         if value.count > 11 {

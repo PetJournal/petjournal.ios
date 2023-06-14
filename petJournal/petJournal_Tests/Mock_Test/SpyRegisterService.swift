@@ -7,7 +7,7 @@
 
 @testable import petJournal
 
-final class RegisterService: CreateAccountServiceProtocol {
+final class SpyRegisterService: CreateAccountServiceProtocol {
 
     var signUpSuccess: Bool?
     var error: Error?

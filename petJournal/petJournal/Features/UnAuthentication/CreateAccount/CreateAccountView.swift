@@ -10,44 +10,44 @@ import SwiftUI
 struct CreateAccountView: View {
     @StateObject var viewModel = CreateAccountViewModel(service: CreateAccountService())
     
-    @State var showWebview = false
-    @State var privacyConfirm = false
-    @State var visiblePassword = false
-    @State var visiblePasswordMacth = false
+    @State private var showWebview = false
+    @State private var privacyConfirm = false
+    @State private var visiblePassword = false
+    @State private var visiblePasswordMacth = false
     @State private var isLoginView: Bool = false
     @State private var showAlert: Bool = false
     
     var body: some View {
         ZStack {
             VStack {
-                HeaderView
-                TextFieldsRegister
+                headerView
+                textFieldsRegister
                 
                 ComponentPrivacy(isRemember: privacyConfirm) { self.showWebview = true }
                 
-                RegisterView
+                registerView
                 Spacer()
-                LoginNavigation
+                
             }
             .sheet(isPresented: $showWebview) {
-                WebView()
-                ButtonsPrivacyPolicy
+                WebView(link: "https://www.google.com")
+                buttonsPrivacyPolicy
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(Color.theme.petWhite)
             
-            if showAlert {
-                CustomAlert(show: $showAlert, titleAlert: "Register", descriptionAlert: "Registration successfully completed. \nLog in to the app.", buttonTitle: "OK") {
-                    isLoginView = true
-                }
-            }
+//            if showAlert {
+//                CustomAlert(show: $showAlert, titleAlert: "Register", descriptionAlert: "Registration successfully completed. \nLog in to the app.", buttonTitle: "OK") {
+//                    isLoginView = true
+//                }
+//            }
         }
     }
 }
 
 // MARK: - Extension CreateAccountView 
 extension CreateAccountView {
-    private var HeaderView: some View {
+    private var headerView: some View {
         VStack(spacing: 0) {
             Image("pet_logoPrimary")
                 .resizable()
@@ -58,7 +58,7 @@ extension CreateAccountView {
         }
     }
     
-    private var TextFieldsRegister: some View {
+    private var textFieldsRegister: some View {
         ScrollView(showsIndicators: false) {
             TextFieldView(title: "Nome", placeholder: "Nome", text: $viewModel.user.name, prompt: "")
             TextFieldView(title: "Sobrenome", placeholder: "Sobrenome", text: $viewModel.user.lastName, prompt: "")
@@ -71,23 +71,29 @@ extension CreateAccountView {
         .padding(16)
     }
     
-    private var RegisterView: some View {
+    private var registerView: some View {
         VStack {
             PJButton(title: "Cadastrar", buttonType: .primaryType) {
                 viewModel.registerUser()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    withAnimation {
-                        showAlert = true
-                    }
-                }
             }
             .disabled(!viewModel.completeRegister)
             .opacity(viewModel.completeRegister ? 1 : 0.4)
+            
+            loginNavigation
         }
         .frame(width: 300)
+        .alert("titleErrorDomain", isPresented: $viewModel.cancel) {
+        } message: {
+            switch viewModel.error {
+            case .register:
+                Text("errorDomain")
+            case .none:
+                Text("")
+            }
+        }
     }
     
-    private var ButtonsPrivacyPolicy: some View {
+    private var buttonsPrivacyPolicy: some View {
         HStack(spacing: 10) {
             PJButton(title: "Concordo", buttonType: .primaryType) {
                 showWebview = false
@@ -100,7 +106,7 @@ extension CreateAccountView {
         .padding()
     }
     
-    private var LoginNavigation: some View {
+    private var loginNavigation: some View {
         HStack {
             NavigationLink(
                 destination: AccessAccountView().navigationBarHidden(true),

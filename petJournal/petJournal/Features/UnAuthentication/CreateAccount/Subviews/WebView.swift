@@ -9,10 +9,11 @@ import SwiftUI
 import WebKit
 
 struct WebView: View {
+    var link: String
     
     var body: some View {
         ZStack {
-            WebViewContainer(url: URL(string: "https://www.google.com")!)
+            WebViewContainer(url: URL(string: link)!)
         }
     }
 }

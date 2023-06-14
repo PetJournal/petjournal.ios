@@ -19,7 +19,6 @@
 		C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */; };
 		C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240629CE491E00C71D01 /* HomeViewController.swift */; };
 		C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94A240729CE491E00C71D01 /* HomeViewController.xib */; };
-		C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */; };
 		C94C42022A21543B00A949F4 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C42012A21543B00A949F4 /* WebView.swift */; };
 		C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */; };
 		C96BFB3C29E1D714003D3827 /* Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */; };
@@ -28,7 +27,7 @@
 		C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */; };
 		C97A74E629F9810D001CD67E /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A74E529F9810D001CD67E /* AuthMock.swift */; };
 		C9A3248A2A2FB25A008FE6F4 /* RegisterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324892A2FB25A008FE6F4 /* RegisterState.swift */; };
-		C9A3248E2A2FE6F3008FE6F4 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A3248D2A2FE6F3008FE6F4 /* RegisterService.swift */; };
+		C9A3248E2A2FE6F3008FE6F4 /* SpyRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */; };
 		C9A324912A2FE7D5008FE6F4 /* ErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324902A2FE7D5008FE6F4 /* ErrorState.swift */; };
 		C9A324932A2FE7F9008FE6F4 /* RegisterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324922A2FE7F9008FE6F4 /* RegisterError.swift */; };
 		C9A324952A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324942A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift */; };
@@ -70,8 +69,6 @@
 /* Begin PBXFileReference section */
 		1F656E212A1410AE004D4D99 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		1F8298302A18151500595FB7 /* CreateAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountService.swift; sourceTree = "<group>"; };
-		1F8A24E129E9DCB600B696AB /* testeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testeViewController.swift; sourceTree = "<group>"; };
-		1F8A24E229E9DCB600B696AB /* testeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = testeViewController.xib; sourceTree = "<group>"; };
 		1FB7998329F1C8CC00673233 /* UserPJModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPJModel.swift; sourceTree = "<group>"; };
 		1FED054929E7329E005411D1 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		1FF4607729C8E8720026F680 /* petJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +81,6 @@
 		C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountViewModel.swift; sourceTree = "<group>"; };
 		C94A240629CE491E00C71D01 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C94A240729CE491E00C71D01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVM.swift; sourceTree = "<group>"; };
 		C94C42012A21543B00A949F4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
 		C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Bold.ttf"; sourceTree = "<group>"; };
@@ -94,7 +90,7 @@
 		C97A74D929F97EEE001CD67E /* petJournal_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = petJournal_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97A74E529F9810D001CD67E /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
 		C9A324892A2FB25A008FE6F4 /* RegisterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterState.swift; sourceTree = "<group>"; };
-		C9A3248D2A2FE6F3008FE6F4 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
+		C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyRegisterService.swift; sourceTree = "<group>"; };
 		C9A324902A2FE7D5008FE6F4 /* ErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorState.swift; sourceTree = "<group>"; };
 		C9A324922A2FE7F9008FE6F4 /* RegisterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterError.swift; sourceTree = "<group>"; };
 		C9A324942A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel_Test.swift; sourceTree = "<group>"; };
@@ -269,8 +265,8 @@
 			children = (
 				C94C42002A213D2A00A949F4 /* Subviews */,
 				C94A23F729CE230A00C71D01 /* Models */,
-				1FED054929E7329E005411D1 /* CreateAccountViewModel.swift */,
 				1F656E212A1410AE004D4D99 /* CreateAccountView.swift */,
+				1FED054929E7329E005411D1 /* CreateAccountViewModel.swift */,
 				1F8298302A18151500595FB7 /* CreateAccountService.swift */,
 			);
 			path = CreateAccount;
@@ -279,9 +275,6 @@
 		C94A23FB29CE238400C71D01 /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
-				C94A240C29CE496300C71D01 /* ForgotPasswordVM.swift */,
-				1F8A24E129E9DCB600B696AB /* testeViewController.swift */,
-				1F8A24E229E9DCB600B696AB /* testeViewController.xib */,
 			);
 			path = ForgotPassword;
 			sourceTree = "<group>";
@@ -330,7 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				C97A74E529F9810D001CD67E /* AuthMock.swift */,
-				C9A3248D2A2FE6F3008FE6F4 /* RegisterService.swift */,
+				C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */,
 			);
 			path = Mock_Test;
 			sourceTree = "<group>";
@@ -593,7 +586,6 @@
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */,
 				C9B1C8A829F9FDC0002C7B00 /* ErrorApp.swift in Sources */,
-				C94A240D29CE496300C71D01 /* ForgotPasswordVM.swift in Sources */,
 				C9E3E4842A203A8100A83321 /* ComponentPrivacy.swift in Sources */,
 				C9B1C8AA29F9FE71002C7B00 /* SignState.swift in Sources */,
 				C9D8450F2A224AC10007A316 /* MainActor.swift in Sources */,
@@ -629,7 +621,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9A3248E2A2FE6F3008FE6F4 /* RegisterService.swift in Sources */,
+				C9A3248E2A2FE6F3008FE6F4 /* SpyRegisterService.swift in Sources */,
 				C9A324952A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift in Sources */,
 				C9B1C8A529F9F762002C7B00 /* Validation_Test.swift in Sources */,
 				C97A74E629F9810D001CD67E /* AuthMock.swift in Sources */,
