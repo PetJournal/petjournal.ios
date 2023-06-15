@@ -23,7 +23,7 @@ class Validations {
     }
     
     func isValidPassword(_ password: String) -> Bool {
-        if isEmptyValue(password) && validateQuantityPassword(password) {
+        if validPassword(password) && numberOfDigits(password) {
             return true
         }
         return false
@@ -36,20 +36,20 @@ class Validations {
         return result
     }
     
-    private func validateQuantityPassword(_ password: String?) -> Bool  {
+    private func numberOfDigits(_ password: String?) -> Bool  {
         guard let password = password else { return false }
         return password.count > 8
     }
-    
-    private func isEmptyValue(_ value: String) -> Bool {
-        return !value.isEmpty
-    }
-    
+        
     func validEmail(_ email: String) -> Bool {
-        if isValidEmail(email) && isEmptyValue(email) {
+        if isValidEmail(email) && checkDomainPetjournal(email) {
             return true
         }
         return false
+    }
+    
+    private func checkDomainPetjournal(_ email: String) -> Bool {
+        return email.contains("@petjournal.com")
     }
     
     private func isValidEmail(_ email: String) -> Bool {
@@ -80,23 +80,4 @@ class Validations {
         }
         return false
     }
-    
-    func isformatPhoneNumber(_ phoneNumber: String) -> String {
-        let cleanPhoneNumber = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        let mask = "(##) # ####-####"
-        var result = ""
-        var index = cleanPhoneNumber.startIndex
-        
-        for ch in mask where index < cleanPhoneNumber.endIndex {
-            if ch == "#" {
-                result.append(cleanPhoneNumber[index])
-                index = cleanPhoneNumber.index(after: index)
-            } else {
-                result.append(ch)
-            }
-        }
-        return result
-    }
 }
-
-

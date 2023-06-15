@@ -13,9 +13,9 @@ struct MainActor: View {
     var body: some View {
         NavigationView {
             if vm.singState.hasSession {
-                AccessAccountView()
+                Text("Tem Sessao ativa")
             } else {
-                CreateAccountView()
+                AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
             }
         }
     }
