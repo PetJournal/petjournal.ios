@@ -27,7 +27,7 @@ struct CreateAccountView: View {
                 
                 registerView
                 Spacer()
-                
+                loginNavigation
             }
             .sheet(isPresented: $showWebview) {
                 WebView(link: "https://www.google.com")
@@ -36,11 +36,11 @@ struct CreateAccountView: View {
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(Color.theme.petWhite)
             
-//            if showAlert {
-//                CustomAlert(show: $showAlert, titleAlert: "Register", descriptionAlert: "Registration successfully completed. \nLog in to the app.", buttonTitle: "OK") {
-//                    isLoginView = true
-//                }
-//            }
+            if showAlert {
+                CustomAlert(show: $showAlert, titleAlert: "Register", descriptionAlert: "Registration successfully completed. \nLog in to the app.", buttonTitle: "OK") {
+                    isLoginView = true
+                }
+            }
         }
     }
 }
@@ -65,8 +65,8 @@ extension CreateAccountView {
             TextFieldView(title: "E-mail", placeholder: "E-mail", text: $viewModel.user.email, prompt: "")
             TextFieldView(title: "Telefone", placeholder: "Telefone", text: $viewModel.user.phoneNumber, prompt: "")
             
-            CustomTextField(isPasswordVisible: $visiblePassword, text: $viewModel.user.password, hint: "Senha", prompt: "", title: "Senha")
-            CustomTextField(isPasswordVisible: $visiblePasswordMacth, text: $viewModel.user.passwordMatch, hint: "Confirmar senha", prompt: "Senha", title: "Confirmar senha")
+            CustomTextField(isPasswordVisible: $visiblePassword, text: $viewModel.user.password, placeholder: "Senha", prompt: "", title: "Senha")
+            CustomTextField(isPasswordVisible: $visiblePasswordMacth, text: $viewModel.user.passwordMatch, placeholder: "Confirmar senha", prompt: "Senha", title: "Confirmar senha")
         }
         .padding(16)
     }
@@ -78,8 +78,6 @@ extension CreateAccountView {
             }
             .disabled(!viewModel.completeRegister)
             .opacity(viewModel.completeRegister ? 1 : 0.4)
-            
-            loginNavigation
         }
         .frame(width: 300)
         .alert("titleErrorDomain", isPresented: $viewModel.cancel) {
@@ -109,7 +107,7 @@ extension CreateAccountView {
     private var loginNavigation: some View {
         HStack {
             NavigationLink(
-                destination: AccessAccountView().navigationBarHidden(true),
+                destination: AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService())).navigationBarHidden(true),
                 isActive: self.$isLoginView) {EmptyView()}
                 .isDetailLink(false)
                 .navigationBarHidden(true)

@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomTextField: View {
     @Binding var isPasswordVisible: Bool
     @Binding var text: String
-    var hint: String
+    var placeholder: String
     var prompt: String
     var title: String
     
@@ -19,14 +19,14 @@ struct CustomTextField: View {
             if isPasswordVisible {
                 TextFieldView(
                     title: title,
-                    placeholder: hint,
+                    placeholder: placeholder,
                     text: $text,
                     prompt: prompt
                 )
             } else {
                 SecuredTextFieldView(
                     title: title,
-                    placeholder: hint,
+                    placeholder: placeholder,
                     text: $text,
                     prompt: prompt
                 )
@@ -46,6 +46,6 @@ struct CustomTextField: View {
 
 struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTextField(isPasswordVisible: .constant(false), text: .constant(""), hint: "", prompt: "Your password", title: "Password")
+        CustomTextField(isPasswordVisible: .constant(false), text: .constant(""), placeholder: "", prompt: "Your password", title: "Password")
     }
 }

@@ -10,24 +10,25 @@ import SwiftUI
 class SessionManager: ObservableObject {
     static let shared = SessionManager()
     
-    @Published var singState: UserSession = .init()
+    @Published var userSession: UserSession = .init()
         
     func updateValidation(with sessionModel: SessionModel) {
         withAnimation {
             if let model: UserModel = sessionModel.model {
-                singState.firstName = model.name
-                singState.lastName = model.lastName
-                singState.email = model.email
-                singState.phone = model.phoneNumber
+                userSession.firstName = model.name
+                userSession.lastName = model.lastName
+                userSession.email = model.email
+                userSession.phone = model.phoneNumber
+                userSession.password = model.password
             }
-            singState.token = UUID().uuidString
-            singState.hasSession = true
+            userSession.token = UUID().uuidString
+            userSession.hasSession = true
         }
     }
     
     func endSession() {
         UserDefaults.standard.removeObject(forKey: KeysGeneral.token.rawValue)
         UserDefaults.standard.removeObject(forKey: KeysUser.firstName.rawValue)
-        singState.hasSession = false
+        userSession.hasSession = false
     }
 }

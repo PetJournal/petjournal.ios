@@ -32,12 +32,10 @@ struct TextFieldView: View {
                     .stroke(Color.theme.petGray300,
                             lineWidth: 2)
             )
-            .shadow(color: Color.theme.petBlack.opacity(0.05), radius: 60, x: 0.0, y: 12)
-            Text("")
+            Text(prompt)
                 .foregroundColor(Color.theme.petError)
                 .fixedSize(horizontal: false, vertical: true)
                 .font(.caption)
-                
         }
     }
 }

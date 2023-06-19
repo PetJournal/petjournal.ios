@@ -15,6 +15,18 @@
 		1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF4607C29C8E8720026F680 /* SceneDelegate.swift */; };
 		1FF4608429C8E8740026F680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608329C8E8740026F680 /* Assets.xcassets */; };
 		1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608529C8E8740026F680 /* LaunchScreen.storyboard */; };
+		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
+		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
+		C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C12A3A87E20008F502 /* InputEmailView.swift */; };
+		C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */; };
+		C930B5C82A3A88CF0008F502 /* ReceiveInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */; };
+		C930B5CB2A3A89FD0008F502 /* WaitingCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5CA2A3A89FD0008F502 /* WaitingCodeView.swift */; };
+		C930B5CE2A3A8A280008F502 /* CodeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5CD2A3A8A280008F502 /* CodeInput.swift */; };
+		C930B5D02A3A8AA60008F502 /* WaitingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5CF2A3A8AA60008F502 /* WaitingViewModel.swift */; };
+		C930B5D32A3A8B240008F502 /* EditPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5D22A3A8B240008F502 /* EditPasswordViewModel.swift */; };
+		C930B5D52A3A8B320008F502 /* EditPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5D42A3A8B320008F502 /* EditPasswordView.swift */; };
+		C930B5D82A3A8E5E0008F502 /* ComponentCreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5D72A3A8E5E0008F502 /* ComponentCreateAccount.swift */; };
+		C930B5DA2A3A8E820008F502 /* CompRememberAndForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5D92A3A8E820008F502 /* CompRememberAndForgotPassword.swift */; };
 		C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C946F54829EF4CCE00045097 /* AccessAccountService.swift */; };
 		C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */; };
 		C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240629CE491E00C71D01 /* HomeViewController.swift */; };
@@ -77,8 +89,20 @@
 		1FF4608329C8E8740026F680 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FF4608629C8E8740026F680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FF4608829C8E8740026F680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
+		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
+		C930B5C12A3A87E20008F502 /* InputEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEmailView.swift; sourceTree = "<group>"; };
+		C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
+		C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveInputViewModel.swift; sourceTree = "<group>"; };
+		C930B5CA2A3A89FD0008F502 /* WaitingCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingCodeView.swift; sourceTree = "<group>"; };
+		C930B5CD2A3A8A280008F502 /* CodeInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInput.swift; sourceTree = "<group>"; };
+		C930B5CF2A3A8AA60008F502 /* WaitingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewModel.swift; sourceTree = "<group>"; };
+		C930B5D22A3A8B240008F502 /* EditPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordViewModel.swift; sourceTree = "<group>"; };
+		C930B5D42A3A8B320008F502 /* EditPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordView.swift; sourceTree = "<group>"; };
+		C930B5D72A3A8E5E0008F502 /* ComponentCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCreateAccount.swift; sourceTree = "<group>"; };
+		C930B5D92A3A8E820008F502 /* CompRememberAndForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRememberAndForgotPassword.swift; sourceTree = "<group>"; };
 		C946F54829EF4CCE00045097 /* AccessAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountService.swift; sourceTree = "<group>"; };
-		C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountViewModel.swift; sourceTree = "<group>"; };
+		C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessAccountViewModel.swift; path = ViewModel/AccessAccountViewModel.swift; sourceTree = "<group>"; };
 		C94A240629CE491E00C71D01 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C94A240729CE491E00C71D01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C94C42012A21543B00A949F4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -217,6 +241,62 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		C930B5BF2A3A87AE0008F502 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				C930B5D12A3A8AF70008F502 /* EditPassword */,
+				C930B5C92A3A89E30008F502 /* WaitingCode */,
+				C930B5C02A3A87C00008F502 /* InputEmail */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		C930B5C02A3A87C00008F502 /* InputEmail */ = {
+			isa = PBXGroup;
+			children = (
+				C930B5C12A3A87E20008F502 /* InputEmailView.swift */,
+				C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */,
+				C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */,
+			);
+			path = InputEmail;
+			sourceTree = "<group>";
+		};
+		C930B5C92A3A89E30008F502 /* WaitingCode */ = {
+			isa = PBXGroup;
+			children = (
+				C930B5CC2A3A8A010008F502 /* Subviews */,
+				C930B5CA2A3A89FD0008F502 /* WaitingCodeView.swift */,
+				C930B5CF2A3A8AA60008F502 /* WaitingViewModel.swift */,
+			);
+			path = WaitingCode;
+			sourceTree = "<group>";
+		};
+		C930B5CC2A3A8A010008F502 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				C930B5CD2A3A8A280008F502 /* CodeInput.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		C930B5D12A3A8AF70008F502 /* EditPassword */ = {
+			isa = PBXGroup;
+			children = (
+				C930B5D22A3A8B240008F502 /* EditPasswordViewModel.swift */,
+				C930B5D42A3A8B320008F502 /* EditPasswordView.swift */,
+			);
+			path = EditPassword;
+			sourceTree = "<group>";
+		};
+		C930B5D62A3A8E4E0008F502 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				C930B5D72A3A8E5E0008F502 /* ComponentCreateAccount.swift */,
+				C930B5D92A3A8E820008F502 /* CompRememberAndForgotPassword.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		C946F54729EF4CB600045097 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,8 +334,9 @@
 		C94A23F929CE236C00C71D01 /* AccessAccount */ = {
 			isa = PBXGroup;
 			children = (
-				C980DE2929F86CDD003DFA8A /* ViewModel */,
-				C980DE2829F86CCF003DFA8A /* View */,
+				C930B5D62A3A8E4E0008F502 /* SubViews */,
+				C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */,
+				C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */,
 			);
 			path = AccessAccount;
 			sourceTree = "<group>";
@@ -275,6 +356,7 @@
 		C94A23FB29CE238400C71D01 /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
+				C930B5BF2A3A87AE0008F502 /* Flow */,
 			);
 			path = ForgotPassword;
 			sourceTree = "<group>";
@@ -336,28 +418,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		C980DE2829F86CCF003DFA8A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C980DE2929F86CDD003DFA8A /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		C9A3248F2A2FE795008FE6F4 /* Error */ = {
 			isa = PBXGroup;
 			children = (
 				C9B1C8A729F9FDC0002C7B00 /* ErrorApp.swift */,
 				C9A324902A2FE7D5008FE6F4 /* ErrorState.swift */,
 				C9A324922A2FE7F9008FE6F4 /* RegisterError.swift */,
+				C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -375,6 +442,7 @@
 			children = (
 				C9B1C8A929F9FE71002C7B00 /* SignState.swift */,
 				C9A324892A2FB25A008FE6F4 /* RegisterState.swift */,
+				C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -581,31 +649,43 @@
 			files = (
 				1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */,
 				C9F9D8352A14244B00DD72F1 /* CustomTextField.swift in Sources */,
+				C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */,
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
 				C9A324932A2FE7F9008FE6F4 /* RegisterError.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */,
+				C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */,
 				C9B1C8A829F9FDC0002C7B00 /* ErrorApp.swift in Sources */,
 				C9E3E4842A203A8100A83321 /* ComponentPrivacy.swift in Sources */,
 				C9B1C8AA29F9FE71002C7B00 /* SignState.swift in Sources */,
 				C9D8450F2A224AC10007A316 /* MainActor.swift in Sources */,
 				C9D8450B2A22494C0007A316 /* SessionManager.swift in Sources */,
 				C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */,
+				C930B5CE2A3A8A280008F502 /* CodeInput.swift in Sources */,
+				C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */,
+				C930B5D82A3A8E5E0008F502 /* ComponentCreateAccount.swift in Sources */,
 				1FED054A29E7329E005411D1 /* CreateAccountViewModel.swift in Sources */,
+				C930B5D52A3A8B320008F502 /* EditPasswordView.swift in Sources */,
 				C9D845092A22491F0007A316 /* UserSession.swift in Sources */,
 				C9F9D8372A1424E700DD72F1 /* PJButton.swift in Sources */,
 				1F8298312A18151500595FB7 /* CreateAccountService.swift in Sources */,
+				C930B5CB2A3A89FD0008F502 /* WaitingCodeView.swift in Sources */,
+				C930B5DA2A3A8E820008F502 /* CompRememberAndForgotPassword.swift in Sources */,
 				C9A324912A2FE7D5008FE6F4 /* ErrorState.swift in Sources */,
+				C930B5D32A3A8B240008F502 /* EditPasswordViewModel.swift in Sources */,
 				C94C42022A21543B00A949F4 /* WebView.swift in Sources */,
 				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
 				C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
+				C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
+				C930B5D02A3A8AA60008F502 /* WaitingViewModel.swift in Sources */,
 				C9A3248A2A2FB25A008FE6F4 /* RegisterState.swift in Sources */,
 				C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */,
 				C9D4E1E72A2932740030164A /* UserDefaultsUtils.swift in Sources */,
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
 				C9F9D8312A14234A00DD72F1 /* TextFieldView.swift in Sources */,
+				C930B5C82A3A88CF0008F502 /* ReceiveInputViewModel.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
 				1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
