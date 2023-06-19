@@ -7,36 +7,50 @@
 
 import Foundation
 
-enum EditError: Error {
-    case noMatch
-    case confirm
+final class EditPasswordViewModel: ObservableObject {
+    @Published var user: UserModel = .newUser
+    @Published var userSession: UserSession = .init()
+    @Published var cancel: Bool = false
+
+    func editPassword(value: String) {
+        if passwordCheck {
+            UserDefaultsUtils.save(value: value, key: KeysUser.email.rawValue)
+        }
+    }
 }
 
-class EditPasswordViewModel: ObservableObject {
-    @Published var user: UserModel = UserModel.newUser
-    @Published var error: EditError = .noMatch
-    @Published var cancel: Bool = false
-    
+extension EditPasswordViewModel {
     var passwordCheck: Bool {
         if !user.password.isEmpty && !user.passwordMatch.isEmpty {
+            if matchPass {
+                return false
+            }
+        }
+        return true
+    }
+      
+    var matchPass: Bool {
+        if !Validations.shared.matchPasswords(user.passwordMatch, pass: user.password) {
             return false
         }
         return true
     }
     
-    var passwordsMatch: Bool {
-//        if !Validations.shared.passwordMatch(user.passwordMatch) {
-//            return false
-//        }
-        return true
+    var invalidPassword: String {
+        if user.password.count > 4 {
+            if !Validations.shared.isValidPassword(user.password) {
+                return "Senha invalida"
+            }
+        }
+        return ""
     }
     
-    func checkMatchPassword() {
-        if !passwordsMatch {
-            error = .confirm
-        } else {
-            error = .noMatch
-            cancel.toggle()
+    var errorPasswordMatch: String {
+        if user.passwordMatch.count > 4 {
+            if !matchPass {
+                return "Senhas incompativeis"
+            }
         }
+        return ""
     }
 }

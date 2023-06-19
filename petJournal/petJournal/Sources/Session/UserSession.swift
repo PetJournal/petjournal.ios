@@ -17,6 +17,7 @@ enum KeysUser: String {
     case lastName = "keyLastName"
     case email = "keyEmail"
     case phone = "keyPhone"
+    case password = "keyPassword"
 }
 
 struct UserSession {
@@ -48,5 +49,10 @@ struct UserSession {
     var phone: String? {
         set { UserDefaults.standard.set(newValue, forKey: KeysUser.phone.rawValue) }
         get { UserDefaults.standard.string(forKey: KeysUser.phone.rawValue) }
+    }
+    
+    var password: String? {
+        set { UserDefaults.standard.set(newValue, forKey: KeysUser.password.rawValue) }
+        get { UserDefaults.standard.string(forKey: KeysUser.password.rawValue) }
     }
 }

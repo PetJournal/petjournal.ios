@@ -7,30 +7,6 @@
 
 import Foundation
 
-enum ForgotState {
-    case forgotCheck
-    case unknown
-}
-
-enum ForgotError: Error {
-    case domainErr
-    case none
-    case invalidMail
-}
-
-extension ForgotError: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .domainErr:
-            return "Your domain is different from petjournal.com."
-        case .none:
-            return ""
-        case .invalidMail:
-            return "Error logging in. Please check the email is correct and try again."
-        }
-    }
-}
-
 class ForgotPasswordViewModel: ObservableObject {
     @Published var error: ForgotError = .none
     @Published var forgotState: ForgotState = .unknown
@@ -49,8 +25,9 @@ class ForgotPasswordViewModel: ObservableObject {
                 case .success:
                     self.forgotState = .forgotCheck
                     self.error = .none
+                    UserDefaultsUtils.deleteData(key: KeysUser.email.rawValue)
                 case .failure(_):
-                    ""
+                    self.error = .invalidMail
                 }
             }
         }

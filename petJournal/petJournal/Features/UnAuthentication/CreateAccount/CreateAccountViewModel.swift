@@ -34,7 +34,6 @@ final class CreateAccountViewModel: ObservableObject {
                         self.error = .none
                     case .error:
                         self.error = .none
-                        print("Error \(failure.localizedDescription)")
                     }
                 }
             }

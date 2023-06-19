@@ -17,7 +17,7 @@ class ForgotPasswordService: ForgotPasswordServiceProtocol {
             if !credential.isEmpty {
                 completion(.success(true))
             } else {
-//                completion(.failure(ErrorForgot.mailInvalid))
+                completion(.failure(.invalidMail))
             }
         }
     }

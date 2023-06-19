@@ -12,7 +12,7 @@ struct MainActor: View {
     
     var body: some View {
         NavigationView {
-            if vm.singState.hasSession {
+            if vm.userSession.hasSession {
                 Text("Tem Sessao ativa")
             } else {
                 AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
@@ -20,4 +20,3 @@ struct MainActor: View {
         }
     }
 }
-

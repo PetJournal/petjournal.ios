@@ -44,7 +44,6 @@ extension AccessAccountViewModel {
     }
     
     var completeLogin: Bool {
-        let validations = Validations()
         if !Validations.shared.validFieldsLogin(user.email, password: user.password) {
             return false
         }
@@ -52,16 +51,20 @@ extension AccessAccountViewModel {
     }
     
     var isInvalidEmail: String {
-        if !user.email.isEmpty && Validations.shared.validEmail(user.email) {
-            return ""
+        if user.email.count > 4 {
+            if !Validations.shared.validEmail(user.email) {
+                return "Invalid Email adress"
+            }
         }
-        return "Invalid Email adress"
+        return ""
     }
     
     var isInvalidPassword: String {
-        if Validations.shared.isValidPassword(user.password) {
-            return ""
+        if user.password.count > 4 {
+            if Validations.shared.isValidPassword(user.password) {
+                return "Digite uma senha valida"
+            }
         }
-        return "Digite uma senha valida"
+        return ""
     }
 }

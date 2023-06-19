@@ -13,14 +13,14 @@ struct InputEmailView: View {
     
     var body: some View {
         VStack {
-            HeaderPage
+            headerPage
             Spacer()
             
-            TextFieldEmail
+            textFieldEmail
             
             Spacer(minLength: 20)
             
-            ButtonsStack
+            buttonsStack
             
             Spacer()
         }
@@ -40,7 +40,7 @@ struct InputEmailView: View {
 }
 
 extension InputEmailView {
-    private var HeaderPage: some View {
+    private var headerPage: some View {
         VStack(spacing: 5) {
             Image("pet_logoPrimary")
                 .resizable()
@@ -56,7 +56,7 @@ extension InputEmailView {
         }
     }
     
-    private var TextFieldEmail: some View {
+    private var textFieldEmail: some View {
         ZStack(alignment: .trailing) {
             TextFieldView(title: "Qual seu e-mail de cadastro?", placeholder: "Digite seu e-mail", text: $viewModel.user.email, prompt: "")
             
@@ -75,7 +75,7 @@ extension InputEmailView {
         .padding()
     }
     
-    private var ButtonsStack: some View {
+    private var buttonsStack: some View {
         VStack(spacing: 5) {
             PJButton(title: "Entrar", buttonType: .primaryType) {
                 viewModel.reAuthentication()
