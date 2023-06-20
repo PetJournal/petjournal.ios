@@ -1,5 +1,5 @@
 # Aplication PetJournal #
-PetJournal é um aplicativo para Android nativo desenvolvido em SwiftUI que permite que os usuários gerenciem informações sobre seus animais de estimação, incluindo vacinas, consultas veterinárias e outras informações relevantes.
+PetJournal é um aplicativo para iOS desenvolvido em SwiftUI que permite que os usuários gerenciem informações sobre seus animais de estimação, incluindo vacinas, consultas veterinárias e outras informações relevantes.
 
 ## Tech Requirements ###
 * Target deployment iOS 15.0
