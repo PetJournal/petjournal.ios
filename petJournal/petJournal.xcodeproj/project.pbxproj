@@ -29,8 +29,6 @@
 		C930B5DA2A3A8E820008F502 /* CompRememberAndForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5D92A3A8E820008F502 /* CompRememberAndForgotPassword.swift */; };
 		C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C946F54829EF4CCE00045097 /* AccessAccountService.swift */; };
 		C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */; };
-		C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240629CE491E00C71D01 /* HomeViewController.swift */; };
-		C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C94A240729CE491E00C71D01 /* HomeViewController.xib */; };
 		C94C42022A21543B00A949F4 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C42012A21543B00A949F4 /* WebView.swift */; };
 		C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */; };
 		C96BFB3C29E1D714003D3827 /* Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */; };
@@ -58,6 +56,17 @@
 		C9E3E4842A203A8100A83321 /* ComponentPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E3E4832A203A8100A83321 /* ComponentPrivacy.swift */; };
 		C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017029E72D7D0014F9C4 /* FontFamily.swift */; };
 		C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */; };
+		C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F49E2A41FEF8002C21F7 /* TabBarView.swift */; };
+		C9F5F4A12A41FF0F002C21F7 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A02A41FF0F002C21F7 /* TabBarViewModel.swift */; };
+		C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */; };
+		C9F5F4AA2A42046E002C21F7 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A92A42046E002C21F7 /* HomeModel.swift */; };
+		C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */; };
+		C9F5F4AE2A4204C7002C21F7 /* ProfileComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */; };
+		C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */; };
+		C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */; };
+		C9F5F4B42A420517002C21F7 /* ServiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */; };
+		C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B72A420553002C21F7 /* SideMenuView.swift */; };
+		C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B92A420562002C21F7 /* HomePageView.swift */; };
 		C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */; };
 		C9F9D8312A14234A00DD72F1 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8302A14234A00DD72F1 /* TextFieldView.swift */; };
 		C9F9D8332A14241700DD72F1 /* SecuredTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8322A14241700DD72F1 /* SecuredTextFieldView.swift */; };
@@ -103,8 +112,6 @@
 		C930B5D92A3A8E820008F502 /* CompRememberAndForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRememberAndForgotPassword.swift; sourceTree = "<group>"; };
 		C946F54829EF4CCE00045097 /* AccessAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountService.swift; sourceTree = "<group>"; };
 		C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessAccountViewModel.swift; path = ViewModel/AccessAccountViewModel.swift; sourceTree = "<group>"; };
-		C94A240629CE491E00C71D01 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		C94A240729CE491E00C71D01 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C94C42012A21543B00A949F4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
 		C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Bold.ttf"; sourceTree = "<group>"; };
@@ -133,6 +140,17 @@
 		C9E3E4832A203A8100A83321 /* ComponentPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentPrivacy.swift; path = petJournal/Features/UnAuthentication/CreateAccount/Subviews/ComponentPrivacy.swift; sourceTree = SOURCE_ROOT; };
 		C9E5017029E72D7D0014F9C4 /* FontFamily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFamily.swift; sourceTree = "<group>"; };
 		C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
+		C9F5F49E2A41FEF8002C21F7 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		C9F5F4A02A41FF0F002C21F7 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModifier.swift; sourceTree = "<group>"; };
+		C9F5F4A92A42046E002C21F7 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
+		C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComponentView.swift; sourceTree = "<group>"; };
+		C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTabView.swift; sourceTree = "<group>"; };
+		C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceItemView.swift; sourceTree = "<group>"; };
+		C9F5F4B72A420553002C21F7 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		C9F5F4B92A420562002C21F7 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountView.swift; sourceTree = "<group>"; };
 		C9F9D8302A14234A00DD72F1 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		C9F9D8322A14241700DD72F1 /* SecuredTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuredTextFieldView.swift; sourceTree = "<group>"; };
@@ -202,6 +220,7 @@
 		1FF4608F29C8E9E30026F680 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				C9F5F4A22A41FF65002C21F7 /* CustomView */,
 				C91D4A5029FABC360005B73B /* Protocols */,
 				C946F54729EF4CB600045097 /* Service */,
 				C9B9FD9329EDE25B00C7C52B /* Utils */,
@@ -326,7 +345,8 @@
 		C94A23F829CE231C00C71D01 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				C94A23FC29CE239300C71D01 /* Home */,
+				C9F5F4A52A420079002C21F7 /* Scenes */,
+				C9F5F49D2A41FEE6002C21F7 /* TabBar */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -364,8 +384,9 @@
 		C94A23FC29CE239300C71D01 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C94A240629CE491E00C71D01 /* HomeViewController.swift */,
-				C94A240729CE491E00C71D01 /* HomeViewController.xib */,
+				C9F5F4A82A42044F002C21F7 /* View */,
+				C9F5F4A72A420449002C21F7 /* Subviews */,
+				C9F5F4A62A420445002C21F7 /* Model */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -512,6 +533,60 @@
 			path = UIComponent;
 			sourceTree = "<group>";
 		};
+		C9F5F49D2A41FEE6002C21F7 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				C9F5F49E2A41FEF8002C21F7 /* TabBarView.swift */,
+				C9F5F4A02A41FF0F002C21F7 /* TabBarViewModel.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		C9F5F4A22A41FF65002C21F7 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		C9F5F4A52A420079002C21F7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C94A23FC29CE239300C71D01 /* Home */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		C9F5F4A62A420445002C21F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9F5F4A92A42046E002C21F7 /* HomeModel.swift */,
+				C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C9F5F4A72A420449002C21F7 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */,
+				C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */,
+				C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */,
+				C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		C9F5F4A82A42044F002C21F7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C9F5F4B72A420553002C21F7 /* SideMenuView.swift */,
+				C9F5F4B92A420562002C21F7 /* HomePageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C9F9D82E2A14231300DD72F1 /* TextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -629,7 +704,6 @@
 				C96BFB3C29E1D714003D3827 /* Fredoka-Bold.ttf in Resources */,
 				C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */,
 				C96BFB3D29E1D714003D3827 /* Fredoka-Light.ttf in Resources */,
-				C94A240929CE491E00C71D01 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,6 +723,7 @@
 			files = (
 				1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */,
 				C9F9D8352A14244B00DD72F1 /* CustomTextField.swift in Sources */,
+				C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */,
 				C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */,
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
 				C9A324932A2FE7F9008FE6F4 /* RegisterError.swift in Sources */,
@@ -660,27 +735,35 @@
 				C9B1C8AA29F9FE71002C7B00 /* SignState.swift in Sources */,
 				C9D8450F2A224AC10007A316 /* MainActor.swift in Sources */,
 				C9D8450B2A22494C0007A316 /* SessionManager.swift in Sources */,
-				C94A240829CE491E00C71D01 /* HomeViewController.swift in Sources */,
 				C930B5CE2A3A8A280008F502 /* CodeInput.swift in Sources */,
 				C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */,
 				C930B5D82A3A8E5E0008F502 /* ComponentCreateAccount.swift in Sources */,
 				1FED054A29E7329E005411D1 /* CreateAccountViewModel.swift in Sources */,
 				C930B5D52A3A8B320008F502 /* EditPasswordView.swift in Sources */,
+				C9F5F4A12A41FF0F002C21F7 /* TabBarViewModel.swift in Sources */,
 				C9D845092A22491F0007A316 /* UserSession.swift in Sources */,
 				C9F9D8372A1424E700DD72F1 /* PJButton.swift in Sources */,
 				1F8298312A18151500595FB7 /* CreateAccountService.swift in Sources */,
 				C930B5CB2A3A89FD0008F502 /* WaitingCodeView.swift in Sources */,
 				C930B5DA2A3A8E820008F502 /* CompRememberAndForgotPassword.swift in Sources */,
 				C9A324912A2FE7D5008FE6F4 /* ErrorState.swift in Sources */,
+				C9F5F4B42A420517002C21F7 /* ServiceItemView.swift in Sources */,
+				C9F5F4AE2A4204C7002C21F7 /* ProfileComponentView.swift in Sources */,
+				C9F5F4AA2A42046E002C21F7 /* HomeModel.swift in Sources */,
 				C930B5D32A3A8B240008F502 /* EditPasswordViewModel.swift in Sources */,
 				C94C42022A21543B00A949F4 /* WebView.swift in Sources */,
 				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
 				C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
+				C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */,
 				C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				C930B5D02A3A8AA60008F502 /* WaitingViewModel.swift in Sources */,
+				C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */,
 				C9A3248A2A2FB25A008FE6F4 /* RegisterState.swift in Sources */,
+				C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */,
+				C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */,
+				C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */,
 				C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */,
 				C9D4E1E72A2932740030164A /* UserDefaultsUtils.swift in Sources */,
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
@@ -690,6 +773,7 @@
 				1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				C9F9D8332A14241700DD72F1 /* SecuredTextFieldView.swift in Sources */,
+				C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+Color.swift in Sources */,
 				C9D8450D2A2249650007A316 /* SessionModel.swift in Sources */,
 				C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */,

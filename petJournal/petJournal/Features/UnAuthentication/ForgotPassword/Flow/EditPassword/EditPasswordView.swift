@@ -9,9 +9,9 @@ import SwiftUI
 
 struct EditPasswordView: View {
     @StateObject var viewModel: EditPasswordViewModel
-    @State var isPasswordPrimary: Bool = false
-    @State var isPasswordSecudary: Bool = false
-    @State var isRemember = true
+    @State private var isPasswordPrimary: Bool = false
+    @State private var isPasswordSecudary: Bool = false
+    @State private var isRemember = true
     
     var body: some View {
         
