@@ -61,12 +61,12 @@
 		C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */; };
 		C9F5F4AA2A42046E002C21F7 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A92A42046E002C21F7 /* HomeModel.swift */; };
 		C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */; };
-		C9F5F4AE2A4204C7002C21F7 /* ProfileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AD2A4204C7002C21F7 /* ProfileComponent.swift */; };
+		C9F5F4AE2A4204C7002C21F7 /* ProfileComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */; };
 		C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */; };
 		C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */; };
 		C9F5F4B42A420517002C21F7 /* ServiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */; };
 		C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B72A420553002C21F7 /* SideMenuView.swift */; };
-		C9F5F4BA2A420562002C21F7 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B92A420562002C21F7 /* HomePage.swift */; };
+		C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B92A420562002C21F7 /* HomePageView.swift */; };
 		C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */; };
 		C9F9D8312A14234A00DD72F1 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8302A14234A00DD72F1 /* TextFieldView.swift */; };
 		C9F9D8332A14241700DD72F1 /* SecuredTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8322A14241700DD72F1 /* SecuredTextFieldView.swift */; };
@@ -145,12 +145,12 @@
 		C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModifier.swift; sourceTree = "<group>"; };
 		C9F5F4A92A42046E002C21F7 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
-		C9F5F4AD2A4204C7002C21F7 /* ProfileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComponent.swift; sourceTree = "<group>"; };
+		C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComponentView.swift; sourceTree = "<group>"; };
 		C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTabView.swift; sourceTree = "<group>"; };
 		C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceItemView.swift; sourceTree = "<group>"; };
 		C9F5F4B72A420553002C21F7 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
-		C9F5F4B92A420562002C21F7 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		C9F5F4B92A420562002C21F7 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountView.swift; sourceTree = "<group>"; };
 		C9F9D8302A14234A00DD72F1 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		C9F9D8322A14241700DD72F1 /* SecuredTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuredTextFieldView.swift; sourceTree = "<group>"; };
@@ -570,7 +570,7 @@
 		C9F5F4A72A420449002C21F7 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				C9F5F4AD2A4204C7002C21F7 /* ProfileComponent.swift */,
+				C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */,
 				C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */,
 				C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */,
 				C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */,
@@ -582,7 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				C9F5F4B72A420553002C21F7 /* SideMenuView.swift */,
-				C9F5F4B92A420562002C21F7 /* HomePage.swift */,
+				C9F5F4B92A420562002C21F7 /* HomePageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -748,14 +748,14 @@
 				C930B5DA2A3A8E820008F502 /* CompRememberAndForgotPassword.swift in Sources */,
 				C9A324912A2FE7D5008FE6F4 /* ErrorState.swift in Sources */,
 				C9F5F4B42A420517002C21F7 /* ServiceItemView.swift in Sources */,
-				C9F5F4AE2A4204C7002C21F7 /* ProfileComponent.swift in Sources */,
+				C9F5F4AE2A4204C7002C21F7 /* ProfileComponentView.swift in Sources */,
 				C9F5F4AA2A42046E002C21F7 /* HomeModel.swift in Sources */,
 				C930B5D32A3A8B240008F502 /* EditPasswordViewModel.swift in Sources */,
 				C94C42022A21543B00A949F4 /* WebView.swift in Sources */,
 				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
 				C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
-				C9F5F4BA2A420562002C21F7 /* HomePage.swift in Sources */,
+				C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */,
 				C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				C930B5D02A3A8AA60008F502 /* WaitingViewModel.swift in Sources */,

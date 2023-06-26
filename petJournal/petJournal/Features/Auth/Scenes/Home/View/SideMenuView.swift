@@ -9,11 +9,11 @@ import SwiftUI
 
 struct SideMenuView: View {
     
-    @State var showMenu = false
+    @State private var showMenu = false
     @StateObject var vm = SessionManager()
     
-    var edges = UIApplication.shared.windows.first?.safeAreaInsets
-    var menus = ["Profile", "Serviços", "Notificações", "Pets"]
+    private var edges = UIApplication.shared.windows.first?.safeAreaInsets
+    private var menus = ["Profile", "Serviços", "Notificações", "Pets"]
     
     var body: some View {
         HStack(spacing: 0) {

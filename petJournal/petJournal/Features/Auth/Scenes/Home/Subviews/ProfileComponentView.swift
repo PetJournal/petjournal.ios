@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileComponent: View {
+struct ProfileComponentView: View {
     @EnvironmentObject private var tabViewModel: TabBarViewModel
     @Binding var xMenu: CGFloat
     
@@ -22,7 +22,7 @@ struct ProfileComponent: View {
     }
 }
 
-extension ProfileComponent {
+extension ProfileComponentView {
     private var sideMenu: some View {
         Button {
             withAnimation {

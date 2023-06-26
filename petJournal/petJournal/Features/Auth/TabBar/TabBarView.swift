@@ -9,11 +9,11 @@ import SwiftUI
 
 struct TabBarView: View {
     @ObservedObject private var tabViewModel = TabBarViewModel()
-    @State var presentSideMenu = -UIScreen.main.bounds.width + 90
+    @State private var presentSideMenu = -UIScreen.main.bounds.width + 90
     
     var body: some View {
         TabView(selection: $tabViewModel.currentTab) {
-            HomePage()
+            HomePageView()
                 .environmentObject(tabViewModel)
                 .tabItem {
                     Label("Home", image: "ic_home")

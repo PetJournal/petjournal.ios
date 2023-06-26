@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct HomePage: View {
+struct HomePageView: View {
     @State private var seeMoreServices: Bool = false
     
-    @State var x = UIScreen.main.bounds.width - 90
-    @State var width = UIScreen.main.bounds.width + 90
+    @State private var x = UIScreen.main.bounds.width - 90
+    @State private var width = UIScreen.main.bounds.width + 90
     
     let rowSpacing: CGFloat = 10
     var gridLayout: [GridItem] {
@@ -22,7 +22,7 @@ struct HomePage: View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .center)) {
             VStack(spacing: 0) {
                 HStack {
-                    ProfileComponent(xMenu: $x)
+                    ProfileComponentView(xMenu: $x)
                 }
                 .padding(.horizontal, 10)
                 .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
@@ -66,7 +66,7 @@ struct HomePage: View {
     }
 }
 
-extension HomePage {
+extension HomePageView {
     private var seeMore: some View {
         HStack(spacing: 10) {
             Text("Serviços")
