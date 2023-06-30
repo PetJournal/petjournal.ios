@@ -26,13 +26,13 @@ struct SecuredTextFieldView: View {
             .autocapitalization(.none)
             .padding()
             .frame(maxWidth: .infinity)
+            .background(Color.theme.petWhite)
             .overlay(
                 RoundedRectangle(cornerRadius: 30)
                     .stroke(Color.theme.petGray300,
                             lineWidth: 2)
             )
-            .shadow(color: Color.theme.petBlack.opacity(0.02), radius: 60, x: 0.0, y: 16)
-            Text("")
+            Text(prompt)
                 .foregroundColor(Color.theme.petError)
                 .fixedSize(horizontal: false, vertical: true)
                 .font(.caption)
