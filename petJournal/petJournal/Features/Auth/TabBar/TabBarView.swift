@@ -20,7 +20,7 @@ struct TabBarView: View {
                 }
                 .tag(0)
             
-            Text("Pet")
+            InitialRegisterScreen()
                 .tabItem {
                     Label("Pet", image: "ic_pets")
                 }

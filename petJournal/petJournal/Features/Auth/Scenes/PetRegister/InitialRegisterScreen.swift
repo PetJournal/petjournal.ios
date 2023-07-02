@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InitialRegisterScreen: View {
-    @State private var isRegister: Bool = false
+    @State private var goToRegister: Bool = false
     
     var body: some View {
         NavigationView {
@@ -31,7 +31,7 @@ struct InitialRegisterScreen: View {
                 
                 registerPetView
                 PJButton(title: "Cadastrar", buttonType: .primaryType) {
-                    self.isRegister = true
+                    self.goToRegister = true
                 }
                 .frame(width: 202)
             }
@@ -50,7 +50,7 @@ extension InitialRegisterScreen {
             destination:
                 Text("Register user")
                 .navigationBarHidden(true),
-            isActive: self.$isRegister) {EmptyView()}
+            isActive: self.$goToRegister) {EmptyView()}
             .isDetailLink(false)
             .navigationBarHidden(true)
     }
