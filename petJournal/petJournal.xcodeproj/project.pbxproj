@@ -36,6 +36,8 @@
 		C96BFB3E29E1D714003D3827 /* Fredoka-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */; };
 		C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */; };
 		C97A74E629F9810D001CD67E /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A74E529F9810D001CD67E /* AuthMock.swift */; };
+		C9905F4B2A51CE6B00CA9647 /* InitialRegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F4A2A51CE6B00CA9647 /* InitialRegisterScreen.swift */; };
+		C9905F4D2A51CF4B00CA9647 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F4C2A51CF4B00CA9647 /* NavigationBarModifier.swift */; };
 		C9A3248A2A2FB25A008FE6F4 /* RegisterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324892A2FB25A008FE6F4 /* RegisterState.swift */; };
 		C9A3248E2A2FE6F3008FE6F4 /* SpyRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */; };
 		C9A324912A2FE7D5008FE6F4 /* ErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324902A2FE7D5008FE6F4 /* ErrorState.swift */; };
@@ -120,6 +122,8 @@
 		C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-SemiBold.ttf"; sourceTree = "<group>"; };
 		C97A74D929F97EEE001CD67E /* petJournal_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = petJournal_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97A74E529F9810D001CD67E /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
+		C9905F4A2A51CE6B00CA9647 /* InitialRegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialRegisterScreen.swift; sourceTree = "<group>"; };
+		C9905F4C2A51CF4B00CA9647 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		C9A324892A2FB25A008FE6F4 /* RegisterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterState.swift; sourceTree = "<group>"; };
 		C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyRegisterService.swift; sourceTree = "<group>"; };
 		C9A324902A2FE7D5008FE6F4 /* ErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorState.swift; sourceTree = "<group>"; };
@@ -439,6 +443,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		C9905F492A51CDCD00CA9647 /* PetRegister */ = {
+			isa = PBXGroup;
+			children = (
+				C9905F4A2A51CE6B00CA9647 /* InitialRegisterScreen.swift */,
+			);
+			path = PetRegister;
+			sourceTree = "<group>";
+		};
 		C9A3248F2A2FE795008FE6F4 /* Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -546,6 +558,7 @@
 			isa = PBXGroup;
 			children = (
 				C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */,
+				C9905F4C2A51CF4B00CA9647 /* NavigationBarModifier.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -553,6 +566,7 @@
 		C9F5F4A52A420079002C21F7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C9905F492A51CDCD00CA9647 /* PetRegister */,
 				C94A23FC29CE239300C71D01 /* Home */,
 			);
 			path = Scenes;
@@ -752,6 +766,7 @@
 				C9F5F4AA2A42046E002C21F7 /* HomeModel.swift in Sources */,
 				C930B5D32A3A8B240008F502 /* EditPasswordViewModel.swift in Sources */,
 				C94C42022A21543B00A949F4 /* WebView.swift in Sources */,
+				C9905F4B2A51CE6B00CA9647 /* InitialRegisterScreen.swift in Sources */,
 				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
 				C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
@@ -768,6 +783,7 @@
 				C9D4E1E72A2932740030164A /* UserDefaultsUtils.swift in Sources */,
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
 				C9F9D8312A14234A00DD72F1 /* TextFieldView.swift in Sources */,
+				C9905F4D2A51CF4B00CA9647 /* NavigationBarModifier.swift in Sources */,
 				C930B5C82A3A88CF0008F502 /* ReceiveInputViewModel.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
 				1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */,

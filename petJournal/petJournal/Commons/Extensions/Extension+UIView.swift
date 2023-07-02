@@ -11,4 +11,8 @@ extension View {
     func withDefaultTabBar(backgroundColor: Color, selectItem: Color) -> some View {
         self.modifier(TabBarModifier(background: UIColor(backgroundColor), selectedItem: UIColor(selectItem)))
     }
+    
+    func navigationBarColor(backgroundColor: Color, titleColor: Color?) -> some View {
+        self.modifier(NavigationBarModifier(backgroundColor: backgroundColor, titleColor: UIColor(titleColor ?? Color.clear)))
+    }
 }
