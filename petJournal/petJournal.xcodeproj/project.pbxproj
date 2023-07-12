@@ -36,13 +36,16 @@
 		C96BFB3E29E1D714003D3827 /* Fredoka-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */; };
 		C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */; };
 		C97A74E629F9810D001CD67E /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A74E529F9810D001CD67E /* AuthMock.swift */; };
-		C9905F4B2A51CE6B00CA9647 /* InitialRegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F4A2A51CE6B00CA9647 /* InitialRegisterScreen.swift */; };
+		C9905F4B2A51CE6B00CA9647 /* InitialRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F4A2A51CE6B00CA9647 /* InitialRegisterView.swift */; };
 		C9905F4D2A51CF4B00CA9647 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9905F4C2A51CF4B00CA9647 /* NavigationBarModifier.swift */; };
 		C9A3248A2A2FB25A008FE6F4 /* RegisterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324892A2FB25A008FE6F4 /* RegisterState.swift */; };
 		C9A3248E2A2FE6F3008FE6F4 /* SpyRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */; };
 		C9A324912A2FE7D5008FE6F4 /* ErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324902A2FE7D5008FE6F4 /* ErrorState.swift */; };
 		C9A324932A2FE7F9008FE6F4 /* RegisterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324922A2FE7F9008FE6F4 /* RegisterError.swift */; };
 		C9A324952A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324942A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift */; };
+		C9B09E952A5E33B3009969FC /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B09E942A5E33B3009969FC /* BaseNavigationView.swift */; };
+		C9B09E972A5E3403009969FC /* BaseNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B09E962A5E3403009969FC /* BaseNavigationModel.swift */; };
+		C9B09E992A5E340F009969FC /* PushContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B09E982A5E340F009969FC /* PushContainer.swift */; };
 		C9B1C8A529F9F762002C7B00 /* Validation_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B1C8A429F9F761002C7B00 /* Validation_Test.swift */; };
 		C9B1C8A829F9FDC0002C7B00 /* ErrorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B1C8A729F9FDC0002C7B00 /* ErrorApp.swift */; };
 		C9B1C8AA29F9FE71002C7B00 /* SignState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B1C8A929F9FE71002C7B00 /* SignState.swift */; };
@@ -122,13 +125,16 @@
 		C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-SemiBold.ttf"; sourceTree = "<group>"; };
 		C97A74D929F97EEE001CD67E /* petJournal_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = petJournal_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97A74E529F9810D001CD67E /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
-		C9905F4A2A51CE6B00CA9647 /* InitialRegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialRegisterScreen.swift; sourceTree = "<group>"; };
+		C9905F4A2A51CE6B00CA9647 /* InitialRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialRegisterView.swift; sourceTree = "<group>"; };
 		C9905F4C2A51CF4B00CA9647 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		C9A324892A2FB25A008FE6F4 /* RegisterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterState.swift; sourceTree = "<group>"; };
 		C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyRegisterService.swift; sourceTree = "<group>"; };
 		C9A324902A2FE7D5008FE6F4 /* ErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorState.swift; sourceTree = "<group>"; };
 		C9A324922A2FE7F9008FE6F4 /* RegisterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterError.swift; sourceTree = "<group>"; };
 		C9A324942A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel_Test.swift; sourceTree = "<group>"; };
+		C9B09E942A5E33B3009969FC /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
+		C9B09E962A5E3403009969FC /* BaseNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationModel.swift; sourceTree = "<group>"; };
+		C9B09E982A5E340F009969FC /* PushContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushContainer.swift; sourceTree = "<group>"; };
 		C9B1C8A429F9F761002C7B00 /* Validation_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation_Test.swift; sourceTree = "<group>"; };
 		C9B1C8A729F9FDC0002C7B00 /* ErrorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorApp.swift; sourceTree = "<group>"; };
 		C9B1C8A929F9FE71002C7B00 /* SignState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignState.swift; sourceTree = "<group>"; };
@@ -438,7 +444,7 @@
 		C9905F492A51CDCD00CA9647 /* PetRegister */ = {
 			isa = PBXGroup;
 			children = (
-				C9905F4A2A51CE6B00CA9647 /* InitialRegisterScreen.swift */,
+				C9905F4A2A51CE6B00CA9647 /* InitialRegisterView.swift */,
 			);
 			path = PetRegister;
 			sourceTree = "<group>";
@@ -452,6 +458,16 @@
 				C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		C9B09E932A5E339F009969FC /* BaseNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				C9B09E942A5E33B3009969FC /* BaseNavigationView.swift */,
+				C9B09E962A5E3403009969FC /* BaseNavigationModel.swift */,
+				C9B09E982A5E340F009969FC /* PushContainer.swift */,
+			);
+			path = BaseNavigation;
 			sourceTree = "<group>";
 		};
 		C9B1C8A329F9F72B002C7B00 /* Validations */ = {
@@ -549,6 +565,7 @@
 		C9F5F4A22A41FF65002C21F7 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				C9B09E932A5E339F009969FC /* BaseNavigation */,
 				C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */,
 				C9905F4C2A51CF4B00CA9647 /* NavigationBarModifier.swift */,
 			);
@@ -736,6 +753,7 @@
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */,
 				C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */,
+				C9B09E952A5E33B3009969FC /* BaseNavigationView.swift in Sources */,
 				C9B1C8A829F9FDC0002C7B00 /* ErrorApp.swift in Sources */,
 				C9E3E4842A203A8100A83321 /* ComponentPrivacy.swift in Sources */,
 				C9B1C8AA29F9FE71002C7B00 /* SignState.swift in Sources */,
@@ -757,8 +775,9 @@
 				C9F5F4AE2A4204C7002C21F7 /* ProfileComponentView.swift in Sources */,
 				C9F5F4AA2A42046E002C21F7 /* HomeModel.swift in Sources */,
 				C930B5D32A3A8B240008F502 /* EditPasswordViewModel.swift in Sources */,
+				C9B09E972A5E3403009969FC /* BaseNavigationModel.swift in Sources */,
 				C94C42022A21543B00A949F4 /* WebView.swift in Sources */,
-				C9905F4B2A51CE6B00CA9647 /* InitialRegisterScreen.swift in Sources */,
+				C9905F4B2A51CE6B00CA9647 /* InitialRegisterView.swift in Sources */,
 				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
 				C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
@@ -782,6 +801,7 @@
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				C9F9D8332A14241700DD72F1 /* SecuredTextFieldView.swift in Sources */,
 				C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */,
+				C9B09E992A5E340F009969FC /* PushContainer.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+Color.swift in Sources */,
 				C9D8450D2A2249650007A316 /* SessionModel.swift in Sources */,
 				C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */,
