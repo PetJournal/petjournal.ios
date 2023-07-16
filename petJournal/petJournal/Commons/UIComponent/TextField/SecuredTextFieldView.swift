@@ -24,12 +24,13 @@ struct SecuredTextFieldView: View {
                 text: $text
             )
             .autocapitalization(.none)
-            .padding()
-            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
+            .frame(maxWidth: .infinity, maxHeight: 50)
             .background(Color.theme.petWhite)
+            .cornerRadius(8)
             .overlay(
-                RoundedRectangle(cornerRadius: 30)
-                    .stroke(Color.theme.petGray300,
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.theme.petGray800,
                             lineWidth: 2)
             )
             Text(prompt)

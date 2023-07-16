@@ -222,7 +222,6 @@
 			children = (
 				C9F5F4A22A41FF65002C21F7 /* CustomView */,
 				C91D4A5029FABC360005B73B /* Protocols */,
-				C946F54729EF4CB600045097 /* Service */,
 				C9B9FD9329EDE25B00C7C52B /* Utils */,
 				C9E5017329E76FDA0014F9C4 /* UIComponent */,
 				C9FD536629E4B294003033FB /* Enums */,
@@ -316,14 +315,6 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
-		C946F54729EF4CB600045097 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				C946F54829EF4CCE00045097 /* AccessAccountService.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		C94A23F629CE22CA00C71D01 /* UnAuthentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				C930B5D62A3A8E4E0008F502 /* SubViews */,
+				C946F54829EF4CCE00045097 /* AccessAccountService.swift */,
 				C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */,
 				C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */,
 			);

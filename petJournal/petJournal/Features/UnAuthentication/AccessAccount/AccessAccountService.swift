@@ -8,14 +8,15 @@
 import Foundation
 
 protocol AccessAccountServiceProtocol {
-    func authenticationUser(userModel: UserModel, completion: @escaping (Result<UserModel, ErrorApp>) -> Void)
+    func authenticationEmail(userModel: UserSession, completion: @escaping (Result<UserSession, ErrorApp>) -> Void)
 }
 
 final class AccessAccountService: AccessAccountServiceProtocol {
-    func authenticationUser(userModel: UserModel, completion: @escaping (Result<UserModel, ErrorApp>) -> Void) {
-        let valid = Validations()
+    func authenticationEmail(userModel: UserSession, completion: @escaping (Result<UserSession, ErrorApp>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if !userModel.email.isEmpty && !userModel.password.isEmpty {
+            guard let email = userModel.email else { return }
+            guard let password = userModel.password else { return }
+            if !email.isEmpty && !password.isEmpty {
                 completion(.success(userModel))
             } else {
                 completion(.failure(.errorAuthentication))

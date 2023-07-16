@@ -14,7 +14,7 @@ struct TextFieldView: View {
     var prompt: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 3) {
             Text(LocalizedStringKey(title))
                 .foregroundColor(Color.theme.petPrimary)
                 .font(.system(size: 15))
@@ -23,13 +23,13 @@ struct TextFieldView: View {
                 text: $text
             )
             .autocapitalization(.none)
-            .padding()
-            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
+            .frame(maxWidth: .infinity, maxHeight: 50)
             .background(Color.theme.petWhite)
-            .cornerRadius(10)
+            .cornerRadius(8)
             .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.theme.petGray300,
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.theme.petGray800,
                             lineWidth: 2)
             )
             Text(prompt)

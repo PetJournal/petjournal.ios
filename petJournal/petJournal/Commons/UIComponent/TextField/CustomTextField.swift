@@ -34,12 +34,16 @@ struct CustomTextField: View {
         }
         .overlay(
             Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 16, height: 16)
                 .foregroundColor(Color.gray.opacity(0.7))
                 .padding()
                 .onTapGesture {
                     isPasswordVisible.toggle()
                 }
             ,alignment: .trailing
+            
         )
     }
 }
