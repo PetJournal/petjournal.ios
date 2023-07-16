@@ -47,7 +47,7 @@ extension AccessAccountViewModel {
         return true
     }
     
-    var isValidEmail: String {
+    var emailErrorMessage: String {
         if user.email.count > 4 && (userSession.email != user.email) {
             if !Validations.shared.validEmail(user.email) {
                 return "*Invalid email adress"
@@ -56,7 +56,7 @@ extension AccessAccountViewModel {
         return ""
     }
     
-    var isInvalidPassword: String {
+    var passwordErrorMessage: String {
         if user.password.count > 4 {
             if !Validations.shared.isValidPassword(user.password) {
                 return "*Digite uma senha valida"

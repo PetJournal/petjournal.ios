@@ -10,6 +10,7 @@ import SwiftUI
 struct InputEmailView: View {
     @StateObject var viewModel: ForgotPasswordViewModel
     @State private var isWaitingCode: Bool = false
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -64,15 +65,18 @@ extension InputEmailView {
                 if viewModel.isCorrectEmail {
                     Image(systemName: "checkmark.circle.fill")
                         .imageScale(.large)
+                        .padding(.horizontal)
                         .foregroundColor(Color(.systemGreen))
+                    
                 } else {
                     Image(systemName: "xmark.circle.fill")
                         .imageScale(.large)
+                        .padding(.horizontal)
                         .foregroundColor(Color(.systemRed))
                 }
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     private var buttonsStack: some View {
@@ -87,7 +91,7 @@ extension InputEmailView {
             waitingCode
             
             PJButton(title: "Cancelar", buttonType: .secundaryType) {
-
+                dismiss()
             }
         }
         .padding([.leading,.trailing], 60)

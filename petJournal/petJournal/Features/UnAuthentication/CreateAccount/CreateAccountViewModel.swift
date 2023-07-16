@@ -57,4 +57,43 @@ extension CreateAccountViewModel {
         }
         return false
     }
+    
+    var firstNameErrorMessage: String {
+        if Validations.shared.isValidName(value: user.name) {
+            return ""
+        }
+        return "Campo obrigatorio"
+    }
+    
+    var lastNameErrorMessage: String {
+        if Validations.shared.isValidName(value: user.lastName) {
+            return ""
+        }
+        return "Campo obrigatorio"
+    }
+    
+    var emailErrorMessage: String {
+        if Validations.shared.validEmail(user.email) {
+            return ""
+        }
+        return "Campo obrigatorio"
+    }
+    
+    var passwordErrorMessage: String {
+        if user.password.count > 4 {
+            if !Validations.shared.isValidPassword(user.password) {
+                return "*Digite uma senha valida"
+            }
+        }
+        return ""
+    }
+    
+    var passwordMatchErrorMessage: String {
+        if user.password.count > 4 {
+            if !matchPass {
+                return "*Digite uma senha valida"
+            }
+        }
+        return ""
+    }
 }

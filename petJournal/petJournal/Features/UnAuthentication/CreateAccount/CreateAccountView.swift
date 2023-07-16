@@ -59,16 +59,15 @@ extension CreateAccountView {
     }
     
     private var textFieldsRegister: some View {
-        ScrollView(showsIndicators: false) {
-            TextFieldView(title: "Nome", placeholder: "Nome", text: $viewModel.user.name, prompt: "")
-            TextFieldView(title: "Sobrenome", placeholder: "Sobrenome", text: $viewModel.user.lastName, prompt: "")
-            TextFieldView(title: "E-mail", placeholder: "E-mail", text: $viewModel.user.email, prompt: "")
+        VStack(spacing: 5) {
+            TextFieldView(title: "Nome", placeholder: "Nome", text: $viewModel.user.name, prompt: viewModel.firstNameErrorMessage)
+            TextFieldView(title: "Sobrenome", placeholder: "Sobrenome", text: $viewModel.user.lastName, prompt: viewModel.lastNameErrorMessage)
+            TextFieldView(title: "E-mail", placeholder: "E-mail", text: $viewModel.user.email, prompt: viewModel.emailErrorMessage)
             TextFieldView(title: "Telefone", placeholder: "Telefone", text: $viewModel.user.phoneNumber, prompt: "")
-            
-            CustomTextField(isPasswordVisible: $visiblePassword, text: $viewModel.user.password, placeholder: "Senha", prompt: "", title: "Senha")
-            CustomTextField(isPasswordVisible: $visiblePasswordMacth, text: $viewModel.user.passwordMatch, placeholder: "Confirmar senha", prompt: "Senha", title: "Confirmar senha")
+            CustomTextField(isPasswordVisible: $visiblePassword, text: $viewModel.user.password, placeholder: "Senha", prompt: viewModel.passwordErrorMessage, title: "Senha")
+            CustomTextField(isPasswordVisible: $visiblePasswordMacth, text: $viewModel.user.passwordMatch, placeholder: "Confirmar senha", prompt: viewModel.passwordMatchErrorMessage, title: "Confirmar senha")
         }
-        .padding(16)
+        .padding(.horizontal, 16)
     }
     
     private var registerView: some View {

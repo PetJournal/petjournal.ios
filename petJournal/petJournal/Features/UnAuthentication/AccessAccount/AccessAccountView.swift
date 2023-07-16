@@ -32,8 +32,8 @@ struct AccessAccountView: View {
             .padding(.bottom, 30)
             
             VStack(spacing: 10) {
-                TextFieldView(title: "E-mail", placeholder: "Digite seu e-mail", text: $viewModel.user.email, prompt: viewModel.isValidEmail)
-                CustomTextField(isPasswordVisible: $isPasswordVisible, text: $viewModel.user.password, placeholder: "Digite sua senha", prompt: viewModel.isInvalidPassword, title: "Senha")
+                TextFieldView(title: "E-mail", placeholder: "Digite seu e-mail", text: $viewModel.user.email, prompt: viewModel.emailErrorMessage)
+                CustomTextField(isPasswordVisible: $isPasswordVisible, text: $viewModel.user.password, placeholder: "Digite sua senha", prompt: viewModel.passwordErrorMessage, title: "Senha")
             }
             
             rememberAndForgot

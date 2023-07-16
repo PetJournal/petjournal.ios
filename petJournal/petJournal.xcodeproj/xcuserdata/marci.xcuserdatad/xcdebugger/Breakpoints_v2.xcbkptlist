@@ -84,5 +84,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F914621-0A88-487C-9F43-E43F9867140D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "petJournal/Features/UnAuthentication/CreateAccount/CreateAccountView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "2F914621-0A88-487C-9F43-E43F9867140D - 70b233e8b36ad6e2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of petJournal.CreateAccountView.headerView : some&gt;&gt;.0, &lt;&lt;opaque return type of petJournal.CreateAccountView.textFieldsRegister : some&gt;&gt;.0, petJournal.ComponentPrivacy, &lt;&lt;opaque return type of petJournal.CreateAccountView.registerView : some&gt;&gt;.0, SwiftUI.Spacer, &lt;&lt;opaque return type of petJournal.CreateAccountView.loginNavigation : some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ShapeStyle&gt;(_: &#x3c4;_1_0, ignoresSafeAreaEdges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, Swift.Optional&lt;petJournal.CustomAlert&gt;)&gt; in petJournal.CreateAccountView.body.getter : some"
+                  moduleName = "petJournal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marci/petjournal.ios/petJournal/petJournal/Features/UnAuthentication/CreateAccount/CreateAccountView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "391">
+               </Location>
+               <Location
+                  uuid = "2F914621-0A88-487C-9F43-E43F9867140D - 92e0d787ff08bed9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of petJournal.CreateAccountView.headerView : some&gt;&gt;.0, &lt;&lt;opaque return type of petJournal.CreateAccountView.textFieldsRegister : some&gt;&gt;.0, petJournal.ComponentPrivacy, &lt;&lt;opaque return type of petJournal.CreateAccountView.registerView : some&gt;&gt;.0, SwiftUI.Spacer, &lt;&lt;opaque return type of petJournal.CreateAccountView.loginNavigation : some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ShapeStyle&gt;(_: &#x3c4;_1_0, ignoresSafeAreaEdges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0, Swift.Optional&lt;petJournal.CustomAlert&gt;)&gt; in petJournal.CreateAccountView.body.getter : some"
+                  moduleName = "petJournal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marci/petjournal.ios/petJournal/petJournal/Features/UnAuthentication/CreateAccount/CreateAccountView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "18">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
