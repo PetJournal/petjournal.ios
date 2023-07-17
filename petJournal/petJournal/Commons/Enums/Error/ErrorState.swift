@@ -10,4 +10,5 @@ import Foundation
 enum ErrorState {
     case domainErr
     case none
+    case noRegister
 }

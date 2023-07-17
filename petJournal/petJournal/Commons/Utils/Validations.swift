@@ -65,7 +65,7 @@ class Validations {
         return false
     }
     
-    private func isValidName(value: String) -> Bool {
+    func isValidName(value: String) -> Bool {
         let regularExpression = "^[A-Za-z]{3,}.*+$"
         let namePredicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
         return namePredicate.evaluate(with: value)
@@ -76,7 +76,7 @@ class Validations {
             return true
         }
         if value.count > 11 {
-            let truncatedPhoneNumber = value.prefix(11)
+            _ = value.prefix(11)
         }
         return false
     }

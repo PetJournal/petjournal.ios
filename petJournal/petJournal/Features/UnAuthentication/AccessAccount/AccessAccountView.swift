@@ -32,20 +32,30 @@ struct AccessAccountView: View {
             .padding(.bottom, 30)
             
             VStack(spacing: 10) {
-                TextFieldView(title: "E-mail", placeholder: "Digite seu e-mail", text: $viewModel.user.email, prompt: viewModel.isInvalidEmail)
-                CustomTextField(isPasswordVisible: $isPasswordVisible, text: $viewModel.user.password, placeholder: "Digite sua senha", prompt: viewModel.isInvalidPassword, title: "Senha")
+                TextFieldView(title: "E-mail", placeholder: "Digite seu e-mail", text: $viewModel.user.email, prompt: viewModel.emailErrorMessage)
+                CustomTextField(isPasswordVisible: $isPasswordVisible, text: $viewModel.user.password, placeholder: "Digite sua senha", prompt: viewModel.passwordErrorMessage, title: "Senha")
             }
             
             rememberAndForgot
             
             VStack {
                 PJButton(title: "Entrar", buttonType: .primaryType) {
-                    viewModel.loginUser()
+                    viewModel.authUser()
                 }
-                .disabled(!viewModel.completeLogin)
                 .opacity(viewModel.completeLogin ? 1 : 0.4)
                 
                 componentCreateAccount
+            }
+            .alert("Error", isPresented: $viewModel.cancel) {
+            } message: {
+                switch viewModel.error {
+                case .domainErr:
+                    Text("Seu domínio é diferente de petjournal.com.")
+                case .none:
+                    Text("")
+                case .noRegister:
+                    Text("E-mail não cadastrado, por favor crie uma conta para acessar.")
+                }
             }
         }
         .padding()
@@ -76,7 +86,7 @@ extension AccessAccountView {
             Text("Não tem uma conta?")
             
             NavigationLink(
-                destination: Text("Create Account").navigationBarHidden(true),
+                destination: CreateAccountView().navigationBarHidden(true),
                 isActive: self.$isCreateAccount) {
                     Text("Inscrever-se")
                         .foregroundColor(.black)
