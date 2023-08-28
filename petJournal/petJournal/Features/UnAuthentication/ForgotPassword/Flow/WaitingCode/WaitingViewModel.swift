@@ -20,6 +20,7 @@ class WaitingViewModel: ObservableObject {
     @Published var code: String = ""
     @Published var codeFields: [String] = Array(repeating: "", count: 6)
     @FocusState var activeField: FocusStateOTP?
+    @Published var cancel: Bool = false
     
     func checkValueField(value: [String]) {
         for index in 0..<5 {
@@ -52,5 +53,33 @@ class WaitingViewModel: ObservableObject {
             if codeFields[index].isEmpty {return true}
         }
         return false
+    }
+    
+    func codeValid() {
+        if codeCheck {
+            self.cancel.toggle()
+        }
+        self.cancel.toggle()
+    }
+}
+
+extension WaitingViewModel {
+    var codeCheck: Bool {
+        let mockCode = ["1", "2", "3", "4", "5", "6"]
+        if mockCode == codeFields {
+            return true
+        }
+        return false
+    }
+    
+    var checkCodeValidation: String {
+        if !codeCheck {
+            return "O código de verificação que você inseriu não é válido. Verifique o código e tente novamente"
+        }
+        return ""
+    }
+    
+    var codeReset: Bool {
+        return true
     }
 }
