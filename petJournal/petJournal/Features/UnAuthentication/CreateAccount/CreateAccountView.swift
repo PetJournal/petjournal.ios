@@ -9,13 +9,8 @@ import SwiftUI
 
 struct CreateAccountView: View {
     @StateObject var viewModel = CreateAccountViewModel(service: CreateAccountService())
-    
     @State private var showWebview = false
-    @State private var privacyConfirm = false
-    @State private var visiblePassword = false
-    @State private var visiblePasswordMacth = false
     @State private var isLoginView: Bool = false
-    @State private var showAlert: Bool = false
     
     var body: some View {
         ZStack {
@@ -23,7 +18,7 @@ struct CreateAccountView: View {
                 headerView
                 textFieldsRegister
                 
-                ComponentPrivacy(isRemember: privacyConfirm) { self.showWebview = true }
+                ComponentPrivacy { self.showWebview = true }
                 
                 registerView
                 Spacer()
@@ -35,17 +30,12 @@ struct CreateAccountView: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(Color.theme.petWhite)
-            
-            if showAlert {
-                CustomAlert(show: $showAlert, titleAlert: "Register", descriptionAlert: "Registration successfully completed. \nLog in to the app.", buttonTitle: "OK") {
-                    isLoginView = true
-                }
-            }
         }
+        .environmentObject(viewModel)
     }
 }
 
-// MARK: - Extension CreateAccountView 
+// MARK: - Extension CreateAccountView
 extension CreateAccountView {
     private var headerView: some View {
         VStack(spacing: 0) {
@@ -59,15 +49,54 @@ extension CreateAccountView {
     }
     
     private var textFieldsRegister: some View {
-        VStack(spacing: 5) {
-            TextFieldView(title: "Nome", placeholder: "Nome", text: $viewModel.user.name, prompt: viewModel.firstNameErrorMessage)
-            TextFieldView(title: "Sobrenome", placeholder: "Sobrenome", text: $viewModel.user.lastName, prompt: viewModel.lastNameErrorMessage)
-            TextFieldView(title: "E-mail", placeholder: "E-mail", text: $viewModel.user.email, prompt: viewModel.emailErrorMessage)
-            TextFieldView(title: "Telefone", placeholder: "Telefone", text: $viewModel.user.phoneNumber, prompt: "")
-            CustomTextField(isPasswordVisible: $visiblePassword, text: $viewModel.user.password, placeholder: "Senha", prompt: viewModel.passwordErrorMessage, title: "Senha")
-            CustomTextField(isPasswordVisible: $visiblePasswordMacth, text: $viewModel.user.passwordMatch, placeholder: "Confirmar senha", prompt: viewModel.passwordMatchErrorMessage, title: "Confirmar senha")
+        
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 5) {
+                PJTextFieldView(error: viewModel.firstNameErrorMessage,
+                                errorValidation: viewModel.isValidName,
+                                title: "Nome",
+                                placeholder: "Digite seu Nome",
+                                textContentType: .name,
+                                text: $viewModel.user.name)
+                
+                PJTextFieldView(error: viewModel.lastNameErrorMessage,
+                                errorValidation: viewModel.isValidLastname,
+                                title: "Sobrenome",
+                                placeholder: "Digite seu Sobrenome",
+                                textContentType: .givenName,
+                                text: $viewModel.user.lastName)
+                
+                PJTextFieldView(error: viewModel.emailErrorMessage,
+                                errorValidation: viewModel.isValidEmail,
+                                title: "E-mail",
+                                placeholder: "Digite seu E-mail",
+                                textContentType: .emailAddress,
+                                text: $viewModel.user.email)
+                
+                PJTextFieldView(error: viewModel.phoneErrorMessage,
+                                errorValidation: viewModel.isValidPhone,
+                                title: "Telefone",
+                                placeholder: "Digite seu telefone",
+                                textContentType: .telephoneNumber,
+                                text: $viewModel.user.phoneNumber)
+                
+                PJTextFieldView(error: viewModel.messageErrorPassword,
+                                errorValidation: viewModel.isValidPassword,
+                                title: "Senha",
+                                placeholder: "Digite sua senha",
+                                textContentType: .password,
+                                text: $viewModel.user.password)
+                .padding(.bottom, 20)
+                
+                PJTextFieldView(error: viewModel.messageErrorPasswordMatch,
+                                errorValidation: viewModel.isValidPasswordMatch,
+                                title: "Confirme sua senha",
+                                placeholder: "Digite sua senha",
+                                textContentType: .password,
+                                text: $viewModel.user.passwordMatch)
+            }
+            .padding(.horizontal, 16)
         }
-        .padding(.horizontal, 16)
     }
     
     private var registerView: some View {
@@ -79,24 +108,33 @@ extension CreateAccountView {
             .opacity(viewModel.completeRegister ? 1 : 0.4)
         }
         .frame(width: 300)
-        .alert("titleErrorDomain", isPresented: $viewModel.cancel) {
-        } message: {
-            switch viewModel.error {
-            case .register:
-                Text("errorDomain")
-            case .none:
-                Text("")
-            }
+        .alert(isPresented: $viewModel.cancel) {
+            Alert(title: Text("Registro"),
+                  message: Text("\(viewModel.emailJaRegistrado)"),
+                  primaryButton: .cancel(),
+                  secondaryButton: .destructive(
+                    Text("OK"),
+                    action: {
+                        if viewModel.emailJaRegistradoAction {
+                            self.isLoginView = false
+                        } else {
+                            self.isLoginView = true
+                        }
+                    }
+                  )
+            )
         }
     }
     
     private var buttonsPrivacyPolicy: some View {
         HStack(spacing: 10) {
             PJButton(title: "Concordo", buttonType: .primaryType) {
+                viewModel.isCheckBox = true
                 showWebview = false
             }
             
             PJButton(title: "Discordo", buttonType: .secundaryType) {
+                viewModel.isCheckBox = false
                 showWebview = false
             }
         }

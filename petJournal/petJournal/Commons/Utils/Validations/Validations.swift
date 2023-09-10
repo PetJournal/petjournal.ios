@@ -10,74 +10,114 @@ import Foundation
 class Validations {
     static var shared = Validations()
     
-    func validFieldsLogin(_ email: String,
-                          password: String) -> Bool {
-        return isValidEmail(email) && isValidPassword(password)
-    }
-    
-    func validFieldsRegister(_ name: String,
-                             email: String,
-                             phone: String,
-                             password: String) -> Bool {
-        return isValidPhone(phone) && isValidName(value: name) && isValidEmail(email) && isValidPassword(password)
-    }
-    
-    func isValidPassword(_ password: String) -> Bool {
-        if validPassword(password) && numberOfDigits(password) {
-            return true
+    struct ValidationError: Error {
+        let reason: String
+        init(_ reason: String) {
+            self.reason = reason
         }
-        return false
     }
-    
-    private func validPassword(_ password: String) -> Bool {
-        let passwordValid = "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{6,16}"
-        let passwordPredicate = NSPredicate(format:"SELF MATCHES %@", passwordValid)
-        let result = passwordPredicate.evaluate(with: password)
-        return result
+
+    func validate(_ text: String, type: ValidationType) throws {
+        guard !text.isEmpty else { throw ValidationError("\(type.description) é obrigatório") }
+        guard text.range(of: type.pattern, options: .regularExpression) != nil else {
+            throw handleError(of: type)
+        }
     }
-    
-    private func numberOfDigits(_ password: String?) -> Bool  {
-        guard let password = password else { return false }
-        return password.count > 8
+
+    private func handleError(of type: ValidationType) -> ValidationError {
+        switch type {
+        case .email(_):
+            return ValidationError("Email inválido")
+        case .password(_):
+            return ValidationError("A senha deve ter pelo menos 8 caracteres. Para torná-la mais forte, use letras maiúsculas e minúsculas, números e símbolos como ! @ # $ % & * =")
+        case .name(_):
+            return ValidationError("O nome inválido.")
+        case .lastName(_):
+            return ValidationError("O sobrenome inválido.")
+        case .phone(_):
+            return ValidationError("O telefone inválido.")
+        case .passMatch(_):
+            return ValidationError("As senhas devem ser idênticas")
+        }
     }
+}
+
+extension Validations {
+    enum ValidationType: CustomStringConvertible {
+        case name(Pattern)
+        case lastName(Pattern)
+        case phone(Pattern)
+        case password(Pattern)
+        case email(Pattern)
+        case passMatch(Pattern)
         
-    func validEmail(_ email: String) -> Bool {
-        if isValidEmail(email) && checkDomainPetjournal(email) {
-            return true
+        enum Pattern {
+            case `default`
+            case custom(String)
         }
-        return false
-    }
-    
-    private func checkDomainPetjournal(_ email: String) -> Bool {
-        return email.contains("@petjournal.com")
-    }
-    
-    private func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
-    
-    func matchPasswords(_ passwordMatch: String, pass: String) -> Bool {
-        if passwordMatch == pass && isValidPassword(passwordMatch) {
-            return true
+        
+        var pattern: String {
+            switch self {
+            case .email(let pattern):
+                switch pattern {
+                case .default:
+                    return "[A-Z0-9a-z._%+-]+@[petjournal]+\\.[com]{3,64}"
+                case .custom(let string):
+                    return string
+                }
+            case .password(let pattern):
+                switch pattern {
+                case .default:
+                    return "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$#!%*?&]).{8,}$"
+                case .custom(let string):
+                    return string
+                }
+            case .name(let pattern):
+                switch pattern {
+                case .default:
+                    return "^[A-Za-z]{3,}.*+$"
+                case .custom(let string):
+                    return string
+                }
+            case .lastName(let pattern):
+                switch pattern {
+                case .default:
+                    return "^[A-Za-z]{3,16}.*+$"
+                case .custom(let string):
+                    return string
+                }
+            case .phone(let pattern):
+                switch pattern {
+                case .default:
+                    return "^[0-9]{2}.*[0-9]{5}.*[0-9]{4}$"
+                case .custom(let string):
+                    return string
+                }
+            case .passMatch(let pattern):
+                switch pattern {
+                case .default:
+                    return "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$#!%*?&]).{8,}$"
+                case .custom(let string):
+                    return string
+                }
+            }
         }
-        return false
-    }
-    
-    func isValidName(value: String) -> Bool {
-        let regularExpression = "^[A-Za-z]{3,}.*+$"
-        let namePredicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
-        return namePredicate.evaluate(with: value)
-    }
-    
-    func isValidPhone(_ value: String) -> Bool {
-        if value.count <= 11 {
-            return true
+        
+        var description: String {
+            switch self {
+            case .email(_):
+                return "Campo"
+            case .password(_):
+                return "Campo"
+            case .name(_):
+                return "Nome"
+            case .lastName(_):
+                return "Sobrenome"
+            case .phone(_):
+                return "Telefone"
+            case .passMatch(_):
+                return "Campo"
+            }
         }
-        if value.count > 11 {
-            _ = value.prefix(11)
-        }
-        return false
     }
 }

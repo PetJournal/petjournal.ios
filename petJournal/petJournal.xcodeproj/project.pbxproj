@@ -27,6 +27,11 @@
 		C930B5D52A3A8B320008F502 /* EditPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5D42A3A8B320008F502 /* EditPasswordView.swift */; };
 		C930B5D82A3A8E5E0008F502 /* ComponentCreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5D72A3A8E5E0008F502 /* ComponentCreateAccount.swift */; };
 		C930B5DA2A3A8E820008F502 /* CompRememberAndForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5D92A3A8E820008F502 /* CompRememberAndForgotPassword.swift */; };
+		C93943F12A9C0DD00085E623 /* ValidationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93943F02A9C0DD00085E623 /* ValidationsModel.swift */; };
+		C93943F32A9C0E040085E623 /* UIKitCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93943F22A9C0E040085E623 /* UIKitCustom.swift */; };
+		C93943F52A9C0E6C0085E623 /* PJTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93943F42A9C0E6C0085E623 /* PJTextFieldView.swift */; };
+		C93943F72A9C0EDD0085E623 /* Extension+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93943F62A9C0EDD0085E623 /* Extension+Alert.swift */; };
+		C93943F92A9C0F140085E623 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93943F82A9C0F140085E623 /* Extension+UIColor.swift */; };
 		C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C946F54829EF4CCE00045097 /* AccessAccountService.swift */; };
 		C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */; };
 		C94C42022A21543B00A949F4 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C42012A21543B00A949F4 /* WebView.swift */; };
@@ -68,9 +73,6 @@
 		C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B72A420553002C21F7 /* SideMenuView.swift */; };
 		C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B92A420562002C21F7 /* HomePageView.swift */; };
 		C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */; };
-		C9F9D8312A14234A00DD72F1 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8302A14234A00DD72F1 /* TextFieldView.swift */; };
-		C9F9D8332A14241700DD72F1 /* SecuredTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8322A14241700DD72F1 /* SecuredTextFieldView.swift */; };
-		C9F9D8352A14244B00DD72F1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8342A14244B00DD72F1 /* CustomTextField.swift */; };
 		C9F9D8372A1424E700DD72F1 /* PJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8362A1424E700DD72F1 /* PJButton.swift */; };
 		C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8382A14251500DD72F1 /* CustomButtonStyle.swift */; };
 		C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */; };
@@ -110,6 +112,11 @@
 		C930B5D42A3A8B320008F502 /* EditPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordView.swift; sourceTree = "<group>"; };
 		C930B5D72A3A8E5E0008F502 /* ComponentCreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCreateAccount.swift; sourceTree = "<group>"; };
 		C930B5D92A3A8E820008F502 /* CompRememberAndForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRememberAndForgotPassword.swift; sourceTree = "<group>"; };
+		C93943F02A9C0DD00085E623 /* ValidationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationsModel.swift; sourceTree = "<group>"; };
+		C93943F22A9C0E040085E623 /* UIKitCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitCustom.swift; sourceTree = "<group>"; };
+		C93943F42A9C0E6C0085E623 /* PJTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJTextFieldView.swift; sourceTree = "<group>"; };
+		C93943F62A9C0EDD0085E623 /* Extension+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Alert.swift"; sourceTree = "<group>"; };
+		C93943F82A9C0F140085E623 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		C946F54829EF4CCE00045097 /* AccessAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountService.swift; sourceTree = "<group>"; };
 		C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessAccountViewModel.swift; path = ViewModel/AccessAccountViewModel.swift; sourceTree = "<group>"; };
 		C94C42012A21543B00A949F4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -152,9 +159,6 @@
 		C9F5F4B72A420553002C21F7 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 		C9F5F4B92A420562002C21F7 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountView.swift; sourceTree = "<group>"; };
-		C9F9D8302A14234A00DD72F1 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
-		C9F9D8322A14241700DD72F1 /* SecuredTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuredTextFieldView.swift; sourceTree = "<group>"; };
-		C9F9D8342A14244B00DD72F1 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C9F9D8362A1424E700DD72F1 /* PJButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJButton.swift; sourceTree = "<group>"; };
 		C9F9D8382A14251500DD72F1 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIFont.swift"; sourceTree = "<group>"; };
@@ -315,6 +319,15 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		C93943EF2A9C0DB30085E623 /* Validations */ = {
+			isa = PBXGroup;
+			children = (
+				C9B9FD9429EDE27900C7C52B /* Validations.swift */,
+				C93943F02A9C0DD00085E623 /* ValidationsModel.swift */,
+			);
+			path = Validations;
+			sourceTree = "<group>";
+		};
 		C94A23F629CE22CA00C71D01 /* UnAuthentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,8 +476,9 @@
 		C9B9FD9329EDE25B00C7C52B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C9B9FD9429EDE27900C7C52B /* Validations.swift */,
+				C93943EF2A9C0DB30085E623 /* Validations */,
 				C9D4E1E62A2932740030164A /* UserDefaultsUtils.swift */,
+				C93943F22A9C0E040085E623 /* UIKitCustom.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -475,6 +489,8 @@
 				C9BAE60C29DE298900542620 /* Extension+Color.swift */,
 				C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */,
 				C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */,
+				C93943F62A9C0EDD0085E623 /* Extension+Alert.swift */,
+				C93943F82A9C0F140085E623 /* Extension+UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -582,9 +598,7 @@
 		C9F9D82E2A14231300DD72F1 /* TextField */ = {
 			isa = PBXGroup;
 			children = (
-				C9F9D8302A14234A00DD72F1 /* TextFieldView.swift */,
-				C9F9D8322A14241700DD72F1 /* SecuredTextFieldView.swift */,
-				C9F9D8342A14244B00DD72F1 /* CustomTextField.swift */,
+				C93943F42A9C0E6C0085E623 /* PJTextFieldView.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -714,7 +728,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */,
-				C9F9D8352A14244B00DD72F1 /* CustomTextField.swift in Sources */,
 				C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */,
 				C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */,
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
@@ -727,6 +740,7 @@
 				C9B1C8AA29F9FE71002C7B00 /* SignState.swift in Sources */,
 				C9D8450F2A224AC10007A316 /* MainActor.swift in Sources */,
 				C9D8450B2A22494C0007A316 /* SessionManager.swift in Sources */,
+				C93943F12A9C0DD00085E623 /* ValidationsModel.swift in Sources */,
 				C930B5CE2A3A8A280008F502 /* CodeInput.swift in Sources */,
 				C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */,
 				C930B5D82A3A8E5E0008F502 /* ComponentCreateAccount.swift in Sources */,
@@ -743,8 +757,10 @@
 				C9F5F4AE2A4204C7002C21F7 /* ProfileComponentView.swift in Sources */,
 				C9F5F4AA2A42046E002C21F7 /* HomeModel.swift in Sources */,
 				C930B5D32A3A8B240008F502 /* EditPasswordViewModel.swift in Sources */,
+				C93943F92A9C0F140085E623 /* Extension+UIColor.swift in Sources */,
 				C94C42022A21543B00A949F4 /* WebView.swift in Sources */,
 				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
+				C93943F72A9C0EDD0085E623 /* Extension+Alert.swift in Sources */,
 				C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
 				C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */,
@@ -759,12 +775,12 @@
 				C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */,
 				C9D4E1E72A2932740030164A /* UserDefaultsUtils.swift in Sources */,
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
-				C9F9D8312A14234A00DD72F1 /* TextFieldView.swift in Sources */,
 				C930B5C82A3A88CF0008F502 /* ReceiveInputViewModel.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
+				C93943F52A9C0E6C0085E623 /* PJTextFieldView.swift in Sources */,
 				1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
-				C9F9D8332A14241700DD72F1 /* SecuredTextFieldView.swift in Sources */,
+				C93943F32A9C0E040085E623 /* UIKitCustom.swift in Sources */,
 				C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+Color.swift in Sources */,
 				C9D8450D2A2249650007A316 /* SessionModel.swift in Sources */,

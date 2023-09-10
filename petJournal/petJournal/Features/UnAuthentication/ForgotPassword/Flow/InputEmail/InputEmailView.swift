@@ -59,10 +59,15 @@ extension InputEmailView {
     
     private var textFieldEmail: some View {
         ZStack(alignment: .trailing) {
-            TextFieldView(title: "Qual seu e-mail de cadastro?", placeholder: "Digite seu e-mail", text: $viewModel.user.email, prompt: "")
+            PJTextFieldView(error: viewModel.emailErrorMessage,
+                            errorValidation: viewModel.isValidEmail,
+                            title: "E-mail ou Telefone",
+                            placeholder: "Digite seu e-mail ou telefone",
+                            textContentType: .emailAddress,
+                            text: $viewModel.emailOrPhone)
             
-            if !viewModel.user.email.isEmpty {
-                if viewModel.isCorrectEmail {
+            if !viewModel.emailOrPhone.isEmpty {
+                if viewModel.isCorrectCredentials {
                     Image(systemName: "checkmark.circle.fill")
                         .imageScale(.large)
                         .padding(.horizontal)
@@ -85,8 +90,8 @@ extension InputEmailView {
                 viewModel.reAuthentication()
                 self.isWaitingCode = true
             }
-            .disabled(!viewModel.isCorrectEmail)
-            .opacity(viewModel.isCorrectEmail ? 1 : 0.5)
+            .disabled(!viewModel.isCorrectCredentials)
+            .opacity(viewModel.isCorrectCredentials ? 1 : 0.5)
             
             waitingCode
             

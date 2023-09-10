@@ -11,7 +11,9 @@ final class CreateAccountViewModel: ObservableObject {
     @Published var states: RegisterState = .unknown
     @Published var error: RegisterError = .register
     @Published var user: UserModel = UserModel.newUser
+    @Published var userSession: UserSession = .init()
     @Published var cancel: Bool = false
+    @Published var isCheckBox = false
     
     var service: CreateAccountServiceProtocol!
     init(service: CreateAccountServiceProtocol) {
@@ -23,75 +25,139 @@ final class CreateAccountViewModel: ObservableObject {
             service.registerUser(userModel: user) { result in
                 switch result {
                 case .success:
-                    self.states = .success
-                    self.error = .register
                     let sessionModel = SessionModel(userName: self.user.name, model: self.user)
                     SessionManager.shared.updateValidation(with: sessionModel)
+                    self.states = .success
+                    self.error = .register
+                    self.cancel.toggle()
                 case .failure(let failure):
                     switch failure {
                     case .errorRegister:
                         self.states = .failure
                         self.error = .none
+                        self.cancel.toggle()
                     case .error:
                         self.error = .none
+                        self.cancel.toggle()
                     }
                 }
             }
         } else {
-            self.error = .none
+            //            self.error = .none
         }
     }
 }
 
 extension CreateAccountViewModel {
     var completeRegister: Bool {
-        if !Validations.shared.validFieldsRegister(user.name, email: user.email, phone: user.phoneNumber, password: user.password) && !matchPass {
-            return false
-        }
-        return true
-    }
-    
-    var matchPass: Bool {
-        if Validations.shared.matchPasswords(user.passwordMatch, pass: user.password) {
+        if isCheckBox &&
+            isValidName &&
+            isValidEmail &&
+            isValidLastname &&
+            isValidPassword &&
+            isValidPasswordMatch {
             return true
         }
         return false
     }
     
-    var firstNameErrorMessage: String {
-        if Validations.shared.isValidName(value: user.name) {
-            return ""
+    var emailJaRegistradoAction: Bool {
+        if userSession.email == user.email {
+            return true
         }
-        return "Campo obrigatorio"
+        return false
+    }
+    
+    var emailJaRegistrado: String {
+        if userSession.email == user.email {
+            return "Registro não realizado, email já cadastrado."
+        }
+        return "Registro realizado, faça login para acessar."
+    }
+    
+    var isValidPassword: Bool {
+        ValidationsModel.shared.validateInput(user.password, of: .password(.default)) == nil
+    }
+    
+    var isValidPasswordMatch: Bool {
+        let passMatch = ValidationsModel.shared.validateInput(user.passwordMatch, of: .passMatch(.default)) == nil
+        if user.password == user.passwordMatch {
+            if passMatch {
+                return true
+            }
+        }
+        return false
+    }
+    
+    var isValidName: Bool {
+        ValidationsModel.shared.validateInput(user.name, of: .name(.default)) == nil
+    }
+    
+    var isValidLastname: Bool {
+        ValidationsModel.shared.validateInput(user.lastName, of: .lastName(.default)) == nil
+    }
+    
+    var isValidPhone: Bool {
+        let phoneValid = ValidationsModel.shared.validateInput(user.phoneNumber, of: .phone(.default)) == nil
+        if user.phoneNumber.isEmpty {
+            if phoneValid {
+                return true
+            }
+        }
+        return false
+    }
+    
+    var isValidEmail: Bool {
+        ValidationsModel.shared.validateInput(user.email, of: .email(.default)) == nil
+    }
+    
+    var firstNameErrorMessage: String {
+        if let errorValidation = ValidationsModel.shared.validateInput(user.name, of: .name(.default)) {
+            let message = errorValidation.reason
+            return message
+        }
+        return ""
     }
     
     var lastNameErrorMessage: String {
-        if Validations.shared.isValidName(value: user.lastName) {
-            return ""
+        if let errorValidation = ValidationsModel.shared.validateInput(user.lastName, of: .lastName(.default)) {
+            let message = errorValidation.reason
+            return message
         }
-        return "Campo obrigatorio"
+        return ""
     }
     
     var emailErrorMessage: String {
-        if Validations.shared.validEmail(user.email) {
-            return ""
+        if let errorValidation = ValidationsModel.shared.validateInput(user.email, of: .email(.default)) {
+            let message = errorValidation.reason
+            return message
         }
-        return "Campo obrigatorio"
+        return ""
     }
     
-    var passwordErrorMessage: String {
-        if user.password.count > 4 {
-            if !Validations.shared.isValidPassword(user.password) {
-                return "*Digite uma senha valida"
+    var phoneErrorMessage: String {
+        if let errorValidation = ValidationsModel.shared.validateInput(user.phoneNumber, of: .phone(.default)) {
+            if !user.phoneNumber.isEmpty {
+                let message = errorValidation.reason
+                return message
             }
         }
         return ""
     }
     
-    var passwordMatchErrorMessage: String {
-        if user.password.count > 4 {
-            if !matchPass {
-                return "*Digite uma senha valida"
+    var messageErrorPassword: String {
+        if let errorValidation = ValidationsModel.shared.validateInput(user.password, of: .password(.default)) {
+            let message = errorValidation.reason
+            return message
+        }
+        return ""
+    }
+    
+    var messageErrorPasswordMatch: String {
+        if let errorValidation = ValidationsModel.shared.validateInput(user.passwordMatch, of: .passMatch(.default)) {
+            if user.password != user.passwordMatch {
+                let message = errorValidation.reason
+                return message
             }
         }
         return ""

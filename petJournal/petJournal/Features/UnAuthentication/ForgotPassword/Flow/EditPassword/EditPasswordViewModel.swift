@@ -5,52 +5,121 @@
 //  Created by Marcylene Barreto on 14/06/23.
 //
 
-import Foundation
+import SwiftUI
 
 final class EditPasswordViewModel: ObservableObject {
     @Published var user: UserModel = .newUser
     @Published var userSession: UserSession = .init()
     @Published var cancel: Bool = false
+    @Published var isCheckBox = false
+    @Published var activeError: LocalizedError?
 
+    var isPresentingAlert: Binding<Bool> {
+        return Binding<Bool>(get: {
+            return self.activeError != nil
+        }, set: { newValue in
+            guard !newValue else { return }
+            self.activeError = nil
+        })
+    }
+    
+    func showAlertView() {
+        passwordCheckError()
+    }
+    
     func editPassword(value: String) {
         if passwordCheck {
             UserDefaultsUtils.save(value: value, key: KeysUser.email.rawValue)
+            self.cancel.toggle()
+        } else {
+            passwordCheckError()
         }
     }
 }
 
 extension EditPasswordViewModel {
     var passwordCheck: Bool {
-        if !user.password.isEmpty && !user.passwordMatch.isEmpty {
-            if matchPass {
-                return false
-            }
+        if matchPass &&
+            isValidPassword {
+            return true
         }
-        return true
+        return false
+    }
+    
+    func passwordCheckError() {
+        if user.password.isEmpty || user.passwordMatch.isEmpty {
+            activeError = EditPasswordError.isEmptyValue
+        } else if !isValidPassword {
+            activeError = EditPasswordError.incorrectPassword
+        } else if !matchPass {
+            activeError = EditPasswordError.noMatchPassword
+        }
     }
       
     var matchPass: Bool {
-        if !Validations.shared.matchPasswords(user.passwordMatch, pass: user.password) {
-            return false
+        let passMatch = ValidationsModel.shared.validateInput(user.passwordMatch, of: .passMatch(.default)) == nil
+        if user.password == user.passwordMatch {
+            if passMatch {
+                return true
+            }
         }
-        return true
+        return false
     }
     
-    var invalidPassword: String {
-        if user.password.count > 4 {
-            if !Validations.shared.isValidPassword(user.password) {
-                return "Senha invalida"
+    var isValidPassword: Bool {
+        ValidationsModel.shared.validateInput(user.password, of: .password(.default)) == nil
+    }
+    
+    var messageErrorPassword: String {
+        if let errorValidation = ValidationsModel.shared.validateInput(user.password, of: .password(.default)) {
+            let message = errorValidation.reason
+            return message
+        }
+        return ""
+    }
+    
+    var messageErrorPasswordMatch: String {
+        if let errorValidation = ValidationsModel.shared.validateInput(user.passwordMatch, of: .passMatch(.default)) {
+            if user.password != user.passwordMatch {
+                let message = errorValidation.reason
+                return message
             }
         }
         return ""
     }
     
-    var errorPasswordMatch: String {
-        if user.passwordMatch.count > 4 {
-            if !matchPass {
-                return "Senhas incompativeis"
-            }
+    var resetPasswordAction: Bool {
+        if !(userSession.password == user.password) {
+            return true
         }
-        return ""
+        return false
+    }
+}
+
+enum EditPasswordError: LocalizedError {
+    case incorrectPassword
+    case noMatchPassword
+    case isEmptyValue
+    
+    var errorDescription: String? {
+        switch self {
+        case .incorrectPassword:
+            return "Falha na redefinição"
+        case .noMatchPassword:
+            return "Senhas Diferentes"
+        case .isEmptyValue:
+            return "Campo Vazio"
+        }
+    }
+    
+    var failureReason: String? {
+        switch self {
+        case .incorrectPassword:
+            return "A senha informada não atende os requisitos necessários de 8 caracteres."
+        case .noMatchPassword:
+            return "As senhas devem ser idênticas. Tente novamente"
+        case .isEmptyValue:
+            return "Nenhum dos campos devem ficar vazios"
+        }
     }
 }

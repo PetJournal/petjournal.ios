@@ -22,46 +22,61 @@ final class AccessAccountViewModel: ObservableObject {
         service.authenticationEmail(userModel: userSession) { result in
             switch result {
             case .success:
-                if self.userSession.email == self.user.email  {
+                self.error = .none
+//                self.isLoading = true
+//                if self.userSession.email == self.user.email  {
                     let sessionModel = SessionModel(userName: self.user.email)
                     SessionManager.shared.updateValidation(with: sessionModel)
+//                }
+            case .failure(let error):
+                switch error {
+                case .errorAuthentication:
+                    self.error = .domainErr
+                    self.cancel.toggle()
+                case .errorSignIn:
+                    self.error = .noRegister
+                    self.cancel.toggle()
                 }
-            case .failure:
-                self.error = .domainErr
-                self.cancel.toggle()
             }
         }
-        self.error = .noRegister
-        self.cancel.toggle()
     }
 }
 
 extension AccessAccountViewModel {
-    
-    var completeLogin: Bool {
-        if !Validations.shared.validFieldsLogin(user.email, password: user.password)   {
-            if userSession.email != user.email {
-                return false
-            }
+    func completeLogin() -> Bool {
+        if (ValidationsModel.shared.validateInput(user.password, of: .password(.default)) == nil) &&
+        (ValidationsModel.shared.validateInput(user.email, of: .email(.default)) == nil) {
+            return false
         }
         return true
     }
     
+    var isValidEmail: Bool {
+        ValidationsModel.shared.validateInput(user.email, of: .email(.default)) == nil
+    }
+    
+    var isValidPassword: Bool {
+        ValidationsModel.shared.validateInput(user.password, of: .password(.default)) == nil
+    }
+    
     var emailErrorMessage: String {
-        if user.email.count > 4 && (userSession.email != user.email) {
-            if !Validations.shared.validEmail(user.email) {
-                return "*Invalid email adress"
+        if user.email.count > 3 {
+            if let errorValidation = ValidationsModel.shared.validateInput(user.email, of: .email(.default)) {
+                let message = errorValidation.reason
+                return message
             }
         }
         return ""
     }
     
     var passwordErrorMessage: String {
-        if user.password.count > 4 {
-            if !Validations.shared.isValidPassword(user.password) {
-                return "*Digite uma senha valida"
+        if user.password.count > 3 {
+            if let errorValidation = ValidationsModel.shared.validateInput(user.password, of: .password(.default)) {
+                let message = errorValidation.reason
+                return message
             }
         }
         return ""
     }
 }
+

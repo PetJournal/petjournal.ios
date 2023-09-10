@@ -8,64 +8,90 @@
 import SwiftUI
 
 struct WaitingCodeView: View {
-    @StateObject var viewModel: WaitingViewModel = .init()
-    @FocusState var activeField: FocusStateOTP?
+    @StateObject private var viewModel: WaitingViewModel = .init()
+    @FocusState private var activeField: FocusStateOTP?
     @State private var isEditPassword: Bool = false
+    @State private var showAlert = false
     
     var body: some View {
-        VStack {
-            Image("pet_logoPrimary")
-                .resizable()
-                .frame(width: 148, height: 128)
-            
-            Spacer()
-            
-            VStack(spacing: 10) {
-                Text("Acabamos de enviar um código para seu e-mail")
-                    .font(.title2)
-                    .multilineTextAlignment(.center)
+        ZStack {
+            VStack {
+                Image("pet_logoPrimary")
+                    .resizable()
+                    .frame(width: 148, height: 128)
                 
-                Text("Insira no campo abaixo o código de verificação de 6 dígitos enviado para o seu email.")
+                Spacer()
+                
+                VStack(spacing: 10) {
+                    Text("Acabamos de enviar um código para seu e-mail")
+                        .font(.title2)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("Insira no campo abaixo o código de verificação de 6 dígitos enviado para o seu email.")
+                        .font(.footnote)
+                        .fontWeight(.light)
+                        .multilineTextAlignment(.center)
+                }
+                
+                Spacer()
+                VStack(alignment: .leading, spacing: 2) {
+                    HStack(spacing: 10) {
+                        getCodeReAuth()
+                    }
+                    
+                    Button {
+                        showAlert.toggle()
+                    } label: {
+                        Text("Reenviar Código?")
+                            .font(.footnote)
+                            .fontWeight(.light)
+                    }
+                }
+                
+                Spacer()
+                
+                PJButton(title: "Enviar", buttonType: .primaryType) {
+                    viewModel.codeValid()
+//                    self.isEditPassword = true
+                }
+                .disabled(viewModel.checkState())
+                .opacity(viewModel.checkState() ? 0.3 : 1)
+                editPassword
+                
+                Text("Dica: Caso não encontre o e-mail na sua caixa de entrada, verifique a pasta de Spam!")
                     .font(.footnote)
                     .fontWeight(.light)
                     .multilineTextAlignment(.center)
-            }
-            
-            Spacer()
-            VStack(alignment: .leading, spacing: 2) {
-                HStack(spacing: 10) {
-                    getCodeReAuth()
-                }
                 
-                Button {
-                    
-                } label: {
-                    Text("Reenviar Código?")
-                        .font(.footnote)
-                        .fontWeight(.light)
-                }
+                Spacer()
             }
-            Spacer()
-            
-            PJButton(title: "Enviar", buttonType: .primaryType) {
-                self.isEditPassword = true
+            .padding()
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .onChange(of: viewModel.codeFields) { newValue in
+                viewModel.checkValueField(value: newValue)
+                nextField(value: newValue)
             }
-            .disabled(viewModel.checkState())
-            .opacity(viewModel.checkState() ? 0.3 : 1)
-            editPassword
-            
-            Text("Dica: Caso não encontre o e-mail na sua caixa de entrada, verifique a pasta de Spam!")
-                .font(.footnote)
-                .fontWeight(.light)
-                .multilineTextAlignment(.center)
-            
-            Spacer()
+            .alert(isPresented: $viewModel.cancel) {
+                Alert(title: Text("Code Validation"),
+                      message: Text("\(viewModel.checkCodeValidation)"),
+                      primaryButton: .cancel(),
+                      secondaryButton: .default(
+                        Text("OK"),
+                        action: {
+                            if viewModel.codeCheck {
+                                self.isEditPassword = false
+                            }
+                        }
+                      )
+                )
+            }
         }
-        .padding()
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .onChange(of: viewModel.codeFields) { newValue in
-            viewModel.checkValueField(value: newValue)
-            nextField(value: newValue)
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Code Reset"),
+                  message: Text("Código reenviado. Verifique seu email e tente novamente."),
+                  primaryButton: .cancel(),
+                  secondaryButton: .default( Text("OK") )
+            )
         }
     }
 }

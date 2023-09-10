@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct ComponentPrivacy: View {
-    @State var isRemember: Bool
     var action: () -> Void
+    @EnvironmentObject var viewModel: CreateAccountViewModel
     
     var body: some View {
         HStack {
             Button(action: {
-                isRemember.toggle()
+                viewModel.isCheckBox.toggle()
             }) {
-                Image(isRemember ? "ic_checkBox_select" : "ic_checkBox_clear")
+                Image(viewModel.isCheckBox ? "ic_checkBox_select" : "ic_checkBox_clear")
                     .resizable()
                     .frame(width: 20, height: 20)
             }
             Button(action: self.action) {
                 Text("Eu concordo com a política de privacidade")
-                    .foregroundColor(.black)
+                    .foregroundColor(Color.theme.petLink)
                     .font(.system(size: 12))
             }
         }

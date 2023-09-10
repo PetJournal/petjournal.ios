@@ -11,6 +11,8 @@ class ForgotPasswordViewModel: ObservableObject {
     @Published var error: ForgotError = .none
     @Published var forgotState: ForgotState = .unknown
     @Published var user: UserModel = UserModel.newUser
+    @Published var emailOrPhone = ""
+    @Published var userSession: UserSession = .init()
     @Published var cancel: Bool = false
     
     var service: ForgotPasswordServiceProtocol!
@@ -19,8 +21,8 @@ class ForgotPasswordViewModel: ObservableObject {
     }
     
     func reAuthentication() {
-        if isCorrectEmail {
-            service.forgotPassword(credential: user.email) { result in
+        if isCorrectCredentials {
+            service.forgotPassword(credential: emailOrPhone) { result in
                 switch result {
                 case .success:
                     self.forgotState = .forgotCheck
@@ -36,10 +38,43 @@ class ForgotPasswordViewModel: ObservableObject {
 
 // MARK: - Extension
 extension ForgotPasswordViewModel {
-    var isCorrectEmail: Bool {
-        if !Validations.shared.validEmail(user.email) {
-            return false
+    var isCorrectCredentials: Bool {
+        if isValidEmail || isValidPhone {
+            return true
         }
-        return true
+        return false
+    }
+    
+    var isValidEmail: Bool {
+        ValidationsModel.shared.validateInput(emailOrPhone, of: .email(.default)) == nil
+    }
+    
+    var isValidPhone: Bool {
+        ValidationsModel.shared.validateInput(emailOrPhone, of: .phone(.default)) == nil
+    }
+    
+    var emailErrorMessage: String {
+        if emailOrPhone.count > 3 {
+            if !isCorrectCredentials{
+                return "Insira os dados corretamente"
+            }
+        }
+        return ""
+    }
+    
+    var emailError: String {
+        if let errorValidation = ValidationsModel.shared.validateInput(emailOrPhone, of: .email(.default)) {
+            let messageEmail = errorValidation.reason
+            return messageEmail
+        }
+        return ""
+    }
+    
+    var phoneError: String {
+        if let errorValidationPhone = ValidationsModel.shared.validateInput(emailOrPhone, of: .phone(.default)) {
+            let messagePhone = errorValidationPhone.reason
+            return messagePhone
+        }
+        return ""
     }
 }
