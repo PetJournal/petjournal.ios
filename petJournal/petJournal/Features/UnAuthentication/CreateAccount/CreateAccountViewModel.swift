@@ -43,7 +43,7 @@ final class CreateAccountViewModel: ObservableObject {
                 }
             }
         } else {
-            //            self.error = .none
+            
         }
     }
 }
@@ -116,7 +116,7 @@ extension CreateAccountViewModel {
             let message = errorValidation.reason
             return message
         }
-        return ""
+        return String()
     }
     
     var lastNameErrorMessage: String {
@@ -124,7 +124,7 @@ extension CreateAccountViewModel {
             let message = errorValidation.reason
             return message
         }
-        return ""
+        return String()
     }
     
     var emailErrorMessage: String {
@@ -132,7 +132,7 @@ extension CreateAccountViewModel {
             let message = errorValidation.reason
             return message
         }
-        return ""
+        return String()
     }
     
     var phoneErrorMessage: String {
@@ -142,7 +142,7 @@ extension CreateAccountViewModel {
                 return message
             }
         }
-        return ""
+        return String()
     }
     
     var messageErrorPassword: String {
@@ -150,7 +150,7 @@ extension CreateAccountViewModel {
             let message = errorValidation.reason
             return message
         }
-        return ""
+        return String()
     }
     
     var messageErrorPasswordMatch: String {
@@ -160,6 +160,6 @@ extension CreateAccountViewModel {
                 return message
             }
         }
-        return ""
+        return String()
     }
 }

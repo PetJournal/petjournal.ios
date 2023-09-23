@@ -19,15 +19,15 @@ final class AccessAccountViewModel: ObservableObject {
     }
     
     func authUser() {
-        service.authenticationEmail(userModel: userSession) { result in
+        service.authenticationEmail(userModel: userSession) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success:
                 self.error = .none
-//                self.isLoading = true
-//                if self.userSession.email == self.user.email  {
+                if self.userSession.email == self.user.email  {
                     let sessionModel = SessionModel(userName: self.user.email)
                     SessionManager.shared.updateValidation(with: sessionModel)
-//                }
+                }
             case .failure(let error):
                 switch error {
                 case .errorAuthentication:
@@ -66,7 +66,7 @@ extension AccessAccountViewModel {
                 return message
             }
         }
-        return ""
+        return String()
     }
     
     var passwordErrorMessage: String {
@@ -76,7 +76,7 @@ extension AccessAccountViewModel {
                 return message
             }
         }
-        return ""
+        return String()
     }
 }
 

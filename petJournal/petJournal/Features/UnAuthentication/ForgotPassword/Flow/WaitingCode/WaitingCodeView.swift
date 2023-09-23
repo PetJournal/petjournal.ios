@@ -51,8 +51,9 @@ struct WaitingCodeView: View {
                 Spacer()
                 
                 PJButton(title: "Enviar", buttonType: .primaryType) {
-                    viewModel.codeValid()
-//                    self.isEditPassword = true
+                    if viewModel.codeCheck {
+                        isEditPassword = true
+                    }
                 }
                 .disabled(viewModel.checkState())
                 .opacity(viewModel.checkState() ? 0.3 : 1)

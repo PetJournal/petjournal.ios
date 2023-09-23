@@ -52,22 +52,6 @@ extension EditPasswordView {
         .alert(isPresented: viewModel.isPresentingAlert, content: {
             Alert(localizedError: viewModel.activeError!)
         })
-//        .alert(isPresented: $viewModel.cancel) {
-//            Alert(title: Text("Alteração de Senha"),
-//                  message: Text("Senha alterada com sucesso"),
-//                  primaryButton: .cancel(),
-//                  secondaryButton: .destructive(
-//                    Text("OK"),
-//                    action: {
-//                        if viewModel.resetPasswordAction {
-//                            self.isLoginView = false
-//                        } else {
-//                            self.isLoginView = true
-//                        }
-//                    }
-//                  )
-//            )
-//        }
         .padding([.leading,.trailing], 60)
     }
     

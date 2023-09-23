@@ -75,7 +75,7 @@ extension EditPasswordViewModel {
             let message = errorValidation.reason
             return message
         }
-        return ""
+        return String()
     }
     
     var messageErrorPasswordMatch: String {
@@ -85,7 +85,7 @@ extension EditPasswordViewModel {
                 return message
             }
         }
-        return ""
+        return String()
     }
     
     var resetPasswordAction: Bool {

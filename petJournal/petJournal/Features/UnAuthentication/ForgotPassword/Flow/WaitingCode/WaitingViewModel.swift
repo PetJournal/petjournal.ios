@@ -57,7 +57,7 @@ class WaitingViewModel: ObservableObject {
     
     func codeValid() {
         if codeCheck {
-            self.cancel.toggle()
+            
         }
         self.cancel.toggle()
     }
@@ -76,10 +76,6 @@ extension WaitingViewModel {
         if !codeCheck {
             return "O código de verificação que você inseriu não é válido. Verifique o código e tente novamente"
         }
-        return ""
-    }
-    
-    var codeReset: Bool {
-        return true
+        return String()
     }
 }
