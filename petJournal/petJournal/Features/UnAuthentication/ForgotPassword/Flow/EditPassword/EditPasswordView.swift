@@ -9,18 +9,18 @@ import SwiftUI
 
 struct EditPasswordView: View {
     @StateObject var viewModel: EditPasswordViewModel
-    @State private var isPasswordPrimary: Bool = false
-    @State private var isPasswordSecudary: Bool = false
-    @State private var isRemember = true
+    @State var showAlert = false
+    @State private var isLoginView: Bool = false
     
     var body: some View {
-        
         VStack {
             Image("pet_logoPrimary")
                 .resizable()
                 .frame(width: 148, height: 128)
             
             Spacer()
+            
+            loginNavigation
             
             VStack(spacing: 10) {
                 Text("Criar uma nova senha?")
@@ -29,38 +29,75 @@ struct EditPasswordView: View {
                     .multilineTextAlignment(.center)
             }
             Spacer()
-            VStack(spacing: 10) {
-                CustomTextField(isPasswordVisible: $isPasswordPrimary, text: $viewModel.user.password, placeholder: "Digite uma nova senha", prompt: viewModel.invalidPassword, title: "Nova Senha")
-                
-                CustomTextField(isPasswordVisible: $isPasswordSecudary, text: $viewModel.user.passwordMatch, placeholder: "Confirme sua nova senha", prompt: viewModel.errorPasswordMatch, title: "Confirme nova senha")
-            }
+            textFieldsView
             
-            HStack {
-                Button(action: {
-                    isRemember.toggle()
-                }) {
-                    Image(isRemember ? "ic_checkBox_clear" : "ic_checkBox_select")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                }
-                
-                Text("É necessário que todos os dispositivos acessem sua conta com a nova senha?")
-                    .font(.footnote)
-                    .fontWeight(.light)
-                    .multilineTextAlignment(.leading)
-            }
+            buttonDesconectAccount
+            
             Spacer()
-            VStack {
-                PJButton(title: "Redefinir Senha", buttonType: .primaryType) {
-                    viewModel.editPassword(value: viewModel.user.password)
-                }
-                .disabled(!viewModel.passwordCheck)
-                .opacity(viewModel.passwordCheck ? 1 : 0.5)
-            }
-            .padding([.leading,.trailing], 60)
+            buttonResetPassword
             Spacer()
         }
         .padding()
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+    }
+}
+
+extension EditPasswordView {
+    private var buttonResetPassword: some View {
+        VStack {
+            PJButton(title: "Redefinir Senha", buttonType: .primaryType) {
+                viewModel.editPassword(value: viewModel.user.password)
+            }
+        }
+        .alert(isPresented: viewModel.isPresentingAlert, content: {
+            Alert(localizedError: viewModel.activeError!)
+        })
+        .padding([.leading,.trailing], 60)
+    }
+    
+    private var textFieldsView: some View {
+        VStack(spacing: 10) {
+            PJTextFieldView(error: viewModel.messageErrorPassword,
+                            errorValidation: viewModel.isValidPassword,
+                            title: "Senha",
+                            placeholder: "Digite sua senha",
+                            textContentType: .password,
+                            text: $viewModel.user.password)
+            .padding(.bottom, 20)
+            
+            PJTextFieldView(error: viewModel.messageErrorPasswordMatch,
+                            errorValidation: viewModel.matchPass,
+                            title: "Confirme sua senha",
+                            placeholder: "Digite sua senha",
+                            textContentType: .password,
+                            text: $viewModel.user.passwordMatch)
+        }
+    }
+    
+    private var buttonDesconectAccount: some View {
+        HStack {
+            Button(action: {
+                viewModel.isCheckBox.toggle()
+            }) {
+                Image(viewModel.isCheckBox ? "ic_checkBox_select" : "ic_checkBox_clear")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+            }
+            
+            Text("É necessário que todos os dispositivos acessem sua conta com a nova senha?")
+                .font(.footnote)
+                .fontWeight(.light)
+                .multilineTextAlignment(.leading)
+        }
+    }
+    
+    private var loginNavigation: some View {
+        HStack {
+            NavigationLink(
+                destination: AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService())).navigationBarHidden(true),
+                isActive: self.$isLoginView) {EmptyView()}
+                .isDetailLink(false)
+                .navigationBarHidden(true)
+        }
     }
 }

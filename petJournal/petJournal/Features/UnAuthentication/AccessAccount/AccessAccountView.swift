@@ -31,9 +31,20 @@ struct AccessAccountView: View {
             }
             .padding(.bottom, 30)
             
-            VStack(spacing: 10) {
-                TextFieldView(title: "E-mail", placeholder: "Digite seu e-mail", text: $viewModel.user.email, prompt: viewModel.emailErrorMessage)
-                CustomTextField(isPasswordVisible: $isPasswordVisible, text: $viewModel.user.password, placeholder: "Digite sua senha", prompt: viewModel.passwordErrorMessage, title: "Senha")
+            VStack(spacing: 5) {
+                PJTextFieldView(error: viewModel.emailErrorMessage,
+                                errorValidation: viewModel.isValidEmail,
+                                title: "E-mail",
+                                placeholder: "Digite seu e-mail",
+                                textContentType: .emailAddress,
+                                text: $viewModel.user.email)
+                
+                PJTextFieldView(error: viewModel.passwordErrorMessage,
+                                errorValidation: viewModel.isValidPassword,
+                                title: "Senha",
+                                placeholder: "Digite sua senha",
+                                textContentType: .password,
+                                text: $viewModel.user.password)
             }
             
             rememberAndForgot
@@ -42,20 +53,10 @@ struct AccessAccountView: View {
                 PJButton(title: "Entrar", buttonType: .primaryType) {
                     viewModel.authUser()
                 }
-                .opacity(viewModel.completeLogin ? 1 : 0.4)
+                .disabled(viewModel.completeLogin())
+                .opacity(!viewModel.completeLogin() ? 1 : 0.4)
                 
                 componentCreateAccount
-            }
-            .alert("Error", isPresented: $viewModel.cancel) {
-            } message: {
-                switch viewModel.error {
-                case .domainErr:
-                    Text("Seu domínio é diferente de petjournal.com.")
-                case .none:
-                    Text("")
-                case .noRegister:
-                    Text("E-mail não cadastrado, por favor crie uma conta para acessar.")
-                }
             }
         }
         .padding()
