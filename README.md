@@ -114,6 +114,24 @@ UnAuthenticated
 └───AccessAccount 
 ```
 
+## 💻 To Use (for test) ###
+
+Use the command below to clone the repository, using the Mac terminal.
+
+```
+git clone https://github.com/PetJournal/petjournal.ios.git
+```
+Open the file petJournal.xcodeproj
+
+![folderPetjournal](https://github.com/PetJournal/petjournal.ios/assets/79819229/58f4e8b8-5c33-4f6e-aeca-4e6b3534b2ea)
+
+
+When opening the file, select the iPhone version you want. Then select the button similar to Play.
+
+![play](https://github.com/PetJournal/petjournal.ios/assets/79819229/a78e383c-d57c-4e26-b7a7-b59a2ab00943)
+> - ps1.: wait for the simulator to open
+> - ps2.: Make sure Xcode Version 14.2 is installed.
+
 ##  Contribution 
 
 - Marcylene Barreto /  [@Marbarret](https://github.com/Marbarret)
