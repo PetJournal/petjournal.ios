@@ -53,8 +53,8 @@ struct AccessAccountView: View {
                 PJButton(title: "Entrar", buttonType: .primaryType) {
                     viewModel.authUser()
                 }
-                .disabled(viewModel.completeLogin())
-                .opacity(!viewModel.completeLogin() ? 1 : 0.4)
+//                .disabled(viewModel.completeLogin())
+//                .opacity(!viewModel.completeLogin() ? 1 : 0.4)
                 
                 componentCreateAccount
             }

@@ -25,8 +25,8 @@ final class CreateAccountViewModel: ObservableObject {
             service.registerUser(userModel: user) { result in
                 switch result {
                 case .success:
-                    let sessionModel = SessionModel(userName: self.user.name, model: self.user)
-                    SessionManager.shared.updateValidation(with: sessionModel)
+                    let sessionModel = SessionModel(user_token: self.user.name, model: self.user)
+//                    SessionManager.shared.updateValidation(with: sessionModel)
                     self.states = .success
                     self.error = .register
                     self.cancel.toggle()

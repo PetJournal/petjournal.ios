@@ -8,19 +8,45 @@
 import Foundation
 
 protocol AccessAccountServiceProtocol {
-    func authenticationEmail(userModel: UserSession, completion: @escaping (Result<UserSession, ErrorApp>) -> Void)
+    func authenticationEmail(email: String, password: String, completion: @escaping(Result<String, AuthenticationError>) -> Void)
 }
 
 final class AccessAccountService: AccessAccountServiceProtocol {
-    func authenticationEmail(userModel: UserSession, completion: @escaping (Result<UserSession, ErrorApp>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            guard let email = userModel.email else { return }
-            guard let password = userModel.password else { return }
-            if !email.isEmpty && !password.isEmpty {
-                completion(.success(userModel))
-            } else {
-                completion(.failure(.errorAuthentication))
-            }
+    func authenticationEmail(email: String, password: String, completion: @escaping(Result<String, AuthenticationError>) -> Void) {
+        let urlSession = "https://petjournal-api.onrender.com/api/login"
+        guard let url = URL(string: urlSession) else {
+            completion(.failure(.custom(errorMessage: "URL is not correct")))
+            return
         }
+        
+        let body = LoginRequestBodyAuth(email: email, password: password)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.httpBody = try JSONEncoder().encode(body)
+        } catch {
+            completion(.failure(.custom(errorMessage: "Failed to encode request body")))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(.custom(errorMessage: "No data")))
+                return
+            }
+            
+            do {
+                let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
+                guard let token = loginResponse.accessToken else {
+                    completion(.failure(.invalidCredentials))
+                    return
+                }
+                completion(.success(token))
+            } catch {
+                completion(.failure(.invalidCredentials))
+            }
+        }.resume()
     }
 }

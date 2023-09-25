@@ -12,10 +12,10 @@ struct MainActor: View {
     
     var body: some View {
         NavigationView {
-            if vm.userSession.hasSession {
-                TabBarView()
-            } else {
-                AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
+            switch vm.statusLogin {
+            case .signIn: TabBarView()
+            case .signOut: AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
+            case .unknown: ProgressView("Loading").font(.footnote)
             }
         }
     }
