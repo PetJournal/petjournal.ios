@@ -15,7 +15,7 @@ struct MainActor: View {
             switch vm.statusLogin {
             case .signIn: TabBarView()
             case .signOut: AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
-            case .unknown: ProgressView("Loading").font(.footnote)
+            case .unknown: LoagingView()
             }
         }
     }

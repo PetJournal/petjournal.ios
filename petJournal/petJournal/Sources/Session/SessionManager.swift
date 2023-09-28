@@ -29,7 +29,6 @@ class SessionManager: ObservableObject {
     }
     
     func logout() {
-        statusLogin = .unknown
         defaults.removeObject(forKey: userSession.token ?? "")
     }
     

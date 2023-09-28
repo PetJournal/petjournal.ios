@@ -9,12 +9,13 @@ import SwiftUI
 
 struct SideMenuView: View {
     
-    @State private var showMenu = false
+    @State  var showMenu = false
     @StateObject var vm = SessionManager()
-    @State private var showAlert = false
+    @State  var showAlert = false
+    @StateObject var viewModel: AccessAccountViewModel
     
-    private var edges = UIApplication.shared.windows.first?.safeAreaInsets
-    private var menus = ["Profile", "Serviços", "Notificações", "Pets"]
+     var edges = UIApplication.shared.windows.first?.safeAreaInsets
+     var menus = ["Profile", "Serviços", "Notificações", "Pets"]
     
     var body: some View {
         HStack(spacing: 0) {
@@ -60,7 +61,7 @@ struct SideMenuView: View {
                     ActionSheet(title: Text("Deseja realmente sair?"), buttons: [
                         .cancel(Text("Cancelar")) { },
                         .destructive(Text("Sair")) {
-                            vm.logout()
+                            viewModel.logout()
                         }
                     ])
                 }

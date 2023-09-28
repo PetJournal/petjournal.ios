@@ -35,6 +35,8 @@
 		C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C946F54829EF4CCE00045097 /* AccessAccountService.swift */; };
 		C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */; };
 		C94C42022A21543B00A949F4 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C42012A21543B00A949F4 /* WebView.swift */; };
+		C96853C12AC397560020AD1F /* CustomGlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96853C02AC397560020AD1F /* CustomGlassView.swift */; };
+		C96853C42AC397D00020AD1F /* LoagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96853C32AC397D00020AD1F /* LoagingView.swift */; };
 		C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */; };
 		C96BFB3C29E1D714003D3827 /* Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */; };
 		C96BFB3D29E1D714003D3827 /* Fredoka-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */; };
@@ -120,6 +122,8 @@
 		C946F54829EF4CCE00045097 /* AccessAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountService.swift; sourceTree = "<group>"; };
 		C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessAccountViewModel.swift; path = ViewModel/AccessAccountViewModel.swift; sourceTree = "<group>"; };
 		C94C42012A21543B00A949F4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		C96853C02AC397560020AD1F /* CustomGlassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlassView.swift; sourceTree = "<group>"; };
+		C96853C32AC397D00020AD1F /* LoagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoagingView.swift; sourceTree = "<group>"; };
 		C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
 		C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Bold.ttf"; sourceTree = "<group>"; };
 		C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Light.ttf"; sourceTree = "<group>"; };
@@ -405,6 +409,14 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
+		C96853C22AC397B60020AD1F /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				C96853C32AC397D00020AD1F /* LoagingView.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
 		C96BFB2B29E1D129003D3827 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,6 +545,7 @@
 		C9E5017329E76FDA0014F9C4 /* UIComponent */ = {
 			isa = PBXGroup;
 			children = (
+				C96853C22AC397B60020AD1F /* Progress */,
 				C9D95F702A37A9F4001C271F /* ViewRepresentable */,
 				C9D95F6D2A37A6CE001C271F /* Alert */,
 				C9F9D82F2A14232300DD72F1 /* Button */,
@@ -554,6 +567,7 @@
 			isa = PBXGroup;
 			children = (
 				C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */,
+				C96853C02AC397560020AD1F /* CustomGlassView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -739,6 +753,7 @@
 				C9E3E4842A203A8100A83321 /* ComponentPrivacy.swift in Sources */,
 				C9D8450F2A224AC10007A316 /* MainActor.swift in Sources */,
 				C9D8450B2A22494C0007A316 /* SessionManager.swift in Sources */,
+				C96853C12AC397560020AD1F /* CustomGlassView.swift in Sources */,
 				C93943F12A9C0DD00085E623 /* ValidationsModel.swift in Sources */,
 				C930B5CE2A3A8A280008F502 /* CodeInput.swift in Sources */,
 				C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */,
@@ -750,6 +765,7 @@
 				C9F9D8372A1424E700DD72F1 /* PJButton.swift in Sources */,
 				1F8298312A18151500595FB7 /* CreateAccountService.swift in Sources */,
 				C930B5CB2A3A89FD0008F502 /* WaitingCodeView.swift in Sources */,
+				C96853C42AC397D00020AD1F /* LoagingView.swift in Sources */,
 				C930B5DA2A3A8E820008F502 /* CompRememberAndForgotPassword.swift in Sources */,
 				C9C094892AC11915006FB438 /* AuthenticationStatus.swift in Sources */,
 				C9A324912A2FE7D5008FE6F4 /* LoginResponse.swift in Sources */,

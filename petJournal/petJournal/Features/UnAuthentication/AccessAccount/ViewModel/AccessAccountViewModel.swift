@@ -35,10 +35,13 @@ final class AccessAccountViewModel: ObservableObject {
     
     func logout() {
         if SessionManager.shared.isAuthenticated {
-            SessionManager.shared.statusLogin = .signIn
+            DispatchQueue.main.async {
+                SessionManager.shared.logout()
+                SessionManager.shared.statusLogin = .signOut
+            }
         }
     }
-}
+}//johndoe@email.com
 
 extension AccessAccountViewModel {
     func completeLogin() -> Bool {
