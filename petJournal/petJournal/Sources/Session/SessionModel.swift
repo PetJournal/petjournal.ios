@@ -8,6 +8,6 @@
 import Foundation
 
 struct SessionModel {
-    var user_token: String?
+    var userToken: String?
     var model: UserModel?
 }

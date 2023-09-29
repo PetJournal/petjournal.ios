@@ -14,7 +14,6 @@ class SessionManager: ObservableObject {
     @Published var statusLogin: AuthenticationStatus = .signOut
     
     private let defaults = UserDefaults.standard
-    private let tokenKey = "tokenKey"
     
     var isAuthenticated: Bool {
         return getToken() != nil

@@ -13,11 +13,7 @@ protocol AccessAccountServiceProtocol {
 
 final class AccessAccountService: AccessAccountServiceProtocol {
     func authenticationEmail(email: String, password: String, completion: @escaping(Result<String, AuthenticationError>) -> Void) {
-        let urlSession = "https://petjournal-api.onrender.com/api/login"
-        guard let url = URL(string: urlSession) else {
-            completion(.failure(.custom(errorMessage: "URL is not correct")))
-            return
-        }
+        let url = URLManager.shared.makeURL(path: URLManager.shared.loginURL)!
         
         let body = LoginRequestBodyAuth(email: email, password: password)
         

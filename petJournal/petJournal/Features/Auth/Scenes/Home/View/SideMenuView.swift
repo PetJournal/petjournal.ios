@@ -9,9 +9,8 @@ import SwiftUI
 
 struct SideMenuView: View {
     
-    @State  var showMenu = false
-    @StateObject var vm = SessionManager()
-    @State  var showAlert = false
+    @State private var showMenu = false
+    @State private var showAlert = false
     @StateObject var viewModel: AccessAccountViewModel
     
      var edges = UIApplication.shared.windows.first?.safeAreaInsets

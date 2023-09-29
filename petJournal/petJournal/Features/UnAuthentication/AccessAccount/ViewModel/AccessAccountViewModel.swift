@@ -41,7 +41,7 @@ final class AccessAccountViewModel: ObservableObject {
             }
         }
     }
-}//johndoe@email.com
+}
 
 extension AccessAccountViewModel {
     func completeLogin() -> Bool {

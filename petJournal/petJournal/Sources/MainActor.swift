@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct MainActor: View {
-    @EnvironmentObject var vm: SessionManager
+    @EnvironmentObject var sessionManager: SessionManager
     
     var body: some View {
         NavigationView {
-            switch vm.statusLogin {
+            switch sessionManager.statusLogin {
             case .signIn: TabBarView()
             case .signOut: AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
             case .unknown: LoagingView()

@@ -17,6 +17,7 @@
 		1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608529C8E8740026F680 /* LaunchScreen.storyboard */; };
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
 		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
+		C910E2BB2AC78F0800DD3C23 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910E2BA2AC78F0800DD3C23 /* URLManager.swift */; };
 		C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C12A3A87E20008F502 /* InputEmailView.swift */; };
 		C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */; };
 		C930B5C82A3A88CF0008F502 /* ReceiveInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */; };
@@ -104,6 +105,7 @@
 		1FF4608829C8E8740026F680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
 		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
+		C910E2BA2AC78F0800DD3C23 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
 		C930B5C12A3A87E20008F502 /* InputEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEmailView.swift; sourceTree = "<group>"; };
 		C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
 		C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveInputViewModel.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		1FF4608E29C8E9CF0026F680 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C910E2B82AC78E1E00DD3C23 /* Model */,
 				C94A23F829CE231C00C71D01 /* Auth */,
 				C94A23F629CE22CA00C71D01 /* UnAuthentication */,
 			);
@@ -258,6 +261,22 @@
 				1FF4608829C8E8740026F680 /* Info.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		C910E2B82AC78E1E00DD3C23 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9A324902A2FE7D5008FE6F4 /* LoginResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C910E2B92AC78EE200DD3C23 /* URLManager */ = {
+			isa = PBXGroup;
+			children = (
+				C910E2BA2AC78F0800DD3C23 /* URLManager.swift */,
+			);
+			path = URLManager;
 			sourceTree = "<group>";
 		};
 		C91D4A5029FABC360005B73B /* Protocols */ = {
@@ -460,7 +479,6 @@
 			isa = PBXGroup;
 			children = (
 				C9B1C8A729F9FDC0002C7B00 /* AuthenticationError.swift */,
-				C9A324902A2FE7D5008FE6F4 /* LoginResponse.swift */,
 				C9A324922A2FE7F9008FE6F4 /* RegisterError.swift */,
 				C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */,
 			);
@@ -488,6 +506,7 @@
 		C9B9FD9329EDE25B00C7C52B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C910E2B92AC78EE200DD3C23 /* URLManager */,
 				C93943EF2A9C0DB30085E623 /* Validations */,
 				C9D4E1E62A2932740030164A /* UserDefaultsUtils.swift */,
 				C93943F22A9C0E040085E623 /* UIKitCustom.swift */,
@@ -742,6 +761,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */,
+				C910E2BB2AC78F0800DD3C23 /* URLManager.swift in Sources */,
 				C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */,
 				C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */,
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
