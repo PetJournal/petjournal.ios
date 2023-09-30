@@ -23,13 +23,13 @@ final class AccessAccountService: AccessAccountServiceProtocol {
         do {
             request.httpBody = try JSONEncoder().encode(body)
         } catch {
-            completion(.failure(.custom(errorMessage: "Failed to encode request body")))
+            completion(.failure(.failedToEncode))
             return
         }
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
-                completion(.failure(.custom(errorMessage: "No data")))
+                completion(.failure(.noData))
                 return
             }
             
