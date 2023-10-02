@@ -33,7 +33,7 @@ struct HomePageView: View {
             }
             .background(Color.theme.petWhite.ignoresSafeArea(.all, edges: .all))
             
-            SideMenuView()
+            SideMenuView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
                 .offset(x: x)
                 .background(Color.theme.petBlack.opacity(x == 0 ? 0.5 : 0).ignoresSafeArea(.all, edges: .vertical))
                 .onTapGesture {

@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct MainActor: View {
-    @EnvironmentObject var vm: SessionManager
+    @EnvironmentObject var sessionManager: SessionManager
     
     var body: some View {
         NavigationView {
-            if vm.userSession.hasSession {
-                TabBarView()
-            } else {
-                AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
+            switch sessionManager.statusLogin {
+            case .signIn: TabBarView()
+            case .signOut: AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
+            case .unknown: LoagingView()
             }
         }
     }

@@ -13,7 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        let navigationView = MainActor().environmentObject(SessionManager.shared)
+        let navigationView = MainActor()
+            .environmentObject(SessionManager.shared)
+            .onAppear { SessionManager.shared.hasSession() }
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

@@ -8,7 +8,6 @@
 import SwiftUI
 
 final class AccessAccountViewModel: ObservableObject {
-    @Published var error: ErrorState = .none
     @Published var user: UserModel = UserModel.newUser
     @Published var userSession: UserSession = .init()
     @Published var cancel: Bool = false
@@ -19,24 +18,26 @@ final class AccessAccountViewModel: ObservableObject {
     }
     
     func authUser() {
-        service.authenticationEmail(userModel: userSession) { [weak self] result in
-            guard let self = self else { return }
+        SessionManager.shared.statusLogin = .unknown
+        service.authenticationEmail(email: user.email, password: user.password) { result in
             switch result {
-            case .success:
-                self.error = .none
-                if self.userSession.email == self.user.email  {
-                    let sessionModel = SessionModel(userName: self.user.email)
-                    SessionManager.shared.updateValidation(with: sessionModel)
+            case .success(let token):
+                SessionManager.shared.login(withToken: token)
+                DispatchQueue.main.async {
+                    SessionManager.shared.statusLogin = .signIn
                 }
             case .failure(let error):
-                switch error {
-                case .errorAuthentication:
-                    self.error = .domainErr
-                    self.cancel.toggle()
-                case .errorSignIn:
-                    self.error = .noRegister
-                    self.cancel.toggle()
-                }
+                SessionManager.shared.statusLogin = .signOut
+                print("\(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func logout() {
+        if SessionManager.shared.isAuthenticated {
+            DispatchQueue.main.async {
+                SessionManager.shared.logout()
+                SessionManager.shared.statusLogin = .signOut
             }
         }
     }
@@ -79,4 +80,3 @@ extension AccessAccountViewModel {
         return String()
     }
 }
-

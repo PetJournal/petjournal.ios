@@ -8,19 +8,41 @@
 import Foundation
 
 protocol AccessAccountServiceProtocol {
-    func authenticationEmail(userModel: UserSession, completion: @escaping (Result<UserSession, ErrorApp>) -> Void)
+    func authenticationEmail(email: String, password: String, completion: @escaping(Result<String, AuthenticationError>) -> Void)
 }
 
 final class AccessAccountService: AccessAccountServiceProtocol {
-    func authenticationEmail(userModel: UserSession, completion: @escaping (Result<UserSession, ErrorApp>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            guard let email = userModel.email else { return }
-            guard let password = userModel.password else { return }
-            if !email.isEmpty && !password.isEmpty {
-                completion(.success(userModel))
-            } else {
-                completion(.failure(.errorAuthentication))
-            }
+    func authenticationEmail(email: String, password: String, completion: @escaping(Result<String, AuthenticationError>) -> Void) {
+        let url = URLManager.shared.makeURL(path: URLManager.shared.loginURL)!
+        
+        let body = LoginRequestBodyAuth(email: email, password: password)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.httpBody = try JSONEncoder().encode(body)
+        } catch {
+            completion(.failure(.failedToEncode))
+            return
         }
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
+                guard let token = loginResponse.accessToken else {
+                    completion(.failure(.invalidCredentials))
+                    return
+                }
+                completion(.success(token))
+            } catch {
+                completion(.failure(.invalidCredentials))
+            }
+        }.resume()
     }
 }

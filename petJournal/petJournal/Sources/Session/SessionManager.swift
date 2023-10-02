@@ -11,24 +11,29 @@ class SessionManager: ObservableObject {
     static let shared = SessionManager()
     
     @Published var userSession: UserSession = .init()
-        
-    func updateValidation(with sessionModel: SessionModel) {
-        withAnimation {
-            if let model: UserModel = sessionModel.model {
-                userSession.firstName = model.name
-                userSession.lastName = model.lastName
-                userSession.email = model.email
-                userSession.phone = model.phoneNumber
-                userSession.password = model.password
-            }
-            userSession.token = UUID().uuidString
-            userSession.hasSession = true
-        }
+    @Published var statusLogin: AuthenticationStatus = .signOut
+    
+    private let defaults = UserDefaults.standard
+    
+    var isAuthenticated: Bool {
+        return getToken() != nil
     }
     
-    func endSession() {
-        UserDefaults.standard.removeObject(forKey: KeysGeneral.token.rawValue)
-        UserDefaults.standard.removeObject(forKey: KeysUser.firstName.rawValue)
-        userSession.hasSession = false
+    func login(withToken token: String) {
+        defaults.set(token, forKey: userSession.token ?? "")
+    }
+    
+    func getToken() -> String? {
+        return defaults.string(forKey: userSession.token ?? "")
+    }
+    
+    func logout() {
+        defaults.removeObject(forKey: userSession.token ?? "")
+    }
+    
+    func hasSession() {
+        if isAuthenticated {
+            statusLogin = .signIn
+        }
     }
 }

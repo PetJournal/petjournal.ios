@@ -132,10 +132,15 @@ When opening the file, select the iPhone version you want. Then select the butto
 > - ps1.: wait for the simulator to open
 > - ps2.: Make sure Xcode Version 14.2 is installed.
 
+```
+Credentials for login
+email: johndoe@email.com
+password: Teste@123
+```
+
 ##  Contribution 
 
 - Marcylene Barreto /  [@Marbarret](https://github.com/Marbarret)
-- Nikolas Coelho [@nikolasgianoglou](https://github.com/nikolasgianoglou)
 
 Left a team in: 24/05/2023
 - Daiane Gonçalves / [@daigoncalves14](https://github.com/daigoncalves14)
