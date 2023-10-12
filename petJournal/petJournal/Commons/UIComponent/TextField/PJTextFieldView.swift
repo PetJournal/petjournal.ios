@@ -40,6 +40,7 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke((isFocused || text.count > 0) ? errorValidation ? Color.theme.petGray800 : Color.theme.petPrimary : Color.theme.petGray800,
                             lineWidth: 1)
+                    .frame(maxWidth: .infinity, maxHeight: 58)
                 
                 HStack {
                     if textContentType == .password {
@@ -103,8 +104,6 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                 .font(.caption)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .frame(maxWidth: .infinity, maxHeight: 70)
-        .padding(.vertical, 12)
     }
 }
 
