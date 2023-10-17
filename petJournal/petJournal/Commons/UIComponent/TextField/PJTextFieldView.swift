@@ -23,7 +23,9 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
     var title: String
     var placeholder: String
     var textContentType: UITextContentType
+    var validateFieldCallBack: (String) -> Bool
     
+    @State var hasToShowErrorMessage: Bool = false
     @State private var isVisiblePassword: Bool = false
     @State private var isEditing: Bool = false
     @Binding var text: String
@@ -48,8 +50,11 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                             SecureField(placeholder, text: $text)
                                 .focused($isFocused)
                                 .onChange(of: isFocused, perform: { changed in
-                                    isFocused = changed
-                                })
+                                        if !changed {
+                                            hasToShowErrorMessage = !validateFieldCallBack(text)
+                                        }
+                                        isFocused = changed
+                                    })
                                 .font(.system(size: 17))
                                 .frame(height: 58)
                                 .disableAutocorrection(true)
@@ -61,8 +66,11 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                             TextField(placeholder, text: $text)
                                 .focused($isFocused)
                                 .onChange(of: isFocused, perform: { changed in
-                                    isFocused = changed
-                                })
+                                        if !changed {
+                                            hasToShowErrorMessage = !validateFieldCallBack(text)
+                                        }
+                                        isFocused = changed
+                                    })
                                 .font(.system(size: 17))
                                 .frame(height: 58)
                                 .disableAutocorrection(true)
@@ -85,8 +93,11 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                         TextField(placeholder, text: $text)
                             .focused($isFocused)
                             .onChange(of: isFocused, perform: { changed in
-                                isFocused = changed
-                            })
+                                    if !changed {
+                                        hasToShowErrorMessage = !validateFieldCallBack(text)
+                                    }
+                                    isFocused = changed
+                                })
                             .font(.system(size: 17))
                             .frame(height: 58)
                             .disableAutocorrection(true)
@@ -97,12 +108,13 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                 }
                 .padding(.horizontal, 15)
             }
-            
-            Text(error)
-                .foregroundColor(Color.theme.petError)
-                .fixedSize(horizontal: false, vertical: true)
-                .font(.caption)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            if hasToShowErrorMessage {
+                Text(error)
+                    .foregroundColor(Color.theme.petError)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .font(.caption)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
     }
 }

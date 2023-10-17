@@ -62,6 +62,9 @@ extension EditPasswordView {
                             title: "Senha",
                             placeholder: "Digite sua senha",
                             textContentType: .password,
+                            validateFieldCallBack: { text in
+                return self.viewModel.isValidPassword
+            },
                             text: $viewModel.user.password)
             .padding(.bottom, 20)
             
@@ -70,6 +73,9 @@ extension EditPasswordView {
                             title: "Confirme sua senha",
                             placeholder: "Digite sua senha",
                             textContentType: .password,
+                            validateFieldCallBack: { text in
+                return self.viewModel.isValidPassword
+            },
                             text: $viewModel.user.passwordMatch)
         }
     }
