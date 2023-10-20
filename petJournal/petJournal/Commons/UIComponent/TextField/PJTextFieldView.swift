@@ -23,6 +23,8 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
     var title: String
     var placeholder: String
     var textContentType: UITextContentType
+    var titleFont: Font = .fedokaMedium(size: .small)
+    var placeHolderFont: Font = .fedokaMedium(size: .small)
     
     @State private var isVisiblePassword: Bool = false
     @State private var isEditing: Bool = false
@@ -33,13 +35,12 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
         VStack(alignment: .leading, spacing: 5) {
             Text(title)
                 .foregroundColor(Color.theme.petPrimary)
-                .font(.system(size: 14))
+                .font(titleFont)
                 .padding(.bottom, -3)
             
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke((isFocused || text.count > 0) ? errorValidation ? Color.theme.petGray800 : Color.theme.petPrimary : Color.theme.petGray800,
-                            lineWidth: 1)
+                    .stroke((isFocused || text.count > 0) ? errorValidation ? Color.theme.petGray800 : Color.theme.petPrimary : Color.theme.petGray800,lineWidth: 1)
                 
                 HStack {
                     if textContentType == .password {
@@ -49,7 +50,7 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                                 .onChange(of: isFocused, perform: { changed in
                                     isFocused = changed
                                 })
-                                .font(.system(size: 17))
+                                .font(placeHolderFont)
                                 .frame(height: 58)
                                 .disableAutocorrection(true)
                                 .textContentType(.password)
@@ -62,7 +63,7 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                                 .onChange(of: isFocused, perform: { changed in
                                     isFocused = changed
                                 })
-                                .font(.system(size: 17))
+                                .font(placeHolderFont)
                                 .frame(height: 58)
                                 .disableAutocorrection(true)
                                 .textContentType(.password)
@@ -75,6 +76,7 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                         } label: {
                             Image(isVisiblePassword ? "ic_openEye" : "ic_closeEye")
                                 .resizable()
+                                .scaledToFit()
                                 .foregroundColor(Color.theme.petGray800)
                                 .frame(width: 20, height: 20)
                         }
@@ -86,7 +88,7 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                             .onChange(of: isFocused, perform: { changed in
                                 isFocused = changed
                             })
-                            .font(.system(size: 17))
+                            .font(placeHolderFont)
                             .frame(height: 58)
                             .disableAutocorrection(true)
                             .textContentType(textContentType)

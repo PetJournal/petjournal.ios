@@ -16,6 +16,7 @@ struct PJButton: View {
     @State var buttonType: ButtonType = .primaryType
     private let title: String
     private let action: () -> Void
+    private let titleFont: Font = .fedokaSemiBold(size: .small)
     
     init(title: String,
          buttonType: ButtonType,
@@ -30,6 +31,7 @@ struct PJButton: View {
             Spacer()
             Button(action:self.action) {
                 Text(self.title)
+                    .font(titleFont)
                     .frame(maxWidth:.infinity)
             }
             .buttonStyle(CustomButtonStyle(backgroundColor: buttonType == .primaryType ? Color.theme.petPrimary : Color.theme.petWhite,
