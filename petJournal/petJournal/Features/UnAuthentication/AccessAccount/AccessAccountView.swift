@@ -37,13 +37,18 @@ struct AccessAccountView: View {
                                 title: "E-mail",
                                 placeholder: "Digite seu e-mail",
                                 textContentType: .emailAddress,
+                                validateFieldCallBack: { text in
+                    return self.viewModel.isValidEmail
+                },
                                 text: $viewModel.user.email)
                 
                 PJTextFieldView(error: viewModel.passwordErrorMessage,
                                 errorValidation: viewModel.isValidPassword,
                                 title: "Senha",
                                 placeholder: "Digite sua senha",
-                                textContentType: .password,
+                                textContentType: .password, validateFieldCallBack: { text in
+                    return self.viewModel.isValidPassword
+                },
                                 text: $viewModel.user.password)
             }
             
