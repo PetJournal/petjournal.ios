@@ -27,7 +27,9 @@ final class AccessAccountViewModel: ObservableObject {
                     SessionManager.shared.statusLogin = .signIn
                 }
             case .failure(let error):
-                SessionManager.shared.statusLogin = .signOut
+                DispatchQueue.main.async {
+                    SessionManager.shared.statusLogin = .signOut
+                }
                 print("\(error.localizedDescription)")
             }
         }

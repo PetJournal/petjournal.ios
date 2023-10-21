@@ -33,12 +33,13 @@ struct AccessAccountView: View {
                 }
                 .padding(.bottom, 30)
                 
-                VStack(spacing: 5) {
+                VStack(spacing: 8) {
                     PJTextFieldView(error: viewModel.emailErrorMessage,
                                     errorValidation: viewModel.isValidEmail,
                                     title: "Login",
                                     placeholder: "Digite seu e-mail",
-                                    textContentType: .emailAddress,
+                                    textContentType: .emailAddress, 
+                                    validateFieldCallBack: { text in return self.viewModel.isValidEmail},
                                     text: $viewModel.user.email)
                     
                     PJTextFieldView(error: viewModel.passwordErrorMessage,
@@ -46,6 +47,7 @@ struct AccessAccountView: View {
                                     title: "Senha",
                                     placeholder: "Digite sua senha",
                                     textContentType: .password,
+                                    validateFieldCallBack: { text in return self.viewModel.isValidPassword},
                                     text: $viewModel.user.password)
                     rememberAndForgot
                 }

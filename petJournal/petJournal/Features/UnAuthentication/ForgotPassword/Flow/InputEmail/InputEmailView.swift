@@ -64,6 +64,9 @@ extension InputEmailView {
                             title: "E-mail ou Telefone",
                             placeholder: "Digite seu e-mail ou telefone",
                             textContentType: .emailAddress,
+                            validateFieldCallBack: { text in
+                return self.viewModel.isValidPhone
+            },
                             text: $viewModel.emailOrPhone)
             
             if !viewModel.emailOrPhone.isEmpty {
