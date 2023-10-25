@@ -13,14 +13,16 @@ struct CreateAccountView: View {
     @State private var isLoginView: Bool = false
     
     var body: some View {
-        ZStack {
-            VStack {
+        GeometryReader { geometry in
+            VStack(spacing: 0) {
                 headerView
                 textFieldsRegister
                 
                 ComponentPrivacy { self.showWebview = true }
+                    .padding(.vertical, 25)
                 
-                registerView
+                buttonRegister
+                    .frame(width: geometry.size.width * 0.45)
                 Spacer()
                 loginNavigation
             }
@@ -38,18 +40,18 @@ struct CreateAccountView: View {
 // MARK: - Extension CreateAccountView
 extension CreateAccountView {
     private var headerView: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 15) {
             Image("pet_logoPrimary")
                 .resizable()
-                .frame(width: 80, height: 70)
+                .scaledToFit()
+                .frame(width: 76, height: 76)
             
             Text("Inscreva-se")
-                .font(.system(size: 20))
+                .font(.fedokaMedium(size: .biggest))
         }
     }
     
     private var textFieldsRegister: some View {
-        
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 5) {
                 PJTextFieldView(error: viewModel.firstNameErrorMessage,
@@ -101,7 +103,6 @@ extension CreateAccountView {
                     return self.viewModel.isValidPassword
                 },
                                 text: $viewModel.user.password)
-                .padding(.bottom, 20)
                 
                 PJTextFieldView(error: viewModel.messageErrorPasswordMatch,
                                 errorValidation: viewModel.isValidPasswordMatch,
@@ -117,15 +118,13 @@ extension CreateAccountView {
         }
     }
     
-    private var registerView: some View {
+    private var buttonRegister: some View {
         VStack {
-            PJButton(title: "Cadastrar", buttonType: .primaryType) {
+            PJButton(title: "Continuar", buttonType: .primaryType) {
                 viewModel.registerUser()
             }
             .disabled(!viewModel.completeRegister)
-            .opacity(viewModel.completeRegister ? 1 : 0.4)
         }
-        .frame(width: 300)
         .alert(isPresented: $viewModel.cancel) {
             Alert(title: Text("Registro"),
                   message: Text("\(viewModel.emailJaRegistrado)"),
