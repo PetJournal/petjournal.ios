@@ -56,7 +56,7 @@ extension ForgotPasswordViewModel {
     var emailErrorMessage: String {
         if emailOrPhone.count > 3 {
             if !isCorrectCredentials{
-                return "Insira os dados corretamente"
+                return "forgotpassword-invalid-email".localized
             }
         }
         return ""

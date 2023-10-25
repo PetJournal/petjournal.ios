@@ -23,11 +23,11 @@ struct WaitingCodeView: View {
                 Spacer()
                 
                 VStack(spacing: 10) {
-                    Text("Acabamos de enviar um código para seu e-mail")
+                    Text("waitingcode-send-code")
                         .font(.title2)
                         .multilineTextAlignment(.center)
                     
-                    Text("Insira no campo abaixo o código de verificação de 6 dígitos enviado para o seu email.")
+                    Text("waitingcode-insert")
                         .font(.footnote)
                         .fontWeight(.light)
                         .multilineTextAlignment(.center)
@@ -42,7 +42,7 @@ struct WaitingCodeView: View {
                     Button {
                         showAlert.toggle()
                     } label: {
-                        Text("Reenviar Código?")
+                        Text("waitingcode-resend-code")
                             .font(.footnote)
                             .fontWeight(.light)
                     }
@@ -50,7 +50,7 @@ struct WaitingCodeView: View {
                 
                 Spacer()
                 
-                PJButton(title: "Enviar", buttonType: .primaryType) {
+                PJButton(title: "waitingcode-send".localized, buttonType: .primaryType) {
                     if viewModel.codeCheck {
                         isEditPassword = true
                     }
@@ -59,7 +59,7 @@ struct WaitingCodeView: View {
                 .opacity(viewModel.checkState() ? 0.3 : 1)
                 editPassword
                 
-                Text("Dica: Caso não encontre o e-mail na sua caixa de entrada, verifique a pasta de Spam!")
+                Text("waitingcode-tip")
                     .font(.footnote)
                     .fontWeight(.light)
                     .multilineTextAlignment(.center)
@@ -73,11 +73,11 @@ struct WaitingCodeView: View {
                 nextField(value: newValue)
             }
             .alert(isPresented: $viewModel.cancel) {
-                Alert(title: Text("Code Validation"),
+                Alert(title: Text("waitingcode-validation"),
                       message: Text("\(viewModel.checkCodeValidation)"),
                       primaryButton: .cancel(),
                       secondaryButton: .default(
-                        Text("OK"),
+                        Text("waitingcode-confirm"),
                         action: {
                             if viewModel.codeCheck {
                                 self.isEditPassword = false
@@ -88,10 +88,10 @@ struct WaitingCodeView: View {
             }
         }
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Code Reset"),
-                  message: Text("Código reenviado. Verifique seu email e tente novamente."),
+            Alert(title: Text("waitingcode-reset"),
+                  message: Text("waitingcode-resend"),
                   primaryButton: .cancel(),
-                  secondaryButton: .default( Text("OK") )
+                  secondaryButton: .default( Text("waitingcode-confirm") )
             )
         }
     }

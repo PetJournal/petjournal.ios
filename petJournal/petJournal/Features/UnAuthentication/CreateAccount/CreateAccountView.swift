@@ -43,7 +43,7 @@ extension CreateAccountView {
                 .resizable()
                 .frame(width: 80, height: 70)
             
-            Text("Inscreva-se")
+            Text("register-title")
                 .font(.system(size: 20))
         }
     }
@@ -54,8 +54,8 @@ extension CreateAccountView {
             VStack(spacing: 5) {
                 PJTextFieldView(error: viewModel.firstNameErrorMessage,
                                 errorValidation: viewModel.isValidName,
-                                title: "Nome",
-                                placeholder: "Digite seu Nome",
+                                title: "textfield-name".localized,
+                                placeholder: "textfield-name-placeholder".localized,
                                 textContentType: .name,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidName
@@ -64,8 +64,8 @@ extension CreateAccountView {
                 
                 PJTextFieldView(error: viewModel.lastNameErrorMessage,
                                 errorValidation: viewModel.isValidLastname,
-                                title: "Sobrenome",
-                                placeholder: "Digite seu Sobrenome",
+                                title: "textfield-last-name".localized,
+                                placeholder: "textfield-last-name-placeholder".localized,
                                 textContentType: .givenName,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidLastname
@@ -74,8 +74,8 @@ extension CreateAccountView {
                 
                 PJTextFieldView(error: viewModel.emailErrorMessage,
                                 errorValidation: viewModel.isValidEmail,
-                                title: "E-mail",
-                                placeholder: "Digite seu E-mail",
+                                title: "textfield-email".localized,
+                                placeholder: "textfield-email-placeholder".localized,
                                 textContentType: .emailAddress,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidEmail
@@ -84,8 +84,8 @@ extension CreateAccountView {
                 
                 PJTextFieldView(error: viewModel.phoneErrorMessage,
                                 errorValidation: viewModel.isValidPhone,
-                                title: "Telefone",
-                                placeholder: "Digite seu telefone",
+                                title: "textfield-phone".localized,
+                                placeholder: "textfield-phone-placeholder".localized,
                                 textContentType: .telephoneNumber,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPhone
@@ -94,8 +94,8 @@ extension CreateAccountView {
                 
                 PJTextFieldView(error: viewModel.messageErrorPassword,
                                 errorValidation: viewModel.isValidPassword,
-                                title: "Senha",
-                                placeholder: "Digite sua senha",
+                                title: "textfield-password".localized,
+                                placeholder: "textfield-password-placeholder".localized,
                                 textContentType: .password,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPassword
@@ -105,8 +105,8 @@ extension CreateAccountView {
                 
                 PJTextFieldView(error: viewModel.messageErrorPasswordMatch,
                                 errorValidation: viewModel.isValidPasswordMatch,
-                                title: "Confirme sua senha",
-                                placeholder: "Digite sua senha",
+                                title: "textfield-password-confirm".localized,
+                                placeholder: "textfield-password--confirm-placeholder".localized,
                                 textContentType: .password,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPasswordMatch
@@ -119,7 +119,7 @@ extension CreateAccountView {
     
     private var registerView: some View {
         VStack {
-            PJButton(title: "Cadastrar", buttonType: .primaryType) {
+            PJButton(title: "register-button-message".localized, buttonType: .primaryType) {
                 viewModel.registerUser()
             }
             .disabled(!viewModel.completeRegister)
@@ -127,7 +127,7 @@ extension CreateAccountView {
         }
         .frame(width: 300)
         .alert(isPresented: $viewModel.cancel) {
-            Alert(title: Text("Registro"),
+            Alert(title: Text("register-alert-text"),
                   message: Text("\(viewModel.emailJaRegistrado)"),
                   primaryButton: .cancel(),
                   secondaryButton: .destructive(
@@ -146,12 +146,12 @@ extension CreateAccountView {
     
     private var buttonsPrivacyPolicy: some View {
         HStack(spacing: 10) {
-            PJButton(title: "Concordo", buttonType: .primaryType) {
+            PJButton(title: "privacy-agree".localized, buttonType: .primaryType) {
                 viewModel.isCheckBox = true
                 showWebview = false
             }
             
-            PJButton(title: "Discordo", buttonType: .secundaryType) {
+            PJButton(title: "privacy-disagree".localized, buttonType: .secundaryType) {
                 viewModel.isCheckBox = false
                 showWebview = false
             }

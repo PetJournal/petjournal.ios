@@ -1,12 +1,11 @@
-
 // MARK: Validations Invalid
 
 "validation-invalid-email" = "Invalid email";
-"validation-invalid-password" = "The password must be at least 8 characters long. To make it stronger, use uppercase and lowercase letters, numbers, and symbols like ! @ # $ % & * =";
+"validation-invalid-password" = "Password must be at least 8 characters long. To make it stronger, use uppercase and lowercase letters, numbers, and symbols like ! @ # $ % & * =";
 "validation-name" = "Invalid name.";
 "validation-invalid-last-name" = "Invalid last name.";
 "validation-invalid-phone" = "Invalid phone.";
-"validation-passwords-math" = "Passwords must be identical";
+"validation-passwords-math" = "Passwords must match";
 "%@ validation-error" = "%@ is required";
 
 // MARK: Validations Description
@@ -32,6 +31,7 @@
 "forgotpassword-message" = "Remember";
 
 // MARK: AccountView
+
 "account-title" = "Access your account";
 "account-login" = "Login";
 "account-email-placeholder" = "Enter your email";
@@ -39,3 +39,31 @@
 "account-password-placeholder" = "Enter your password";
 "account-continue-button-title" = "Continue";
 "account-forgotpassword" = "I forgot my password";
+
+// MARK: Register
+
+"register-invalid-email" = "Registration not completed, email already registered.";
+"register-success" = "Registration completed, please log in to access your account.";
+"register-button-message" = "Register";
+"register-alert-text" = "Registration";
+
+// MARK: PJTextFieldView
+
+"textfield-name" = "Name";
+"textfield-name-placeholder" = "Enter your Name";
+"textfield-last-name" = "Last Name";
+"textfield-last-name-placeholder" = "Enter your Last Name";
+"textfield-email" = "Email";
+"textfield-email-placeholder" = "Enter your Email";
+"textfield-phone" = "Phone";
+"textfield-phone-placeholder" = "Enter your phone";
+"textfield-password" = "Password";
+"textfield-password-placeholder" = "Enter your password";
+"textfield-password-confirm" = "Confirm your password";
+"textfield-password--confirm-placeholder" = "Enter your password";
+
+// MARK: Privacidade
+
+"privacy-checkbox-text" = "I agree to the privacy policy";
+"privacy-agree" = "Agree";
+"privacy-disagree" = "Disagree";

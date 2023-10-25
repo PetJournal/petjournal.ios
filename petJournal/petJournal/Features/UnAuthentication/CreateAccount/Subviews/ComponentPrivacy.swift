@@ -21,7 +21,7 @@ struct ComponentPrivacy: View {
                     .frame(width: 20, height: 20)
             }
             Button(action: self.action) {
-                Text("Eu concordo com a política de privacidade")
+                Text("privacy-checkbox-text")
                     .foregroundColor(Color.theme.petLink)
                     .font(.system(size: 12))
             }

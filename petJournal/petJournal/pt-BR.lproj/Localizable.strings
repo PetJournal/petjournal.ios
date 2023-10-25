@@ -32,6 +32,7 @@
 "forgotpassword-message" =  "Lembrar";
 
 // MARK: AccountView
+
 "account-title" = "Acessar conta";
 "account-login" = "Login";
 "account-email-placeholder" = "Digite seu e-mail";
@@ -39,3 +40,58 @@
 "account-password-placeholder" = "Digite sua senha";
 "account-continue-button-title" = "Continuar";
 "account-forgotpassword" = "Esqueci minha senha";
+
+// MARK: Register
+
+"register-invalid-email" = "Registro não realizado, email já cadastrado.";
+"register-success" = "Registro realizado, faça login para acessar.";
+"register-button-message" = "Cadastrar";
+"register-alert-text" = "Registro";
+"register-title" = "Inscreva-se";
+
+// MARK: PJTextFieldView
+
+"textfield-name" = "Nome";
+"textfield-name-placeholder" = "Digite seu Nome";
+"textfield-last-name" = "Sobrenome";
+"textfield-last-name-placeholder" = "Digite seu Sobrenome";
+"textfield-email" = "E-mail";
+"textfield-email-placeholder" = "Digite seu E-mail";
+"textfield-phone" = "Telefone";
+"textfield-phone-placeholder" = "Digite seu telefone";
+"textfield-password" = "Senha";
+"textfield-password-placeholder" = "Digite sua senha";
+"textfield-password-confirm" = "Confirme sua senha";
+"textfield-password--confirm-placeholder" = "Digite sua senha";
+
+// MARK: Privacidade
+
+"privacy-checkbox-text" = "Eu concordo com a política de privacidade";
+"privacy-agree" = "Concordo";
+"privacy-disagree" = "Discordo";
+
+// MARK: ForgotPassword
+
+"forgotpassword-invalid-email" = "Insira os dados corretamente";
+"forgotpassword-domain-error" = "Domínio errado";
+"forgotpassword-domain-error-text" = "Seu domínio é diferente de petjournal.com";
+"forgotpassword-login-error" = "Erro ao fazer login. Verifique se o e-mail está correto e tente novamente.";
+"forgotpassword-title" = "Esqueceu a senha?";
+"forgotpassword-subtitle" = "Redefina a senha em duas etapas";
+"forgotpassword-email-field" = "E-mail ou Telefone";
+"forgotpassword-email-field-placeholder" = "Digite seu e-mail ou telefone";
+"forgotpassword-enter" = "Entrar";
+"forgotpassword-cancel" = "Cancelar";
+
+// MARK: WaitingCode
+
+"waitingcode-error-message" = "O código de verificação que você inseriu não é válido. Verifique o código e tente novamente";
+"waitingcode-send-code" = "Acabamos de enviar um código para seu e-mail";
+"waitingcode-insert" = "Insira no campo abaixo o código de verificação de 6 dígitos enviado para o seu email.";
+"waitingcode-resend-code" = "Reenviar Código?";
+"waitingcode-send" = "Enviar";
+"waitingcode-tip" = "Dica: Caso não encontre o e-mail na sua caixa de entrada, verifique a pasta de Spam!";
+"waitingcode-validation" = "Code Validation";
+"waitingcode-confirm" = "OK";
+"waitingcode-reset" = "Reenviar código";
+"waitingcode-resend" = "Código reenviado. Verifique seu email e tente novamente.";

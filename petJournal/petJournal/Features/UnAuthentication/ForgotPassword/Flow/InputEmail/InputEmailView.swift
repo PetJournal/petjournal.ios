@@ -25,15 +25,15 @@ struct InputEmailView: View {
             
             Spacer()
         }
-        .alert("Error Domain", isPresented: $viewModel.cancel) {
+        .alert("forgotpassword-domain-error", isPresented: $viewModel.cancel) {
         } message: {
             switch viewModel.error {
             case .domainErr:
-                Text("Your domain is different from petjournal.com.")
+                Text("forgotpassword-domain-error-text")
             case .none:
                 Text("")
             case .invalidMail:
-                Text("Error logging in. Please check the email is correct and try again.")
+                Text("forgotpassword-login-error")
             }
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
@@ -47,11 +47,11 @@ extension InputEmailView {
                 .resizable()
                 .frame(width: 138, height: 118)
                 .padding([.bottom, .top], 25)
-            Text("Esqueceu a senha?")
+            Text("forgotpassword-title")
                 .font(.title2)
                 .bold()
             
-            Text("Redefina a senha em duas etapas")
+            Text("forgotpassword-subtitle")
                 .font(.callout)
                 .fontWeight(.light)
         }
@@ -61,8 +61,8 @@ extension InputEmailView {
         ZStack(alignment: .trailing) {
             PJTextFieldView(error: viewModel.emailErrorMessage,
                             errorValidation: viewModel.isValidEmail,
-                            title: "E-mail ou Telefone",
-                            placeholder: "Digite seu e-mail ou telefone",
+                            title: "forgotpassword-email-field".localized,
+                            placeholder: "forgotpassword-email-field-placeholder".localized,
                             textContentType: .emailAddress,
                             validateFieldCallBack: { text in
                 return self.viewModel.isValidPhone
@@ -89,7 +89,7 @@ extension InputEmailView {
     
     private var buttonsStack: some View {
         VStack(spacing: 5) {
-            PJButton(title: "Entrar", buttonType: .primaryType) {
+            PJButton(title: "forgotpassword-enter".localized, buttonType: .primaryType) {
                 viewModel.reAuthentication()
                 self.isWaitingCode = true
             }
@@ -98,7 +98,7 @@ extension InputEmailView {
             
             waitingCode
             
-            PJButton(title: "Cancelar", buttonType: .secundaryType) {
+            PJButton(title: "forgotpassword-cancel".localized, buttonType: .secundaryType) {
                 dismiss()
             }
         }

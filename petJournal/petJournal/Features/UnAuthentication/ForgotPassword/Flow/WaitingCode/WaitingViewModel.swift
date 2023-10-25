@@ -74,7 +74,7 @@ extension WaitingViewModel {
     
     var checkCodeValidation: String {
         if !codeCheck {
-            return "O código de verificação que você inseriu não é válido. Verifique o código e tente novamente"
+            return "waitingcode-error-message".localized
         }
         return String()
     }

@@ -69,9 +69,9 @@ extension CreateAccountViewModel {
     
     var emailJaRegistrado: String {
         if userSession.email == user.email {
-            return "Registro não realizado, email já cadastrado."
+            return "register-invalid-email".localized
         }
-        return "Registro realizado, faça login para acessar."
+        return "register-success".localized
     }
     
     var isValidPassword: Bool {
