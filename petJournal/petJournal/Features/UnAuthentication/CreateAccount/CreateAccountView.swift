@@ -57,7 +57,7 @@ extension CreateAccountView {
                 PJTextFieldView(error: viewModel.firstNameErrorMessage,
                                 errorValidation: viewModel.isValidName,
                                 title: "Nome",
-                                placeholder: "Digite seu Nome",
+                                placeholder: "Digite seu primeiro nome",
                                 textContentType: .name,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidName
@@ -67,7 +67,7 @@ extension CreateAccountView {
                 PJTextFieldView(error: viewModel.lastNameErrorMessage,
                                 errorValidation: viewModel.isValidLastname,
                                 title: "Sobrenome",
-                                placeholder: "Digite seu Sobrenome",
+                                placeholder: "Digite seu sobrenome",
                                 textContentType: .givenName,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidLastname
@@ -77,7 +77,7 @@ extension CreateAccountView {
                 PJTextFieldView(error: viewModel.emailErrorMessage,
                                 errorValidation: viewModel.isValidEmail,
                                 title: "E-mail",
-                                placeholder: "Digite seu E-mail",
+                                placeholder: "E-mail",
                                 textContentType: .emailAddress,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidEmail
@@ -87,7 +87,7 @@ extension CreateAccountView {
                 PJTextFieldView(error: viewModel.phoneErrorMessage,
                                 errorValidation: viewModel.isValidPhone,
                                 title: "Telefone",
-                                placeholder: "Digite seu telefone",
+                                placeholder: "Telefone",
                                 textContentType: .telephoneNumber,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPhone
@@ -97,7 +97,7 @@ extension CreateAccountView {
                 PJTextFieldView(error: viewModel.messageErrorPassword,
                                 errorValidation: viewModel.isValidPassword,
                                 title: "Senha",
-                                placeholder: "Digite sua senha",
+                                placeholder: "Senha",
                                 textContentType: .password,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPassword
@@ -106,8 +106,8 @@ extension CreateAccountView {
                 
                 PJTextFieldView(error: viewModel.messageErrorPasswordMatch,
                                 errorValidation: viewModel.isValidPasswordMatch,
-                                title: "Confirme sua senha",
-                                placeholder: "Digite sua senha",
+                                title: "Confirmar senha",
+                                placeholder: "Confirmar senha",
                                 textContentType: .password,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPasswordMatch
