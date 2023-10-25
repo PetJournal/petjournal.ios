@@ -11,7 +11,7 @@ struct LoagingView: View {
     var body: some View {
         CustomGlassView(width: 200, height: 200, alignment: .center) {
             VStack {
-                ProgressView("Aguarde")
+                ProgressView("loading-message")
                     .font(.footnote)
                     .padding()
             }

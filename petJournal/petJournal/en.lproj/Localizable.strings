@@ -1,0 +1,41 @@
+
+// MARK: Validations Invalid
+
+"validation-invalid-email" = "Invalid email";
+"validation-invalid-password" = "The password must be at least 8 characters long. To make it stronger, use uppercase and lowercase letters, numbers, and symbols like ! @ # $ % & * =";
+"validation-name" = "Invalid name.";
+"validation-invalid-last-name" = "Invalid last name.";
+"validation-invalid-phone" = "Invalid phone.";
+"validation-passwords-math" = "Passwords must be identical";
+"%@ validation-error" = "%@ is required";
+
+// MARK: Validations Description
+
+"validation-description-field" = "Field";
+"validation-description-name" = "Name";
+"validation-description-last-name" = "Last Name";
+"validation-description-phone" = "Phone";
+"validation-description-email" = "Email";
+"validation-description-password" = "Password";
+
+// MARK: LoadingView
+
+"loading-message" = "Please wait";
+
+// MARK: CreateAccount
+
+"createaccount-message" = "Don't have an account?";
+"createaccount-button-message" = "Sign up";
+
+// MARK: ForgotPassword
+
+"forgotpassword-message" = "Remember";
+
+// MARK: AccountView
+"account-title" = "Access your account";
+"account-login" = "Login";
+"account-email-placeholder" = "Enter your email";
+"account-password" = "Password";
+"account-password-placeholder" = "Enter your password";
+"account-continue-button-title" = "Continue";
+"account-forgotpassword" = "I forgot my password";

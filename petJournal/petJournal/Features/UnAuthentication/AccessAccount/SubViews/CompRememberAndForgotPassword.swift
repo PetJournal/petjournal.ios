@@ -21,7 +21,7 @@ struct CompRememberAndForgotPassword: View {
                         .frame(width: 20, height: 20)
                 }
                 
-                Text("Lembrar")
+                Text("forgotpassword-message")
                     .font(.fedokaMedium(size: .tiny))
                     .foregroundColor(.black)
                 

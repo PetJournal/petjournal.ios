@@ -18,7 +18,9 @@ class Validations {
     }
 
     func validate(_ text: String, type: ValidationType) throws {
-        guard !text.isEmpty else { throw ValidationError("\(type.description) é obrigatório") }
+        guard !text.isEmpty else {
+            throw ValidationError(String(format: NSLocalizedString("%@ validation-error", comment: "Localizable"), "\(type.description)"))
+        }
         guard text.range(of: type.pattern, options: .regularExpression) != nil else {
             throw handleError(of: type)
         }
@@ -27,17 +29,17 @@ class Validations {
     private func handleError(of type: ValidationType) -> ValidationError {
         switch type {
         case .email(_):
-            return ValidationError("Email inválido")
+            return ValidationError("validation-invalid-email".localized)
         case .password(_):
-            return ValidationError("A senha deve ter pelo menos 8 caracteres. Para torná-la mais forte, use letras maiúsculas e minúsculas, números e símbolos como ! @ # $ % & * =")
+            return ValidationError("validation-invalid-password".localized)
         case .name(_):
-            return ValidationError("O nome inválido.")
+            return ValidationError("validation-name".localized)
         case .lastName(_):
-            return ValidationError("O sobrenome inválido.")
+            return ValidationError("validation-invalid-last-name".localized)
         case .phone(_):
-            return ValidationError("O telefone inválido.")
+            return ValidationError("validation-invalid-phone".localized)
         case .passMatch(_):
-            return ValidationError("As senhas devem ser idênticas")
+            return ValidationError("validation-passwords-math".localized)
         }
     }
 }
@@ -106,17 +108,17 @@ extension Validations {
         var description: String {
             switch self {
             case .email(_):
-                return "Campo"
+                return "validation-description-email".localized
             case .password(_):
-                return "Campo"
+                return "validation-description-password".localized
             case .name(_):
-                return "Nome"
+                return "validation-description-name".localized
             case .lastName(_):
-                return "Sobrenome"
+                return "validation-description-last-name".localized
             case .phone(_):
-                return "Telefone"
+                return "validation-description-phone".localized
             case .passMatch(_):
-                return "Campo"
+                return "validation-description-field".localized
             }
         }
     }

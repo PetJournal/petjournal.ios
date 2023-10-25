@@ -28,7 +28,7 @@ struct AccessAccountView: View {
                         .scaledToFit()
                         .frame(width: 148, height: 118)
                     
-                    Text("Acessar conta")
+                    Text("account-title")
                         .font(.fedokaMedium(size: .biggest))
                 }
                 .padding(.bottom, 30)
@@ -36,16 +36,16 @@ struct AccessAccountView: View {
                 VStack(spacing: 8) {
                     PJTextFieldView(error: viewModel.emailErrorMessage,
                                     errorValidation: viewModel.isValidEmail,
-                                    title: "Login",
-                                    placeholder: "Digite seu e-mail",
+                                    title: "account-login".localized,
+                                    placeholder: "account-email-placeholder".localized,
                                     textContentType: .emailAddress, 
                                     validateFieldCallBack: { text in return self.viewModel.isValidEmail},
                                     text: $viewModel.user.email)
                     
                     PJTextFieldView(error: viewModel.passwordErrorMessage,
                                     errorValidation: viewModel.isValidPassword,
-                                    title: "Senha",
-                                    placeholder: "Digite sua senha",
+                                    title: "account-password".localized,
+                                    placeholder: "account-password-placeholder".localized,
                                     textContentType: .password,
                                     validateFieldCallBack: { text in return self.viewModel.isValidPassword},
                                     text: $viewModel.user.password)
@@ -53,7 +53,7 @@ struct AccessAccountView: View {
                 }
                 Spacer()
                 VStack {
-                    PJButton(title: "Continuar", buttonType: .primaryType) {
+                    PJButton(title: "account-continue-button-title".localized, buttonType: .primaryType) {
                         viewModel.authUser()
                     }
                     .frame(width: geometry.size.width * 0.45)
@@ -82,7 +82,7 @@ extension AccessAccountView {
             NavigationLink(
                 destination: InputEmailView(viewModel: ForgotPasswordViewModel(service: ForgotPasswordService())).navigationBarHidden(true),
                 isActive: self.$isAccessAccount) {
-                    Text("Esqueci minha senha")
+                    Text("account-forgotpassword")
                         .font(.fedokaMedium(size: .tiny))
                         .foregroundColor(.black)
                 }
@@ -93,13 +93,13 @@ extension AccessAccountView {
     
     private var componentCreateAccount: some View {
         HStack {
-            Text("Não tem uma conta?")
+            Text("createaccount-message")
                 .font(.fedokaMedium(size: .tiny))
             
             NavigationLink(
                 destination: CreateAccountView().navigationBarHidden(true),
                 isActive: self.$isCreateAccount) {
-                    Text("Inscrever-se")
+                    Text("createaccount-button-message")
                         .font(.fedokaMedium(size: .tiny))
                         .foregroundColor(.black)
                 }

@@ -1,0 +1,47 @@
+
+// MARK: Validations Invalid
+
+"validation-invalid-email" = "Email inválido";
+"validation-invalid-password" = "A senha deve ter pelo menos 8 caracteres. Para torná-la mais forte, use letras maiúsculas e minúsculas, números e símbolos como ! @ # $ % & * =";
+"validation-name" = "O nome inválido.";
+"validation-invalid-last-name" = "O sobrenome inválido.";
+"validation-invalid-phone" = "O telefone inválido.";
+"validation-passwords-math" = "As senhas devem ser idênticas";
+"%@ validation-error" = "%@ é obrigatório";
+
+// MARK: Validations Description
+
+"validation-description-field" =  "Campo";
+"validation-description-name" =  "Nome";
+"validation-description-last-name" =  "Sobrenome";
+"validation-description-phone" =  "Telefone";
+"validation-description-email" =  "Email";
+"validation-description-password" =  "Senha";
+
+// MARK: LoadingView
+
+"loading-message" =  "Aguarde";
+
+// MARK: CreateAccount
+
+"createaccount-message" =  "Não tem conta?";
+"createaccount-button-message" =  "Inscreva-se";
+
+// MARK: ForgotPassword
+
+"forgotpassword-message" =  "Lembrar";
+
+// MARK: AccountView
+"account-title" = "Acessar conta";
+"account-login" = "Login";
+"account-email-placeholder" = "Digite seu e-mail";
+"account-password" = "Senha";
+"account-password-placeholder" = "Digite sua senha";
+"account-continue-button-title" = "Continuar";
+"account-forgotpassword" = "Esqueci minha senha";
+
+
+
+
+
+

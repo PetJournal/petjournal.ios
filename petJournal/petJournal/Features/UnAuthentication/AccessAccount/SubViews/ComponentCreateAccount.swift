@@ -12,10 +12,10 @@ struct ComponentCreateAccount: View {
     
     var body: some View {
         HStack {
-            Text("Não tem conta?")
+            Text("createaccount-message")
             
             Button(action: { action() }) {
-                Text("Inscreva-se")
+                Text("createaccount-button-message")
             }
         }
     }
