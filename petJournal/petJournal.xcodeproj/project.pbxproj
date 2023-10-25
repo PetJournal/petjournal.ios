@@ -16,7 +16,7 @@
 		1FF4608429C8E8740026F680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608329C8E8740026F680 /* Assets.xcassets */; };
 		1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608529C8E8740026F680 /* LaunchScreen.storyboard */; };
 		618441B02AE88110007FE8F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 618441B22AE88110007FE8F2 /* Localizable.strings */; };
-		618441B52AE8882F007FE8F2 /* Extension+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618441B42AE8882F007FE8F2 /* Extension+Swift.swift */; };
+		618441B52AE8882F007FE8F2 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618441B42AE8882F007FE8F2 /* Extension+String.swift */; };
 		6196CDB52AE2F47A0021DA5F /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */; };
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
 		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
@@ -108,7 +108,7 @@
 		1FF4608829C8E8740026F680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		618441B12AE88110007FE8F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		618441B32AE88130007FE8F2 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		618441B42AE8882F007FE8F2 /* Extension+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Swift.swift"; sourceTree = "<group>"; };
+		618441B42AE8882F007FE8F2 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
 		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
@@ -531,7 +531,7 @@
 				C93943F62A9C0EDD0085E623 /* Extension+Alert.swift */,
 				C93943F82A9C0F140085E623 /* Extension+UIColor.swift */,
 				6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */,
-				618441B42AE8882F007FE8F2 /* Extension+Swift.swift */,
+				618441B42AE8882F007FE8F2 /* Extension+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -809,7 +809,7 @@
 				C94C42022A21543B00A949F4 /* WebView.swift in Sources */,
 				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
 				C93943F72A9C0EDD0085E623 /* Extension+Alert.swift in Sources */,
-				618441B52AE8882F007FE8F2 /* Extension+Swift.swift in Sources */,
+				618441B52AE8882F007FE8F2 /* Extension+String.swift in Sources */,
 				C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
 				C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */,
