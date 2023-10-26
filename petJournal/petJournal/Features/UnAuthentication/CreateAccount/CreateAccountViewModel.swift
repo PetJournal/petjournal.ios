@@ -25,7 +25,7 @@ final class CreateAccountViewModel: ObservableObject {
             service.registerUser(userModel: user) { result in
                 switch result {
                 case .success:
-                    let sessionModel = SessionModel(userToken: self.user.name, model: self.user)
+                    let sessionModel = SessionModel(userToken: self.user.firstName, model: self.user)
                     self.states = .success
                     self.error = .register
                     self.cancel.toggle()
@@ -79,8 +79,8 @@ extension CreateAccountViewModel {
     }
     
     var isValidPasswordMatch: Bool {
-        let passMatch = ValidationsModel.shared.validateInput(user.passwordMatch, of: .passMatch(.default)) == nil
-        if user.password == user.passwordMatch {
+        let passMatch = ValidationsModel.shared.validateInput(user.passwordConfirmation, of: .passMatch(.default)) == nil
+        if user.password == user.passwordConfirmation {
             if passMatch {
                 return true
             }
@@ -89,7 +89,7 @@ extension CreateAccountViewModel {
     }
     
     var isValidName: Bool {
-        ValidationsModel.shared.validateInput(user.name, of: .name(.default)) == nil
+        ValidationsModel.shared.validateInput(user.firstName, of: .name(.default)) == nil
     }
     
     var isValidLastname: Bool {
@@ -97,8 +97,8 @@ extension CreateAccountViewModel {
     }
     
     var isValidPhone: Bool {
-        let phoneValid = ValidationsModel.shared.validateInput(user.phoneNumber, of: .phone(.default)) == nil
-        if user.phoneNumber.isEmpty {
+        let phoneValid = ValidationsModel.shared.validateInput(user.phone, of: .phone(.default)) == nil
+        if user.phone.isEmpty {
             if phoneValid {
                 return true
             }
@@ -111,7 +111,7 @@ extension CreateAccountViewModel {
     }
     
     var firstNameErrorMessage: String {
-        if let errorValidation = ValidationsModel.shared.validateInput(user.name, of: .name(.default)) {
+        if let errorValidation = ValidationsModel.shared.validateInput(user.firstName, of: .name(.default)) {
             let message = errorValidation.reason
             return message
         }
@@ -135,8 +135,8 @@ extension CreateAccountViewModel {
     }
     
     var phoneErrorMessage: String {
-        if let errorValidation = ValidationsModel.shared.validateInput(user.phoneNumber, of: .phone(.default)) {
-            if !user.phoneNumber.isEmpty {
+        if let errorValidation = ValidationsModel.shared.validateInput(user.phone, of: .phone(.default)) {
+            if !user.phone.isEmpty {
                 let message = errorValidation.reason
                 return message
             }
@@ -153,8 +153,8 @@ extension CreateAccountViewModel {
     }
     
     var messageErrorPasswordMatch: String {
-        if let errorValidation = ValidationsModel.shared.validateInput(user.passwordMatch, of: .passMatch(.default)) {
-            if user.password != user.passwordMatch {
+        if let errorValidation = ValidationsModel.shared.validateInput(user.passwordConfirmation, of: .passMatch(.default)) {
+            if user.password != user.passwordConfirmation {
                 let message = errorValidation.reason
                 return message
             }

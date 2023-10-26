@@ -53,6 +53,7 @@ extension CreateAccountView {
     
     private var textFieldsRegister: some View {
         ScrollView(.vertical, showsIndicators: false) {
+            /*
             VStack(spacing: 5) {
                 PJTextFieldView(error: viewModel.firstNameErrorMessage,
                                 errorValidation: viewModel.isValidName,
@@ -115,6 +116,7 @@ extension CreateAccountView {
                                 text: $viewModel.user.passwordMatch)
             }
             .padding(.horizontal, 16)
+             */
         }
     }
     

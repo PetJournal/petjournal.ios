@@ -19,6 +19,7 @@
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
 		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
 		C910E2BB2AC78F0800DD3C23 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910E2BA2AC78F0800DD3C23 /* URLManager.swift */; };
+		C91CF52F2AE9F51B00CDC49E /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91CF52E2AE9F51B00CDC49E /* RegisterResponse.swift */; };
 		C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C12A3A87E20008F502 /* InputEmailView.swift */; };
 		C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */; };
 		C930B5C82A3A88CF0008F502 /* ReceiveInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */; };
@@ -108,6 +109,7 @@
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
 		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
 		C910E2BA2AC78F0800DD3C23 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		C91CF52E2AE9F51B00CDC49E /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
 		C930B5C12A3A87E20008F502 /* InputEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEmailView.swift; sourceTree = "<group>"; };
 		C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
 		C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveInputViewModel.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				1FB7998329F1C8CC00673233 /* UserPJModel.swift */,
+				C91CF52E2AE9F51B00CDC49E /* RegisterResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */,
 				C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */,
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
+				C91CF52F2AE9F51B00CDC49E /* RegisterResponse.swift in Sources */,
 				C9A324932A2FE7F9008FE6F4 /* RegisterError.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */,
