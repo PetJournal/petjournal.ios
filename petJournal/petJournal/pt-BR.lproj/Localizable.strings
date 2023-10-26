@@ -62,7 +62,7 @@
 "textfield-password" = "Senha";
 "textfield-password-placeholder" = "Digite sua senha";
 "textfield-password-confirm" = "Confirme sua senha";
-"textfield-password--confirm-placeholder" = "Digite sua senha";
+"textfield-password-confirm-placeholder" = "Digite sua senha";
 
 // MARK: Privacidade
 
@@ -95,3 +95,15 @@
 "waitingcode-confirm" = "OK";
 "waitingcode-reset" = "Reenviar código";
 "waitingcode-resend" = "Código reenviado. Verifique seu email e tente novamente.";
+
+// MARK: EditPassword
+
+"editpassword-password-error" = "Falha na redefinição";
+"editpassword-match-error" = "Senhas Diferentes";
+"editpassword-empty-error" =  "Campo Vazio";
+"editpassword-password-fail" = "A senha informada não atende os requisitos necessários de 8 caracteres.";
+"editpassword-match-fail" = "As senhas devem ser idênticas. Tente novamente";
+"editpassword-empty-fail" = "Nenhum dos campos devem ficar vazios";
+"editpassword-title" = "Criar uma nova senha?";
+"editpassword-button-title" = "Redefinir Senha";
+"editpassword-logout-warning" = "É necessário que todos os dispositivos acessem sua conta com a nova senha?"

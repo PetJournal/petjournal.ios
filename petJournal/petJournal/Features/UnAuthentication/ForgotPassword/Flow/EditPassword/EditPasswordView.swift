@@ -23,7 +23,7 @@ struct EditPasswordView: View {
             loginNavigation
             
             VStack(spacing: 10) {
-                Text("Criar uma nova senha?")
+                Text("editpassword-title")
                     .font(.title2)
                     .bold()
                     .multilineTextAlignment(.center)
@@ -45,7 +45,7 @@ struct EditPasswordView: View {
 extension EditPasswordView {
     private var buttonResetPassword: some View {
         VStack {
-            PJButton(title: "Redefinir Senha", buttonType: .primaryType) {
+            PJButton(title: "editpassword-button-title".localized, buttonType: .primaryType) {
                 viewModel.editPassword(value: viewModel.user.password)
             }
         }
@@ -59,8 +59,8 @@ extension EditPasswordView {
         VStack(spacing: 10) {
             PJTextFieldView(error: viewModel.messageErrorPassword,
                             errorValidation: viewModel.isValidPassword,
-                            title: "Senha",
-                            placeholder: "Digite sua senha",
+                            title: "textfield-password".localized,
+                            placeholder: "textfield-password-placeholder".localized,
                             textContentType: .password,
                             validateFieldCallBack: { text in
                 return self.viewModel.isValidPassword
@@ -70,8 +70,8 @@ extension EditPasswordView {
             
             PJTextFieldView(error: viewModel.messageErrorPasswordMatch,
                             errorValidation: viewModel.matchPass,
-                            title: "Confirme sua senha",
-                            placeholder: "Digite sua senha",
+                            title: "textfield-password-confirm".localized,
+                            placeholder: "textfield-password-confirm-placeholder".localized,
                             textContentType: .password,
                             validateFieldCallBack: { text in
                 return self.viewModel.isValidPassword
@@ -90,7 +90,7 @@ extension EditPasswordView {
                     .frame(width: 20, height: 20)
             }
             
-            Text("É necessário que todos os dispositivos acessem sua conta com a nova senha?")
+            Text("editpassword-logout-warning")
                 .font(.footnote)
                 .fontWeight(.light)
                 .multilineTextAlignment(.leading)

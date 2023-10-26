@@ -104,22 +104,22 @@ enum EditPasswordError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .incorrectPassword:
-            return "Falha na redefinição"
+            return "editpassword-password-error".localized
         case .noMatchPassword:
-            return "Senhas Diferentes"
+            return "editpassword-empty-error".localized
         case .isEmptyValue:
-            return "Campo Vazio"
+            return "editpassword-empty-error".localized
         }
     }
     
     var failureReason: String? {
         switch self {
         case .incorrectPassword:
-            return "A senha informada não atende os requisitos necessários de 8 caracteres."
+            return "editpassword-password-fail".localized
         case .noMatchPassword:
-            return "As senhas devem ser idênticas. Tente novamente"
+            return "editpassword-match-fail".localized
         case .isEmptyValue:
-            return "Nenhum dos campos devem ficar vazios"
+            return "editpassword-empty-fail".localized
         }
     }
 }

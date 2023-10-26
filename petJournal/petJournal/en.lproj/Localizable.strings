@@ -60,7 +60,7 @@
 "textfield-password" = "Password";
 "textfield-password-placeholder" = "Enter your password";
 "textfield-password-confirm" = "Confirm your password";
-"textfield-password--confirm-placeholder" = "Enter your password";
+"textfield-password-confirm-placeholder" = "Enter your password";
 
 // MARK: Privacidade
 

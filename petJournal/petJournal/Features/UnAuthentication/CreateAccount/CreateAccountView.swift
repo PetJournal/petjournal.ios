@@ -106,7 +106,7 @@ extension CreateAccountView {
                 PJTextFieldView(error: viewModel.messageErrorPasswordMatch,
                                 errorValidation: viewModel.isValidPasswordMatch,
                                 title: "textfield-password-confirm".localized,
-                                placeholder: "textfield-password--confirm-placeholder".localized,
+                                placeholder: "textfield-password-confirm-placeholder".localized,
                                 textContentType: .password,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPasswordMatch
