@@ -8,17 +8,43 @@
 import Foundation
 
 protocol ForgotPasswordServiceProtocol {
-    func forgotPassword(credential: String, completion: @escaping (Result<Bool, ForgotError>) -> Void)
+    func forgotPassword(email: String, completion: @escaping (Result<String, ForgotError>) -> Void)
 }
 
 class ForgotPasswordService: ForgotPasswordServiceProtocol {
-    func forgotPassword(credential: String, completion: @escaping (Result<Bool, ForgotError>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if !credential.isEmpty {
-                completion(.success(true))
-            } else {
-                completion(.failure(.invalidMail))
-            }
+    func forgotPassword(email: String, completion: @escaping (Result<String, ForgotError>) -> Void) {
+        guard let url = URLManager.shared.makeURL(path: URLManager.shared.forgetPassword) else {
+            completion(.failure(.invalidUrl))
+            return
         }
+        
+        let body = RecoveryPasswordRequestBodyForgetPassword(email: email)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            var jsonEnconder = try JSONEncoder().encode(body)
+            request.httpBody = jsonEnconder
+            print(jsonEnconder)
+        } catch {
+            completion(.failure(.invalidUrl))
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in 
+            guard let data = data, error == nil else {
+                completion(.failure(.noData))
+                return
+            }
+            do {
+                debugPrint(data)
+                let returnData = try JSONDecoder().decode(ForgetPasswordResponse.self, from: data)
+                completion(.success(returnData.message))
+                
+            } catch {
+                completion(.failure(.domainErr))
+            }
+        }.resume()
     }
 }

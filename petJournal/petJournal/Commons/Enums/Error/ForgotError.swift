@@ -11,6 +11,8 @@ enum ForgotError: Error {
     case domainErr
     case none
     case invalidMail
+    case invalidUrl
+    case noData
 }
 
 extension ForgotError: LocalizedError {
@@ -22,6 +24,10 @@ extension ForgotError: LocalizedError {
             return ""
         case .invalidMail:
             return "Error logging in. Please check the email is correct and try again."
+        case .invalidUrl:
+            return "Invalid URL"
+        case .noData:
+            return "No Data"
         }
     }
 }

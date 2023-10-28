@@ -61,7 +61,7 @@ extension Validations {
             case .email(let pattern):
                 switch pattern {
                 case .default:
-                    return "[A-Z0-9a-z._%+-]+@[email]+\\.[com]{3,64}"
+                    return "^.{1,64}@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,6}$"
                 case .custom(let string):
                     return string
                 }
