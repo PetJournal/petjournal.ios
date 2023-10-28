@@ -46,7 +46,7 @@
 		C96BFB3E29E1D714003D3827 /* Fredoka-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */; };
 		C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */; };
 		C97A74E629F9810D001CD67E /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A74E529F9810D001CD67E /* AuthMock.swift */; };
-		C9A3248A2A2FB25A008FE6F4 /* RegisterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324892A2FB25A008FE6F4 /* RegisterState.swift */; };
+		C9A3248A2A2FB25A008FE6F4 /* RegisterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324892A2FB25A008FE6F4 /* RegisterStatus.swift */; };
 		C9A3248E2A2FE6F3008FE6F4 /* SpyRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */; };
 		C9A324912A2FE7D5008FE6F4 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324902A2FE7D5008FE6F4 /* LoginResponse.swift */; };
 		C9A324932A2FE7F9008FE6F4 /* RegisterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324922A2FE7F9008FE6F4 /* RegisterError.swift */; };
@@ -137,7 +137,7 @@
 		C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-SemiBold.ttf"; sourceTree = "<group>"; };
 		C97A74D929F97EEE001CD67E /* petJournal_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = petJournal_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97A74E529F9810D001CD67E /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
-		C9A324892A2FB25A008FE6F4 /* RegisterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterState.swift; sourceTree = "<group>"; };
+		C9A324892A2FB25A008FE6F4 /* RegisterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStatus.swift; sourceTree = "<group>"; };
 		C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyRegisterService.swift; sourceTree = "<group>"; };
 		C9A324902A2FE7D5008FE6F4 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		C9A324922A2FE7F9008FE6F4 /* RegisterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterError.swift; sourceTree = "<group>"; };
@@ -502,7 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				C9C094882AC11915006FB438 /* AuthenticationStatus.swift */,
-				C9A324892A2FB25A008FE6F4 /* RegisterState.swift */,
+				C9A324892A2FB25A008FE6F4 /* RegisterStatus.swift */,
 				C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */,
 			);
 			path = States;
@@ -811,7 +811,7 @@
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				C930B5D02A3A8AA60008F502 /* WaitingViewModel.swift in Sources */,
 				C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */,
-				C9A3248A2A2FB25A008FE6F4 /* RegisterState.swift in Sources */,
+				C9A3248A2A2FB25A008FE6F4 /* RegisterStatus.swift in Sources */,
 				C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */,
 				C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */,
 				C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */,

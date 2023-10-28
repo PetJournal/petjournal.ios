@@ -13,6 +13,7 @@ enum KeysGeneral: String {
 }
 
 enum KeysUser: String {
+    case id = "keyID"
     case firstName = "keyFirstName"
     case lastName = "keyLastName"
     case email = "keyEmail"
@@ -20,10 +21,15 @@ enum KeysUser: String {
     case password = "keyPassword"
 }
 
-struct UserSession {
+struct UserSession: Codable {
     var hasSession: Bool {
         set { UserDefaults.standard.set(newValue, forKey: KeysGeneral.hasSession.rawValue) }
         get { UserDefaults.standard.bool(forKey: KeysGeneral.hasSession.rawValue) }
+    }
+    
+    var id: String? {
+        set { UserDefaults.standard.set(newValue, forKey: KeysUser.id.rawValue) }
+        get { UserDefaults.standard.string(forKey: KeysUser.id.rawValue) }
     }
     
     var token: String? {

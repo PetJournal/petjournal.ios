@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum RegisterError: Error {
-    case register
-    case none
-}
-
-enum ErrorRegisterApp: LocalizedError {
-    case errorRegister
-    case error
-}
+//enum RegisterError: Error {
+//    case register
+//    case none
+//}
+//
+//enum ErrorRegisterApp: LocalizedError {
+//    case errorRegister
+//    case error
+//}

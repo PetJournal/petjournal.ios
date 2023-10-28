@@ -12,6 +12,7 @@ class SessionManager: ObservableObject {
     
     @Published var userSession: UserSession = .init()
     @Published var statusLogin: AuthenticationStatus = .signOut
+    @Published var statusRegister: RegisterStatus = .unknown
     
     private let defaults = UserDefaults.standard
     
@@ -34,6 +35,25 @@ class SessionManager: ObservableObject {
     func hasSession() {
         if isAuthenticated {
             statusLogin = .signIn
+        }
+    }
+    
+    // Register
+    var isRegisted: Bool {
+        return getRegister() != nil
+    }
+    
+    func register(withUser user: String) {
+        defaults.set(user, forKey: "register")
+    }
+    
+    func getRegister() -> UserModel? {
+        return defaults.object(forKey: "register") as? UserModel
+    }
+    
+    func hasRegister() {
+        if isRegisted {
+            statusRegister = .success
         }
     }
 }

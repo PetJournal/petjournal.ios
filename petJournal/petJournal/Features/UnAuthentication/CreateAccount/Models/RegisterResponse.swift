@@ -8,15 +8,17 @@
 import Foundation
 
 struct RegisterRequestBody: Codable {
-    let firstName: String
-    let lastName: String
-    let email: String
-    let password: String
-    let passwordConfirmation: String
-    let phone: String
-    let isPrivacyPolicyAccepted: Bool
+    public var id = UUID().uuidString
+    var firstName: String
+    var lastName: String
+    var email: String
+    var password: String
+    var passwordConfirmation: String
+    var phone: String
+    var isPrivacyPolicyAccepted: Bool
 }
 
 struct RegisterResponse: Codable {
-    let user: UserModel?
+    let id, firstName, lastName, email: String
+    let phone: String
 }

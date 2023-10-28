@@ -7,9 +7,8 @@
 
 import Foundation
 
-enum RegisterState {
+enum RegisterStatus {
     case success
     case failure
     case unknown
 }
-

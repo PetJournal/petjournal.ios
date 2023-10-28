@@ -53,7 +53,7 @@ extension CreateAccountView {
     
     private var textFieldsRegister: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            /*
+            
             VStack(spacing: 5) {
                 PJTextFieldView(error: viewModel.firstNameErrorMessage,
                                 errorValidation: viewModel.isValidName,
@@ -63,7 +63,7 @@ extension CreateAccountView {
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidName
                 },
-                                text: $viewModel.user.name)
+                                text: $viewModel.user.firstName)
                 
                 PJTextFieldView(error: viewModel.lastNameErrorMessage,
                                 errorValidation: viewModel.isValidLastname,
@@ -93,7 +93,7 @@ extension CreateAccountView {
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPhone
                 },
-                                text: $viewModel.user.phoneNumber)
+                                text: $viewModel.user.phone)
                 
                 PJTextFieldView(error: viewModel.messageErrorPassword,
                                 errorValidation: viewModel.isValidPassword,
@@ -113,10 +113,9 @@ extension CreateAccountView {
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPasswordMatch
                 },
-                                text: $viewModel.user.passwordMatch)
+                                text: $viewModel.user.passwordConfirmation)
             }
             .padding(.horizontal, 16)
-             */
         }
     }
     
@@ -125,7 +124,7 @@ extension CreateAccountView {
             PJButton(title: "Continuar", buttonType: .primaryType) {
                 viewModel.registerUser()
             }
-            .disabled(!viewModel.completeRegister)
+//            .disabled(!viewModel.completeRegister)
         }
         .alert(isPresented: $viewModel.cancel) {
             Alert(title: Text("Registro"),

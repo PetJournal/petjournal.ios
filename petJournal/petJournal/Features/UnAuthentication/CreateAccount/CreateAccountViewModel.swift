@@ -8,8 +8,7 @@
 import Foundation
 
 final class CreateAccountViewModel: ObservableObject {
-    @Published var states: RegisterState = .unknown
-    @Published var error: RegisterError = .register
+    @Published var states: RegisterStatus = .unknown
     @Published var user: UserModel = UserModel.newUser
     @Published var userSession: UserSession = .init()
     @Published var cancel: Bool = false
@@ -21,28 +20,21 @@ final class CreateAccountViewModel: ObservableObject {
     }
     
     func registerUser() {
-        if completeRegister {
-            service.registerUser(userModel: user) { result in
-                switch result {
-                case .success:
-                    let sessionModel = SessionModel(userToken: self.user.firstName, model: self.user)
-                    self.states = .success
-                    self.error = .register
-                    self.cancel.toggle()
-                case .failure(let failure):
-                    switch failure {
-                    case .errorRegister:
-                        self.states = .failure
-                        self.error = .none
-                        self.cancel.toggle()
-                    case .error:
-                        self.error = .none
-                        self.cancel.toggle()
-                    }
+        SessionManager.shared.statusRegister = .unknown
+        service.registerUser(model: user) { (result) in
+            switch result {
+            case .success:
+                print(result)
+                SessionManager.shared.register(withUser: self.user.email)
+                DispatchQueue.main.async {
+                    SessionManager.shared.statusRegister = .success
                 }
+            case .failure(let failure):
+                DispatchQueue.main.async {
+                    SessionManager.shared.statusRegister = .failure
+                }
+                print("\(failure.localizedDescription)")
             }
-        } else {
-            
         }
     }
 }
@@ -97,13 +89,7 @@ extension CreateAccountViewModel {
     }
     
     var isValidPhone: Bool {
-        let phoneValid = ValidationsModel.shared.validateInput(user.phone, of: .phone(.default)) == nil
-        if user.phone.isEmpty {
-            if phoneValid {
-                return true
-            }
-        }
-        return false
+         ValidationsModel.shared.validateInput(user.phone, of: .phone(.default)) == nil
     }
     
     var isValidEmail: Bool {
