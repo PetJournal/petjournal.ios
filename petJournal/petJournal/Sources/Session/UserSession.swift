@@ -10,6 +10,7 @@ import Foundation
 enum KeysGeneral: String {
     case token = "keyGeneralToken"
     case hasSession = "keyGeneralHasSession"
+    case registerUser = "keyRegisterUser"
 }
 
 enum KeysUser: String {
@@ -27,9 +28,9 @@ struct UserSession: Codable {
         get { UserDefaults.standard.bool(forKey: KeysGeneral.hasSession.rawValue) }
     }
     
-    var id: String? {
-        set { UserDefaults.standard.set(newValue, forKey: KeysUser.id.rawValue) }
-        get { UserDefaults.standard.string(forKey: KeysUser.id.rawValue) }
+    var registerUser: String? {
+        set { UserDefaults.standard.set(newValue, forKey: KeysGeneral.registerUser.rawValue) }
+        get { UserDefaults.standard.string(forKey: KeysGeneral.registerUser.rawValue) }
     }
     
     var token: String? {

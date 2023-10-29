@@ -11,7 +11,9 @@ final class CreateAccountViewModel: ObservableObject {
     @Published var states: RegisterStatus = .unknown
     @Published var user: UserModel = UserModel.newUser
     @Published var userSession: UserSession = .init()
+    
     @Published var cancel: Bool = false
+    @Published var isRegister: Bool = false
     @Published var isCheckBox = false
     
     var service: CreateAccountServiceProtocol!
@@ -24,16 +26,13 @@ final class CreateAccountViewModel: ObservableObject {
         service.registerUser(model: user) { (result) in
             switch result {
             case .success:
-                print(result)
-                SessionManager.shared.register(withUser: self.user.email)
-                DispatchQueue.main.async {
-                    SessionManager.shared.statusRegister = .success
-                }
-            case .failure(let failure):
-                DispatchQueue.main.async {
-                    SessionManager.shared.statusRegister = .failure
-                }
-                print("\(failure.localizedDescription)")
+                SessionManager.shared.register(withUser: self.user)
+                self.isRegister = true
+                self.cancel.toggle()
+            case .failure:
+                SessionManager.shared.statusRegister = .failure
+                self.isRegister = false
+                self.cancel.toggle()
             }
         }
     }
@@ -52,16 +51,9 @@ extension CreateAccountViewModel {
         return false
     }
     
-    var emailJaRegistradoAction: Bool {
-        if userSession.email == user.email {
-            return true
-        }
-        return false
-    }
-    
-    var emailJaRegistrado: String {
-        if userSession.email == user.email {
-            return "Registro não realizado, email já cadastrado."
+    var emailAlreadyRegistered: String {
+        if !isRegister {
+            return "Registro não realizado, email ou telefone já cadastrado. Faça login para acessar."
         }
         return "Registro realizado, faça login para acessar."
     }
@@ -89,7 +81,7 @@ extension CreateAccountViewModel {
     }
     
     var isValidPhone: Bool {
-         ValidationsModel.shared.validateInput(user.phone, of: .phone(.default)) == nil
+        ValidationsModel.shared.validateInput(user.phone, of: .phone(.default)) == nil
     }
     
     var isValidEmail: Bool {

@@ -17,8 +17,3 @@ struct RegisterRequestBody: Codable {
     var phone: String
     var isPrivacyPolicyAccepted: Bool
 }
-
-struct RegisterResponse: Codable {
-    let id, firstName, lastName, email: String
-    let phone: String
-}

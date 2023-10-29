@@ -16,7 +16,11 @@ class CreateAccountService: CreateAccountServiceProtocol {
     func registerUser(model: UserModel,
                       completion: @escaping(Result<Bool, RegisterAPIError>) -> Void) {
         
-        let url = URLManager.shared.makeURL(path: URLManager.shared.signupURL)!
+        guard let url = URLManager.shared.makeURL(path: URLManager.shared.signupURL) else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
         let body = RegisterRequestBody(firstName: model.firstName,
                                        lastName: model.lastName,
                                        email: model.email,
@@ -43,40 +47,9 @@ class CreateAccountService: CreateAccountServiceProtocol {
                 completion(.failure(.invalidRequest))
             case RegisterAPIError.conflictRequest.rawValue:
                 completion(.failure(.conflictRequest))
-            case RegisterAPIError.internalServerError.rawValue:
-                completion(.failure(.internalServerError))
             default:
-                completion(.failure(.httpError))
+                completion(.failure(.internalServerError))
             }
         }.resume()
-    }
-}
-
-enum RegisterAPIError: Int, Error {
-    case success = 201
-    case invalidRequest = 400
-    case conflictRequest = 409
-    case internalServerError = 500
-    case invalidURL
-    case invalidResponse
-    case httpError
-    
-    var localizedDescription: String {
-        switch self {
-        case .success:
-            return "Success"
-        case .invalidRequest:
-            return "Invalid Request"
-        case .conflictRequest:
-            return "Conflict Request"
-        case .internalServerError:
-            return "Internal Server Error"
-        case .invalidURL:
-            return "Invalid URL"
-        case .invalidResponse:
-            return "Invalid Response"
-        case .httpError:
-            return "HTTP Error"
-        }
     }
 }

@@ -19,7 +19,7 @@ struct CreateAccountView: View {
                 textFieldsRegister
                 
                 ComponentPrivacy { self.showWebview = true }
-                    .padding(.vertical, 25)
+                    .padding(.vertical, 10)
                 
                 buttonRegister
                     .frame(width: geometry.size.width * 0.45)
@@ -40,7 +40,7 @@ struct CreateAccountView: View {
 // MARK: - Extension CreateAccountView
 extension CreateAccountView {
     private var headerView: some View {
-        VStack(spacing: 15) {
+        VStack(spacing: 8) {
             Image("pet_logoPrimary")
                 .resizable()
                 .scaledToFit()
@@ -49,6 +49,7 @@ extension CreateAccountView {
             Text("Inscreva-se")
                 .font(.fedokaMedium(size: .biggest))
         }
+        .padding(.bottom, 30)
     }
     
     private var textFieldsRegister: some View {
@@ -124,16 +125,16 @@ extension CreateAccountView {
             PJButton(title: "Continuar", buttonType: .primaryType) {
                 viewModel.registerUser()
             }
-//            .disabled(!viewModel.completeRegister)
+            .disabled(!viewModel.completeRegister)
         }
         .alert(isPresented: $viewModel.cancel) {
             Alert(title: Text("Registro"),
-                  message: Text("\(viewModel.emailJaRegistrado)"),
+                  message: Text("\(viewModel.emailAlreadyRegistered)"),
                   primaryButton: .cancel(),
                   secondaryButton: .destructive(
                     Text("OK"),
                     action: {
-                        if viewModel.emailJaRegistradoAction {
+                        if viewModel.isRegister {
                             self.isLoginView = false
                         } else {
                             self.isLoginView = true
