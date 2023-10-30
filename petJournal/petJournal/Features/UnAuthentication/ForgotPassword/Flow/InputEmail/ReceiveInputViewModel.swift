@@ -11,25 +11,32 @@ class ForgotPasswordViewModel: ObservableObject {
     @Published var error: ForgotError = .none
     @Published var forgotState: ForgotState = .unknown
     @Published var user: UserModel = UserModel.newUser
-    @Published var emailOrPhone = ""
+    @Published var email = ""
     @Published var userSession: UserSession = .init()
     @Published var cancel: Bool = false
+    @Published var isWaitingCode: Bool = false
     
     var service: ForgotPasswordServiceProtocol!
     init(service: ForgotPasswordServiceProtocol) {
         self.service = service
     }
     
-    func reAuthentication() {
+    func forgetPassword() {
         if isCorrectCredentials {
-            service.forgotPassword(credential: emailOrPhone) { result in
+            service.forgotPassword(email: email) { result in
                 switch result {
                 case .success:
-                    self.forgotState = .forgotCheck
-                    self.error = .none
-                    UserDefaultsUtils.deleteData(key: KeysUser.email.rawValue)
+                    DispatchQueue.main.sync {
+                        self.forgotState = .forgotCheck
+                        self.error = .none
+                        UserDefaultsUtils.deleteData(key: KeysUser.email.rawValue)
+                        self.isWaitingCode = true
+                    }
                 case .failure(_):
-                    self.error = .invalidMail
+                    DispatchQueue.main.sync {
+                        self.error = .invalidMail
+                        self.cancel = true
+                    }
                 }
             }
         }
@@ -39,22 +46,18 @@ class ForgotPasswordViewModel: ObservableObject {
 // MARK: - Extension
 extension ForgotPasswordViewModel {
     var isCorrectCredentials: Bool {
-        if isValidEmail || isValidPhone {
+        if isValidEmail {
             return true
         }
         return false
     }
     
     var isValidEmail: Bool {
-        ValidationsModel.shared.validateInput(emailOrPhone, of: .email(.default)) == nil
-    }
-    
-    var isValidPhone: Bool {
-        ValidationsModel.shared.validateInput(emailOrPhone, of: .phone(.default)) == nil
+        ValidationsModel.shared.validateInput(email, of: .email(.default)) == nil
     }
     
     var emailErrorMessage: String {
-        if emailOrPhone.count > 3 {
+        if email.count > 3 {
             if !isCorrectCredentials{
                 return "Insira os dados corretamente"
             }
@@ -63,7 +66,7 @@ extension ForgotPasswordViewModel {
     }
     
     var emailError: String {
-        if let errorValidation = ValidationsModel.shared.validateInput(emailOrPhone, of: .email(.default)) {
+        if let errorValidation = ValidationsModel.shared.validateInput(email, of: .email(.default)) {
             let messageEmail = errorValidation.reason
             return messageEmail
         }
@@ -71,7 +74,7 @@ extension ForgotPasswordViewModel {
     }
     
     var phoneError: String {
-        if let errorValidationPhone = ValidationsModel.shared.validateInput(emailOrPhone, of: .phone(.default)) {
+        if let errorValidationPhone = ValidationsModel.shared.validateInput(email, of: .phone(.default)) {
             let messagePhone = errorValidationPhone.reason
             return messagePhone
         }

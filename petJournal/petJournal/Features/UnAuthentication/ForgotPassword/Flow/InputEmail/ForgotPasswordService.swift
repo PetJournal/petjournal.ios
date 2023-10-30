@@ -25,9 +25,8 @@ class ForgotPasswordService: ForgotPasswordServiceProtocol {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do {
-            var jsonEnconder = try JSONEncoder().encode(body)
+            let jsonEnconder = try JSONEncoder().encode(body)
             request.httpBody = jsonEnconder
-            print(jsonEnconder)
         } catch {
             completion(.failure(.invalidUrl))
         }
