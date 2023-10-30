@@ -57,6 +57,9 @@ extension CreateAccountView {
                                 title: "Nome",
                                 placeholder: "Digite seu Nome",
                                 textContentType: .name,
+                                validateFieldCallBack: { text in
+                    return self.viewModel.isValidName
+                },
                                 text: $viewModel.user.name)
                 
                 PJTextFieldView(error: viewModel.lastNameErrorMessage,
@@ -64,6 +67,9 @@ extension CreateAccountView {
                                 title: "Sobrenome",
                                 placeholder: "Digite seu Sobrenome",
                                 textContentType: .givenName,
+                                validateFieldCallBack: { text in
+                    return self.viewModel.isValidLastname
+                },
                                 text: $viewModel.user.lastName)
                 
                 PJTextFieldView(error: viewModel.emailErrorMessage,
@@ -71,6 +77,9 @@ extension CreateAccountView {
                                 title: "E-mail",
                                 placeholder: "Digite seu E-mail",
                                 textContentType: .emailAddress,
+                                validateFieldCallBack: { text in
+                    return self.viewModel.isValidEmail
+                },
                                 text: $viewModel.user.email)
                 
                 PJTextFieldView(error: viewModel.phoneErrorMessage,
@@ -78,6 +87,9 @@ extension CreateAccountView {
                                 title: "Telefone",
                                 placeholder: "Digite seu telefone",
                                 textContentType: .telephoneNumber,
+                                validateFieldCallBack: { text in
+                    return self.viewModel.isValidPhone
+                },
                                 text: $viewModel.user.phoneNumber)
                 
                 PJTextFieldView(error: viewModel.messageErrorPassword,
@@ -85,6 +97,9 @@ extension CreateAccountView {
                                 title: "Senha",
                                 placeholder: "Digite sua senha",
                                 textContentType: .password,
+                                validateFieldCallBack: { text in
+                    return self.viewModel.isValidPassword
+                },
                                 text: $viewModel.user.password)
                 .padding(.bottom, 20)
                 
@@ -93,6 +108,9 @@ extension CreateAccountView {
                                 title: "Confirme sua senha",
                                 placeholder: "Digite sua senha",
                                 textContentType: .password,
+                                validateFieldCallBack: { text in
+                    return self.viewModel.isValidPasswordMatch
+                },
                                 text: $viewModel.user.passwordMatch)
             }
             .padding(.horizontal, 16)
