@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        let navigationView = MainActor()
+        let navigationView = InitialActor()
             .environmentObject(SessionManager.shared)
             .onAppear { SessionManager.shared.hasSession() }
         

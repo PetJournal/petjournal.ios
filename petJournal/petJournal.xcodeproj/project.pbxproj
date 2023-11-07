@@ -60,7 +60,7 @@
 		C9D845092A22491F0007A316 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D845082A22491F0007A316 /* UserSession.swift */; };
 		C9D8450B2A22494C0007A316 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8450A2A22494C0007A316 /* SessionManager.swift */; };
 		C9D8450D2A2249650007A316 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8450C2A2249650007A316 /* SessionModel.swift */; };
-		C9D8450F2A224AC10007A316 /* MainActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8450E2A224AC10007A316 /* MainActor.swift */; };
+		C9D8450F2A224AC10007A316 /* InitialActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8450E2A224AC10007A316 /* InitialActor.swift */; };
 		C9D95F6F2A37A6E6001C271F /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */; };
 		C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D95F712A37AA0D001C271F /* BlurView.swift */; };
 		C9E3E4842A203A8100A83321 /* ComponentPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E3E4832A203A8100A83321 /* ComponentPrivacy.swift */; };
@@ -151,7 +151,7 @@
 		C9D845082A22491F0007A316 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		C9D8450A2A22494C0007A316 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		C9D8450C2A2249650007A316 /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
-		C9D8450E2A224AC10007A316 /* MainActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainActor.swift; sourceTree = "<group>"; };
+		C9D8450E2A224AC10007A316 /* InitialActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialActor.swift; sourceTree = "<group>"; };
 		C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		C9D95F712A37AA0D001C271F /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		C9E3E4832A203A8100A83321 /* ComponentPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentPrivacy.swift; path = petJournal/Features/UnAuthentication/CreateAccount/Subviews/ComponentPrivacy.swift; sourceTree = SOURCE_ROOT; };
@@ -251,7 +251,7 @@
 				C9D845072A22490A0007A316 /* Session */,
 				1FF4607A29C8E8720026F680 /* AppDelegate.swift */,
 				1FF4607C29C8E8720026F680 /* SceneDelegate.swift */,
-				C9D8450E2A224AC10007A316 /* MainActor.swift */,
+				C9D8450E2A224AC10007A316 /* InitialActor.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -778,7 +778,7 @@
 				C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */,
 				C9B1C8A829F9FDC0002C7B00 /* AuthenticationError.swift in Sources */,
 				C9E3E4842A203A8100A83321 /* ComponentPrivacy.swift in Sources */,
-				C9D8450F2A224AC10007A316 /* MainActor.swift in Sources */,
+				C9D8450F2A224AC10007A316 /* InitialActor.swift in Sources */,
 				C9D8450B2A22494C0007A316 /* SessionManager.swift in Sources */,
 				C96853C12AC397560020AD1F /* CustomGlassView.swift in Sources */,
 				C93943F12A9C0DD00085E623 /* ValidationsModel.swift in Sources */,

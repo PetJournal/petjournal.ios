@@ -34,7 +34,7 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
     @FocusState private var isFocused: Bool
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 0) {
             Text(title)
                 .foregroundColor(Color.theme.petPrimary)
                 .font(titleFont)

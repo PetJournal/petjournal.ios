@@ -7,13 +7,13 @@
 
 import Foundation
 
-final class CreateAccountViewModel: ObservableObject {
+@MainActor class CreateAccountViewModel: ObservableObject {
     @Published var states: RegisterStatus = .unknown
     @Published var user: UserModel = UserModel.newUser
     @Published var userSession: UserSession = .init()
     
     @Published var cancel: Bool = false
-    @Published var isRegister: Bool = false
+    var isRegister: Bool = false
     @Published var isCheckBox = false
     
     var service: CreateAccountServiceProtocol!
