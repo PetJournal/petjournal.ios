@@ -26,15 +26,15 @@ struct InputEmailView: View {
             
             waitingCode
         }
-        .alert("Error Domain", isPresented: $viewModel.cancel) {
+        .alert("Erro", isPresented: $viewModel.cancel) {
         } message: {
             switch viewModel.error {
             case .domainErr:
-                Text("Your domain is different from petjournal.com.")
+                Text("Verifique se o e-mail está correto e tente novamente.")
             case .none:
                 Text("")
             case .invalidMail:
-                Text("Error logging in. Please check the email is correct and try again.")
+                Text("Endereço de e-mail não encontrado.")
             case .invalidUrl:
                 Text("Invalid URL")
             case .noData:
@@ -66,9 +66,10 @@ extension InputEmailView {
         ZStack(alignment: .trailing) {
             PJTextFieldView(error: viewModel.emailErrorMessage,
                             errorValidation: viewModel.isValidEmail,
-                            title: "E-mail ou Telefone",
-                            placeholder: "Digite seu e-mail ou telefone",
+                            title: "E-mail",
+                            placeholder: "Digite seu e-mail",
                             textContentType: .emailAddress,
+                            validateFieldCallBack: { text in return self.viewModel.isCorrectCredentials},
                             text: $viewModel.email)
             
             if !viewModel.email.isEmpty {

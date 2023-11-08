@@ -37,7 +37,6 @@ class ForgotPasswordService: ForgotPasswordServiceProtocol {
                 return
             }
             do {
-                debugPrint(data)
                 let returnData = try JSONDecoder().decode(ForgetPasswordResponse.self, from: data)
                 completion(.success(returnData.message))
                 
