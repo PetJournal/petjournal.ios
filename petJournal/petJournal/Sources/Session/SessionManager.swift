@@ -37,22 +37,4 @@ class SessionManager: ObservableObject {
             statusLogin = .signIn
         }
     }
-    
-    var isRegisted: Bool {
-        return getRegister() != nil
-    }
-    
-    func register(withUser user: UserModel) {
-        defaults.set(user, forKey: userSession.registerUser ?? "")
-    }
-    
-    func getRegister() -> UserModel? {
-        return defaults.object(forKey: userSession.registerUser ?? "") as? UserModel
-    }
-    
-    func hasRegister() {
-        if isRegisted {
-            statusRegister = .success
-        }
-    }
 }

@@ -26,11 +26,9 @@ import Foundation
         service.registerUser(model: user) { (result) in
             switch result {
             case .success:
-                SessionManager.shared.register(withUser: self.user)
                 self.isRegister = true
                 self.cancel.toggle()
             case .failure:
-                SessionManager.shared.statusRegister = .failure
                 self.isRegister = false
                 self.cancel.toggle()
             }
