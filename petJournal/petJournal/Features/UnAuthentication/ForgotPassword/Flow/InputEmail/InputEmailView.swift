@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct InputEmailView: View {
-    @StateObject var viewModel: ForgotPasswordViewModel
-    @State private var isWaitingCode: Bool = false
+    @ObservedObject var viewModel = ForgotPasswordViewModel(service: ForgotPasswordService())
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -24,16 +23,22 @@ struct InputEmailView: View {
             buttonsStack
             
             Spacer()
+            
+            waitingCode
         }
-        .alert("Error Domain", isPresented: $viewModel.cancel) {
+        .alert("Erro", isPresented: $viewModel.cancel) {
         } message: {
             switch viewModel.error {
             case .domainErr:
-                Text("Your domain is different from petjournal.com.")
+                Text("Verifique se o e-mail está correto e tente novamente.")
             case .none:
                 Text("")
             case .invalidMail:
-                Text("Error logging in. Please check the email is correct and try again.")
+                Text("Endereço de e-mail não encontrado.")
+            case .invalidUrl:
+                Text("Invalid URL")
+            case .noData:
+                Text("Error, Empty data")
             }
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
@@ -61,15 +66,13 @@ extension InputEmailView {
         ZStack(alignment: .trailing) {
             PJTextFieldView(error: viewModel.emailErrorMessage,
                             errorValidation: viewModel.isValidEmail,
-                            title: "E-mail ou Telefone",
-                            placeholder: "Digite seu e-mail ou telefone",
+                            title: "E-mail",
+                            placeholder: "Digite seu e-mail",
                             textContentType: .emailAddress,
-                            validateFieldCallBack: { text in
-                return self.viewModel.isValidPhone
-            },
-                            text: $viewModel.emailOrPhone)
+                            validateFieldCallBack: { text in return self.viewModel.isCorrectCredentials},
+                            text: $viewModel.email)
             
-            if !viewModel.emailOrPhone.isEmpty {
+            if !viewModel.email.isEmpty {
                 if viewModel.isCorrectCredentials {
                     Image(systemName: "checkmark.circle.fill")
                         .imageScale(.large)
@@ -90,13 +93,10 @@ extension InputEmailView {
     private var buttonsStack: some View {
         VStack(spacing: 5) {
             PJButton(title: "Entrar", buttonType: .primaryType) {
-                viewModel.reAuthentication()
-                self.isWaitingCode = true
+                viewModel.forgetPassword()
             }
             .disabled(!viewModel.isCorrectCredentials)
             .opacity(viewModel.isCorrectCredentials ? 1 : 0.5)
-            
-            waitingCode
             
             PJButton(title: "Cancelar", buttonType: .secundaryType) {
                 dismiss()
@@ -111,7 +111,7 @@ extension InputEmailView {
                 destination:
                     WaitingCodeView()
                     .navigationBarHidden(true),
-                isActive: self.$isWaitingCode) {EmptyView()}
+                isActive: $viewModel.isWaitingCode) {EmptyView()}
                 .isDetailLink(false)
                 .navigationBarHidden(true)
         }
