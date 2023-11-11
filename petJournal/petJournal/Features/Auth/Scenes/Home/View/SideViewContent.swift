@@ -8,13 +8,43 @@
 import SwiftUI
 
 struct SideViewContent: View {
+    @Binding var presentSideMenu: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            VStack(alignment: .trailing) {
+                SideMenuTopView()
+                
+                VStack {
+                    Text("Side Menu")
+                        .foregroundColor(Color.white)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            .frame(maxWidth: .infinity)
+            .background(.gray)
+        }
     }
-}
+    
+    @ViewBuilder
+    private func SideMenuTopView() -> some View {
+        VStack {
+            HStack {
+                Button {
+                    presentSideMenu.toggle()
+                } label: {
+                    Image(systemName: "x.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(Color.white)
+                }
+                .frame(width: 30, height: 30)
+                Spacer()
 
-struct SideViewContent_Previews: PreviewProvider {
-    static var previews: some View {
-        SideViewContent()
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding([.leading, .top], 40)
+        .padding(.bottom, 30)
     }
 }

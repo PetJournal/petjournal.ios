@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ProfileComponentView: View {
-    @EnvironmentObject private var tabViewModel: TabBarViewModel
+//    @EnvironmentObject private var tabViewModel: TabBarViewModel
+    @EnvironmentObject private var homeViewModel: HomeViewModel
     @Binding var xMenu: CGFloat
     
     var body: some View {
