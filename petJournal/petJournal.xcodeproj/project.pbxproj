@@ -72,7 +72,6 @@
 		C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */; };
 		C9F5F4AA2A42046E002C21F7 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A92A42046E002C21F7 /* HomeModel.swift */; };
 		C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */; };
-		C9F5F4AE2A4204C7002C21F7 /* ProfileComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */; };
 		C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */; };
 		C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */; };
 		C9F5F4B42A420517002C21F7 /* ServiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */; };
@@ -164,7 +163,6 @@
 		C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModifier.swift; sourceTree = "<group>"; };
 		C9F5F4A92A42046E002C21F7 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
-		C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComponentView.swift; sourceTree = "<group>"; };
 		C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTabView.swift; sourceTree = "<group>"; };
 		C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceItemView.swift; sourceTree = "<group>"; };
@@ -619,7 +617,6 @@
 		C9F5F4A72A420449002C21F7 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */,
 				C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */,
 				C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */,
 				C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */,
@@ -801,7 +798,6 @@
 				C9C094892AC11915006FB438 /* AuthenticationStatus.swift in Sources */,
 				C9A324912A2FE7D5008FE6F4 /* LoginResponse.swift in Sources */,
 				C9F5F4B42A420517002C21F7 /* ServiceItemView.swift in Sources */,
-				C9F5F4AE2A4204C7002C21F7 /* ProfileComponentView.swift in Sources */,
 				C9F5F4AA2A42046E002C21F7 /* HomeModel.swift in Sources */,
 				C930B5D32A3A8B240008F502 /* EditPasswordViewModel.swift in Sources */,
 				C93943F92A9C0F140085E623 /* Extension+UIColor.swift in Sources */,

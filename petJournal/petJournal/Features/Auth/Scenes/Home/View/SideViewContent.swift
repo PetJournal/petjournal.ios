@@ -1,10 +1,3 @@
-//
-//  SideViewContent.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 10/11/23.
-//
-
 import SwiftUI
 
 struct SideViewContent: View {
@@ -17,12 +10,12 @@ struct SideViewContent: View {
                 
                 VStack {
                     Text("Side Menu")
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.theme.petWhite)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .frame(maxWidth: .infinity)
-            .background(.gray)
+            .background(Color.theme.petPrimary)
         }
     }
     
@@ -30,21 +23,20 @@ struct SideViewContent: View {
     private func SideMenuTopView() -> some View {
         VStack {
             HStack {
+                Spacer()
                 Button {
                     presentSideMenu.toggle()
                 } label: {
-                    Image(systemName: "x.circle")
+                    Image(systemName: "x.mark")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.theme.petWhite)
                 }
                 .frame(width: 30, height: 30)
-                Spacer()
-
             }
         }
         .frame(maxWidth: .infinity)
-        .padding([.leading, .top], 40)
+        .padding([.trailing, .top], 50)
         .padding(.bottom, 30)
     }
 }
