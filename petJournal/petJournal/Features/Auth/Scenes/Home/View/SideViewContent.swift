@@ -27,7 +27,7 @@ struct SideViewContent: View {
                 Button {
                     presentSideMenu.toggle()
                 } label: {
-                    Image(systemName: "x.mark")
+                    Image(systemName: "x.circle")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .foregroundColor(Color.theme.petWhite)
@@ -36,7 +36,7 @@ struct SideViewContent: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .padding([.trailing, .top], 50)
-        .padding(.bottom, 30)
+        .padding(.top, 50)
+        .padding([.trailing, .bottom], 30)
     }
 }

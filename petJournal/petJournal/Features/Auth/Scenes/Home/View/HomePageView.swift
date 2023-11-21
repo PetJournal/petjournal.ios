@@ -90,7 +90,16 @@ extension HomePageView {
     
     private var menuService: some View {
         LazyVGrid(columns: gridLayout, spacing: 15) {
-            ForEach(mock_services) { serv in
+            ForEach(mock_services.prefix(4)) { serv in
+                ServiceItemView(service: serv)
+            }
+        }
+        .padding(10)
+    }
+    
+    private var moreService: some View {
+        LazyVGrid(columns: gridLayout, spacing: 15) {
+            ForEach(mock_services.suffix(from: 4)) { serv in
                 ServiceItemView(service: serv)
             }
         }
@@ -106,6 +115,10 @@ extension HomePageView {
                 
                 seeMore
                 menuService
+                
+                if seeMoreServices {
+                   moreService
+                }
             }
         }
     }
