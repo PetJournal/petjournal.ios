@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct HomePageView: View {
+    @State private var selectedViewID: Int?
+    
     @State var presentSideMenu = false
     @State var seeMoreServices = false
     
@@ -10,49 +12,54 @@ struct HomePageView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.theme.petWhite.edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                scrollViewHome
-            }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            .padding(.top, UIApplication
-                .shared
-                .connectedScenes
-                .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
-                .first { $0.isKeyWindow }?.safeAreaInsets.top)
-            .overlay(alignment: .top) {
-                ZStack {
-                    HStack {
-                        Text("Olá, Camila")
-                            .foregroundColor(Color.theme.petBlack)
-                            .font(.title2)
-                        
-                        Spacer()
-                        
-                        Button {
-                            presentSideMenu.toggle()
-                        } label: {
-                            Image("menu-burger")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .foregroundColor(Color.theme.petBlack)
-                        }
-                        .frame(width: 30, height: 30)
-                    }
-                    .padding(.horizontal, 20)
+        NavigationView {
+            ZStack {
+                Color.theme.petWhite.edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    scrollViewHome
                 }
-                .frame(maxWidth: .infinity)
-                .frame(height: 56)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                .padding(.top, UIApplication
+                    .shared
+                    .connectedScenes
+                    .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+                    .first { $0.isKeyWindow }?.safeAreaInsets.top)
+                .overlay(alignment: .top) {
+                    ZStack {
+                        HStack {
+                            Text("Olá, Camila")
+                                .foregroundColor(Color.theme.petBlack)
+                                .font(.title2)
+                            
+                            Spacer()
+                            
+                            Button {
+                                presentSideMenu.toggle()
+                            } label: {
+                                Image("menu-burger")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(Color.theme.petBlack)
+                            }
+                            .frame(width: 30, height: 30)
+                        }
+                        .padding(.horizontal, 20)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
+                    .background(Color.theme.petWhite)
+                    .zIndex(1)
+                    .shadow(radius: 0.5)
+                }
                 .background(Color.theme.petWhite)
-                .zIndex(1)
-                .shadow(radius: 0.5)
+                sideMenu()
             }
-            .background(Color.theme.petWhite)
-            sideMenu()
+            .frame(maxWidth: .infinity)
+            
+            NavigationLink("", destination: viewSelecionada, tag: selectedViewID ?? 0, selection: $selectedViewID)
+                                .hidden()
         }
-        .frame(maxWidth: .infinity)
     }
     
     @ViewBuilder
@@ -60,6 +67,26 @@ struct HomePageView: View {
         SideMenuView(isShowing: $presentSideMenu, direction: .trailing) {
             SideViewContent(presentSideMenu: $presentSideMenu)
                 .frame(width: 300)
+        }
+    }
+    
+    @ViewBuilder
+    var viewSelecionada: some View {
+        if let tipoView = mock_services.first(where: { $0.id == selectedViewID }) {
+            switch tipoView.id {
+            case 0:
+                ScheduleView()
+            case 1:
+                FindServicesView()
+            case 2:
+                VaccineLogView()
+            case 3:
+                ParasiteControlView()
+            default:
+                Text("Funcionalidade inativa no momento")
+            }
+        } else {
+            Text("Funcionalidade inativa no momento")
         }
     }
 }
@@ -90,8 +117,10 @@ extension HomePageView {
     
     private var menuService: some View {
         LazyVGrid(columns: gridLayout, spacing: 15) {
-            ForEach(mock_services.prefix(4)) { serv in
-                ServiceItemView(service: serv)
+            ForEach(mock_services.prefix(4), id: \.id) { serv in
+                ServiceItemView(service: serv) {
+                    self.selectedViewID = serv.id
+                }
             }
         }
         .padding(10)
@@ -99,8 +128,10 @@ extension HomePageView {
     
     private var moreService: some View {
         LazyVGrid(columns: gridLayout, spacing: 15) {
-            ForEach(mock_services.suffix(from: 4)) { serv in
-                ServiceItemView(service: serv)
+            ForEach(mock_services.suffix(from: 4), id: \.id) { serv in
+                ServiceItemView(service: serv) {
+                    self.selectedViewID = serv.id
+                }
             }
         }
         .padding(10)

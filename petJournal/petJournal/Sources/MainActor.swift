@@ -14,7 +14,8 @@ struct MainActor: View {
         NavigationView {
             switch sessionManager.statusLogin {
             case .signIn: TabBarView()
-            case .signOut: AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
+            case .signOut: TabBarView()
+//                AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
             case .unknown: LoagingView()
             }
         }

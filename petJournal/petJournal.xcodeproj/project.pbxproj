@@ -16,6 +16,10 @@
 		1FF4608429C8E8740026F680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608329C8E8740026F680 /* Assets.xcassets */; };
 		1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608529C8E8740026F680 /* LaunchScreen.storyboard */; };
 		6196CDB52AE2F47A0021DA5F /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */; };
+		C9029C3D2B1E691A0069AE5D /* FindServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9029C3C2B1E691A0069AE5D /* FindServicesView.swift */; };
+		C9029C3F2B1E69420069AE5D /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9029C3E2B1E69420069AE5D /* ScheduleView.swift */; };
+		C9029C412B1E69800069AE5D /* VaccineLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9029C402B1E69800069AE5D /* VaccineLogView.swift */; };
+		C9029C432B1E69AA0069AE5D /* ParasiteControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9029C422B1E69AA0069AE5D /* ParasiteControlView.swift */; };
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
 		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
 		C910E2BB2AC78F0800DD3C23 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910E2BA2AC78F0800DD3C23 /* URLManager.swift */; };
@@ -106,6 +110,10 @@
 		1FF4608629C8E8740026F680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FF4608829C8E8740026F680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
+		C9029C3C2B1E691A0069AE5D /* FindServicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindServicesView.swift; sourceTree = "<group>"; };
+		C9029C3E2B1E69420069AE5D /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		C9029C402B1E69800069AE5D /* VaccineLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineLogView.swift; sourceTree = "<group>"; };
+		C9029C422B1E69AA0069AE5D /* ParasiteControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParasiteControlView.swift; sourceTree = "<group>"; };
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
 		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
 		C910E2BA2AC78F0800DD3C23 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
@@ -265,6 +273,40 @@
 				1FF4608829C8E8740026F680 /* Info.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		C9029C372B1E67430069AE5D /* Agenda */ = {
+			isa = PBXGroup;
+			children = (
+				C9029C3E2B1E69420069AE5D /* ScheduleView.swift */,
+			);
+			path = Agenda;
+			sourceTree = "<group>";
+		};
+		C9029C382B1E67680069AE5D /* Localizar Serviços */ = {
+			isa = PBXGroup;
+			children = (
+				C9029C3C2B1E691A0069AE5D /* FindServicesView.swift */,
+			);
+			name = "Localizar Serviços";
+			path = "Localizar Serviços";
+			sourceTree = "<group>";
+		};
+		C9029C392B1E67930069AE5D /* Registrar Vacina */ = {
+			isa = PBXGroup;
+			children = (
+				C9029C402B1E69800069AE5D /* VaccineLogView.swift */,
+			);
+			path = "Registrar Vacina";
+			sourceTree = "<group>";
+		};
+		C9029C3A2B1E67A10069AE5D /* Registrar Vermífugo */ = {
+			isa = PBXGroup;
+			children = (
+				C9029C422B1E69AA0069AE5D /* ParasiteControlView.swift */,
+			);
+			name = "Registrar Vermífugo";
+			path = "Registrar Vermífugo";
 			sourceTree = "<group>";
 		};
 		C910E2B82AC78E1E00DD3C23 /* Model */ = {
@@ -599,6 +641,10 @@
 		C9F5F4A52A420079002C21F7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C9029C3A2B1E67A10069AE5D /* Registrar Vermífugo */,
+				C9029C392B1E67930069AE5D /* Registrar Vacina */,
+				C9029C382B1E67680069AE5D /* Localizar Serviços */,
+				C9029C372B1E67430069AE5D /* Agenda */,
 				C94A23FC29CE239300C71D01 /* Home */,
 			);
 			path = Scenes;
@@ -774,7 +820,9 @@
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
 				C9A324932A2FE7F9008FE6F4 /* RegisterError.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
+				C9029C412B1E69800069AE5D /* VaccineLogView.swift in Sources */,
 				C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */,
+				C9029C3D2B1E691A0069AE5D /* FindServicesView.swift in Sources */,
 				C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */,
 				C9BF33A02AFEE570009C0F36 /* SideViewContent.swift in Sources */,
 				C9B1C8A829F9FDC0002C7B00 /* AuthenticationError.swift in Sources */,
@@ -817,7 +865,9 @@
 				C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */,
 				C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */,
 				C9D4E1E72A2932740030164A /* UserDefaultsUtils.swift in Sources */,
+				C9029C432B1E69AA0069AE5D /* ParasiteControlView.swift in Sources */,
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
+				C9029C3F2B1E69420069AE5D /* ScheduleView.swift in Sources */,
 				C930B5C82A3A88CF0008F502 /* ReceiveInputViewModel.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
 				C93943F52A9C0E6C0085E623 /* PJTextFieldView.swift in Sources */,
