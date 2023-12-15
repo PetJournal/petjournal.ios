@@ -54,11 +54,11 @@ struct HomePageView: View {
                 }
                 .background(Color.theme.petWhite)
                 sideMenu()
+                
+                NavigationLink("", destination: viewSelecionada, tag: selectedViewID ?? 0, selection: $selectedViewID)
+                                    .hidden()
             }
             .frame(maxWidth: .infinity)
-            
-            NavigationLink("", destination: viewSelecionada, tag: selectedViewID ?? 0, selection: $selectedViewID)
-                                .hidden()
         }
     }
     
@@ -101,34 +101,25 @@ extension HomePageView {
             Spacer()
             
             Button {
-                withAnimation(.easeInOut) {
-                    seeMoreServices.toggle()
-                }
+                seeMoreServices.toggle()
             } label: {
-                Text(seeMoreServices ? "Ver Menos" : "Ver mais")
+                Text("Ver mais")
                     .foregroundColor(Color.theme.petBlack)
                     .font(.caption)
                     .padding(.vertical, 4)
             }
             
+            NavigationLink(
+                destination: MoreServicesView(),
+                isActive: self.$seeMoreServices) {EmptyView()}
+                .isDetailLink(false)
         }
         .padding(.horizontal, 15)
     }
     
     private var menuService: some View {
         LazyVGrid(columns: gridLayout, spacing: 15) {
-            ForEach(mock_services.prefix(4), id: \.id) { serv in
-                ServiceItemView(service: serv) {
-                    self.selectedViewID = serv.id
-                }
-            }
-        }
-        .padding(10)
-    }
-    
-    private var moreService: some View {
-        LazyVGrid(columns: gridLayout, spacing: 15) {
-            ForEach(mock_services.suffix(from: 4), id: \.id) { serv in
+            ForEach(mock_services, id: \.id) { serv in
                 ServiceItemView(service: serv) {
                     self.selectedViewID = serv.id
                 }
@@ -146,10 +137,6 @@ extension HomePageView {
                 
                 seeMore
                 menuService
-                
-                if seeMoreServices {
-                   moreService
-                }
             }
         }
     }

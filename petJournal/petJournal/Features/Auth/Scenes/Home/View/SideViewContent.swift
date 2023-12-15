@@ -9,7 +9,7 @@ struct SideViewContent: View {
                 SideMenuTopView()
                 
                 VStack {
-                    Text("Side Menu")
+                    Text("Funcionalidade inativa no momento")
                         .foregroundColor(Color.theme.petWhite)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -28,7 +28,7 @@ struct TabBarView: View {
             
             Text("Funcionalidade inativa no momento")
                 .tabItem {
-                    Label("User", image: "ic_user")
+                    Label("Tutor", image: "ic_user")
                 }
                 .tag(2)
         }

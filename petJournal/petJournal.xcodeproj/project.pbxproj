@@ -23,6 +23,7 @@
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
 		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
 		C910E2BB2AC78F0800DD3C23 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910E2BA2AC78F0800DD3C23 /* URLManager.swift */; };
+		C91427062B2B9B9E002403E5 /* MoreServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91427052B2B9B9E002403E5 /* MoreServicesView.swift */; };
 		C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C12A3A87E20008F502 /* InputEmailView.swift */; };
 		C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */; };
 		C930B5C82A3A88CF0008F502 /* ReceiveInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */; };
@@ -117,6 +118,7 @@
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
 		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
 		C910E2BA2AC78F0800DD3C23 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		C91427052B2B9B9E002403E5 /* MoreServicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreServicesView.swift; sourceTree = "<group>"; };
 		C930B5C12A3A87E20008F502 /* InputEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEmailView.swift; sourceTree = "<group>"; };
 		C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
 		C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveInputViewModel.swift; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 				C9F5F4B72A420553002C21F7 /* SideMenuView.swift */,
 				C9F5F4B92A420562002C21F7 /* HomePageView.swift */,
 				C9BF339F2AFEE570009C0F36 /* SideViewContent.swift */,
+				C91427052B2B9B9E002403E5 /* MoreServicesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */,
 				C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */,
 				C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */,
+				C91427062B2B9B9E002403E5 /* MoreServicesView.swift in Sources */,
 				C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */,
 				C9D4E1E72A2932740030164A /* UserDefaultsUtils.swift in Sources */,
 				C9029C432B1E69AA0069AE5D /* ParasiteControlView.swift in Sources */,
