@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainActor: View {
+struct InitialActor: View {
     @EnvironmentObject var sessionManager: SessionManager
     
     var body: some View {

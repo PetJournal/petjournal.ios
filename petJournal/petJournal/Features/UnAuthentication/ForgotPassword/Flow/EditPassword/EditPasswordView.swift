@@ -76,7 +76,7 @@ extension EditPasswordView {
                             validateFieldCallBack: { text in
                 return self.viewModel.isValidPassword
             },
-                            text: $viewModel.user.passwordMatch)
+                            text: $viewModel.user.passwordConfirmation)
         }
     }
     

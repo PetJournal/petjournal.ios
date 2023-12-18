@@ -9,26 +9,29 @@ import Foundation
 
 public struct UserModel: Codable, Identifiable, Equatable {
     public var id = UUID().uuidString
-    var name: String
+    var firstName: String
     var lastName: String
     var email: String
-    var phoneNumber: String
     var password: String
-    var passwordMatch: String
+    var passwordConfirmation: String
+    var phone: String
+    var isPrivacyPolicyAccepted: Bool
     
     enum CodingKeys: String, CodingKey {
-        case name, lastName, email, phoneNumber, password, passwordMatch
+        case firstName, lastName, email, password, passwordConfirmation, phone
+        case isPrivacyPolicyAccepted
     }
 }
 
 extension UserModel {
     static var newUser: UserModel {
-        UserModel(name: "",
+        UserModel(firstName: "",
                   lastName: "",
                   email: "",
-                  phoneNumber: "",
                   password: "",
-                  passwordMatch: "")
+                  passwordConfirmation: "",
+                  phone: "",
+                  isPrivacyPolicyAccepted: true)
     }
 }
 

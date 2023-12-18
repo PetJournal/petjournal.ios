@@ -13,14 +13,16 @@ struct CreateAccountView: View {
     @State private var isLoginView: Bool = false
     
     var body: some View {
-        ZStack {
-            VStack {
+        GeometryReader { geometry in
+            VStack(spacing: 0) {
                 headerView
                 textFieldsRegister
                 
                 ComponentPrivacy { self.showWebview = true }
+                    .padding(.vertical, 10)
                 
-                registerView
+                buttonRegister
+                    .frame(width: geometry.size.width * 0.45)
                 Spacer()
                 loginNavigation
             }
@@ -38,34 +40,36 @@ struct CreateAccountView: View {
 // MARK: - Extension CreateAccountView
 extension CreateAccountView {
     private var headerView: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 8) {
             Image("pet_logoPrimary")
                 .resizable()
-                .frame(width: 80, height: 70)
+                .scaledToFit()
+                .frame(width: 76, height: 76)
             
             Text("Inscreva-se")
-                .font(.system(size: 20))
+                .font(.fedokaMedium(size: .biggest))
         }
+        .padding(.bottom, 30)
     }
     
     private var textFieldsRegister: some View {
-        
         ScrollView(.vertical, showsIndicators: false) {
+            
             VStack(spacing: 5) {
                 PJTextFieldView(error: viewModel.firstNameErrorMessage,
                                 errorValidation: viewModel.isValidName,
                                 title: "Nome",
-                                placeholder: "Digite seu Nome",
+                                placeholder: "Digite seu primeiro nome",
                                 textContentType: .name,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidName
                 },
-                                text: $viewModel.user.name)
+                                text: $viewModel.user.firstName)
                 
                 PJTextFieldView(error: viewModel.lastNameErrorMessage,
                                 errorValidation: viewModel.isValidLastname,
                                 title: "Sobrenome",
-                                placeholder: "Digite seu Sobrenome",
+                                placeholder: "Digite seu sobrenome",
                                 textContentType: .givenName,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidLastname
@@ -75,7 +79,7 @@ extension CreateAccountView {
                 PJTextFieldView(error: viewModel.emailErrorMessage,
                                 errorValidation: viewModel.isValidEmail,
                                 title: "E-mail",
-                                placeholder: "Digite seu E-mail",
+                                placeholder: "E-mail",
                                 textContentType: .emailAddress,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidEmail
@@ -85,55 +89,52 @@ extension CreateAccountView {
                 PJTextFieldView(error: viewModel.phoneErrorMessage,
                                 errorValidation: viewModel.isValidPhone,
                                 title: "Telefone",
-                                placeholder: "Digite seu telefone",
+                                placeholder: "Telefone",
                                 textContentType: .telephoneNumber,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPhone
                 },
-                                text: $viewModel.user.phoneNumber)
+                                text: $viewModel.user.phone)
                 
                 PJTextFieldView(error: viewModel.messageErrorPassword,
                                 errorValidation: viewModel.isValidPassword,
                                 title: "Senha",
-                                placeholder: "Digite sua senha",
+                                placeholder: "Senha",
                                 textContentType: .password,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPassword
                 },
                                 text: $viewModel.user.password)
-                .padding(.bottom, 20)
                 
                 PJTextFieldView(error: viewModel.messageErrorPasswordMatch,
                                 errorValidation: viewModel.isValidPasswordMatch,
-                                title: "Confirme sua senha",
-                                placeholder: "Digite sua senha",
+                                title: "Confirmar senha",
+                                placeholder: "Confirmar senha",
                                 textContentType: .password,
                                 validateFieldCallBack: { text in
                     return self.viewModel.isValidPasswordMatch
                 },
-                                text: $viewModel.user.passwordMatch)
+                                text: $viewModel.user.passwordConfirmation)
             }
             .padding(.horizontal, 16)
         }
     }
     
-    private var registerView: some View {
+    private var buttonRegister: some View {
         VStack {
-            PJButton(title: "Cadastrar", buttonType: .primaryType) {
+            PJButton(title: "Continuar", buttonType: .primaryType) {
                 viewModel.registerUser()
             }
             .disabled(!viewModel.completeRegister)
-            .opacity(viewModel.completeRegister ? 1 : 0.4)
         }
-        .frame(width: 300)
         .alert(isPresented: $viewModel.cancel) {
             Alert(title: Text("Registro"),
-                  message: Text("\(viewModel.emailJaRegistrado)"),
+                  message: Text("\(viewModel.emailAlreadyRegistered)"),
                   primaryButton: .cancel(),
                   secondaryButton: .destructive(
                     Text("OK"),
                     action: {
-                        if viewModel.emailJaRegistradoAction {
+                        if viewModel.isRegister {
                             self.isLoginView = false
                         } else {
                             self.isLoginView = true

@@ -12,6 +12,7 @@ class SessionManager: ObservableObject {
     
     @Published var userSession: UserSession = .init()
     @Published var statusLogin: AuthenticationStatus = .signOut
+    @Published var statusRegister: RegisterStatus = .unknown
     
     private let defaults = UserDefaults.standard
     

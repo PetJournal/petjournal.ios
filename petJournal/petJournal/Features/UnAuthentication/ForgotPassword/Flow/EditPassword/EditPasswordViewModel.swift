@@ -47,7 +47,7 @@ extension EditPasswordViewModel {
     }
     
     func passwordCheckError() {
-        if user.password.isEmpty || user.passwordMatch.isEmpty {
+        if user.password.isEmpty || user.passwordConfirmation.isEmpty {
             activeError = EditPasswordError.isEmptyValue
         } else if !isValidPassword {
             activeError = EditPasswordError.incorrectPassword
@@ -57,8 +57,8 @@ extension EditPasswordViewModel {
     }
       
     var matchPass: Bool {
-        let passMatch = ValidationsModel.shared.validateInput(user.passwordMatch, of: .passMatch(.default)) == nil
-        if user.password == user.passwordMatch {
+        let passMatch = ValidationsModel.shared.validateInput(user.passwordConfirmation, of: .passMatch(.default)) == nil
+        if user.password == user.passwordConfirmation {
             if passMatch {
                 return true
             }
@@ -79,8 +79,8 @@ extension EditPasswordViewModel {
     }
     
     var messageErrorPasswordMatch: String {
-        if let errorValidation = ValidationsModel.shared.validateInput(user.passwordMatch, of: .passMatch(.default)) {
-            if user.password != user.passwordMatch {
+        if let errorValidation = ValidationsModel.shared.validateInput(user.passwordConfirmation, of: .passMatch(.default)) {
+            if user.password != user.passwordConfirmation {
                 let message = errorValidation.reason
                 return message
             }

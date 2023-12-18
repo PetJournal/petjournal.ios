@@ -19,6 +19,7 @@
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
 		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
 		C910E2BB2AC78F0800DD3C23 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910E2BA2AC78F0800DD3C23 /* URLManager.swift */; };
+		C91CF52F2AE9F51B00CDC49E /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91CF52E2AE9F51B00CDC49E /* RegisterResponse.swift */; };
 		C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C12A3A87E20008F502 /* InputEmailView.swift */; };
 		C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */; };
 		C930B5C82A3A88CF0008F502 /* ReceiveInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */; };
@@ -45,10 +46,10 @@
 		C96BFB3E29E1D714003D3827 /* Fredoka-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */; };
 		C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */; };
 		C97A74E629F9810D001CD67E /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A74E529F9810D001CD67E /* AuthMock.swift */; };
-		C9A3248A2A2FB25A008FE6F4 /* RegisterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324892A2FB25A008FE6F4 /* RegisterState.swift */; };
+		C9A3248A2A2FB25A008FE6F4 /* RegisterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324892A2FB25A008FE6F4 /* RegisterStatus.swift */; };
 		C9A3248E2A2FE6F3008FE6F4 /* SpyRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */; };
 		C9A324912A2FE7D5008FE6F4 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324902A2FE7D5008FE6F4 /* LoginResponse.swift */; };
-		C9A324932A2FE7F9008FE6F4 /* RegisterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324922A2FE7F9008FE6F4 /* RegisterError.swift */; };
+		C9A324932A2FE7F9008FE6F4 /* RegisterAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324922A2FE7F9008FE6F4 /* RegisterAPIError.swift */; };
 		C9A324952A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324942A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift */; };
 		C9B1C8A529F9F762002C7B00 /* Validation_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B1C8A429F9F761002C7B00 /* Validation_Test.swift */; };
 		C9B1C8A829F9FDC0002C7B00 /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B1C8A729F9FDC0002C7B00 /* AuthenticationError.swift */; };
@@ -59,7 +60,7 @@
 		C9D845092A22491F0007A316 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D845082A22491F0007A316 /* UserSession.swift */; };
 		C9D8450B2A22494C0007A316 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8450A2A22494C0007A316 /* SessionManager.swift */; };
 		C9D8450D2A2249650007A316 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8450C2A2249650007A316 /* SessionModel.swift */; };
-		C9D8450F2A224AC10007A316 /* MainActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8450E2A224AC10007A316 /* MainActor.swift */; };
+		C9D8450F2A224AC10007A316 /* InitialActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8450E2A224AC10007A316 /* InitialActor.swift */; };
 		C9D95F6F2A37A6E6001C271F /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */; };
 		C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D95F712A37AA0D001C271F /* BlurView.swift */; };
 		C9E3E4842A203A8100A83321 /* ComponentPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E3E4832A203A8100A83321 /* ComponentPrivacy.swift */; };
@@ -108,6 +109,7 @@
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
 		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
 		C910E2BA2AC78F0800DD3C23 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
+		C91CF52E2AE9F51B00CDC49E /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
 		C930B5C12A3A87E20008F502 /* InputEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEmailView.swift; sourceTree = "<group>"; };
 		C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
 		C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveInputViewModel.swift; sourceTree = "<group>"; };
@@ -135,10 +137,10 @@
 		C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-SemiBold.ttf"; sourceTree = "<group>"; };
 		C97A74D929F97EEE001CD67E /* petJournal_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = petJournal_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97A74E529F9810D001CD67E /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
-		C9A324892A2FB25A008FE6F4 /* RegisterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterState.swift; sourceTree = "<group>"; };
+		C9A324892A2FB25A008FE6F4 /* RegisterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStatus.swift; sourceTree = "<group>"; };
 		C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyRegisterService.swift; sourceTree = "<group>"; };
 		C9A324902A2FE7D5008FE6F4 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
-		C9A324922A2FE7F9008FE6F4 /* RegisterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterError.swift; sourceTree = "<group>"; };
+		C9A324922A2FE7F9008FE6F4 /* RegisterAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAPIError.swift; sourceTree = "<group>"; };
 		C9A324942A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel_Test.swift; sourceTree = "<group>"; };
 		C9B1C8A429F9F761002C7B00 /* Validation_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation_Test.swift; sourceTree = "<group>"; };
 		C9B1C8A729F9FDC0002C7B00 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
@@ -149,7 +151,7 @@
 		C9D845082A22491F0007A316 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		C9D8450A2A22494C0007A316 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		C9D8450C2A2249650007A316 /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
-		C9D8450E2A224AC10007A316 /* MainActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainActor.swift; sourceTree = "<group>"; };
+		C9D8450E2A224AC10007A316 /* InitialActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialActor.swift; sourceTree = "<group>"; };
 		C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		C9D95F712A37AA0D001C271F /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		C9E3E4832A203A8100A83321 /* ComponentPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentPrivacy.swift; path = petJournal/Features/UnAuthentication/CreateAccount/Subviews/ComponentPrivacy.swift; sourceTree = SOURCE_ROOT; };
@@ -249,7 +251,7 @@
 				C9D845072A22490A0007A316 /* Session */,
 				1FF4607A29C8E8720026F680 /* AppDelegate.swift */,
 				1FF4607C29C8E8720026F680 /* SceneDelegate.swift */,
-				C9D8450E2A224AC10007A316 /* MainActor.swift */,
+				C9D8450E2A224AC10007A316 /* InitialActor.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				1FB7998329F1C8CC00673233 /* UserPJModel.swift */,
+				C91CF52E2AE9F51B00CDC49E /* RegisterResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -481,7 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				C9B1C8A729F9FDC0002C7B00 /* AuthenticationError.swift */,
-				C9A324922A2FE7F9008FE6F4 /* RegisterError.swift */,
+				C9A324922A2FE7F9008FE6F4 /* RegisterAPIError.swift */,
 				C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */,
 			);
 			path = Error;
@@ -499,7 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				C9C094882AC11915006FB438 /* AuthenticationStatus.swift */,
-				C9A324892A2FB25A008FE6F4 /* RegisterState.swift */,
+				C9A324892A2FB25A008FE6F4 /* RegisterStatus.swift */,
 				C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */,
 			);
 			path = States;
@@ -768,13 +771,14 @@
 				C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */,
 				C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */,
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
-				C9A324932A2FE7F9008FE6F4 /* RegisterError.swift in Sources */,
+				C91CF52F2AE9F51B00CDC49E /* RegisterResponse.swift in Sources */,
+				C9A324932A2FE7F9008FE6F4 /* RegisterAPIError.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */,
 				C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */,
 				C9B1C8A829F9FDC0002C7B00 /* AuthenticationError.swift in Sources */,
 				C9E3E4842A203A8100A83321 /* ComponentPrivacy.swift in Sources */,
-				C9D8450F2A224AC10007A316 /* MainActor.swift in Sources */,
+				C9D8450F2A224AC10007A316 /* InitialActor.swift in Sources */,
 				C9D8450B2A22494C0007A316 /* SessionManager.swift in Sources */,
 				C96853C12AC397560020AD1F /* CustomGlassView.swift in Sources */,
 				C93943F12A9C0DD00085E623 /* ValidationsModel.swift in Sources */,
@@ -807,7 +811,7 @@
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				C930B5D02A3A8AA60008F502 /* WaitingViewModel.swift in Sources */,
 				C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */,
-				C9A3248A2A2FB25A008FE6F4 /* RegisterState.swift in Sources */,
+				C9A3248A2A2FB25A008FE6F4 /* RegisterStatus.swift in Sources */,
 				C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */,
 				C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */,
 				C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */,

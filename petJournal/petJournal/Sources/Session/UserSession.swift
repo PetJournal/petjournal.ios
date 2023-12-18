@@ -10,9 +10,11 @@ import Foundation
 enum KeysGeneral: String {
     case token = "keyGeneralToken"
     case hasSession = "keyGeneralHasSession"
+    case registerUser = "keyRegisterUser"
 }
 
 enum KeysUser: String {
+    case id = "keyID"
     case firstName = "keyFirstName"
     case lastName = "keyLastName"
     case email = "keyEmail"
@@ -20,10 +22,15 @@ enum KeysUser: String {
     case password = "keyPassword"
 }
 
-struct UserSession {
+struct UserSession: Codable {
     var hasSession: Bool {
         set { UserDefaults.standard.set(newValue, forKey: KeysGeneral.hasSession.rawValue) }
         get { UserDefaults.standard.bool(forKey: KeysGeneral.hasSession.rawValue) }
+    }
+    
+    var registerUser: String? {
+        set { UserDefaults.standard.set(newValue, forKey: KeysGeneral.registerUser.rawValue) }
+        get { UserDefaults.standard.string(forKey: KeysGeneral.registerUser.rawValue) }
     }
     
     var token: String? {

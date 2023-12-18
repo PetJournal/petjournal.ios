@@ -8,17 +8,48 @@
 import Foundation
 
 protocol CreateAccountServiceProtocol {
-    func registerUser(userModel: UserModel, completion: @escaping (Result<UserModel, ErrorRegisterApp>) -> Void)
+    func registerUser(model: UserModel,
+                      completion: @escaping(Result<Bool, RegisterAPIError>) -> Void)
 }
 
 class CreateAccountService: CreateAccountServiceProtocol {
-    func registerUser(userModel: UserModel, completion: @escaping (Result<UserModel, ErrorRegisterApp>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if userModel.email == "user@petjournal.com" && userModel.password == "password@123" {
-                completion(.success(userModel))
-            } else {
-                completion(.failure(.errorRegister))
-            }
+    func registerUser(model: UserModel,
+                      completion: @escaping(Result<Bool, RegisterAPIError>) -> Void) {
+        
+        guard let url = URLManager.shared.makeURL(path: URLManager.shared.signupURL) else {
+            completion(.failure(.invalidURL))
+            return
         }
+        
+        let body = RegisterRequestBody(firstName: model.firstName,
+                                       lastName: model.lastName,
+                                       email: model.email,
+                                       password: model.password,
+                                       passwordConfirmation: model.passwordConfirmation,
+                                       phone: model.phone,
+                                       isPrivacyPolicyAccepted: model.isPrivacyPolicyAccepted)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(body)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            
+            switch httpResponse.statusCode {
+            case RegisterAPIError.success.rawValue:
+                completion(.success(true))
+            case RegisterAPIError.invalidRequest.rawValue:
+                completion(.failure(.invalidRequest))
+            case RegisterAPIError.conflictRequest.rawValue:
+                completion(.failure(.conflictRequest))
+            default:
+                completion(.failure(.internalServerError))
+            }
+        }.resume()
     }
 }

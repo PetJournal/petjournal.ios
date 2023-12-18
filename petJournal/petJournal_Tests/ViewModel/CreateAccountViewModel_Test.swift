@@ -30,12 +30,12 @@ final class CreateAccountViewModel_Test: XCTestCase {
     func testRegisterUser_Success() {
         mockService.signUpSuccess = true
         registerViewModel.registerUser()
-        XCTAssertEqual(RegisterState.success, registerViewModel.states)
+        XCTAssertEqual(RegisterStatus.success, registerViewModel.states)
     }
     
     func testRegisterUser_Failure() {
         mockService.signUpSuccess = false
         registerViewModel.registerUser()
-        XCTAssertEqual(RegisterState.failure, registerViewModel.states)
+        XCTAssertEqual(RegisterStatus.failure, registerViewModel.states)
     }
 }
