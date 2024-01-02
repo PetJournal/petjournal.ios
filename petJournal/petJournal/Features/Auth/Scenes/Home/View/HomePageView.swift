@@ -1,17 +1,10 @@
-//
-//  HomePage.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 20/06/23.
-//
-
 import SwiftUI
 
 struct HomePageView: View {
-    @State private var seeMoreServices: Bool = false
+    @State private var selectedViewID: Int?
     
-    @State private var x = UIScreen.main.bounds.width - 90
-    @State private var width = UIScreen.main.bounds.width + 90
+    @State var presentSideMenu = false
+    @State var seeMoreServices = false
     
     let rowSpacing: CGFloat = 10
     var gridLayout: [GridItem] {
@@ -19,50 +12,82 @@ struct HomePageView: View {
     }
     
     var body: some View {
-        ZStack(alignment: Alignment(horizontal: .trailing, vertical: .center)) {
-            VStack(spacing: 0) {
-                HStack {
-                    ProfileComponentView(xMenu: $x)
+        NavigationView {
+            ZStack {
+                Color.theme.petWhite.edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    scrollViewHome
                 }
-                .padding(.horizontal, 10)
-                .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-                .background(Color.white)
-                
-                scrollViewHome
-                
-            }
-            .background(Color.theme.petWhite.ignoresSafeArea(.all, edges: .all))
-            
-            SideMenuView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
-                .offset(x: x)
-                .background(Color.theme.petBlack.opacity(x == 0 ? 0.5 : 0).ignoresSafeArea(.all, edges: .vertical))
-                .onTapGesture {
-                    withAnimation {
-                        x = +width
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                .padding(.top, UIApplication
+                    .shared
+                    .connectedScenes
+                    .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+                    .first { $0.isKeyWindow }?.safeAreaInsets.top)
+                .overlay(alignment: .top) {
+                    ZStack {
+                        HStack {
+                            Text("Olá, Camila")
+                                .foregroundColor(Color.theme.petBlack)
+                                .font(.title2)
+                            
+                            Spacer()
+                            
+                            Button {
+                                presentSideMenu.toggle()
+                            } label: {
+                                Image("menu-burger")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(Color.theme.petBlack)
+                            }
+                            .frame(width: 30, height: 30)
+                        }
+                        .padding(.horizontal, 20)
                     }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
+                    .background(Color.theme.petWhite)
+                    .zIndex(1)
+                    .shadow(radius: 0.5)
                 }
+                .background(Color.theme.petWhite)
+                sideMenu()
+                
+                NavigationLink("", destination: viewSelecionada, tag: selectedViewID ?? 0, selection: $selectedViewID)
+                                    .hidden()
+            }
+            .frame(maxWidth: .infinity)
         }
-        .gesture(DragGesture().onChanged({ (value) in
-            withAnimation {
-                if value.translation.width > 0 {
-                    if x < 0 {
-                        x = +width + value.translation.width
-                    }
-                } else {
-                    x = value.translation.width
-                }
+    }
+    
+    @ViewBuilder
+    private func sideMenu() -> some View {
+        SideMenuView(isShowing: $presentSideMenu, direction: .trailing) {
+            SideViewContent(presentSideMenu: $presentSideMenu)
+                .frame(width: 300)
+        }
+    }
+    
+    @ViewBuilder
+    var viewSelecionada: some View {
+        if let tipoView = mock_services.first(where: { $0.id == selectedViewID }) {
+            switch tipoView.id {
+            case 0:
+                ScheduleView()
+            case 1:
+                FindServicesView()
+            case 2:
+                VaccineLogView()
+            case 3:
+                ParasiteControlView()
+            default:
+                Text("Funcionalidade inativa no momento")
             }
-        }).onEnded({ (value) in
-            withAnimation {
-                if +x < width / 2 {
-                    x = 0
-                } else {
-                    x = +width
-                }
-            }
-        })
-        )
-        .ignoresSafeArea(.all, edges: .top)
+        } else {
+            Text("Funcionalidade inativa no momento")
+        }
     }
 }
 
@@ -72,32 +97,35 @@ extension HomePageView {
             Text("Serviços")
                 .foregroundColor(Color.theme.petBlack)
                 .font(.subheadline)
-                .fontWeight(.bold)
             
             Spacer()
             
             Button {
-                withAnimation(.easeInOut) {
-                    seeMoreServices.toggle()
-                }
+                seeMoreServices.toggle()
             } label: {
-                Text(seeMoreServices ? "Ver Menos" : "Ver mais")
+                Text("Ver mais")
+                    .foregroundColor(Color.theme.petBlack)
                     .font(.caption)
-                    .fontWeight(.bold)
                     .padding(.vertical, 4)
             }
             
+            NavigationLink(
+                destination: MoreServicesView(),
+                isActive: self.$seeMoreServices) {EmptyView()}
+                .isDetailLink(false)
         }
         .padding(.horizontal, 15)
     }
     
     private var menuService: some View {
         LazyVGrid(columns: gridLayout, spacing: 15) {
-            ForEach(mock_services) { serv in
-                ServiceItemView(service: serv)
+            ForEach(mock_services, id: \.id) { serv in
+                ServiceItemView(service: serv) {
+                    self.selectedViewID = serv.id
+                }
             }
         }
-        .padding(15)
+        .padding(10)
     }
     
     private var scrollViewHome: some View {
@@ -108,7 +136,6 @@ extension HomePageView {
                     .padding(.vertical, 10)
                 
                 seeMore
-                
                 menuService
             }
         }

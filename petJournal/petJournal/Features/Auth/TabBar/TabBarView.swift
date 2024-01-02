@@ -20,15 +20,15 @@ struct TabBarView: View {
                 }
                 .tag(0)
             
-            Text("Pet")
+            Text("Funcionalidade inativa no momento")
                 .tabItem {
                     Label("Pet", image: "ic_pets")
                 }
                 .tag(1)
             
-            Text("Tutor")
+            Text("Funcionalidade inativa no momento")
                 .tabItem {
-                    Label("User", image: "ic_user")
+                    Label("Tutor", image: "ic_user")
                 }
                 .tag(2)
         }
