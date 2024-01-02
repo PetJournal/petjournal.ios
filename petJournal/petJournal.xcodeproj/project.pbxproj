@@ -23,8 +23,8 @@
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
 		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
 		C910E2BB2AC78F0800DD3C23 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910E2BA2AC78F0800DD3C23 /* URLManager.swift */; };
-		C91CF52F2AE9F51B00CDC49E /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91CF52E2AE9F51B00CDC49E /* RegisterResponse.swift */; };
 		C91427062B2B9B9E002403E5 /* MoreServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91427052B2B9B9E002403E5 /* MoreServicesView.swift */; };
+		C91CF52F2AE9F51B00CDC49E /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91CF52E2AE9F51B00CDC49E /* RegisterResponse.swift */; };
 		C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C12A3A87E20008F502 /* InputEmailView.swift */; };
 		C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */; };
 		C930B5C82A3A88CF0008F502 /* ReceiveInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */; };
@@ -44,7 +44,7 @@
 		C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */; };
 		C94C42022A21543B00A949F4 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C42012A21543B00A949F4 /* WebView.swift */; };
 		C96853C12AC397560020AD1F /* CustomGlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96853C02AC397560020AD1F /* CustomGlassView.swift */; };
-		C96853C42AC397D00020AD1F /* LoagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96853C32AC397D00020AD1F /* LoagingView.swift */; };
+		C96853C42AC397D00020AD1F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96853C32AC397D00020AD1F /* LoadingView.swift */; };
 		C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */; };
 		C96BFB3C29E1D714003D3827 /* Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */; };
 		C96BFB3D29E1D714003D3827 /* Fredoka-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */; };
@@ -119,8 +119,8 @@
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
 		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
 		C910E2BA2AC78F0800DD3C23 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
-		C91CF52E2AE9F51B00CDC49E /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
 		C91427052B2B9B9E002403E5 /* MoreServicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreServicesView.swift; sourceTree = "<group>"; };
+		C91CF52E2AE9F51B00CDC49E /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
 		C930B5C12A3A87E20008F502 /* InputEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputEmailView.swift; sourceTree = "<group>"; };
 		C930B5C52A3A883D0008F502 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
 		C930B5C72A3A88CF0008F502 /* ReceiveInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveInputViewModel.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 		C94A240129CE45B400C71D01 /* AccessAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccessAccountViewModel.swift; path = ViewModel/AccessAccountViewModel.swift; sourceTree = "<group>"; };
 		C94C42012A21543B00A949F4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		C96853C02AC397560020AD1F /* CustomGlassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlassView.swift; sourceTree = "<group>"; };
-		C96853C32AC397D00020AD1F /* LoagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoagingView.swift; sourceTree = "<group>"; };
+		C96853C32AC397D00020AD1F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
 		C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Bold.ttf"; sourceTree = "<group>"; };
 		C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Light.ttf"; sourceTree = "<group>"; };
@@ -482,7 +482,7 @@
 		C96853C22AC397B60020AD1F /* Progress */ = {
 			isa = PBXGroup;
 			children = (
-				C96853C32AC397D00020AD1F /* LoagingView.swift */,
+				C96853C32AC397D00020AD1F /* LoadingView.swift */,
 			);
 			path = Progress;
 			sourceTree = "<group>";
@@ -848,7 +848,7 @@
 				C9F9D8372A1424E700DD72F1 /* PJButton.swift in Sources */,
 				1F8298312A18151500595FB7 /* CreateAccountService.swift in Sources */,
 				C930B5CB2A3A89FD0008F502 /* WaitingCodeView.swift in Sources */,
-				C96853C42AC397D00020AD1F /* LoagingView.swift in Sources */,
+				C96853C42AC397D00020AD1F /* LoadingView.swift in Sources */,
 				C930B5DA2A3A8E820008F502 /* CompRememberAndForgotPassword.swift in Sources */,
 				C9C094892AC11915006FB438 /* AuthenticationStatus.swift in Sources */,
 				C9A324912A2FE7D5008FE6F4 /* LoginResponse.swift in Sources */,

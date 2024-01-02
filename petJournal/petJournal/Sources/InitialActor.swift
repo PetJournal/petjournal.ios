@@ -15,7 +15,7 @@ struct InitialActor: View {
             switch sessionManager.statusLogin {
             case .signIn: TabBarView()
             case .signOut: AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
-            case .unknown: LoagingView()
+            case .unknown: LoadingView()
             }
         }
     }

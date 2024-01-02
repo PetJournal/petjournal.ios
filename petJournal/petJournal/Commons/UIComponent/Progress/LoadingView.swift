@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoagingView: View {
+struct LoadingView: View {
     var body: some View {
         CustomGlassView(width: 200, height: 200, alignment: .center) {
             VStack {
@@ -20,8 +20,8 @@ struct LoagingView: View {
     }
 }
 
-struct LoagingView_Previews: PreviewProvider {
+struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        LoagingView()
+        LoadingView()
     }
 }
