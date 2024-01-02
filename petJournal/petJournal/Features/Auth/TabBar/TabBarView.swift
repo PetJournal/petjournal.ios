@@ -20,7 +20,7 @@ struct TabBarView: View {
                 }
                 .tag(0)
             
-            Text("Funcionalidade inativa no momento")
+            InitialPatternView()
                 .tabItem {
                     Label("Pet", image: "ic_pets")
                 }

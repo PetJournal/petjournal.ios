@@ -7,12 +7,21 @@
 
 import SwiftUI
 
-struct NavigationBar: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct NavigationBar: ViewModifier {
+    init(background: UIColor, tintColor: UIColor) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = background
+        appearance.titleTextAttributes = [.foregroundColor: tintColor]
+        appearance.largeTitleTextAttributes = [.foregroundColor: tintColor]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().tintColor = tintColor
     }
-}
-
-#Preview {
-    NavigationBar()
+    
+    func body(content: Content) -> some View {
+        content
+    }
 }

@@ -45,11 +45,13 @@
 		C94C42022A21543B00A949F4 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C42012A21543B00A949F4 /* WebView.swift */; };
 		C96853C12AC397560020AD1F /* CustomGlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96853C02AC397560020AD1F /* CustomGlassView.swift */; };
 		C96853C42AC397D00020AD1F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96853C32AC397D00020AD1F /* LoadingView.swift */; };
+		C96B36C52B44C87000566952 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96B36C42B44C87000566952 /* NavigationBar.swift */; };
 		C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */; };
 		C96BFB3C29E1D714003D3827 /* Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */; };
 		C96BFB3D29E1D714003D3827 /* Fredoka-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */; };
 		C96BFB3E29E1D714003D3827 /* Fredoka-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */; };
 		C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */; };
+		C973A2C52B449ABA00D55248 /* InitialPatternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973A2C42B449ABA00D55248 /* InitialPatternView.swift */; };
 		C97A74E629F9810D001CD67E /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A74E529F9810D001CD67E /* AuthMock.swift */; };
 		C9A3248A2A2FB25A008FE6F4 /* RegisterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324892A2FB25A008FE6F4 /* RegisterStatus.swift */; };
 		C9A3248E2A2FE6F3008FE6F4 /* SpyRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */; };
@@ -141,11 +143,13 @@
 		C94C42012A21543B00A949F4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		C96853C02AC397560020AD1F /* CustomGlassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGlassView.swift; sourceTree = "<group>"; };
 		C96853C32AC397D00020AD1F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		C96B36C42B44C87000566952 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
 		C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Bold.ttf"; sourceTree = "<group>"; };
 		C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Light.ttf"; sourceTree = "<group>"; };
 		C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Medium.ttf"; sourceTree = "<group>"; };
 		C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-SemiBold.ttf"; sourceTree = "<group>"; };
+		C973A2C42B449ABA00D55248 /* InitialPatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPatternView.swift; sourceTree = "<group>"; };
 		C97A74D929F97EEE001CD67E /* petJournal_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = petJournal_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97A74E529F9810D001CD67E /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
 		C9A324892A2FB25A008FE6F4 /* RegisterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStatus.swift; sourceTree = "<group>"; };
@@ -279,37 +283,37 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		C9029C372B1E67430069AE5D /* Agenda */ = {
+		C9029C372B1E67430069AE5D /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
 				C9029C3E2B1E69420069AE5D /* ScheduleView.swift */,
 			);
-			path = Agenda;
+			path = Schedule;
 			sourceTree = "<group>";
 		};
-		C9029C382B1E67680069AE5D /* Localizar Serviços */ = {
+		C9029C382B1E67680069AE5D /* FindServices */ = {
 			isa = PBXGroup;
 			children = (
 				C9029C3C2B1E691A0069AE5D /* FindServicesView.swift */,
 			);
-			name = "Localizar Serviços";
+			name = FindServices;
 			path = "Localizar Serviços";
 			sourceTree = "<group>";
 		};
-		C9029C392B1E67930069AE5D /* Registrar Vacina */ = {
+		C9029C392B1E67930069AE5D /* VaccineLog */ = {
 			isa = PBXGroup;
 			children = (
 				C9029C402B1E69800069AE5D /* VaccineLogView.swift */,
 			);
-			path = "Registrar Vacina";
+			path = VaccineLog;
 			sourceTree = "<group>";
 		};
-		C9029C3A2B1E67A10069AE5D /* Registrar Vermífugo */ = {
+		C9029C3A2B1E67A10069AE5D /* ParasiteControl */ = {
 			isa = PBXGroup;
 			children = (
 				C9029C422B1E69AA0069AE5D /* ParasiteControlView.swift */,
 			);
-			name = "Registrar Vermífugo";
+			name = ParasiteControl;
 			path = "Registrar Vermífugo";
 			sourceTree = "<group>";
 		};
@@ -423,6 +427,7 @@
 		C94A23F829CE231C00C71D01 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				C973A2C32B44984600D55248 /* Register Pet */,
 				C9F5F4A52A420079002C21F7 /* Scenes */,
 				C9F5F49D2A41FEE6002C21F7 /* TabBar */,
 			);
@@ -497,6 +502,14 @@
 				C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */,
 			);
 			name = Font;
+			sourceTree = "<group>";
+		};
+		C973A2C32B44984600D55248 /* Register Pet */ = {
+			isa = PBXGroup;
+			children = (
+				C973A2C42B449ABA00D55248 /* InitialPatternView.swift */,
+			);
+			path = "Register Pet";
 			sourceTree = "<group>";
 		};
 		C97A74DA29F97EEE001CD67E /* petJournal_Tests */ = {
@@ -639,6 +652,7 @@
 			children = (
 				C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */,
 				C96853C02AC397560020AD1F /* CustomGlassView.swift */,
+				C96B36C42B44C87000566952 /* NavigationBar.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -646,10 +660,10 @@
 		C9F5F4A52A420079002C21F7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				C9029C3A2B1E67A10069AE5D /* Registrar Vermífugo */,
-				C9029C392B1E67930069AE5D /* Registrar Vacina */,
-				C9029C382B1E67680069AE5D /* Localizar Serviços */,
-				C9029C372B1E67430069AE5D /* Agenda */,
+				C9029C3A2B1E67A10069AE5D /* ParasiteControl */,
+				C9029C392B1E67930069AE5D /* VaccineLog */,
+				C9029C382B1E67680069AE5D /* FindServices */,
+				C9029C372B1E67430069AE5D /* Schedule */,
 				C94A23FC29CE239300C71D01 /* Home */,
 			);
 			path = Scenes;
@@ -864,6 +878,7 @@
 				C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */,
 				C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
+				C973A2C52B449ABA00D55248 /* InitialPatternView.swift in Sources */,
 				C930B5D02A3A8AA60008F502 /* WaitingViewModel.swift in Sources */,
 				C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */,
 				C9A3248A2A2FB25A008FE6F4 /* RegisterStatus.swift in Sources */,
@@ -876,6 +891,7 @@
 				C9029C432B1E69AA0069AE5D /* ParasiteControlView.swift in Sources */,
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
 				C9029C3F2B1E69420069AE5D /* ScheduleView.swift in Sources */,
+				C96B36C52B44C87000566952 /* NavigationBar.swift in Sources */,
 				C930B5C82A3A88CF0008F502 /* ReceiveInputViewModel.swift in Sources */,
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
 				C93943F52A9C0E6C0085E623 /* PJTextFieldView.swift in Sources */,
