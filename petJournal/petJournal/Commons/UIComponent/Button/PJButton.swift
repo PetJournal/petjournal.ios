@@ -16,7 +16,7 @@ struct PJButton: View {
     @State var buttonType: ButtonType = .primaryType
     private let title: String
     private let action: () -> Void
-    private let titleFont: Font = .fedokaSemiBold(size: .small)
+    private let titleFont: Font = .fredokaSemiBold(size: .small)
     
     init(title: String,
          buttonType: ButtonType,

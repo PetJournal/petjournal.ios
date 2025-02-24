@@ -29,7 +29,7 @@ struct AccessAccountView: View {
                         .frame(width: 148, height: 118)
                     
                     Text("Acessar conta")
-                        .font(.fedokaMedium(size: .biggest))
+                        .font(.fredokaMedium(size: .biggest))
                 }
                 .padding(.bottom, 30)
                 
@@ -88,7 +88,7 @@ extension AccessAccountView {
                 destination: InputEmailView(viewModel: ForgotPasswordViewModel(service: ForgotPasswordService())).navigationBarHidden(true),
                 isActive: self.$isAccessAccount) {
                     Text("Esqueci minha senha")
-                        .font(.fedokaMedium(size: .tiny))
+                        .font(.fredokaMedium(size: .tiny))
                         .foregroundColor(.black)
                 }
                 .isDetailLink(false)
@@ -99,13 +99,13 @@ extension AccessAccountView {
     private var componentCreateAccount: some View {
         HStack {
             Text("Não tem uma conta?")
-                .font(.fedokaMedium(size: .tiny))
+                .font(.fredokaMedium(size: .tiny))
             
             NavigationLink(
                 destination: CreateAccountView().navigationBarHidden(true),
                 isActive: self.$isCreateAccount) {
                     Text("Inscrever-se")
-                        .font(.fedokaMedium(size: .tiny))
+                        .font(.fredokaMedium(size: .tiny))
                         .foregroundColor(.black)
                 }
                 .isDetailLink(false)

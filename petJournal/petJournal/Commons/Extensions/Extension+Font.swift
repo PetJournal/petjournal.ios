@@ -8,22 +8,33 @@
 import SwiftUI
 
 extension Font {
-    static func fedokaMedium(size: Font.FontSize) -> Font {
+    
+    //MARK: Fredoka font
+    static func fredokaMedium(size: Font.FontSize) -> Font {
         return Font.custom("Fredoka-Medium", size: size.rawValue)
     }
-    static func fedokaLight(size: Font.FontSize) -> Font {
+    static func fredokaLight(size: Font.FontSize) -> Font {
         return Font.custom( "Fredoka-Light", size: size.rawValue)
     }
-    static func fedokaRegular(size: Font.FontSize) -> Font {
+    static func fredokaRegular(size: Font.FontSize) -> Font {
         return Font.custom( "Fredoka-Regular", size: size.rawValue)
     }
-    static func fedokaSemiBold(size: Font.FontSize) -> Font {
+    static func fredokaSemiBold(size: Font.FontSize) -> Font {
         return Font.custom( "Fredoka-SemiBold", size: size.rawValue)
     }
-    static func fedokaBold(size: Font.FontSize) -> Font {
+    static func fredokaBold(size: Font.FontSize) -> Font {
         return Font.custom( "Fredoka-Bold", size: size.rawValue)
     }
     
+    //MARK: Roboto font
+    static func robotoLight(size: Font.FontSize) -> Font {
+        return Font.custom( "Roboto-Light", size: size.rawValue)
+    }
+    static func robotoMedium(size: Font.FontSize) -> Font {
+        return Font.custom( "Roboto-Medium", size: size.rawValue)
+    }
+    
+    //MARK: Font size
     enum FontSize: CGFloat {
         case tiny = 12.0
         case small = 14.0
