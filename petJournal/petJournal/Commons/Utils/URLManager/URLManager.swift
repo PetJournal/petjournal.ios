@@ -12,7 +12,7 @@ class URLManager {
     
     private init() {}
     
-    let baseURL = "https://petjournal-api.onrender.com/api"
+    let baseURL = "https://petjournal-api-pm3z.onrender.com/api"
     
     let loginURL = "/login"
     let signupURL = "/signup"
