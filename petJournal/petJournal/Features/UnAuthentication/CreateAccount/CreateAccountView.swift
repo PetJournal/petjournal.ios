@@ -47,7 +47,7 @@ extension CreateAccountView {
                 .frame(width: 76, height: 76)
             
             Text("Inscreva-se")
-                .font(.fedokaMedium(size: .biggest))
+                .font(.fredokaMedium(size: .biggest))
         }
         .padding(.bottom, 30)
     }

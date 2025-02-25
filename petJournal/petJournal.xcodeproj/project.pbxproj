@@ -15,6 +15,8 @@
 		1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF4607C29C8E8720026F680 /* SceneDelegate.swift */; };
 		1FF4608429C8E8740026F680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608329C8E8740026F680 /* Assets.xcassets */; };
 		1FF4608729C8E8740026F680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF4608529C8E8740026F680 /* LaunchScreen.storyboard */; };
+		5053E3EA2D67B4D5004BCA07 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5053E3E92D67B4D5004BCA07 /* Roboto-Light.ttf */; };
+		5053E3EC2D67B4DE004BCA07 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5053E3EB2D67B4DE004BCA07 /* Roboto-Medium.ttf */; };
 		6196CDB52AE2F47A0021DA5F /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */; };
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
 		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
@@ -105,6 +107,8 @@
 		1FF4608329C8E8740026F680 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FF4608629C8E8740026F680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FF4608829C8E8740026F680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5053E3E92D67B4D5004BCA07 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		5053E3EB2D67B4DE004BCA07 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
 		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
@@ -236,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				C9F5F4A22A41FF65002C21F7 /* CustomView */,
-				C91D4A5029FABC360005B73B /* Protocols */,
 				C9B9FD9329EDE25B00C7C52B /* Utils */,
 				C9E5017329E76FDA0014F9C4 /* UIComponent */,
 				C9FD536629E4B294003033FB /* Enums */,
@@ -267,6 +270,27 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		5053E3ED2D67B59F004BCA07 /* Fredoka */ = {
+			isa = PBXGroup;
+			children = (
+				C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */,
+				C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */,
+				C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */,
+				C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */,
+				C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */,
+			);
+			path = Fredoka;
+			sourceTree = "<group>";
+		};
+		5053E3EE2D67B5B2004BCA07 /* Roboto */ = {
+			isa = PBXGroup;
+			children = (
+				5053E3E92D67B4D5004BCA07 /* Roboto-Light.ttf */,
+				5053E3EB2D67B4DE004BCA07 /* Roboto-Medium.ttf */,
+			);
+			path = Roboto;
+			sourceTree = "<group>";
+		};
 		C910E2B82AC78E1E00DD3C23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,13 +305,6 @@
 				C910E2BA2AC78F0800DD3C23 /* URLManager.swift */,
 			);
 			path = URLManager;
-			sourceTree = "<group>";
-		};
-		C91D4A5029FABC360005B73B /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		C930B5BF2A3A87AE0008F502 /* Flow */ = {
@@ -444,11 +461,8 @@
 		C96BFB2B29E1D129003D3827 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				C96BFB3729E1D713003D3827 /* Fredoka-Bold.ttf */,
-				C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */,
-				C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */,
-				C96BFB3629E1D713003D3827 /* Fredoka-Regular.ttf */,
-				C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */,
+				5053E3EE2D67B5B2004BCA07 /* Roboto */,
+				5053E3ED2D67B59F004BCA07 /* Fredoka */,
 			);
 			name = Font;
 			sourceTree = "<group>";
@@ -748,7 +762,9 @@
 				1FF4608429C8E8740026F680 /* Assets.xcassets in Resources */,
 				C96BFB3C29E1D714003D3827 /* Fredoka-Bold.ttf in Resources */,
 				C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */,
+				5053E3EA2D67B4D5004BCA07 /* Roboto-Light.ttf in Resources */,
 				C96BFB3D29E1D714003D3827 /* Fredoka-Light.ttf in Resources */,
+				5053E3EC2D67B4DE004BCA07 /* Roboto-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

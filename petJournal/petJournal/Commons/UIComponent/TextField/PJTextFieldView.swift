@@ -23,8 +23,8 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
     var title: String
     var placeholder: String
     var textContentType: UITextContentType
-    var titleFont: Font = .fedokaMedium(size: .small)
-    var placeHolderFont: Font = .fedokaMedium(size: .small)
+    var titleFont: Font = .fredokaMedium(size: .small)
+    var placeHolderFont: Font = .fredokaMedium(size: .small)
     var validateFieldCallBack: (String) -> Bool
     
     @State var hasToShowErrorMessage: Bool = false

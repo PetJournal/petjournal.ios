@@ -23,7 +23,7 @@ struct ComponentPrivacy: View {
             Button(action: self.action) {
                 Text("Eu concordo com a política de privacidade")
                     .foregroundColor(Color.black)
-                    .font(.fedokaMedium(size: .tiny))
+                    .font(.fredokaMedium(size: .tiny))
             }
         }
     }
