@@ -1,12 +1,12 @@
 import SwiftUI
 
-/// Cria uma barra de navega o personalizada com um bot o de voltar e um t tulo.
+/// Creates a custom navigation bar with a back button and a title.
 ///
 /// - Parameters:
-///   - title: O t tulo da barra de navega o.
-///   - onClick: Uma a o a ser executada quando o bot o de voltar for pressionado.
+///   - title: The title of the navigation bar.
+///   - onClick: An action to be executed when the back button is pressed.
 ///
-/// - Returns: Uma view que representa a barra de navega o personalizada.
+/// - Returns: A view that represents the custom navigation bar.
 extension View {
     func customNavigationBar(title: String, onClick: @escaping (() -> Void) = {}) -> some View {
         return HStack {
@@ -17,6 +17,7 @@ extension View {
             }
             Spacer()
             Text(title)
+                .offset(x: -20.0)
             Spacer()
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
             .padding(.leading)
