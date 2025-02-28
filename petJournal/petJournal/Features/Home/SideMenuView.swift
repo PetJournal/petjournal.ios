@@ -20,7 +20,7 @@ struct SideMenuView: View {
         HStack(spacing: 0) {
             Spacer()
             VStack(alignment: .center) {
-                Image("pet_logoBlack")
+                Image(asset: .logoBlack)
                     .resizable()
                     .frame(width: 60, height: 60)
                     .background(Color.theme.petWhite)

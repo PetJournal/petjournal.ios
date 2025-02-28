@@ -16,7 +16,7 @@ struct ComponentPrivacy: View {
             Button(action: {
                 viewModel.isCheckBox.toggle()
             }) {
-                Image(viewModel.isCheckBox ? "ic_checkBox_select" : "ic_checkBox_clear")
+                Image(asset: viewModel.isCheckBox ? .checkBoxSelect : .checkBoxClear)
                     .resizable()
                     .frame(width: 20, height: 20)
             }

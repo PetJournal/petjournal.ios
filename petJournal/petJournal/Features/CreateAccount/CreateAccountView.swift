@@ -41,7 +41,7 @@ struct CreateAccountView: View {
 extension CreateAccountView {
     private var headerView: some View {
         VStack(spacing: 8) {
-            Image("pet_logoPrimary")
+            Image(asset: .logoPrimary)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 76, height: 76)
