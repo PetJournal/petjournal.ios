@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131BCFCC2D6C7A6400AEDE56 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131BCFCB2D6C7A5800AEDE56 /* Extension+View.swift */; };
 		1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F656E212A1410AE004D4D99 /* CreateAccountView.swift */; };
 		1F8298312A18151500595FB7 /* CreateAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8298302A18151500595FB7 /* CreateAccountService.swift */; };
 		1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7998329F1C8CC00673233 /* UserPJModel.swift */; };
@@ -97,6 +98,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		131BCFCB2D6C7A5800AEDE56 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		1F656E212A1410AE004D4D99 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		1F8298302A18151500595FB7 /* CreateAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountService.swift; sourceTree = "<group>"; };
 		1FB7998329F1C8CC00673233 /* UserPJModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPJModel.swift; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 		C9BAE60B29DE296100542620 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				131BCFCB2D6C7A5800AEDE56 /* Extension+View.swift */,
 				C9BAE60C29DE298900542620 /* Extension+Color.swift */,
 				C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */,
 				C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */,
@@ -819,6 +822,7 @@
 				C93943F92A9C0F140085E623 /* Extension+UIColor.swift in Sources */,
 				C94C42022A21543B00A949F4 /* WebView.swift in Sources */,
 				C9B9FD9529EDE27900C7C52B /* Validations.swift in Sources */,
+				131BCFCC2D6C7A6400AEDE56 /* Extension+View.swift in Sources */,
 				C93943F72A9C0EDD0085E623 /* Extension+Alert.swift in Sources */,
 				C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
