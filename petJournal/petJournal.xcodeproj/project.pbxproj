@@ -19,6 +19,7 @@
 		5053E3EA2D67B4D5004BCA07 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5053E3E92D67B4D5004BCA07 /* Roboto-Light.ttf */; };
 		5053E3EC2D67B4DE004BCA07 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5053E3EB2D67B4DE004BCA07 /* Roboto-Medium.ttf */; };
 		6196CDB52AE2F47A0021DA5F /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */; };
+		7509EDD52D71E9DC0036B9B8 /* ComponentPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD42D71E9DC0036B9B8 /* ComponentPrivacy.swift */; };
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
 		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
 		C910E2BB2AC78F0800DD3C23 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910E2BA2AC78F0800DD3C23 /* URLManager.swift */; };
@@ -66,7 +67,6 @@
 		C9D8450F2A224AC10007A316 /* InitialActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D8450E2A224AC10007A316 /* InitialActor.swift */; };
 		C9D95F6F2A37A6E6001C271F /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */; };
 		C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D95F712A37AA0D001C271F /* BlurView.swift */; };
-		C9E3E4842A203A8100A83321 /* ComponentPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E3E4832A203A8100A83321 /* ComponentPrivacy.swift */; };
 		C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017029E72D7D0014F9C4 /* FontFamily.swift */; };
 		C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */; };
 		C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F49E2A41FEF8002C21F7 /* TabBarView.swift */; };
@@ -112,6 +112,7 @@
 		5053E3E92D67B4D5004BCA07 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		5053E3EB2D67B4DE004BCA07 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
+		7509EDD42D71E9DC0036B9B8 /* ComponentPrivacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentPrivacy.swift; sourceTree = "<group>"; };
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
 		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
 		C910E2BA2AC78F0800DD3C23 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
@@ -160,7 +161,6 @@
 		C9D8450E2A224AC10007A316 /* InitialActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialActor.swift; sourceTree = "<group>"; };
 		C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		C9D95F712A37AA0D001C271F /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
-		C9E3E4832A203A8100A83321 /* ComponentPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComponentPrivacy.swift; path = petJournal/Features/UnAuthentication/CreateAccount/Subviews/ComponentPrivacy.swift; sourceTree = SOURCE_ROOT; };
 		C9E5017029E72D7D0014F9C4 /* FontFamily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFamily.swift; sourceTree = "<group>"; };
 		C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		C9F5F49E2A41FEF8002C21F7 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -426,7 +426,7 @@
 		C94C42002A213D2A00A949F4 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				C9E3E4832A203A8100A83321 /* ComponentPrivacy.swift */,
+				7509EDD42D71E9DC0036B9B8 /* ComponentPrivacy.swift */,
 				C94C42012A21543B00A949F4 /* WebView.swift */,
 			);
 			path = Subviews;
@@ -749,7 +749,6 @@
 				C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */,
 				C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */,
 				C9B1C8A829F9FDC0002C7B00 /* AuthenticationError.swift in Sources */,
-				C9E3E4842A203A8100A83321 /* ComponentPrivacy.swift in Sources */,
 				C9D8450F2A224AC10007A316 /* InitialActor.swift in Sources */,
 				C9D8450B2A22494C0007A316 /* SessionManager.swift in Sources */,
 				C96853C12AC397560020AD1F /* CustomGlassView.swift in Sources */,
@@ -787,6 +786,7 @@
 				C9A3248A2A2FB25A008FE6F4 /* RegisterStatus.swift in Sources */,
 				C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */,
 				C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */,
+				7509EDD52D71E9DC0036B9B8 /* ComponentPrivacy.swift in Sources */,
 				C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */,
 				C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */,
 				C9D4E1E72A2932740030164A /* UserDefaultsUtils.swift in Sources */,
