@@ -14,7 +14,7 @@ struct EditPasswordView: View {
     
     var body: some View {
         VStack {
-            Image("pet_logoPrimary")
+            Image(asset: .logoPrimary)
                 .resizable()
                 .frame(width: 148, height: 128)
             
@@ -85,7 +85,7 @@ extension EditPasswordView {
             Button(action: {
                 viewModel.isCheckBox.toggle()
             }) {
-                Image(viewModel.isCheckBox ? "ic_checkBox_select" : "ic_checkBox_clear")
+                Image(asset: viewModel.isCheckBox ? .checkBoxSelect : .checkBoxClear)
                     .resizable()
                     .frame(width: 20, height: 20)
             }

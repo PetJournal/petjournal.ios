@@ -16,7 +16,7 @@ struct WaitingCodeView: View {
     var body: some View {
         ZStack {
             VStack {
-                Image("pet_logoPrimary")
+                Image(asset: .logoPrimary)
                     .resizable()
                     .frame(width: 148, height: 128)
                 
