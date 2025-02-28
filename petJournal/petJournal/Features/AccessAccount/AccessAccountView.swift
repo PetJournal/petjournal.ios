@@ -23,7 +23,7 @@ struct AccessAccountView: View {
         GeometryReader { geometry in
             VStack(spacing: 30) {
                 VStack {
-                    Image("pet_logoPrimary")
+                    Image(asset: .logoPrimary)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 148, height: 118)

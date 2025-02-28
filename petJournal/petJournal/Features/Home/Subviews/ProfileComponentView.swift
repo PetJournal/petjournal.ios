@@ -29,7 +29,7 @@ extension ProfileComponentView {
                 xMenu = 0
             }
         } label: {
-            Image("menu-burger")
+            Image(asset: .menuBurger)
                 .resizable()
                 .frame(width: 30, height: 30)
         }
