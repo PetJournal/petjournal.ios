@@ -31,10 +31,10 @@ struct SideMenuView: View {
                         Text("Camila Queiroz")
                             .font(.title3)
                             .fontWeight(.bold)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.theme.petGray300)
                         
                         Text("cmz@petjournal.com")
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color.theme.petGray300)
                     }
                 }
                 
@@ -72,7 +72,7 @@ struct SideMenuView: View {
             .padding(.top, edges!.top == 0 ? 15 : edges?.top)
             .padding(.bottom, edges!.bottom == 0 ? 15 : edges?.bottom)
             .frame(width: UIScreen.main.bounds.width - 115)
-            .background(Color.theme.petPrimary)
+            .background(Color.theme.petPrimary500)
             .ignoresSafeArea(.all, edges: .vertical)
         }
     }
@@ -87,10 +87,10 @@ struct MenuButton: View {
                 .resizable()
                 .renderingMode(.template)
                 .frame(width: 24, height: 24)
-                .foregroundColor(.gray)
+                .foregroundColor(Color.theme.petGray300)
             
             Text(title)
-                .foregroundColor(.gray)
+                .foregroundColor(Color.theme.petWhite)
             
             Spacer(minLength: 0)
         }

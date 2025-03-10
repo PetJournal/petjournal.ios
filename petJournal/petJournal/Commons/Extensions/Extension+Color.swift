@@ -12,20 +12,28 @@ extension Color {
 }
 
 struct ColorTheme {
-    
-    let petPrimary = Color("petPrimary")
-    let petSecondary = Color("petSecondary")
-    let petTertiary = Color("petTertiary")
-    let petCTA = Color("petCTA")
-    
-    // MARK: - SystemColors
-    let petSuccess = Color("petSuccess")
-    let petLink = Color("petLink")
-    let petError = Color("petError")
-    
-    // MARK: - Black/White
+    //Main
+    let petPrimary100 = Color("petPrimary100")
+    let petPrimary500 = Color("petPrimary500")
+    let petSecondary100 = Color("petSecondary100")
+    let petSecondary500 = Color("petSecondary500")
+    //SystemColors
+    let petSuccess100 = Color("petSuccess100")
+    let petSuccess500 = Color("petSuccess500")
+    let petError100 = Color("petError100")
+    let petError500 = Color("petError500")
+    let petWarning100 = Color("petWarning100")
+    let petWarning500 = Color("petWarning500")
+    //Black/White
+    let petBackground = Color("petBackground")
+    let petCards = Color("petCards")
     let petBlack = Color("petBlack")
     let petWhite = Color("petWhite")
     let petGray300 = Color("petGray300")
     let petGray800 = Color("petGray800")
+    //Extra
+    let petLightPink = Color("petLightPink")
+    let petLightBlue = Color("petLightBlue")
+    let petOrange = Color("petOrange")
+    let petGreen = Color("petGreen")
 }

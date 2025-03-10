@@ -36,13 +36,13 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
-                .foregroundColor(Color.theme.petPrimary)
+                .foregroundColor(Color.theme.petPrimary500)
                 .font(titleFont)
                 .padding(.bottom, -3)
             
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke((isFocused || text.count > 0) ? errorValidation ? Color.theme.petGray800 : Color.theme.petPrimary : Color.theme.petGray800,lineWidth: 1)
+                    .stroke((isFocused || text.count > 0) ? errorValidation ? Color.theme.petGray800 : Color.theme.petPrimary500 : Color.theme.petGray800,lineWidth: 1)
                     .frame(maxWidth: .infinity, maxHeight: 48)
                 HStack {
                     if textContentType == .password {
@@ -111,7 +111,7 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
             }
             if hasToShowErrorMessage {
                 Text(error)
-                    .foregroundColor(Color.theme.petError)
+                    .foregroundColor(Color.theme.petError500)
                     .fixedSize(horizontal: false, vertical: true)
                     .font(.caption)
                     .frame(maxWidth: .infinity, alignment: .leading)
