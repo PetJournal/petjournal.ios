@@ -3,23 +3,29 @@
 ### About App 
 PetJournal is an iOS app built on SwiftUI that allows users to manage information about their pets, including vaccinations, veterinary appointments and other relevant information.
 
-## 🎯Tech Requirements ###
+## 🎯 Tech Requirements ###
 * Target deployment iOS 15.0
 * Xcode Version 14.2 
 * Swift 5
 
-## 🏛️Project Architecture ###
+## 🏛️ Project Architecture ###
 * This project uses MVVM as architecture
 
-## 📚Packages
+## 📚 Packages
 * Still under development.
 
 ##  Options for account creation and login.:
 
 * Create account: email/password
-* Login: email: johndoe@email.com password: Teste@123
+* Login: 
+```
+johndoe@email.com 
+```
+```
+Teste@123
+```
 
-## 🗂️Project organization
+## 🗂️ Project organization
 ### Commons Folder
 This folder contains subfolders related to project helpers: Custom Classes, Extensions, Project Helpers.
 
@@ -72,15 +78,14 @@ Files related to the app's initialization.
 
 #### Session
 This folder contains files related to the user's session, login state, and user information keys.
-```
 
 ## 💻 To Use (for test) ###
 
 Use the command below to clone the repository, using the Mac terminal.
 
-
+```
 git clone https://github.com/PetJournal/petjournal.ios.git
-
+```
 Open the file petJournal.xcodeproj
 
 ![folderPetjournal](https://github.com/PetJournal/petjournal.ios/assets/79819229/58f4e8b8-5c33-4f6e-aeca-4e6b3534b2ea)
@@ -91,9 +96,8 @@ When opening the file, select the iPhone version you want. Then select the butto
 ![play](https://github.com/PetJournal/petjournal.ios/assets/79819229/a78e383c-d57c-4e26-b7a7-b59a2ab00943)
 > - ps1.: wait for the simulator to open
 > - ps2.: Make sure Xcode Version 14.2 is installed.
-```
 
-Contribution 
+## 🧠 Contribution 
 
 - Marcylene Barreto /  [@Marbarret](https://github.com/Marbarret) - start: not found ~ until: 05/2023
 - Daiane Gonçalves / [@daigoncalves14](https://github.com/daigoncalves14) - start: not found ~ until: 05/2023
@@ -101,6 +105,6 @@ Contribution
 - Giovanni Favorin / [@giovannifavorin](https://github.com/giovannifavorin) - start: 01/2025 ~ until: currently
 - Rafael Melo / [@rafaelnmelo](https://github.com/rafaelnmelo) - start: 01/2025 ~ until: currently
 
-## Mentor 🧠
+#### Mentor 
 
 - Junior Margalho / [@juniormargalho](https://github.com/juniormargalho) - start: not found ~ until: not found
