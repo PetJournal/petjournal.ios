@@ -16,111 +16,71 @@ PetJournal is an iOS app built on SwiftUI that allows users to manage informatio
 
 ##  Options for account creation and login.:
 
-* Email/Senha
+* Create account: email/password
+* Login: email: johndoe@email.com password: Teste@123
 
 ## 🗂️Project organization
+### Commons Folder
+This folder contains subfolders related to project helpers: Custom Classes, Extensions, Project Helpers.
+
+```
+Commons 
+└───CustomViews
+└───Enums
+└───Extensions
+└───Utils 
+└───UIComponents
+```
+#### CustomViews
+This folder contains subfolders, related to Custom views(ViewModifier), most of them are created to be reusable in more than one part or screen of the app.
+
+#### Enums
+This folder contains enumerations that will support application development.
+Not related to the application itself, they are generally generic.
+
+#### Extensions
+This folder contains all the extensions. Default is: Type+Extensions.
+Example: View+Extensions / Color+Extension
+
+#### Utils
+This folder contains files related to Project Utilities and constants used in the project.
+
+#### UIComponents
+This folder contains visual components reused on different screens during the project, components used only on a screen, can be created with a subview of the screen.
+
+*more items can be added during the project as needed
+
+### Features Folder
+This folder contains application screen flow divided by main components, could contain subviews folders for its unique views.
+
+### Models Folder
+This folder contains the app models.
+
 ### Resources Folder
 The Resources folder contains color, image, and font asset files. And project info.plist.
 
 ### Sources Folder
 This folder contains application startup controller, contains user session control Session folder.
+
 ```
 Sources:
+└───AppStart
 └───Session 
-AppDelegate
-SceneDelegate
-MainActor
 ```
+#### AppStart
+Files related to the app's initialization.
 
-```
-### Session folder
+#### Session
 This folder contains files related to the user's session, login state, and user information keys.
-```
-
-### Commons Folder
-This folder contains subfolders related to project helpers: Custom Classes, Extensions, Project Helpers.
-```
- Commons 
-└───CustomView
-└───Protocols
-└───Utils 
-└───UIComponent 
-└───Enums
-└───Extensions
-```
-
-### CustomView
-This folder contains subfolders, related to Custom views(ViewModifier). Most of them are created to be reusable in more than one part or screen of the app.
-
-### Protocols
-This folder contains files that define important protocols and are reusable throughout the project. Other non-reusable protocols may be contained in the classes.
-
-### Utils
-This folder contains files related to Project Utilities and constants used in the project.
-
-### UIComponent
-This folder contains visual components reused on different screens during the project.
-Components used only on a screen, can be created with a subview of the screen.
-
-### Extensions
-This folder contains all the extensions. Default is: Type+Extensions.
-Example: View+Extensions / Color+Extension
-
-### Enums
-This folder contains enumerations that will support application development, but are not related to the application itself, they are generally generic.
-
-*more items can be added during the project as needed
-
-### Localizable
-This folder contains files related to the application's language.
-
-### Models
-This folder contains the app models.
-
-### Service
-This folder contains implementation files for the API providers, allowing viewModels to call the API, services.
-
-### Custom Views
-This folder contains subfolders, related to Custom views (UIView, UIControls, UITableviewCell, UICollectionViewCells). Most of them are created to be reusable in more than one part or screen of the app.
-
-### Features
-This folder contains application screen flow according to the user's initial state, divided into Authenticated and UnAuthenticated.
-
-```
-└───Authenticated 
-└───UnAuthenticated 
-```
-
-### Authenticated
-This folder with user flow after due access in the application.
-Folders have their exclusive use files. for example: ViewModel, Service, Subview
-Obs.: Each screen has its subview folder with unique components.
-
-```
-Authenticated
-└───Scenes 
-└───TabBar 
-```
-
-### UnAuthenticated
-This folder with the user flow before performing the proper access in the application.
-Folders have their exclusive use files. for example: ViewModel, Service, Subview
-Obs.: Each screen has its subview folder with unique components.
-
-```
-UnAuthenticated
-└───ForgotPassword 
-└───CreateAccount 
-└───AccessAccount 
 ```
 
 ## 💻 To Use (for test) ###
 
 Use the command below to clone the repository, using the Mac terminal.
 
-```
+
 git clone https://github.com/PetJournal/petjournal.ios.git
-```
+
 Open the file petJournal.xcodeproj
 
 ![folderPetjournal](https://github.com/PetJournal/petjournal.ios/assets/79819229/58f4e8b8-5c33-4f6e-aeca-4e6b3534b2ea)
@@ -131,20 +91,16 @@ When opening the file, select the iPhone version you want. Then select the butto
 ![play](https://github.com/PetJournal/petjournal.ios/assets/79819229/a78e383c-d57c-4e26-b7a7-b59a2ab00943)
 > - ps1.: wait for the simulator to open
 > - ps2.: Make sure Xcode Version 14.2 is installed.
-
-```
-Credentials for login
-email: johndoe@email.com
-password: Teste@123
 ```
 
-##  Contribution 
+Contribution 
 
-- Marcylene Barreto /  [@Marbarret](https://github.com/Marbarret)
-
-Left a team in: 24/05/2023
-- Daiane Gonçalves / [@daigoncalves14](https://github.com/daigoncalves14)
+- Marcylene Barreto /  [@Marbarret](https://github.com/Marbarret) - start: not found ~ until: 05/2023
+- Daiane Gonçalves / [@daigoncalves14](https://github.com/daigoncalves14) - start: not found ~ until: 05/2023
+- Rafael Seron / [@rafaseron](https://github.com/rafaseron) - start: 01/2025 ~ until: currently
+- Giovanni Favorin / [@giovannifavorin](https://github.com/giovannifavorin) - start: 01/2025 ~ until: currently
+- Rafael Melo / [@rafaelnmelo](https://github.com/rafaelnmelo) - start: 01/2025 ~ until: currently
 
 ## Mentor 🧠
 
-- Junior Margalho / [@juniormargalho](https://github.com/juniormargalho)
+- Junior Margalho / [@juniormargalho](https://github.com/juniormargalho) - start: not found ~ until: not found
