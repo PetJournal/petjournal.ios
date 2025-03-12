@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
     @ObservedObject private var tabViewModel = TabBarViewModel()
-    @State private var presentSideMenu = -UIScreen.main.bounds.width + 90
+//    @State private var presentSideMenu = -UIScreen.main.bounds.width + 90
     
     var body: some View {
         TabView(selection: $tabViewModel.currentTab) {
@@ -20,9 +20,9 @@ struct TabBarView: View {
                 }
                 .tag(0)
             
-            Text("Pet")
+            PetListView()
                 .tabItem {
-                    Label("Pet", image: "ic_pets")
+                    Label("Pets", image: "ic_pets")
                 }
                 .tag(1)
             
