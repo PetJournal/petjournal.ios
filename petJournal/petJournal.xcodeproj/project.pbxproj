@@ -19,6 +19,7 @@
 		5053E3EA2D67B4D5004BCA07 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5053E3E92D67B4D5004BCA07 /* Roboto-Light.ttf */; };
 		5053E3EC2D67B4DE004BCA07 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5053E3EB2D67B4DE004BCA07 /* Roboto-Medium.ttf */; };
 		50F77A3E2D820ABE00606345 /* PetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F77A3D2D820ABE00606345 /* PetListView.swift */; };
+		50F77A402D821FFD00606345 /* Roboto-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50F77A3F2D821FFD00606345 /* Roboto-SemiBold.ttf */; };
 		6196CDB52AE2F47A0021DA5F /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */; };
 		7509EDD52D71E9DC0036B9B8 /* ComponentPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD42D71E9DC0036B9B8 /* ComponentPrivacy.swift */; };
 		7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */; };
@@ -115,6 +116,7 @@
 		5053E3E92D67B4D5004BCA07 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		5053E3EB2D67B4DE004BCA07 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		50F77A3D2D820ABE00606345 /* PetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListView.swift; sourceTree = "<group>"; };
+		50F77A3F2D821FFD00606345 /* Roboto-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-SemiBold.ttf"; sourceTree = "<group>"; };
 		6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
 		7509EDD42D71E9DC0036B9B8 /* ComponentPrivacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentPrivacy.swift; sourceTree = "<group>"; };
 		7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Image.swift"; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			children = (
 				5053E3E92D67B4D5004BCA07 /* Roboto-Light.ttf */,
 				5053E3EB2D67B4DE004BCA07 /* Roboto-Medium.ttf */,
+				50F77A3F2D821FFD00606345 /* Roboto-SemiBold.ttf */,
 			);
 			path = Roboto;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				C96BFB3B29E1D714003D3827 /* Fredoka-Regular.ttf in Resources */,
 				5053E3EA2D67B4D5004BCA07 /* Roboto-Light.ttf in Resources */,
 				C96BFB3D29E1D714003D3827 /* Fredoka-Light.ttf in Resources */,
+				50F77A402D821FFD00606345 /* Roboto-SemiBold.ttf in Resources */,
 				5053E3EC2D67B4DE004BCA07 /* Roboto-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
