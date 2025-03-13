@@ -33,6 +33,9 @@ extension Font {
     static func robotoMedium(size: Font.FontSize) -> Font {
         return Font.custom( "Roboto-Medium", size: size.rawValue)
     }
+    static func robotoSemiBold(size: Font.FontSize) -> Font {
+        return Font.custom( "Roboto-SemiBold", size: size.rawValue)
+    }
     
     //MARK: Font size
     enum FontSize: CGFloat {
