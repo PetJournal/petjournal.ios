@@ -3,11 +3,11 @@ import SwiftUI
 struct PetListView: View {
     var body: some View {
         ZStack {
-            Image("steps_background")
+            Image(asset: .petListBackground)
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
-                .foregroundStyle(Color(red: 124, green: 84, blue: 167, opacity: 0.12))
+                .foregroundStyle(Color.theme.petPrimary100)
                 .padding(.top, 80)
                 .offset(y: -70)
 
