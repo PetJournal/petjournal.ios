@@ -19,18 +19,18 @@ struct CustomAlert: View {
             VStack(spacing: 25) {                
                 Text(titleAlert)
                     .font(.title)
-                    .foregroundColor(Color.theme.petPrimary)
+                    .foregroundColor(Color.theme.petPrimary500)
                 
                 Text(descriptionAlert)
-                    .foregroundColor(Color.theme.petPrimary)
+                    .foregroundColor(Color.theme.petPrimary500)
                 
                 Button(action: clicked ) {
                     Text(buttonTitle)
-                        .foregroundColor(.white)
+                        .foregroundColor(Color.theme.petWhite)
                         .fontWeight(.bold)
                         .padding(.vertical, 10)
                         .padding(.horizontal, 25)
-                        .background(Color.theme.petPrimary)
+                        .background(Color.theme.petPrimary500)
                         .clipShape(Capsule())
                 }
             }
@@ -46,7 +46,7 @@ struct CustomAlert: View {
             }) {
                 Image(systemName: "xmark.circle")
                     .font(.system(size: 15, weight: .light))
-                    .foregroundColor(Color.theme.petGray800)
+                    .foregroundColor(Color.theme.petCards)
             }
             .padding()
         }

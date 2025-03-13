@@ -11,21 +11,23 @@ struct ServiceItemView: View {
     let service: ServiceModel
     
     var body: some View {
-        VStack(alignment: .center, spacing: 9) {
+        VStack(alignment: .center, spacing: 10) {
+            Spacer()
             Image(service.image)
                 .resizable()
-                .scaledToFill()
-                .foregroundColor(Color.theme.petWhite)
+                .scaledToFit()
+                .foregroundColor(service.color)
                 .frame(width: 80, height: 80)
             
             Text(service.name)
-                .foregroundColor(Color.theme.petWhite)
-                .font(.subheadline)
-                .padding(10)
+                .foregroundColor(service.color)
+                .font(.footnote)
                 .lineLimit(2)
+            Spacer()
         }
-        .frame(width: 162, height: 149)
-        .background(service.color)
-        .cornerRadius(8)
+        .frame(width: 150, height: 150)
+        .background(Color.theme.petWhite)
+        .cornerRadius(16)
+        .shadow(radius: 10)
     }
 }

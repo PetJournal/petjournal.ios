@@ -15,8 +15,22 @@ struct ServiceModel: Identifiable, Hashable {
 }
 
 let mock_services: [ServiceModel] = [
-    ServiceModel(id: 1, name: "Agendar Vacina", image: "pets_calendar", color: Color.theme.petPrimary),
-    ServiceModel(id: 2, name: "PetShops", image: "petshop", color: Color.theme.petCTA),
-    ServiceModel(id: 3, name: "Registro de Vermifugos", image: "medical-drops", color: Color.theme.petSecondary),
-    ServiceModel(id: 4, name: "Registro de Vacinas", image: "register_vacine", color: Color.theme.petTertiary)
+    ServiceModel(id: 1, name: "Vacinas",
+                 image: ImageAsset.vaccine.rawValue,
+                 color: Color.theme.petOrange),
+    ServiceModel(id: 2, name: "Consultas",
+                 image: ImageAsset.vetAppointment.rawValue,
+                 color: Color.theme.petGreen),
+    ServiceModel(id: 3, name: "Ração",
+                 image: ImageAsset.dogFood.rawValue,
+                 color: Color.theme.petPrimary500),
+    ServiceModel(id: 4, name: "Medicamento",
+                 image: ImageAsset.medicine.rawValue,
+                 color: Color.theme.petWarning500),
+    ServiceModel(id: 5, name: "Banhos",
+                 image: ImageAsset.shower.rawValue,
+                 color: Color.theme.petSecondary500),
+    ServiceModel(id: 6, name: "Passeio",
+                 image: ImageAsset.dogFace.rawValue,
+                 color: Color.theme.petWarning100)
 ]

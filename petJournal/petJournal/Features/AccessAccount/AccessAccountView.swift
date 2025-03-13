@@ -89,7 +89,7 @@ extension AccessAccountView {
                 isActive: self.$isAccessAccount) {
                     Text("Esqueci minha senha")
                         .font(.fredokaMedium(size: .tiny))
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.theme.petBlack)
                 }
                 .isDetailLink(false)
                 .navigationBarHidden(true)
@@ -106,7 +106,7 @@ extension AccessAccountView {
                 isActive: self.$isCreateAccount) {
                     Text("Inscrever-se")
                         .font(.fredokaMedium(size: .tiny))
-                        .foregroundColor(.black)
+                        .foregroundColor(Color.theme.petBlack)
                 }
                 .isDetailLink(false)
                 .navigationBarHidden(true)
