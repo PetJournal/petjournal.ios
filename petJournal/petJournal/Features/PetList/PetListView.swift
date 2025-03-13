@@ -7,6 +7,7 @@ struct PetListView: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+                .foregroundStyle(Color(red: 124, green: 84, blue: 167, opacity: 0.12))
                 .padding(.top, 80)
                 .offset(y: -70)
 

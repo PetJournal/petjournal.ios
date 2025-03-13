@@ -29,13 +29,13 @@ struct TabBarView: View {
                 .tabItem {
                     Label("Pet", image: ImageAsset.paw.rawValue)
                 }
-                .tag(1)
+                .tag(2)
             
             Text("Tutor")
                 .tabItem {
                     Label("User", image: ImageAsset.user.rawValue)
                 }
-                .tag(2)
+                .tag(3)
         }
         .withDefaultTabBar()
     }
