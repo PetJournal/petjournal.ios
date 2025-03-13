@@ -8,7 +8,10 @@
 import SwiftUI
 
 extension View {    
-    func withDefaultTabBar(backgroundColor: Color, selectItem: Color) -> some View {
-        self.modifier(TabBarModifier(background: UIColor(backgroundColor), selectedItem: UIColor(selectItem)))
+    func withDefaultTabBar(backgroundColor: Color = Color.theme.petPrimary100,
+                           selectItem: Color = Color.theme.petPrimary500) -> some View {
+        
+        self.modifier(TabBarModifier(background: UIColor(backgroundColor),
+                                     selectedItem: UIColor(selectItem)))
     }
 }

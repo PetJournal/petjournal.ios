@@ -15,23 +15,29 @@ struct TabBarView: View {
             HomePageView()
                 .environmentObject(tabViewModel)
                 .tabItem {
-                    Label("Home", image: "ic_home")
+                    Label("Home", image: ImageAsset.home.rawValue)
                 }
                 .tag(0)
             
+            Text("Agenda")
+                .tabItem {
+                    Label("Agenda", image: ImageAsset.petsCalendar.rawValue)
+                }
+                .tag(1)
+            
             PetListView()
                 .tabItem {
-                    Label("Pets", image: "ic_pets")
+                    Label("Pet", image: ImageAsset.paw.rawValue)
                 }
                 .tag(1)
             
             Text("Tutor")
                 .tabItem {
-                    Label("User", image: "ic_user")
+                    Label("User", image: ImageAsset.user.rawValue)
                 }
                 .tag(2)
         }
-        .withDefaultTabBar(backgroundColor: Color.theme.petPrimary, selectItem: Color.theme.petCTA)
+        .withDefaultTabBar()
     }
 }
 

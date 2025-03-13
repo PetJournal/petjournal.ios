@@ -34,8 +34,8 @@ struct PJButton: View {
                     .font(titleFont)
                     .frame(maxWidth:.infinity)
             }
-            .buttonStyle(CustomButtonStyle(backgroundColor: buttonType == .primaryType ? Color.theme.petPrimary : Color.theme.petWhite,
-                                           foregroundColor: buttonType == .primaryType ? Color.theme.petWhite : Color.theme.petPrimary))
+            .buttonStyle(CustomButtonStyle(backgroundColor: buttonType == .primaryType ? Color.theme.petPrimary500 : Color.theme.petWhite,
+                                           foregroundColor: buttonType == .primaryType ? Color.theme.petWhite : Color.theme.petPrimary500))
             
             Spacer()
         }
