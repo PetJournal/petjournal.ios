@@ -35,7 +35,7 @@ enum ImageAsset: String {
     case logoBlack = "pet_logoBlack"
     case logoBlue = "pet_logoBlue"
     case logoLightBlue = "pet_logoLightBlue"
-    case plogoLightPink = "pet_logoLightPink"
+    case logoLightPink = "pet_logoLightPink"
     case logoPrimary = "pet_logoPrimary"
     case logoWhite = "pet_logoWhite"
     case petListBackground = "steps_background"
