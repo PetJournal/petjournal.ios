@@ -23,7 +23,7 @@ struct CodeInput: View {
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(corners ? Color.theme.petPrimary : Color.theme.petSecondary,
+                .stroke(corners ? Color.theme.petPrimary500 : Color.theme.petPrimary100,
                         lineWidth: 3)
         )
     }

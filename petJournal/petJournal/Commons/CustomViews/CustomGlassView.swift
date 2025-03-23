@@ -30,7 +30,7 @@ struct CustomGlassView<Content: View>: View {
                 content
             }
             .padding()
-            .foregroundColor(Color.black.opacity(0.8))
+            .foregroundColor(Color.theme.petBlack.opacity(0.8))
         }
         .frame(width: 300, alignment: alignment)
     }

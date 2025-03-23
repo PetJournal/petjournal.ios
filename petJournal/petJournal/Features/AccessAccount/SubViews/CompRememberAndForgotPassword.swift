@@ -23,7 +23,7 @@ struct CompRememberAndForgotPassword: View {
                 
                 Text("Lembrar")
                     .font(.fredokaMedium(size: .tiny))
-                    .foregroundColor(.black)
+                    .foregroundColor(Color.theme.petBlack)
                 
                 Spacer()
             }
