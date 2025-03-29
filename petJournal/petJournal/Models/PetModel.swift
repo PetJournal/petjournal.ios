@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct PetModel: Codable, Identifiable {
+struct PetModel: Codable, Identifiable, Hashable {
     var id = UUID()
     let specieName: String
     let petName: String
@@ -11,15 +11,13 @@ struct PetModel: Codable, Identifiable {
     let castrated: Bool
     let dateOfBirth: String
     let image: Data?
+    var addPet: Bool = false
     
-    init(specieName: String,
-         petName: String,
-         gender: String,
-         breedName: String,
-         size: String,
-         castrated: Bool,
-         dateOfBirth: String,
-         image: Data?) {
+    init(specieName: String, petName: String,
+         gender: String, breedName: String,
+         size: String, castrated: Bool,
+         dateOfBirth: String, image: Data?,
+         addPet: Bool = false) {
         self.specieName = specieName
         self.petName = petName
         self.gender = gender
@@ -28,21 +26,19 @@ struct PetModel: Codable, Identifiable {
         self.castrated = castrated
         self.dateOfBirth = dateOfBirth
         self.image = image
+        self.addPet = addPet
     }
 }
 
 extension PetModel {
-    static var newPet: PetModel {
-        PetModel(specieName: "",
-                 petName: "",
-                 gender: "",
-                 breedName: "",
-                 size: "",
-                 castrated: true,
-                 dateOfBirth: "",
-                 image: nil)
+    static var addPet: PetModel {
+        PetModel(specieName: "", petName: "Adicionar",
+                 gender: "", breedName: "",
+                 size: "", castrated: true,
+                 dateOfBirth: "", image: nil,
+                 addPet: true)
     }
-    
+    //FIXME: Remove mocks
     static var mockPets = [
         PetModel(specieName: "Cachorro", petName: "Rex", 
                  gender: "Macho", breedName: "Vira-lata",
@@ -55,7 +51,11 @@ extension PetModel {
         PetModel(specieName: "Cachorro", petName: "Luna",
                  gender: "Fêmea", breedName: "Labrador",
                  size: "Grande", castrated: true,
-                 dateOfBirth: "10/10/2018", image: nil)
+                 dateOfBirth: "10/10/2018", image: nil),
+        PetModel(specieName: "Coelho", petName: "Pernalonga",
+                 gender: "Macho", breedName: "Hotot",
+                 size: "Grande", castrated: true,
+                 dateOfBirth: "01/01/2025", image: nil)
     ]
     
     static var mockPetImages = [
@@ -65,10 +65,12 @@ extension PetModel {
         Image.init(asset: .logoPrimary),
         Image.init(asset: .banner03)
     ]
-    
+
     func getImage() -> Image {
-        if let image = self.image, let image = UIImage(data: image) {
+        if !addPet, let image = self.image, let image = UIImage(data: image) {
             return Image(uiImage: image)
+        } else if addPet {
+            return Image.init(asset: .addSignal)
         } else {
             return PetModel.mockPetImages.randomElement()!
         }
