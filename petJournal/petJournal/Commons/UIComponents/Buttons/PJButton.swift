@@ -16,7 +16,7 @@ struct PJButton: View {
     @State var buttonType: ButtonType = .primaryType
     private let title: String
     private let action: () -> Void
-    private let titleFont: Font = .fredokaSemiBold(size: .small)
+    private let titleFont: Font = .robotoSemiBold(size: .small)
     
     init(title: String,
          buttonType: ButtonType,
@@ -28,7 +28,6 @@ struct PJButton: View {
     
     var body: some View {
         HStack {
-            Spacer()
             Button(action:self.action) {
                 Text(self.title)
                     .font(titleFont)
@@ -36,8 +35,6 @@ struct PJButton: View {
             }
             .buttonStyle(CustomButtonStyle(backgroundColor: buttonType == .primaryType ? Color.theme.petPrimary500 : Color.theme.petWhite,
                                            foregroundColor: buttonType == .primaryType ? Color.theme.petWhite : Color.theme.petPrimary500))
-            
-            Spacer()
         }
         .frame(maxWidth:.infinity)
     }
