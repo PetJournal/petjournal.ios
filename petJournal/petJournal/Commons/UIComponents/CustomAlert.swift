@@ -89,7 +89,7 @@ struct CustomAlertView: CustomAlertProtocol, View {
 }
 
 //MARK: - Preview
-struct ContentView: View {
+struct CustomAlertPreview: View {
     //State variable to indicates when to show the alert
     @State private var showAlert = false
     @State private var secondAlert = false
@@ -113,7 +113,7 @@ struct ContentView: View {
                 CustomAlertView(
                     isPresented: $showAlert,
                     imageAsset: .cryingDog,
-                    message: "Você realmente quer excluir o pet?",
+                    message: "Você realmente quer sair do app?",
                     primaryButton: PJButton(title: "Excluir", buttonType: .secundaryType, action: {
                         print("Botão EXCLUIR pressionado")
                     }),
@@ -127,23 +127,21 @@ struct ContentView: View {
             if secondAlert {
                 CustomAlertView(
                     isPresented: $secondAlert,
-                    imageAsset: .cryingDog,
-                    message: "Você realmente quer excluir o pet?",
-                    primaryButton: PJButton(title: "Excluir", buttonType: .secundaryType, action: {
+                    imageAsset: .dogAndCat,
+                    message: "Tarefa adicionada com sucesso!",
+                    primaryButton: PJButton(title: "+ Nova tarefa", buttonType: .secundaryType, action: {
                         print("Botão EXCLUIR pressionado")
                     }),
-                    secondaryButton: PJButton(title: "Cancelar", buttonType: .primaryType, action: {
+                    secondaryButton: PJButton(title: "Ir para a HomePage", buttonType: .primaryType, action: {
                         print("Botão CANCELAR pressionado")
                         self.secondAlert.toggle()
                     }),
-                    buttonDirection: .horizontal)
+                    buttonDirection: .vertical)
             }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview() {
+    CustomAlertPreview()
 }
