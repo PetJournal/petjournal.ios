@@ -1,12 +1,12 @@
 import Foundation
 
 protocol PetRegisterServiceProtocol {
-    func registerPet(petToBeRegistered: PetModel,
+    static func registerPet(petToBeRegistered: PetModel,
                      completion: @escaping(Result<Bool, PetRegisterError>) -> Void)
 }
 
 class PetRegisterService: PetRegisterServiceProtocol {
-    func registerPet(petToBeRegistered: PetModel,
+    static func registerPet(petToBeRegistered: PetModel,
                      completion: @escaping(Result<Bool, PetRegisterError>) -> Void) {
         
         guard let url = URLManager.shared.makeURL(path: URLManager.shared.petRegister) else {
