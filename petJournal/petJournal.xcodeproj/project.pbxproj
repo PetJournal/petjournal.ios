@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13033C212D9AB6390037F2BD /* AutoCompleteSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13033C202D9AB62C0037F2BD /* AutoCompleteSelect.swift */; };
 		131BCFCC2D6C7A6400AEDE56 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131BCFCB2D6C7A5800AEDE56 /* Extension+View.swift */; };
 		1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F656E212A1410AE004D4D99 /* CreateAccountView.swift */; };
 		1F8298312A18151500595FB7 /* CreateAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8298302A18151500595FB7 /* CreateAccountService.swift */; };
@@ -107,6 +108,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13033C202D9AB62C0037F2BD /* AutoCompleteSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteSelect.swift; sourceTree = "<group>"; };
 		131BCFCB2D6C7A5800AEDE56 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		1F656E212A1410AE004D4D99 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		1F8298302A18151500595FB7 /* CreateAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountService.swift; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 		C9E5017329E76FDA0014F9C4 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				13033C202D9AB62C0037F2BD /* AutoCompleteSelect.swift */,
 				C9D95F712A37AA0D001C271F /* BlurView.swift */,
 				C9F9D82F2A14232300DD72F1 /* Buttons */,
 				C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */,
@@ -789,6 +792,7 @@
 				7509EDD52D71E9DC0036B9B8 /* ComponentPrivacy.swift in Sources */,
 				7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */,
 				C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */,
+				13033C212D9AB6390037F2BD /* AutoCompleteSelect.swift in Sources */,
 				75C895912D84BDC5007BEBA3 /* PetModel.swift in Sources */,
 				50F77A3E2D820ABE00606345 /* PetListView.swift in Sources */,
 				C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */,
