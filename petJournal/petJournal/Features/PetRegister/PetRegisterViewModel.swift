@@ -7,16 +7,13 @@ class PetRegisterViewModel: ObservableObject {
     @Published var isRequestSuccessful: Bool = false
     @Published var errorMessage: String? = nil
     
-    private var petService: PetRegisterServiceProtocol!
-    init(petService: PetRegisterServiceProtocol) {
-        self.petService = petService
-    }
+    static let shared: PetRegisterViewModel = .init()
     
     func registerPet() {
         isLoading = true
         errorMessage = nil
         
-        petService.registerPet(petToBeRegistered: pet) { [weak self] result in
+        PetRegisterService.registerPet(petToBeRegistered: pet) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 switch result {
