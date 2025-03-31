@@ -7,16 +7,13 @@ class PetRegisterViewModel: ObservableObject {
     @Published var isRequestSuccessful: Bool = false
     @Published var errorMessage: String? = nil
     
-    private var petService: PetRegisterServiceProtocol!
-    init(petService: PetRegisterServiceProtocol) {
-        self.petService = petService
-    }
+    static let shared: PetRegisterViewModel = .init()
     
     func registerPet() {
         isLoading = true
         errorMessage = nil
         
-        petService.registerPet(petToBeRegistered: pet) { [weak self] result in
+        PetRegisterService.registerPet(petToBeRegistered: pet) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 switch result {
@@ -33,9 +30,12 @@ class PetRegisterViewModel: ObservableObject {
 //MARK: - Validation
 extension PetRegisterViewModel {
     var isFieldsFilled: Bool {
-        if !pet.specieName.isEmpty, !pet.petName.isEmpty,
-           !pet.gender.isEmpty, !pet.breedName.isEmpty,
-           !pet.size.isEmpty, !pet.dateOfBirth.isEmpty {
+        if !pet.specie.detail.isEmpty,
+           !pet.petName.isEmpty,
+           !pet.gender.isEmpty,
+           !pet.breed.detail.isEmpty,
+           !pet.size.detail.isEmpty,
+           !pet.dateOfBirth.isEmpty {
             return true
         } else {
             errorMessage = "Por favor, preencha todos os campos."

@@ -2,27 +2,34 @@ import Foundation
 import SwiftUI
 
 struct PetModel: Codable, Identifiable, Hashable {
-    var id = UUID()
-    let specieName: String
-    let petName: String
-    let gender: String
-    let breedName: String
-    let size: String
+    var id: String
+    let guardianID: String?
+    let specie: BreedDetail
+    let specieAlias: String?
+    let petName, gender: String
+    let breedAlias: String?
+    let breed, size: BreedDetail
     let castrated: Bool
     let dateOfBirth: String
     let image: Data?
     var addPet: Bool = false
     
-    init(specieName: String, petName: String,
-         gender: String, breedName: String,
-         size: String, castrated: Bool,
-         dateOfBirth: String, image: Data?,
-         addPet: Bool = false) {
-        self.specieName = specieName
+    init(id: String = UUID().uuidString,
+         guardianID: String, specieName: String,
+         specieAlias: String, petName: String,
+         gender: String, breedAlias: String, 
+         breedName: String, size: String,
+         castrated: Bool, dateOfBirth: String,
+         image: Data?, addPet: Bool) {
+        self.id = id
+        self.guardianID = guardianID
+        self.specie = BreedDetail(detail: specieName)
+        self.specieAlias = specieAlias
         self.petName = petName
         self.gender = gender
-        self.breedName = breedName
-        self.size = size
+        self.breed = BreedDetail(detail: breedName)
+        self.breedAlias = breedAlias
+        self.size = BreedDetail(detail: size)
         self.castrated = castrated
         self.dateOfBirth = dateOfBirth
         self.image = image
@@ -32,30 +39,33 @@ struct PetModel: Codable, Identifiable, Hashable {
 
 extension PetModel {
     static var addPet: PetModel {
-        PetModel(specieName: "", petName: "Adicionar",
-                 gender: "", breedName: "",
-                 size: "", castrated: true,
-                 dateOfBirth: "", image: nil,
-                 addPet: true)
+        PetModel(guardianID: "", specieName: "",
+                 specieAlias: "", petName: "Adicionar",
+                 gender: "", breedAlias: "",
+                 breedName: "", size: "",
+                 castrated: true, dateOfBirth: "",
+                 image: nil, addPet: true)
     }
     //FIXME: Remove mocks
     static var mockPets = [
-        PetModel(specieName: "Cachorro", petName: "Rex", 
-                 gender: "Macho", breedName: "Vira-lata",
-                 size: "Médio", castrated: true,
-                 dateOfBirth: "01/01/2020", image: nil),
-        PetModel(specieName: "Gato", petName: "Mimi",
-                 gender: "Fêmea", breedName: "Siamês",
-                 size: "Pequeno", castrated: false,
-                 dateOfBirth: "15/05/2019", image: nil),
-        PetModel(specieName: "Cachorro", petName: "Luna",
-                 gender: "Fêmea", breedName: "Labrador",
-                 size: "Grande", castrated: true,
-                 dateOfBirth: "10/10/2018", image: nil),
-        PetModel(specieName: "Coelho", petName: "Pernalonga",
-                 gender: "Macho", breedName: "Hotot",
-                 size: "Grande", castrated: true,
-                 dateOfBirth: "01/01/2025", image: nil)
+        PetModel(guardianID: "", specieName: "Cachorro",
+                 specieAlias: "", petName: "Rex",
+                 gender: "Macho", breedAlias: "",
+                 breedName: "Vira-lata", size: "Médio",
+                 castrated: true, dateOfBirth: "01/01/2020",
+                 image: nil, addPet: false),
+        PetModel(guardianID: "", specieName: "Gato",
+                 specieAlias: "", petName: "Mimi",
+                 gender: "Fêmea", breedAlias: "",
+                 breedName: "Siamês", size: "Pequeno",
+                 castrated: false, dateOfBirth: "15/05/2019",
+                 image: nil, addPet: false),
+        PetModel(guardianID: "", specieName: "Cachorro",
+                 specieAlias: "", petName: "Luna",
+                 gender: "Fêmea", breedAlias: "",
+                 breedName: "Labrador", size: "Grande",
+                 castrated: true, dateOfBirth: "10/10/2018",
+                 image: nil, addPet: false)
     ]
     
     static var mockPetImages = [
@@ -74,5 +84,16 @@ extension PetModel {
         } else {
             return PetModel.mockPetImages.randomElement()!
         }
+    }
+}
+
+// MARK: - Breed Detail
+struct BreedDetail: Codable, Identifiable, Hashable {
+    var id: String
+    let detail: String
+
+    init(id: String = UUID().uuidString, detail: String) {
+        self.id = id
+        self.detail = detail
     }
 }
