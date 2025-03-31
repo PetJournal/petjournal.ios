@@ -30,9 +30,12 @@ class PetRegisterViewModel: ObservableObject {
 //MARK: - Validation
 extension PetRegisterViewModel {
     var isFieldsFilled: Bool {
-        if !pet.specieName.isEmpty, !pet.petName.isEmpty,
-           !pet.gender.isEmpty, !pet.breedName.isEmpty,
-           !pet.size.isEmpty, !pet.dateOfBirth.isEmpty {
+        if !pet.specie.detail.isEmpty,
+           !pet.petName.isEmpty,
+           !pet.gender.isEmpty,
+           !pet.breed.detail.isEmpty,
+           !pet.size.detail.isEmpty,
+           !pet.dateOfBirth.isEmpty {
             return true
         } else {
             errorMessage = "Por favor, preencha todos os campos."
