@@ -1,12 +1,12 @@
 import Foundation
 
 protocol PetRegisterServiceProtocol {
-    func registerPet(petToBeRegistered: PetModel,
+    static func registerPet(petToBeRegistered: PetModel,
                      completion: @escaping(Result<Bool, PetRegisterError>) -> Void)
 }
 
 class PetRegisterService: PetRegisterServiceProtocol {
-    func registerPet(petToBeRegistered: PetModel,
+    static func registerPet(petToBeRegistered: PetModel,
                      completion: @escaping(Result<Bool, PetRegisterError>) -> Void) {
         
         guard let url = URLManager.shared.makeURL(path: URLManager.shared.petRegister) else {
@@ -24,10 +24,10 @@ class PetRegisterService: PetRegisterServiceProtocol {
         var body = Data()
         
         let fields: [String: Any] = [
-            "specieName": petToBeRegistered.specieName,
+            "specieName": petToBeRegistered.specie.detail,
             "petName": petToBeRegistered.petName,
             "gender": petToBeRegistered.gender,
-            "breedName": petToBeRegistered.breedName,
+            "breedName": petToBeRegistered.breed.detail,
             "size": petToBeRegistered.size,
             "castrated": petToBeRegistered.castrated,
             "dateOfBirth": petToBeRegistered.dateOfBirth
