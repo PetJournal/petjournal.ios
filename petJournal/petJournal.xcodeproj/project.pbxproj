@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		13033C212D9AB6390037F2BD /* AutoCompleteSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13033C202D9AB62C0037F2BD /* AutoCompleteSelect.swift */; };
 		131BCFCC2D6C7A6400AEDE56 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131BCFCB2D6C7A5800AEDE56 /* Extension+View.swift */; };
+		13BB693B2DA3302300E0A3B5 /* AsyncImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BB69382DA3302300E0A3B5 /* AsyncImageService.swift */; };
+		13BB693C2DA3302300E0A3B5 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BB69392DA3302300E0A3B5 /* LoginService.swift */; };
 		1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F656E212A1410AE004D4D99 /* CreateAccountView.swift */; };
 		1F8298312A18151500595FB7 /* CreateAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8298302A18151500595FB7 /* CreateAccountService.swift */; };
 		1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7998329F1C8CC00673233 /* UserPJModel.swift */; };
@@ -113,6 +115,8 @@
 /* Begin PBXFileReference section */
 		13033C202D9AB62C0037F2BD /* AutoCompleteSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteSelect.swift; sourceTree = "<group>"; };
 		131BCFCB2D6C7A5800AEDE56 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
+		13BB69382DA3302300E0A3B5 /* AsyncImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageService.swift; sourceTree = "<group>"; };
+		13BB69392DA3302300E0A3B5 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		1F656E212A1410AE004D4D99 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		1F8298302A18151500595FB7 /* CreateAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountService.swift; sourceTree = "<group>"; };
 		1FB7998329F1C8CC00673233 /* UserPJModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPJModel.swift; sourceTree = "<group>"; };
@@ -225,6 +229,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13BB693A2DA3302300E0A3B5 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				13BB69382DA3302300E0A3B5 /* AsyncImageService.swift */,
+				13BB69392DA3302300E0A3B5 /* LoginService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		1FF4606E29C8E8720026F680 = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +285,7 @@
 		1FF4608F29C8E9E30026F680 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				13BB693A2DA3302300E0A3B5 /* Service */,
 				C9F5F4A22A41FF65002C21F7 /* CustomViews */,
 				C9FD536629E4B294003033FB /* Enums */,
 				C9BAE60B29DE296100542620 /* Extensions */,
@@ -747,6 +761,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */,
+				13BB693B2DA3302300E0A3B5 /* AsyncImageService.swift in Sources */,
+				13BB693C2DA3302300E0A3B5 /* LoginService.swift in Sources */,
 				C910E2BB2AC78F0800DD3C23 /* URLManager.swift in Sources */,
 				C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */,
 				C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */,
