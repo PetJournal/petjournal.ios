@@ -9,7 +9,7 @@ import Foundation
 
 final class LoginService {
     static let shared = LoginService()
-    private var user = UserModel(email: "", password: "")
+    private var user = UserModel(firstName: "", lastName: "", email: "", password: "", passwordConfirmation: "", phone: "", isPrivacyPolicyAccepted: true)
     
     private init() { }
     
