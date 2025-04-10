@@ -14,6 +14,7 @@ extension View {
                 onClick()
             } label: {
                 Image(systemName: "chevron.backward")
+                    .foregroundStyle(Color(.petPrimary500))
             }
             Spacer()
             Text(title)
