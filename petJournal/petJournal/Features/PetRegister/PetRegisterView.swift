@@ -154,9 +154,9 @@ struct PetRegisterView: View {
                     }) {
                         Text("Salvar")
                             .font(.headline)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color(.petPrimary500))
                             .frame(minWidth: 121.00, maxWidth: 121.00 ,minHeight: 40.00, maxHeight: 40.00)
-                            .background(Color(.petPrimary500))
+                            .background(Color(.white))
                             .cornerRadius(50)
                     }
                     .padding(.top, 16)
