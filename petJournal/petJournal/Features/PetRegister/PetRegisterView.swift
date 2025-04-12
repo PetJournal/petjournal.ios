@@ -46,7 +46,7 @@ struct PetRegisterView: View {
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    AutoCompleteSelect(selectedItem: $viewModel.breedName, items: viewModel.getBreed(), placeholder: "Qual o porte?")
+                    AutoCompleteSelect(selectedItem: $viewModel.breedName, items: viewModel.size(), placeholder: "Qual o porte?")
                     
                     Text("Data de nascimento")
                         .bold()
@@ -72,7 +72,7 @@ struct PetRegisterView: View {
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    AutoCompleteSelect(selectedItem: $viewModel.breedName, items: viewModel.getBreed(), placeholder: "Qual o tipo do animal?")
+                    AutoCompleteSelect(selectedItem: $viewModel.breedName, items: viewModel.type(), placeholder: "Qual o tipo do animal?")
                     
                     Text("Sexo")
                         .bold()
