@@ -88,6 +88,7 @@ struct PetRegisterView: View {
                                 .frame(minWidth: 121.00, maxWidth: 121.00 ,minHeight: 40.00, maxHeight: 40.00)
                                 .background(Color(.petPrimary500))
                                 .cornerRadius(50)
+                                .shadow(color: Color.black.opacity(0.25), radius: 10, x: 3, y: 4)
                         }
                         
                         Spacer()
@@ -105,6 +106,7 @@ struct PetRegisterView: View {
                                         .stroke(Color.black, lineWidth: 1)
                                 )
                                 .cornerRadius(50)
+                                .shadow(color: Color.black.opacity(0.25), radius: 10, x: 3, y: 4)
                         }
                     }.padding(Edge.Set.horizontal)
                     
@@ -128,6 +130,7 @@ struct PetRegisterView: View {
                                         .stroke(Color.black, lineWidth: 1)
                                 )
                                 .cornerRadius(50)
+                                .shadow(color: Color.black.opacity(0.25), radius: 10, x: 3, y: 4)
                         }
                         
                         Spacer()
@@ -141,6 +144,7 @@ struct PetRegisterView: View {
                                 .frame(minWidth: 121.00, maxWidth: 121.00 ,minHeight: 40.00, maxHeight: 40.00)
                                 .background(Color(.petPrimary500))
                                 .cornerRadius(50)
+                                .shadow(color: Color.black.opacity(0.25), radius: 10, x: 3, y: 4)
                         }
                     }.padding(Edge.Set.horizontal)
                     
@@ -158,6 +162,7 @@ struct PetRegisterView: View {
                             .frame(minWidth: 121.00, maxWidth: 121.00 ,minHeight: 40.00, maxHeight: 40.00)
                             .background(Color(.white))
                             .cornerRadius(50)
+                            .shadow(color: Color.black.opacity(0.25), radius: 10, x: 3, y: 4)
                     }
                     .padding(.top, 16)
                 }
