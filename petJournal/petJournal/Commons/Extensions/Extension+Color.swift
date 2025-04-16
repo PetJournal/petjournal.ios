@@ -36,4 +36,6 @@ struct ColorTheme {
     let petLightBlue = Color("petLightBlue")
     let petOrange = Color("petOrange")
     let petGreen = Color("petGreen")
+    let petCerise = Color("petCerise")
+    let petCarnation = Color("petCarnation")
 }
