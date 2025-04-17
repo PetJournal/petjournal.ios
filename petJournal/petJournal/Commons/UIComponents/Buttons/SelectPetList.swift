@@ -1,71 +1,94 @@
 import SwiftUI
 
-struct Pet: Identifiable {
-    let id = UUID()
-    let name: String
-    let imageURL: String?
-    let isAllPetsOption: Bool
-}
-
 struct PetSelectItemView: View {
-    let pet: Pet
+    let pet: PetModel
     let isSelected: Bool
+    let action: () -> Void
     
     var body: some View {
-        VStack {
-            ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.white)
-                    .shadow(radius: 2)
-                    .frame(width: 80, height: 80)
+        Button(action: action) {
+            VStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color.white)
+                        .shadow(radius: 2)
+                        .frame(width: 80, height: 80)
+                    
+                    pet.getImage()
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 80, height: 80)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                }
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(isSelected ? Color.purple : Color.clear, lineWidth: 2)
+                )
                 
-                if pet.isAllPetsOption {
+                Text(pet.petName)
+                    .font(.subheadline)
+                    .foregroundColor(.black)
+                    .lineLimit(1)
+            }
+            .frame(width: 80)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+struct AllPetsButton: View {
+    let isSelected: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            VStack {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color.white)
+                        .shadow(radius: 2)
+                        .frame(width: 80, height: 80)
+                    
                     Image(systemName: "pawprint.fill")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 40, height: 40)
                         .foregroundColor(.purple)
-                } else if let imageURL = pet.imageURL {
-                    AsyncImage(url: URL(string: imageURL)) { image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                    } placeholder: {
-                        ProgressView()
-                    }
-                    .frame(width: 80, height: 80)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(isSelected ? Color.purple : Color.clear, lineWidth: 2)
+                )
+                
+                Text("Todos")
+                    .font(.subheadline)
+                    .foregroundColor(.black)
+                    .lineLimit(1)
             }
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(isSelected ? Color.purple : Color.clear, lineWidth: 2)
-            )
-            
-            Text(pet.name)
-                .font(.subheadline)
-                .foregroundColor(.black)
-                .lineLimit(1)
+            .frame(width: 80)
         }
-        .frame(width: 80)
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
 struct SelectPetList: View {
-    @Binding var selectedPetId: UUID?
-    let pets: [Pet]
+    @Binding var selectedPetId: String?
+    let pets: [PetModel]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 16) {
+                AllPetsButton(
+                    isSelected: selectedPetId == nil,
+                    action: { print("Todos") }
+                )
+                
                 ForEach(pets) { pet in
                     PetSelectItemView(
                         pet: pet,
-                        isSelected: pet.id == selectedPetId
+                        isSelected: pet.id == selectedPetId,
+                        action: { print(pet.petName) }
                     )
-                    .onTapGesture {
-                        selectedPetId = pet.id
-                    }
                 }
             }
             .padding(.horizontal)
@@ -74,16 +97,8 @@ struct SelectPetList: View {
 }
 
 #Preview {
-    var samplePets = [
-        Pet(name: "Todos", imageURL: nil, isAllPetsOption: true),
-        Pet(name: "Jujuba", imageURL: nil, isAllPetsOption: false),
-        Pet(name: "Alfredo", imageURL: nil, isAllPetsOption: false),
-        Pet(name: "Alfredo", imageURL: nil, isAllPetsOption: false),
-        Pet(name: "Alfredo", imageURL: nil, isAllPetsOption: false)
-    ]
-    
     SelectPetList(
-        selectedPetId: .constant(samplePets[0].id),
-        pets: samplePets
+        selectedPetId: .constant(nil),
+        pets: PetModel.mockPets
     )
 }
