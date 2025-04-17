@@ -1,6 +1,5 @@
 import SwiftUI
 
-// Estrutura para representar um pet
 struct Pet: Identifiable {
     let id = UUID()
     let name: String
@@ -8,14 +7,12 @@ struct Pet: Identifiable {
     let isAllPetsOption: Bool
 }
 
-// View para um item individual da lista
 struct PetSelectItemView: View {
     let pet: Pet
     let isSelected: Bool
     
     var body: some View {
         VStack {
-            // Container da imagem
             ZStack {
                 RoundedRectangle(cornerRadius: 16)
                     .fill(Color.white)
@@ -23,14 +20,12 @@ struct PetSelectItemView: View {
                     .frame(width: 80, height: 80)
                 
                 if pet.isAllPetsOption {
-                    // Ícone de pata para opção "Todos"
                     Image(systemName: "pawprint.fill")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 40, height: 40)
                         .foregroundColor(.purple)
                 } else if let imageURL = pet.imageURL {
-                    // Imagem do pet
                     AsyncImage(url: URL(string: imageURL)) { image in
                         image
                             .resizable()
@@ -47,7 +42,6 @@ struct PetSelectItemView: View {
                     .stroke(isSelected ? Color.purple : Color.clear, lineWidth: 2)
             )
             
-            // Nome do pet
             Text(pet.name)
                 .font(.subheadline)
                 .foregroundColor(.black)
@@ -57,7 +51,6 @@ struct PetSelectItemView: View {
     }
 }
 
-// View principal da lista de seleção
 struct SelectPetList: View {
     @Binding var selectedPetId: UUID?
     let pets: [Pet]
@@ -80,7 +73,6 @@ struct SelectPetList: View {
     }
 }
 
-// Preview para demonstração
 #Preview {
     var samplePets = [
         Pet(name: "Todos", imageURL: nil, isAllPetsOption: true),
