@@ -22,7 +22,6 @@
 		5053E3EA2D67B4D5004BCA07 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5053E3E92D67B4D5004BCA07 /* Roboto-Light.ttf */; };
 		5053E3EC2D67B4DE004BCA07 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5053E3EB2D67B4DE004BCA07 /* Roboto-Medium.ttf */; };
 		5089312E2DB03A4300E403A5 /* SelectPetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5089312D2DB03A4300E403A5 /* SelectPetList.swift */; };
-		50CE26C22DAF49FD0014C5D4 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE26C12DAF49FD0014C5D4 /* CreateTaskView.swift */; };
 		50F77A3E2D820ABE00606345 /* PetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F77A3D2D820ABE00606345 /* PetListView.swift */; };
 		50F77A402D821FFD00606345 /* Roboto-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50F77A3F2D821FFD00606345 /* Roboto-SemiBold.ttf */; };
 		6196CDB52AE2F47A0021DA5F /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */; };
@@ -133,7 +132,6 @@
 		5053E3E92D67B4D5004BCA07 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		5053E3EB2D67B4DE004BCA07 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		5089312D2DB03A4300E403A5 /* SelectPetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPetList.swift; sourceTree = "<group>"; };
-		50CE26C12DAF49FD0014C5D4 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
 		50F77A3D2D820ABE00606345 /* PetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListView.swift; sourceTree = "<group>"; };
 		50F77A3F2D821FFD00606345 /* Roboto-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-SemiBold.ttf"; sourceTree = "<group>"; };
 		6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
@@ -346,7 +344,6 @@
 		50CE26C02DAF49C30014C5D4 /* CreateTask */ = {
 			isa = PBXGroup;
 			children = (
-				50CE26C12DAF49FD0014C5D4 /* CreateTaskView.swift */,
 			);
 			path = CreateTask;
 			sourceTree = "<group>";
@@ -829,7 +826,6 @@
 				C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */,
 				75AF95572DAAAB9500CF0A02 /* TaskButton.swift in Sources */,
 				754EAA582D85C694000FC465 /* PetButton.swift in Sources */,
-				50CE26C22DAF49FD0014C5D4 /* CreateTaskView.swift in Sources */,
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				C930B5D02A3A8AA60008F502 /* WaitingViewModel.swift in Sources */,
 				C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */,
