@@ -57,7 +57,7 @@ struct AutoCompleteSelect: View {
                     Text(selected)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
-                        .background(Color.blue.opacity(0.2))
+                        .background(Color(.petPrimary500).opacity(0.2))
                         .cornerRadius(4)
                     
                     Button(action: {
@@ -98,7 +98,7 @@ struct AutoCompleteSelect: View {
                                     .padding(.horizontal, 12)
                                     .background(
                                         selectedItem == item ?
-                                            Color.blue.opacity(0.1) :
+                                        Color("petPrimary500").opacity(0.1) :
                                             Color.clear
                                     )
                             }

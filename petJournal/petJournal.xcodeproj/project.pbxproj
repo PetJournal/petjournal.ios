@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		13033C212D9AB6390037F2BD /* AutoCompleteSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13033C202D9AB62C0037F2BD /* AutoCompleteSelect.swift */; };
+		13033C232D9B64BF0037F2BD /* PetRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13033C222D9B64BA0037F2BD /* PetRegisterView.swift */; };
 		131BCFCC2D6C7A6400AEDE56 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131BCFCB2D6C7A5800AEDE56 /* Extension+View.swift */; };
 		13BB693B2DA3302300E0A3B5 /* AsyncImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BB69382DA3302300E0A3B5 /* AsyncImageService.swift */; };
 		13BB693C2DA3302300E0A3B5 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BB69392DA3302300E0A3B5 /* LoginService.swift */; };
@@ -116,6 +117,7 @@
 
 /* Begin PBXFileReference section */
 		13033C202D9AB62C0037F2BD /* AutoCompleteSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteSelect.swift; sourceTree = "<group>"; };
+		13033C222D9B64BA0037F2BD /* PetRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterView.swift; sourceTree = "<group>"; };
 		131BCFCB2D6C7A5800AEDE56 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
 		13BB69382DA3302300E0A3B5 /* AsyncImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageService.swift; sourceTree = "<group>"; };
 		13BB69392DA3302300E0A3B5 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 		75C8958D2D84BD92007BEBA3 /* PetRegister */ = {
 			isa = PBXGroup;
 			children = (
+				13033C222D9B64BA0037F2BD /* PetRegisterView.swift */,
 				75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */,
 				75C895922D84C0B6007BEBA3 /* PetRegisterService.swift */,
 			);
@@ -775,6 +778,7 @@
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
 				C91CF52F2AE9F51B00CDC49E /* RegisterResponse.swift in Sources */,
 				C9A324932A2FE7F9008FE6F4 /* RegisterAPIError.swift in Sources */,
+				13033C232D9B64BF0037F2BD /* PetRegisterView.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */,
 				75C895932D84C0B6007BEBA3 /* PetRegisterService.swift in Sources */,
