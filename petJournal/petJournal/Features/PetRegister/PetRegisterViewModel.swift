@@ -13,10 +13,10 @@ class PetRegisterViewModel: ObservableObject {
     // MARK: - Mock de Estado para a PetRegisterView (seguindo os nomes de PetModel)
     @Published var petName: String = ""
     @Published var breedName: String? = nil
-    @Published var size: String = ""
+    @Published var size: String? = nil
     @Published var dateOfBirth: String = ""
     @Published var weight: String = ""
-    @Published var type: String = ""
+    @Published var type: String? = nil
     @Published var gender: String = ""
     @Published var castrated: String = ""
     @Published var image: UIImage = UIImage(named: "banner_01")!
@@ -41,6 +41,14 @@ class PetRegisterViewModel: ObservableObject {
     
     func getBreed() -> [String] {
         return ["Labrador", "Lhasa Apso", "Shit Zhu", "Golden", "Sem raça definida"]
+    }
+    
+    func getSize() -> [String] {
+        return ["Pequeno", "Médio", "Grande"]
+    }
+    
+    func getAnimalType() -> [String] {
+        return ["Cão", "Gato", "Pássaro"]
     }
     
     func getImage() async {
