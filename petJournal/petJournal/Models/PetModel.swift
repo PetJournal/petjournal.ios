@@ -13,6 +13,7 @@ struct PetModel: Codable, Identifiable, Hashable {
     let dateOfBirth: String
     let image: Data?
     var addPet: Bool = false
+    let weight: Double
     
     init(id: String = UUID().uuidString,
          guardianID: String, specieName: String,
@@ -20,7 +21,7 @@ struct PetModel: Codable, Identifiable, Hashable {
          gender: String, breedAlias: String, 
          breedName: String, size: String,
          castrated: Bool, dateOfBirth: String,
-         image: Data?, addPet: Bool) {
+         image: Data?, addPet: Bool, weight: Double) {
         self.id = id
         self.guardianID = guardianID
         self.specie = BreedDetail(detail: specieName)
@@ -34,6 +35,7 @@ struct PetModel: Codable, Identifiable, Hashable {
         self.dateOfBirth = dateOfBirth
         self.image = image
         self.addPet = addPet
+        self.weight = weight
     }
 }
 
@@ -44,7 +46,7 @@ extension PetModel {
                  gender: "", breedAlias: "",
                  breedName: "", size: "",
                  castrated: true, dateOfBirth: "",
-                 image: nil, addPet: true)
+                 image: nil, addPet: true, weight: 5.00)
     }
     //FIXME: Remove mocks
     static var mockPets = [
@@ -53,27 +55,28 @@ extension PetModel {
                  gender: "Macho", breedAlias: "",
                  breedName: "Vira-lata", size: "Médio",
                  castrated: true, dateOfBirth: "01/01/2020",
-                 image: nil, addPet: false),
+                 image: nil, addPet: false, weight: 5.00),
         PetModel(guardianID: "", specieName: "Gato",
                  specieAlias: "", petName: "Mimi",
                  gender: "Fêmea", breedAlias: "",
                  breedName: "Siamês", size: "Pequeno",
                  castrated: false, dateOfBirth: "15/05/2019",
-                 image: nil, addPet: false),
+                 image: nil, addPet: false, weight: 5.00),
         PetModel(guardianID: "", specieName: "Cachorro",
                  specieAlias: "", petName: "Luna",
                  gender: "Fêmea", breedAlias: "",
                  breedName: "Labrador", size: "Grande",
                  castrated: true, dateOfBirth: "10/10/2018",
-                 image: nil, addPet: false)
+                 image: nil, addPet: false, weight: 5.00)
     ]
     
     static var mockPetImages = [
-        Image.init(asset: .banner01),
-        Image.init(asset: .logoBlue),
-        Image.init(asset: .banner02),
-        Image.init(asset: .logoPrimary),
-        Image.init(asset: .banner03)
+        Image.init(asset: .pet01),
+        Image.init(asset: .pet02),
+        Image.init(asset: .pet03),
+        Image.init(asset: .pet04),
+        Image.init(asset: .pet05),
+        Image.init(asset: .pet06)
     ]
 
     func getImage() -> Image {
