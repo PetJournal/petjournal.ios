@@ -71,11 +71,12 @@ extension PetModel {
     ]
     
     static var mockPetImages = [
-        Image.init(asset: .banner01),
-        Image.init(asset: .logoBlue),
-        Image.init(asset: .banner02),
-        Image.init(asset: .logoPrimary),
-        Image.init(asset: .banner03)
+        Image.init(asset: .pet01),
+        Image.init(asset: .pet02),
+        Image.init(asset: .pet03),
+        Image.init(asset: .pet04),
+        Image.init(asset: .pet05),
+        Image.init(asset: .pet06)
     ]
 
     func getImage() -> Image {

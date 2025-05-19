@@ -40,4 +40,10 @@ enum ImageAsset: String {
     case logoPrimary = "pet_logoPrimary"
     case logoWhite = "pet_logoWhite"
     case petListBackground = "steps_background"
+    case pet01 = "pet1"
+    case pet02 = "pet2"
+    case pet03 = "pet3"
+    case pet04 = "pet4"
+    case pet05 = "pet5"
+    case pet06 = "pet6"
 }
