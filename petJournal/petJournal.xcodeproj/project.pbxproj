@@ -28,6 +28,7 @@
 		7509EDD52D71E9DC0036B9B8 /* ComponentPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD42D71E9DC0036B9B8 /* ComponentPrivacy.swift */; };
 		7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */; };
 		7509EDD92D7223150036B9B8 /* ImageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD82D7223150036B9B8 /* ImageAssets.swift */; };
+		751DDCA82DEDEA5000D312F2 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751DDCA72DEDEA5000D312F2 /* TaskListView.swift */; };
 		7542A4762D95C6A100F712C2 /* PetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4752D95C6A100F712C2 /* PetListViewModel.swift */; };
 		7542A4782D95C6BF00F712C2 /* PetListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4772D95C6BF00F712C2 /* PetListService.swift */; };
 		7542A47A2D95DDA500F712C2 /* PetListingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4792D95DDA500F712C2 /* PetListingError.swift */; };
@@ -139,6 +140,7 @@
 		7509EDD42D71E9DC0036B9B8 /* ComponentPrivacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentPrivacy.swift; sourceTree = "<group>"; };
 		7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Image.swift"; sourceTree = "<group>"; };
 		7509EDD82D7223150036B9B8 /* ImageAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssets.swift; sourceTree = "<group>"; };
+		751DDCA72DEDEA5000D312F2 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		7542A4752D95C6A100F712C2 /* PetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListViewModel.swift; sourceTree = "<group>"; };
 		7542A4772D95C6BF00F712C2 /* PetListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListService.swift; sourceTree = "<group>"; };
 		7542A4792D95DDA500F712C2 /* PetListingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListingError.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				50F77A3C2D820A1D00606345 /* PetList */,
 				75C8958D2D84BD92007BEBA3 /* PetRegister */,
 				C9F5F49D2A41FEE6002C21F7 /* TabBar */,
+				751DDCA62DEDEA3400D312F2 /* TaskList */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -362,6 +365,14 @@
 			);
 			name = AppStart;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		751DDCA62DEDEA3400D312F2 /* TaskList */ = {
+			isa = PBXGroup;
+			children = (
+				751DDCA72DEDEA5000D312F2 /* TaskListView.swift */,
+			);
+			path = TaskList;
 			sourceTree = "<group>";
 		};
 		75C8958D2D84BD92007BEBA3 /* PetRegister */ = {
@@ -845,6 +856,7 @@
 				C93943F32A9C0E040085E623 /* UIKitCustom.swift in Sources */,
 				75C895952D84C19B007BEBA3 /* PetRegisterError.swift in Sources */,
 				C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */,
+				751DDCA82DEDEA5000D312F2 /* TaskListView.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+Color.swift in Sources */,
 				7542A47A2D95DDA500F712C2 /* PetListingError.swift in Sources */,
 				C9D8450D2A2249650007A316 /* SessionModel.swift in Sources */,
