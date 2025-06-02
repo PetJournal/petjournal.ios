@@ -9,6 +9,40 @@ struct PetTask: Identifiable {
     let petImages: [Image]
     let accentColor: Color
     let backgroundIcon: Image
+    
+    static func mockTasks() -> [PetTask] {
+        return [
+            PetTask(
+                title: "Carprofeno",
+                schedule: "Manhã e noite",
+                description: "Anti-inflamatório não esteroide para alívio da dor e inflamação.\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
+                petImages: PetModel.mockPetImages,
+                accentColor: Color.theme.petSecondary500,
+                backgroundIcon: Image(asset: .medicine)
+            ),
+            PetTask(
+                title: "Consulta médica",
+                schedule: "15/06 às 14:00",
+                description: "Check-up anual\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
+                petImages: PetModel.mockPetImages,
+                accentColor: Color.theme.petCerise,
+                backgroundIcon: Image(asset: .vetAppointment)
+            ),
+            PetTask(
+                title: "Escovar os pelos",
+                schedule: "Terças e quintas às 08:00",
+                description: "Escovar por 10 minutos para remover pelos soltos\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
+                petImages: PetModel.mockPetImages,
+                accentColor: Color.theme.petOrange,
+                backgroundIcon: Image(systemName: "comb.fill")
+            )
+        ]
+    }
+
+    static func mock(at index: Int = 0) -> PetTask {
+        let mocks = mockTasks()
+        return mocks.indices.contains(index) ? mocks[index] : mocks[0]
+    }
 }
 
 // MARK: - Protocols
@@ -28,7 +62,7 @@ class PetTaskCardPresenter: ObservableObject, PetTaskCardDisplayLogic {
     }
     
     func toggleExpansion() {
-        withAnimation(.easeInOut) {
+        withAnimation(.interactiveSpring) {
             isExpanded.toggle()
         }
     }
@@ -157,29 +191,10 @@ struct PetTaskCard: View {
 
 // MARK: - Preview
 struct PetTaskCard_Previews: PreviewProvider {
-    static var previews: some View {
-        let tasks = [
-            PetTask(
-                title: "Carprofeno",
-                schedule: "Manhã e noite",
-                description: "Anti-inflamatório não esteroide para alívio da dor e inflamação.\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
-                petImages: PetModel.mockPetImages,
-                accentColor: Color.theme.petSecondary500,
-                backgroundIcon: Image(asset: .medicine)
-            ),
-            PetTask(
-                title: "Consulta médica",
-                schedule: "15/06 às 14:00",
-                description: "Check-up anual\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
-                petImages: PetModel.mockPetImages,
-                accentColor: Color.theme.petCerise,
-                backgroundIcon: Image(asset: .vetAppointment)
-            )
-        ]
-        
+    static var previews: some View {        
         return ScrollView {
             VStack(spacing: 20) {
-                ForEach(tasks) { task in
+                ForEach(PetTask.mockTasks()) { task in
                     PetTaskCard(presenter: PetTaskCardPresenter(task: task))
                 }
             }
