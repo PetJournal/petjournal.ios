@@ -38,6 +38,7 @@
 		75C895932D84C0B6007BEBA3 /* PetRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C895922D84C0B6007BEBA3 /* PetRegisterService.swift */; };
 		75C895952D84C19B007BEBA3 /* PetRegisterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C895942D84C19B007BEBA3 /* PetRegisterError.swift */; };
 		75E295612DD243DB00DC1CCA /* PetTaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E295602DD243DB00DC1CCA /* PetTaskCard.swift */; };
+		75F9E5872DF740CE00079D56 /* PetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F9E5862DF740CE00079D56 /* PetProfileView.swift */; };
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
 		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
 		C910E2BB2AC78F0800DD3C23 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910E2BA2AC78F0800DD3C23 /* URLManager.swift */; };
@@ -149,6 +150,7 @@
 		75C895922D84C0B6007BEBA3 /* PetRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterService.swift; sourceTree = "<group>"; };
 		75C895942D84C19B007BEBA3 /* PetRegisterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterError.swift; sourceTree = "<group>"; };
 		75E295602DD243DB00DC1CCA /* PetTaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskCard.swift; sourceTree = "<group>"; };
+		75F9E5862DF740CE00079D56 /* PetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProfileView.swift; sourceTree = "<group>"; };
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
 		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
 		C910E2BA2AC78F0800DD3C23 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				C94A23FB29CE238400C71D01 /* ForgotPassword */,
 				C94A23FC29CE239300C71D01 /* Home */,
 				50F77A3C2D820A1D00606345 /* PetList */,
+				75F9E5852DF740BB00079D56 /* PetProfile */,
 				75C8958D2D84BD92007BEBA3 /* PetRegister */,
 				C9F5F49D2A41FEE6002C21F7 /* TabBar */,
 			);
@@ -372,6 +375,14 @@
 				75C895922D84C0B6007BEBA3 /* PetRegisterService.swift */,
 			);
 			path = PetRegister;
+			sourceTree = "<group>";
+		};
+		75F9E5852DF740BB00079D56 /* PetProfile */ = {
+			isa = PBXGroup;
+			children = (
+				75F9E5862DF740CE00079D56 /* PetProfileView.swift */,
+			);
+			path = PetProfile;
 			sourceTree = "<group>";
 		};
 		C910E2B82AC78E1E00DD3C23 /* Models */ = {
@@ -817,6 +828,7 @@
 				C93943F72A9C0EDD0085E623 /* Extension+Alert.swift in Sources */,
 				C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */,
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
+				75F9E5872DF740CE00079D56 /* PetProfileView.swift in Sources */,
 				C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */,
 				C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */,
 				75AF95572DAAAB9500CF0A02 /* TaskButton.swift in Sources */,
