@@ -16,6 +16,7 @@ enum ImageAsset: String {
     case openEye = "ic_openEye"
     case pencil = "ic_pencil"
     case paw = "ic_paw"
+    case pawFill = "ic_paw_fill"
     case user = "ic_user"
     case vetAppointment = "ic-vet-appointment"
     case menuBurger = "menu-burger"
