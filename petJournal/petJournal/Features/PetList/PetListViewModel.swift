@@ -32,8 +32,8 @@ class PetListViewModel: ObservableObject {
         return pets.sorted { $0.petName < $1.petName }
     }
     // Helper function to get the image if available
-    func getImage(for pet: PetModel) -> Image {
-        return pet.getImage()
+    func getImage(for pet: PetModel) -> PetImage {
+        return pet.petImage
     }
     
     // Format date of birth for display

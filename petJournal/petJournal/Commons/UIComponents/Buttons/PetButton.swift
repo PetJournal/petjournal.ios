@@ -2,41 +2,44 @@ import SwiftUI
 
 struct PetButton: View {
     let pet: PetModel
-    var action: (() -> Void)
+    let action: () -> Void
     
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
-            pet.getImage()
+            pet.petImage.image
                 .resizable()
                 .scaledToFill()
                 .frame(width: 100, height: 100)
                 .cornerRadius(16)
                 .clipped()
+            
             Text(pet.petName)
                 .font(.robotoLight(size: .medium))
                 .foregroundColor(Color.theme.petBlack)
         }
-        .onTapGesture {
-            action()
-        }
+        .onTapGesture(perform: action)
+        .accessibilityIdentifier("petButton_\(pet.petName)")
     }
 }
 
-//MARK: - Preview
-struct ContentView_Previews: PreviewProvider {
-    static let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible()),
-            GridItem(.flexible())
-        ]
+struct PetButton_Previews: PreviewProvider {
+    static let gridColumns = Array(repeating: GridItem(.flexible()),
+                                   count: 3)
     
     static var previews: some View {
         ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(PetModel.mockPets, id: \.self) { item in
-                    PetButton(pet: item, action: {})
+            LazyVGrid(columns: gridColumns, spacing: 20) {
+                ForEach(PetModel.samplePets) { pet in
+                    PetButton(
+                        pet: pet,
+                        action: {}
+                    )
                 }
-                PetButton(pet: PetModel.addPet){}
+                
+                PetButton(
+                    pet: PetModel.makePlaceholder(type: .addPet),
+                    action: {}
+                )
             }
             .padding()
         }
