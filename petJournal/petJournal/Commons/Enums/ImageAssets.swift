@@ -27,6 +27,7 @@ enum ImageAsset: String {
     case dogFace = "ic_dog_face"
     case shower = "ic_shower"
     case addSignal = "ic_plus"
+    case edit = "ic_edit"
     //Images
     case banner01 = "banner_01"
     case banner02 = "banner_02"
