@@ -279,7 +279,6 @@
 		1FF4608E29C8E9CF0026F680 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				50CE26C02DAF49C30014C5D4 /* CreateTask */,
 				C94A23F929CE236C00C71D01 /* AccessAccount */,
 				C94A23FA29CE237B00C71D01 /* CreateAccount */,
 				C94A23FB29CE238400C71D01 /* ForgotPassword */,
@@ -343,13 +342,6 @@
 				50F77A3F2D821FFD00606345 /* Roboto-SemiBold.ttf */,
 			);
 			path = Roboto;
-			sourceTree = "<group>";
-		};
-		50CE26C02DAF49C30014C5D4 /* CreateTask */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CreateTask;
 			sourceTree = "<group>";
 		};
 		50F77A3C2D820A1D00606345 /* PetList */ = {
