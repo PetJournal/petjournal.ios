@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PetButton: View {
     let pet: PetModel
+    var isBordered: Bool = false
     let action: () -> Void
     
     var body: some View {
@@ -12,6 +13,10 @@ struct PetButton: View {
                 .frame(width: 100, height: 100)
                 .cornerRadius(16)
                 .clipped()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(isBordered ? Color.theme.petPrimary500 : .clear, lineWidth: 2)
+                )
             
             Text(pet.petName)
                 .font(.robotoLight(size: .medium))
