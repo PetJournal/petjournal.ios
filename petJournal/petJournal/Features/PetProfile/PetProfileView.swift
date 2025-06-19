@@ -11,9 +11,20 @@ struct PetProfileView: View {
     var body: some View {
         VStack(spacing: 16) {
             petHeaderView
+            servicesHorizontalScrollView
             Spacer()
         }
         .padding()
+    }
+    
+    private var servicesHorizontalScrollView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack() {
+                ForEach(ServiceModel.mockServices) { serv in
+                    ServiceItemView(service: serv)
+                }
+            }
+        }
     }
     
     private var petHeaderView: some View {
