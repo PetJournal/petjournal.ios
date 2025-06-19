@@ -65,19 +65,13 @@ struct PetButtonWrapper: View {
     let isSelected: Bool
     let action: () -> Void
     
-    private var selectionLine: some View {
-        Rectangle()
-            .fill(isSelected ? Color.theme.petPrimary500 : Color.clear)
-            .frame(height: 3)
-            .offset(y: 63)
-    }
-    
     var body: some View {
-        PetButton(pet: pet, action: action)
-            .overlay(
-                selectionLine
-            )
-            .animation(.easeInOut(duration: 0.2), value: isSelected)
+        PetButton(pet: pet, isBordered: true, action: action)
+            .padding(4)
+            .background(isSelected ? Color.theme.petPrimary100 : .clear)
+            .cornerRadius(16)
+            .clipped()
+            .animation(.easeInOut, value: isSelected)
     }
 }
 
