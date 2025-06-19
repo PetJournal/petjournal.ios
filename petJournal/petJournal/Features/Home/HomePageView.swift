@@ -93,7 +93,7 @@ extension HomePageView {
     
     private var menuService: some View {
         LazyVGrid(columns: gridLayout, spacing: 15) {
-            ForEach(mock_services) { serv in
+            ForEach(ServiceModel.mockServices) { serv in
                 ServiceItemView(service: serv)
             }
         }
