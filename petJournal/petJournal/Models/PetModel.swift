@@ -18,6 +18,7 @@ struct PetModel: Identifiable, Hashable, Codable {
     let weight: Double
     var isAddPetPlaceholder: Bool = false
     var allPetsPlaceholder: Bool = false
+    var isSelected: Bool = false
     
     // Computed property for easier image handling
     var petImage: PetImage {
@@ -25,7 +26,7 @@ struct PetModel: Identifiable, Hashable, Codable {
             return .image(Image(asset: .addSignal))
         }
         if allPetsPlaceholder {
-            return .image(Image(asset: .pawFill))
+            return .image(Image(asset: isSelected ? .petSelected : .petUnselected))
         }
         if let imageData = self.image, let uiImage = UIImage(data: imageData) {
             return .image(Image(uiImage: uiImage))
@@ -73,7 +74,8 @@ enum PetImage {
 
 // MARK: - Factory Methods & Sample Data
 extension PetModel {
-    static func makePlaceholder(type: PlaceholderType) -> PetModel {
+    static func makePlaceholder(type: PlaceholderType,
+                                isSelected: Bool = false) -> PetModel {
         return PetModel(
             id: UUID().uuidString,
             guardianID: nil,
@@ -89,7 +91,8 @@ extension PetModel {
             image: nil,
             weight: 0,
             isAddPetPlaceholder: type == .addPet,
-            allPetsPlaceholder: type == .allPets
+            allPetsPlaceholder: type == .allPets,
+            isSelected: isSelected
         )
     }
     
