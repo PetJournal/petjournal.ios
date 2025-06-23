@@ -9,12 +9,38 @@ struct PetProfileView: View {
     let coordinator: PetProfileCoordinatorProtocol
     
     var body: some View {
-        VStack(spacing: 16) {
-            petHeaderView
-            servicesHorizontalScrollView
-            Spacer()
+        ScrollView {
+            VStack(spacing: 16) {
+                petHeaderView
+                servicesHorizontalScrollView
+                petTasksView
+                historicTasksView
+                Spacer()
+            }
+            .padding()
         }
-        .padding()
+    }
+    
+    private var historicTasksView: some View {
+        VStack(spacing: 16) {
+            Text("Histórico do pet")                .font(.robotoMedium(size: .large))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+            ForEach(PetTaskModel.sampleHistoricTasks) { task in
+                PetTaskCard(presenter: PetTaskCardPresenter(task: task))
+            }
+        }
+    }
+    
+    private var petTasksView: some View {
+        VStack(spacing: 16) {
+            Text("Próximas tarefas:")                .font(.robotoMedium(size: .large))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+            ForEach(PetTaskModel.sampleTasks) { task in
+                PetTaskCard(presenter: PetTaskCardPresenter(task: task))
+            }
+        }
     }
     
     private var servicesHorizontalScrollView: some View {
@@ -50,12 +76,12 @@ struct PetProfileView: View {
         }
         .aspectRatio(1, contentMode: .fit)
     }
-
+    
     private var backgroundView: some View {
         RoundedRectangle(cornerRadius: 12)
             .fill(Color.theme.petPrimaryBackground)
     }
-
+    
     private var petInfoContent: some View {
         VStack(alignment: .leading, spacing: 8) {
             petNameView
@@ -66,13 +92,13 @@ struct PetProfileView: View {
         .foregroundColor(Color.theme.petPrimary500)
         .padding()
     }
-
+    
     private var petNameView: some View {
         Text(pet.petName)
             .font(.robotoSemiBold(size: .biggest))
             .lineLimit(1)
     }
-
+    
     private var specieAndGenderView: some View {
         HStack {
             Text(pet.specie.detail)
@@ -83,14 +109,14 @@ struct PetProfileView: View {
                 .font(.robotoSemiBold(size: .medium))
         }
     }
-
+    
     private var breedView: some View {
         HStack {
             Text(pet.breedAlias ?? "")
                 .font(.robotoSemiBold(size: .medium))
         }
     }
-
+    
     private var ageAndWeightView: some View {
         HStack {
             Text(ageText)
@@ -101,7 +127,7 @@ struct PetProfileView: View {
                 .font(.robotoSemiBold(size: .medium))
         }
     }
-
+    
     private var editButton: some View {
         Button(action: {
             coordinator.navigateToEditPet(pet: pet)
@@ -111,27 +137,7 @@ struct PetProfileView: View {
     }
     
     private var ageText: String {
-        calculateAge(from: pet.dateOfBirth)
-    }
-    
-    private func calculateAge(from dateString: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        
-        guard let birthDate = dateFormatter.date(from: dateString) else {
-            return "Idade desconhecida"
-        }
-        
-        let calendar = Calendar.current
-        let ageComponents = calendar.dateComponents([.year, .month], from: birthDate, to: Date())
-        
-        if let years = ageComponents.year, years > 0 {
-            return "\(years) ano\(years > 1 ? "s" : "")"
-        } else if let months = ageComponents.month, months > 0 {
-            return "\(months) mês\(months > 1 ? "es" : "")"
-        } else {
-            return "Recém-nascido"
-        }
+        pet.dateOfBirth.calculateAge()
     }
 }
 
