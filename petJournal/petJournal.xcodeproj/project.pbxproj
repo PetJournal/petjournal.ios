@@ -38,6 +38,7 @@
 		75C895912D84BDC5007BEBA3 /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C895902D84BDC5007BEBA3 /* PetModel.swift */; };
 		75C895932D84C0B6007BEBA3 /* PetRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C895922D84C0B6007BEBA3 /* PetRegisterService.swift */; };
 		75C895952D84C19B007BEBA3 /* PetRegisterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C895942D84C19B007BEBA3 /* PetRegisterError.swift */; };
+		75D74D402E098C400012B726 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D74D3F2E098C3F0012B726 /* Extension+String.swift */; };
 		75E295612DD243DB00DC1CCA /* PetTaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E295602DD243DB00DC1CCA /* PetTaskCard.swift */; };
 		75F9E5872DF740CE00079D56 /* PetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F9E5862DF740CE00079D56 /* PetProfileView.swift */; };
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
@@ -151,6 +152,7 @@
 		75C895902D84BDC5007BEBA3 /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
 		75C895922D84C0B6007BEBA3 /* PetRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterService.swift; sourceTree = "<group>"; };
 		75C895942D84C19B007BEBA3 /* PetRegisterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterError.swift; sourceTree = "<group>"; };
+		75D74D3F2E098C3F0012B726 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		75E295602DD243DB00DC1CCA /* PetTaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskCard.swift; sourceTree = "<group>"; };
 		75F9E5862DF740CE00079D56 /* PetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProfileView.swift; sourceTree = "<group>"; };
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				C93943F82A9C0F140085E623 /* Extension+UIColor.swift */,
 				6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */,
 				7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */,
+				75D74D3F2E098C3F0012B726 /* Extension+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				C96853C12AC397560020AD1F /* CustomGlassView.swift in Sources */,
 				C93943F12A9C0DD00085E623 /* ValidationsModel.swift in Sources */,
 				7509EDD92D7223150036B9B8 /* ImageAssets.swift in Sources */,
+				75D74D402E098C400012B726 /* Extension+String.swift in Sources */,
 				C930B5CE2A3A8A280008F502 /* CodeInput.swift in Sources */,
 				75950CB12E04A25A001EC58B /* PetTaskModel.swift in Sources */,
 				C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */,
