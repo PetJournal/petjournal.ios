@@ -4,7 +4,7 @@ import SwiftUI
 protocol TaskListViewModelProtocol: ObservableObject {
     var selectedFrequency: TaskFrequency { get set }
     var showingAddTask: Bool { get set }
-    var groupedTasks: [String: [PetTask]] { get }
+    var groupedTasks: [String: [PetTaskModel]] { get }
     var frequencies: [TaskFrequency] { get }
     
     func didSelectFrequency(_ frequency: TaskFrequency)
@@ -16,7 +16,7 @@ final class TaskListViewModel: TaskListViewModelProtocol {
     @Published var showingAddTask = false
     
     let frequencies: [TaskFrequency] = TaskFrequency.allCases
-    var groupedTasks: [String: [PetTask]] = [:]
+    var groupedTasks: [String: [PetTaskModel]] = [:]
     
     func didSelectFrequency(_ frequency: TaskFrequency) {
         selectedFrequency = frequency
@@ -147,22 +147,22 @@ class MockTaskListViewModel: TaskListViewModelProtocol {
     
     var frequencies: [TaskFrequency] = TaskFrequency.allCases
     
-    var groupedTasks: [String: [PetTask]] {
+    var groupedTasks: [String: [PetTaskModel]] {
         switch selectedFrequency {
         case .daily:
             return [
-                "15 de Fev": [PetTask.mock()],
-                "16 de Fev": [PetTask.mock(at: 1)]
+                "15 de Fev": [PetTaskModel.sampleTasks[0]],
+                "16 de Fev": [PetTaskModel.sampleTasks[1]]
             ]
         case .weekly:
             return [
-                "Semana 4: 19 de Jan - 25 de Jan": [PetTask.mock()],
-                "Semana 5: 26 de Jan - 1 de Fev": [PetTask.mock(at: 2)]
+                "Semana 4: 19 de Jan - 25 de Jan": [PetTaskModel.sampleTasks[0]],
+                "Semana 5: 26 de Jan - 1 de Fev": [PetTaskModel.sampleTasks[1]]
             ]
         case .monthly:
             return [
-                "Janeiro, 2025": [PetTask.mock()],
-                "Fevereiro, 2025": [PetTask.mock(at: 2)]
+                "Janeiro, 2025": [PetTaskModel.sampleTasks[0]],
+                "Fevereiro, 2025": [PetTaskModel.sampleTasks[1]]
             ]
         }
     }
