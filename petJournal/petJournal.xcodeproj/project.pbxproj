@@ -33,6 +33,7 @@
 		7542A4782D95C6BF00F712C2 /* PetListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4772D95C6BF00F712C2 /* PetListService.swift */; };
 		7542A47A2D95DDA500F712C2 /* PetListingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4792D95DDA500F712C2 /* PetListingError.swift */; };
 		754EAA582D85C694000FC465 /* PetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAA572D85C694000FC465 /* PetButton.swift */; };
+		759363C32E0B3B6D00B0B69E /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759363C22E0B3B6D00B0B69E /* Extension+String.swift */; };
 		75950CB12E04A25A001EC58B /* PetTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75950CB02E04A25A001EC58B /* PetTaskModel.swift */; };
 		75AF95572DAAAB9500CF0A02 /* TaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF95562DAAAB9500CF0A02 /* TaskButton.swift */; };
 		75C8958F2D84BDA6007BEBA3 /* PetRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */; };
@@ -146,6 +147,7 @@
 		7542A4772D95C6BF00F712C2 /* PetListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListService.swift; sourceTree = "<group>"; };
 		7542A4792D95DDA500F712C2 /* PetListingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListingError.swift; sourceTree = "<group>"; };
 		754EAA572D85C694000FC465 /* PetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetButton.swift; sourceTree = "<group>"; };
+		759363C22E0B3B6D00B0B69E /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		75950CB02E04A25A001EC58B /* PetTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskModel.swift; sourceTree = "<group>"; };
 		75AF95562DAAAB9500CF0A02 /* TaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskButton.swift; sourceTree = "<group>"; };
 		75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterViewModel.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				C93943F82A9C0F140085E623 /* Extension+UIColor.swift */,
 				6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */,
 				7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */,
+				759363C22E0B3B6D00B0B69E /* Extension+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				C96853C12AC397560020AD1F /* CustomGlassView.swift in Sources */,
 				C93943F12A9C0DD00085E623 /* ValidationsModel.swift in Sources */,
 				7509EDD92D7223150036B9B8 /* ImageAssets.swift in Sources */,
+				759363C32E0B3B6D00B0B69E /* Extension+String.swift in Sources */,
 				C930B5CE2A3A8A280008F502 /* CodeInput.swift in Sources */,
 				75950CB12E04A25A001EC58B /* PetTaskModel.swift in Sources */,
 				C930B5C62A3A883D0008F502 /* ForgotPasswordService.swift in Sources */,
