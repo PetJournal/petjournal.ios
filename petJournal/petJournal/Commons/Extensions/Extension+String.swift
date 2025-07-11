@@ -76,4 +76,12 @@ extension String {
         let month = calendar.component(.month, from: date)
         return "\(year)-\(month)"
     }
+    
+    func isDateInThePast() -> Bool {
+        let dateFormatter = ISO8601DateFormatter()
+        guard let date = dateFormatter.date(from: self) else {
+            return false
+        }
+        return date < Date()
+    }
 }

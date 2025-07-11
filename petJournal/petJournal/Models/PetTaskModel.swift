@@ -9,12 +9,13 @@ struct PetTaskModel: Identifiable {
     let accentColor: Color
     let backgroundIcon: Image
     var taskType: TaskType = .all
-    var startAt: String = "2025-05-04T13:00:00Z"
+    var startAt: String
+    var isPast: Bool
     
     init(title: String, schedule: String, 
          description: String, petImages: [Image],
          accentColor: Color, backgroundIcon: Image,
-         taskType: TaskType, startAt: String) {
+         taskType: TaskType, startAt: String = "2026-05-04T13:00:00Z") {
         self.title = title
         self.schedule = schedule
         self.description = description
@@ -23,6 +24,7 @@ struct PetTaskModel: Identifiable {
         self.backgroundIcon = backgroundIcon
         self.taskType = taskType
         self.startAt = startAt
+        self.isPast = startAt.isDateInThePast()
     }
     
     static var sampleTasks = [
@@ -33,7 +35,7 @@ struct PetTaskModel: Identifiable {
             petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petSecondary500,
             backgroundIcon: Image(asset: .medicine), 
-            taskType: .medicine, startAt: "2025-05-04T13:00:00Z"
+            taskType: .medicine, startAt: "2025-12-04T13:00:00Z"
         ),
         PetTaskModel(
             title: "Consulta médica",
@@ -42,7 +44,7 @@ struct PetTaskModel: Identifiable {
             petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petGreen,
             backgroundIcon: Image(asset: .vetAppointment),
-            taskType: .consultation, startAt: "2025-04-04T12:00:00Z"
+            taskType: .consultation, startAt: "2025-11-04T12:00:00Z"
         ),
         PetTaskModel(
             title: "Vacina Antirrábica",
@@ -51,7 +53,7 @@ struct PetTaskModel: Identifiable {
             petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petOrange,
             backgroundIcon: Image(asset: .vaccine),
-            taskType: .vaccine, startAt: "2025-04-12T09:00:00Z"
+            taskType: .vaccine, startAt: "2025-10-12T09:00:00Z"
         )
     ]
     

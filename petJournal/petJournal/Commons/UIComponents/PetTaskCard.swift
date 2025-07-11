@@ -36,14 +36,14 @@ struct PetTaskCard: View {
     }
     
     private var cardContent: some View {
-        VStack {
+        VStack(spacing: 0) {
             headerSection
             if presenter.isExpanded {
                 expandedContent
             }
             toggleButton
         }
-        .background(Color(.systemBackground))
+        .background(presenter.task.isPast ? Color.theme.petCards : Color.theme.petBackground)
         .cornerRadius(12)
         .shadow(radius: 2)
     }
@@ -51,7 +51,6 @@ struct PetTaskCard: View {
     private var headerSection: some View {
         HStack(alignment: .top) {
             titleSection
-            Spacer()
             descriptionSection
         }
         .padding(14)
@@ -134,6 +133,8 @@ struct PetTaskCard: View {
     private var toggleButton: some View {
         Button(action: presenter.toggleExpansion) {
             Text(presenter.isExpanded ? "Ver menos" : "Ver mais")
+                .font(.robotoMedium(size: .medium))
+                .foregroundColor(presenter.task.isPast ? Color.theme.petBlack : Color.theme.petBackground)
                 .frame(maxWidth: .infinity)
                 .padding()
         }
@@ -150,6 +151,9 @@ struct PetTaskCard_Previews: PreviewProvider {
         return ScrollView {
             VStack(spacing: 20) {
                 ForEach(PetTaskModel.sampleTasks) { task in
+                    PetTaskCard(presenter: PetTaskCardPresenter(task: task))
+                }
+                ForEach(PetTaskModel.sampleHistoricTasks) { task in
                     PetTaskCard(presenter: PetTaskCardPresenter(task: task))
                 }
             }
