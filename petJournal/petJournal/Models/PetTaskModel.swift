@@ -25,7 +25,7 @@ struct PetTaskModel: Identifiable {
             title: "Carprofeno",
             schedule: "Manhã e noite",
             description: "Anti-inflamatório não esteroide para alívio da dor e inflamação.\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
-            petImages: PetModel.mockPetImages,
+            petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petSecondary500,
             backgroundIcon: Image(asset: .medicine)
         ),
@@ -33,7 +33,7 @@ struct PetTaskModel: Identifiable {
             title: "Consulta médica",
             schedule: "15/06 às 14:00",
             description: "Check-up anual\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
-            petImages: PetModel.mockPetImages,
+            petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petCerise,
             backgroundIcon: Image(asset: .vetAppointment)
         )
@@ -44,7 +44,7 @@ struct PetTaskModel: Identifiable {
             title: "Carprofeno",
             schedule: "Manhã e noite",
             description: "Anti-inflamatório não esteroide para alívio da dor e inflamação.\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
-            petImages: PetModel.mockPetImages,
+            petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petPrimary100,
             backgroundIcon: Image(asset: .medicine)
         ),
@@ -52,7 +52,7 @@ struct PetTaskModel: Identifiable {
             title: "Consulta médica",
             schedule: "15/06 às 14:00",
             description: "Check-up anual\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
-            petImages: PetModel.mockPetImages,
+            petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petPrimary100,
             backgroundIcon: Image(asset: .vetAppointment)
         )
