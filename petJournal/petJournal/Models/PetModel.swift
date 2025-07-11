@@ -1,102 +1,232 @@
 import Foundation
 import SwiftUI
 
-struct PetModel: Codable, Identifiable, Hashable {
-    var id: String
+// MARK: - Main Models
+struct PetModel: Identifiable, Hashable, Codable {
+    let id: String
     let guardianID: String?
-    let specie: BreedDetail
+    let specie: Species
     let specieAlias: String?
-    let petName, gender: String
+    let petName: String
+    let gender: String
     let breedAlias: String?
-    let breed, size: BreedDetail
+    let breed: Breed
+    let size: PetSize
     let castrated: Bool
     let dateOfBirth: String
     let image: Data?
-    var addPet: Bool = false
     let weight: Double
+    var isAddPetPlaceholder: Bool = false
+    var allPetsPlaceholder: Bool = false
+    var isSelected: Bool = false
     
-    init(id: String = UUID().uuidString,
-         guardianID: String, specieName: String,
-         specieAlias: String, petName: String,
-         gender: String, breedAlias: String, 
-         breedName: String, size: String,
-         castrated: Bool, dateOfBirth: String,
-         image: Data?, addPet: Bool, weight: Double) {
-        self.id = id
-        self.guardianID = guardianID
-        self.specie = BreedDetail(detail: specieName)
-        self.specieAlias = specieAlias
-        self.petName = petName
-        self.gender = gender
-        self.breed = BreedDetail(detail: breedName)
-        self.breedAlias = breedAlias
-        self.size = BreedDetail(detail: size)
-        self.castrated = castrated
-        self.dateOfBirth = dateOfBirth
-        self.image = image
-        self.addPet = addPet
-        self.weight = weight
+    // Computed property for easier image handling
+    var petImage: PetImage {
+        if isAddPetPlaceholder {
+            return .image(Image(asset: .addSignal))
+        }
+        if allPetsPlaceholder {
+            return .image(Image(asset: isSelected ? .petSelected : .petUnselected))
+        }
+        if let imageData = self.image, let uiImage = UIImage(data: imageData) {
+            return .image(Image(uiImage: uiImage))
+        }
+        if image == nil {
+            return .image(PetModel.samplePetImages.randomElement()!)
+        }
+        return .placeholder
     }
 }
 
-extension PetModel {
-    static var addPet: PetModel {
-        PetModel(guardianID: "", specieName: "",
-                 specieAlias: "", petName: "Adicionar",
-                 gender: "", breedAlias: "",
-                 breedName: "", size: "",
-                 castrated: true, dateOfBirth: "",
-                 image: nil, addPet: true, weight: 5.00)
-    }
-    //FIXME: Remove mocks
-    static var mockPets = [
-        PetModel(guardianID: "", specieName: "Cachorro",
-                 specieAlias: "", petName: "Rex",
-                 gender: "Macho", breedAlias: "",
-                 breedName: "Vira-lata", size: "Médio",
-                 castrated: true, dateOfBirth: "01/01/2020",
-                 image: nil, addPet: false, weight: 5.00),
-        PetModel(guardianID: "", specieName: "Gato",
-                 specieAlias: "", petName: "Mimi",
-                 gender: "Fêmea", breedAlias: "",
-                 breedName: "Siamês", size: "Pequeno",
-                 castrated: false, dateOfBirth: "15/05/2019",
-                 image: nil, addPet: false, weight: 5.00),
-        PetModel(guardianID: "", specieName: "Cachorro",
-                 specieAlias: "", petName: "Luna",
-                 gender: "Fêmea", breedAlias: "",
-                 breedName: "Labrador", size: "Grande",
-                 castrated: true, dateOfBirth: "10/10/2018",
-                 image: nil, addPet: false, weight: 5.00)
-    ]
-    
-    static var mockPetImages = [
-        Image.init(asset: .pet01),
-        Image.init(asset: .pet02),
-        Image.init(asset: .pet03),
-        Image.init(asset: .pet04),
-        Image.init(asset: .pet05),
-        Image.init(asset: .pet06)
-    ]
+// MARK: - Supporting Models
+struct Species: Identifiable, Hashable, Codable {
+    let id: String
+    let detail: String
+}
 
-    func getImage() -> Image {
-        if !addPet, let image = self.image, let image = UIImage(data: image) {
-            return Image(uiImage: image)
-        } else if addPet {
-            return Image.init(asset: .addSignal)
-        } else {
-            return PetModel.mockPetImages.randomElement()!
+struct Breed: Identifiable, Hashable, Codable {
+    let id: String
+    let detail: String
+}
+
+struct PetSize: Identifiable, Hashable, Codable {
+    let id: String
+    let detail: String
+}
+
+// MARK: - Image Handling
+enum PetImage {
+    case image(Image)
+    case systemSymbol(String)
+    case placeholder
+    
+    var image: Image {
+        switch self {
+        case .image(let image):
+            return image
+        case .systemSymbol(let symbol):
+            return Image(systemName: symbol)
+        case .placeholder:
+            return Image(asset: .paw)
         }
     }
 }
 
-// MARK: - Breed Detail
-struct BreedDetail: Codable, Identifiable, Hashable {
-    var id: String
-    let detail: String
-
-    init(id: String = UUID().uuidString, detail: String) {
-        self.id = id
-        self.detail = detail
+// MARK: - Factory Methods & Sample Data
+extension PetModel {
+    static func makePlaceholder(type: PlaceholderType,
+                                isSelected: Bool = false) -> PetModel {
+        return PetModel(
+            id: UUID().uuidString,
+            guardianID: nil,
+            specie: Species(id: UUID().uuidString, detail: ""),
+            specieAlias: nil,
+            petName: type.displayName,
+            gender: "",
+            breedAlias: nil,
+            breed: Breed(id: UUID().uuidString, detail: ""),
+            size: PetSize(id: UUID().uuidString, detail: ""),
+            castrated: false,
+            dateOfBirth: "",
+            image: nil,
+            weight: 0,
+            isAddPetPlaceholder: type == .addPet,
+            allPetsPlaceholder: type == .allPets,
+            isSelected: isSelected
+        )
     }
+    
+    enum PlaceholderType {
+        case addPet
+        case allPets
+        
+        var displayName: String {
+            switch self {
+            case .addPet: return "Adicionar"
+            case .allPets: return "Todos"
+            }
+        }
+    }
+    
+    static func makeSamplePet(
+        name: String,
+        species: String,
+        breed: String,
+        size: String,
+        gender: String,
+        isCastrated: Bool,
+        dateOfBirth: String,
+        weight: Double
+    ) -> PetModel {
+        return PetModel(
+            id: UUID().uuidString,
+            guardianID: nil,
+            specie: Species(id: UUID().uuidString, detail: species),
+            specieAlias: nil,
+            petName: name,
+            gender: gender,
+            breedAlias: nil,
+            breed: Breed(id: UUID().uuidString, detail: breed),
+            size: PetSize(id: UUID().uuidString, detail: size),
+            castrated: isCastrated,
+            dateOfBirth: dateOfBirth,
+            image: nil,
+            weight: weight
+        )
+    }
+}
+
+// MARK: - Sample Data
+extension PetModel {
+    static var samplePets: [PetModel] = [
+        makeSamplePet(
+            name: "Rex",
+            species: "Cachorro",
+            breed: "Vira-lata",
+            size: "Médio",
+            gender: "Macho",
+            isCastrated: true,
+            dateOfBirth: "01/01/2020",
+            weight: 5.00
+        ),
+        makeSamplePet(
+            name: "Mimi",
+            species: "Gato",
+            breed: "Siamês",
+            size: "Pequeno",
+            gender: "Fêmea",
+            isCastrated: false,
+            dateOfBirth: "15/05/2019",
+            weight: 3.50
+        ),
+        makeSamplePet(
+            name: "Luna",
+            species: "Cachorro",
+            breed: "Labrador",
+            size: "Grande",
+            gender: "Fêmea",
+            isCastrated: true,
+            dateOfBirth: "10/10/2018",
+            weight: 25.00
+        ),
+        makeSamplePet(
+            name: "Thor",
+            species: "Cachorro",
+            breed: "Husky Siberiano",
+            size: "Grande",
+            gender: "Macho",
+            isCastrated: false,
+            dateOfBirth: "05/07/2017",
+            weight: 22.50
+        ),
+        makeSamplePet(
+            name: "Bella",
+            species: "Cachorro",
+            breed: "Golden Retriever",
+            size: "Grande",
+            gender: "Fêmea",
+            isCastrated: true,
+            dateOfBirth: "20/03/2019",
+            weight: 28.00
+        ),
+        makeSamplePet(
+            name: "Oliver",
+            species: "Gato",
+            breed: "Persa",
+            size: "Pequeno",
+            gender: "Macho",
+            isCastrated: true,
+            dateOfBirth: "12/12/2020",
+            weight: 4.20
+        ),
+        makeSamplePet(
+            name: "Mel",
+            species: "Cachorro",
+            breed: "Poodle",
+            size: "Pequeno",
+            gender: "Fêmea",
+            isCastrated: true,
+            dateOfBirth: "08/09/2021",
+            weight: 6.80
+        ),
+        makeSamplePet(
+            name: "Simba",
+            species: "Gato",
+            breed: "Maine Coon",
+            size: "Grande",
+            gender: "Macho",
+            isCastrated: false,
+            dateOfBirth: "03/04/2018",
+            weight: 8.50
+        )
+    ]
+    
+    static var samplePetImages: [Image] = [
+        Image(asset: .pet01),
+        Image(asset: .pet02),
+        Image(asset: .pet03),
+        Image(asset: .pet04),
+        Image(asset: .pet05),
+        Image(asset: .pet06)
+    ]
 }

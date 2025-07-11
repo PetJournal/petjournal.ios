@@ -3,7 +3,7 @@ import SwiftUI
 
 class PetRegisterViewModel: ObservableObject {
     
-    @Published var pet: PetModel = PetModel.addPet
+    @Published var pet: PetModel = PetModel.makePlaceholder(type: .addPet)
     @Published var isLoading: Bool = false
     @Published var isRequestSuccessful: Bool = false
     @Published var errorMessage: String? = nil
