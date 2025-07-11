@@ -61,7 +61,7 @@ struct PetProfileView: View {
     }
     
     private var petImageView: some View {
-        pet.getImage()
+        pet.petImage.image
             .resizable()
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .aspectRatio(1, contentMode: .fit)
@@ -148,7 +148,7 @@ struct PetProfileView_Previews: PreviewProvider {
         
         return NavigationView {
             PetProfileView(
-                pet: PetModel.mockPets.randomElement()!,
+                pet: PetModel.samplePets.randomElement()!,
                 coordinator: mockCoordinator
             )
         }.previewDisplayName("Inicio Perfil de Pet")
