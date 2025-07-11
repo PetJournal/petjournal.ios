@@ -15,6 +15,7 @@ struct ColorTheme {
     //Main
     let petPrimary100 = Color("petPrimary100")
     let petPrimary500 = Color("petPrimary500")
+    let petPrimaryBackground = Color("petPrimaryBackground")    
     let petSecondary100 = Color("petSecondary100")
     let petSecondary500 = Color("petSecondary500")
     //SystemColors
