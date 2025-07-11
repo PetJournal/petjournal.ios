@@ -119,6 +119,12 @@ struct TaskListView: View {
                 TaskSection(key: key, tasks: groupedTasks[key] ?? [],
                             frequency: selectedFrequency)
             }
+            
+            PJButton(title: "Adicionar tarefa", buttonType: .primaryType) {
+                showingAddTask = true
+            }
+            .padding(.horizontal, UIScreen.main.bounds.width / 4)
+            
             Section(header: historicHeader) {
                 ForEach(PetTaskModel.sampleHistoricTasks) { task in
                     PetTaskCard(presenter: PetTaskCardPresenter(task: task))
