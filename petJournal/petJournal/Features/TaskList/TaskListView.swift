@@ -1,37 +1,60 @@
 import SwiftUI
 
-// MARK: - TaskFrequency Enum
+// MARK: - Enums
 enum TaskFrequency: String, CaseIterable {
     case daily = "Diária"
     case weekly = "Semanal"
     case monthly = "Mensal"
 }
 
+enum TaskType: String, CaseIterable {
+    case vaccine = "Vacina"
+    case medicine = "Medicamento"
+    case consultation = "Consulta"
+    case all = "Todos"
+}
+
 // MARK: - View
 struct TaskListView: View {
     @State private var selectedFrequency: TaskFrequency = .daily
     @State private var showingAddTask = false
+    private let filterType: TaskType
+    private let tasks: [PetTaskModel]
     
-    private let frequencies: [TaskFrequency] = TaskFrequency.allCases
+    init(tasks: [PetTaskModel], filterType: TaskType = .all) {
+        self.tasks = tasks
+        self.filterType = filterType
+    }
+    
+    private var filteredTasks: [PetTaskModel] {
+        filterType == .all ? tasks : tasks.filter { $0.taskType == filterType }
+    }
     
     private var groupedTasks: [String: [PetTaskModel]] {
-        switch selectedFrequency {
-        case .daily:
-            return [
-                "15 de Fev": [PetTaskModel.sampleTasks[0]],
-                "16 de Fev": [PetTaskModel.sampleTasks[1]]
-            ]
-        case .weekly:
-            return [
-                "Semana 4: 19 de Jan - 25 de Jan": [PetTaskModel.sampleTasks[0]],
-                "Semana 5: 26 de Jan - 1 de Fev": [PetTaskModel.sampleTasks[1]]
-            ]
-        case .monthly:
-            return [
-                "Janeiro, 2025": [PetTaskModel.sampleTasks[0]],
-                "Fevereiro, 2025": [PetTaskModel.sampleTasks[1]]
-            ]
+        let groupingKey: (PetTaskModel) -> String = {
+            switch selectedFrequency {
+            case .daily: return $0.startAt.toISOFormat()
+            case .weekly: return $0.startAt.toISOWeekFormat()
+            case .monthly: return $0.startAt.toISOMonthFormat()
+            }
         }
+        return Dictionary(grouping: filteredTasks, by: groupingKey)
+    }
+    
+    private var pastTasks: [PetTaskModel] {
+        let currentDate = Date()
+        return filteredTasks.filter { $0.startAt.toDate() ?? Date() < currentDate }
+    }
+    
+    private func formatSectionTitle(_ key: String) -> String {
+            switch selectedFrequency {
+            case .daily:
+                return key.toDayMonthFormat
+            case .weekly:
+                return key.toWeekRangeFormat
+            case .monthly:
+                return key.toMonthYearFormat
+            }
     }
     
     var body: some View {
@@ -45,12 +68,11 @@ struct TaskListView: View {
             addTaskButton
         }
         .sheet(isPresented: $showingAddTask) {
-            // AddTaskView()
+            // CreateTaskView()
         }
     }
     
     // MARK: Subviews
-    
     private var titleView: some View {
         Text("Próximas tarefas")
             .font(.robotoMedium(size: .medium))
@@ -61,58 +83,56 @@ struct TaskListView: View {
     
     private var frequencySelectorView: some View {
         HStack(spacing: 0) {
-            ForEach(frequencies, id: \.self) { frequency in
-                Button(action: {
-                    withAnimation(.easeInOut) {
-                        selectedFrequency = frequency
-                    }
-                }) {
-                    Text(frequency.rawValue)
-                        .font(.robotoMedium(size: .small))
-                        .foregroundColor(selectedFrequency == frequency ?
-                                         Color.theme.petPrimary500 : .primary)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12)
-                        .background(Color.clear)
-                        .overlay(
-                            VStack {
-                                if selectedFrequency == frequency {
-                                    Rectangle()
-                                        .frame(height: 2)
-                                        .foregroundColor(Color.theme.petPrimary500)
-                                        .padding(.horizontal, 8)
-                                }
-                            }
-                            .frame(maxHeight: .infinity, alignment: .bottom)
-                        )
-                }
+            ForEach(TaskFrequency.allCases, id: \.self) { frequency in
+                FrequencyButton(
+                    frequency: frequency,
+                    isSelected: frequency == selectedFrequency,
+                    action: { selectedFrequency = frequency }
+                )
             }
         }
         .padding(.horizontal)
     }
     
+    private var historicHeader: some View {
+        Text(historicHeaderTitle)
+            .font(.robotoMedium(size: .large))
+            .foregroundColor(Color.theme.petBlack)
+    }
+    
+    private var historicHeaderTitle: String {
+        switch filterType {
+        case .vaccine:
+            return "Histórico de vacinas"
+        case .medicine:
+            return "Histórico de medicamentos"
+        case .consultation:
+            return "Histórico de consultas"
+        case .all:
+            return "Histórico"
+        }
+    }
+    
     private var tasksListView: some View {
         List {
-            ForEach(Array(groupedTasks.keys.sorted()), id: \.self) { sectionTitle in
-                Section(header: Text(sectionTitle)
-                    .font(.robotoMedium(size: .large))
-                    .foregroundColor(Color.theme.petBlack)) {
-                        ForEach(groupedTasks[sectionTitle] ?? []) { task in
-                            PetTaskCard(presenter: PetTaskCardPresenter(task: task))
-                                .listRowInsets(EdgeInsets())
-                                .listRowSeparator(.hidden)
-                                .padding(.vertical, 8)
-                        }
-                    }
+            ForEach(Array(groupedTasks.keys.sorted()), id: \.self) { key in
+                TaskSection(key: key, tasks: groupedTasks[key] ?? [],
+                            frequency: selectedFrequency)
+            }
+            Section(header: historicHeader) {
+                ForEach(PetTaskModel.sampleHistoricTasks) { task in
+                    PetTaskCard(presenter: PetTaskCardPresenter(task: task))
+                        .listRowInsets(EdgeInsets())
+                        .listRowSeparator(.hidden)
+                        .padding(.vertical, 8)
+                }
             }
         }
         .listStyle(PlainListStyle())
     }
     
     private var addTaskButton: some View {
-        Button(action: {
-            showingAddTask = true
-        }) {
+        Button(action: { showingAddTask = true }) {
             Image(systemName: "plus")
                 .font(.robotoMedium(size: .biggest))
                 .frame(width: 60, height: 60)
@@ -124,14 +144,84 @@ struct TaskListView: View {
         .padding()
         .offset(x: -10, y: -10)
     }
+}
+
+// MARK: - Subcomponents
+private struct FrequencyButton: View {
+    let frequency: TaskFrequency
+    let isSelected: Bool
+    let action: () -> Void
     
+    var body: some View {
+        Button(action: action) {
+            Text(frequency.rawValue)
+                .font(.robotoMedium(size: .small))
+                .foregroundColor(isSelected ? Color.theme.petPrimary500 : .primary)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 12)
+                .background(Color.clear)
+                .overlay(selectionIndicator)
+        }
+    }
+    
+    private var selectionIndicator: some View {
+        VStack {
+            if isSelected {
+                Rectangle()
+                    .frame(height: 2)
+                    .foregroundColor(Color.theme.petPrimary500)
+                    .padding(.horizontal, 8)
+            }
+        }
+        .frame(maxHeight: .infinity, alignment: .bottom)
+    }
+}
+
+private struct TaskSection: View {
+    let key: String
+    let tasks: [PetTaskModel]
+    let frequency: TaskFrequency
+    
+    var body: some View {
+        Section(header: sectionHeader) {
+            ForEach(tasks) { task in
+                PetTaskCard(presenter: PetTaskCardPresenter(task: task))
+                    .listRowInsets(EdgeInsets())
+                    .listRowSeparator(.hidden)
+                    .padding(.vertical, 8)
+            }
+        }
+    }
+    
+    
+    private var sectionHeader: some View {
+        Text(formatSectionTitle(key))
+            .font(.robotoMedium(size: .large))
+            .foregroundColor(Color.theme.petBlack)
+    }
+    
+    private func formatSectionTitle(_ key: String) -> String {
+        switch frequency {
+        case .daily:
+            return key.toDayMonthFormat
+        case .weekly:
+            return key.toWeekRangeFormat
+        case .monthly:
+            return key.toMonthYearFormat
+        }
+    }
 }
 
 // MARK: - PreviewProvider
 struct TaskListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            TaskListView()
+            TaskListView(tasks: PetTaskModel.sampleTasks,
+                         filterType: .all)
+        }
+        NavigationView {
+            TaskListView(tasks: PetTaskModel.sampleTasks,
+                         filterType: .vaccine)
         }
     }
 }
