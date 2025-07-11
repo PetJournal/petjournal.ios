@@ -224,10 +224,10 @@ struct TaskListView_Previews: PreviewProvider {
         NavigationView {
             TaskListView(tasks: PetTaskModel.sampleTasks,
                          filterType: .all)
-        }
+        }.previewDisplayName("Todas as tarefas")
         NavigationView {
             TaskListView(tasks: PetTaskModel.sampleTasks,
                          filterType: .vaccine)
-        }
+        }.previewDisplayName("Filtro por vacina")
     }
 }
