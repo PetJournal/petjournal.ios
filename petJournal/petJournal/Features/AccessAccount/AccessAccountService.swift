@@ -27,7 +27,7 @@ final class AccessAccountService: AccessAccountServiceProtocol {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.debugDataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
                 completion(.failure(.noData))
                 return
