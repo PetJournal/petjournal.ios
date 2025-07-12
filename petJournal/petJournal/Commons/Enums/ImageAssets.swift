@@ -8,11 +8,13 @@
 enum ImageAsset: String {
     // Icons
     case addSignal = "ic_plus"
+    case all = "ic_all"
     case checkBoxClear = "ic_checkBox_clear"
     case checkBoxSelect = "ic_checkBox_select"
     case closeEye = "ic_closeEye"
     case dogFace = "ic_dog_face"
     case dogFood = "ic_dog_food"
+    case edit = "ic_edit"
     case error = "ic_error"
     case home = "ic_home"
     case medicine = "ic_medicine"
