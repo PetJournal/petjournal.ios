@@ -52,4 +52,5 @@ enum ImageAsset: String {
     case pet05 = "pet5"
     case pet06 = "pet6"
     case petListBackground = "steps_background"
+    case tasks = "tasks"
 }
