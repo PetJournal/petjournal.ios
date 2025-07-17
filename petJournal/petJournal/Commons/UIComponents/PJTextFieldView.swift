@@ -26,59 +26,73 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
     var titleFont: Font = .fredokaMedium(size: .small)
     var placeHolderFont: Font = .fredokaMedium(size: .small)
     var validateFieldCallBack: (String) -> Bool
-    
+
     @State var hasToShowErrorMessage: Bool = false
     @State private var isVisiblePassword: Bool = false
     @State private var isEditing: Bool = false
     @Binding var text: String
     @FocusState private var isFocused: Bool
     
+    let emptyPlaceholder = ""
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
                 .foregroundColor(Color.theme.petPrimary500)
                 .font(titleFont)
                 .padding(.bottom, -3)
-            
+
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke((isFocused || text.count > 0) ? errorValidation ? Color.theme.petGray800 : Color.theme.petPrimary500 : Color.theme.petGray800,lineWidth: 1)
+                    .stroke((isFocused || text.count > 0) ? errorValidation ? Color.theme.petGray800 : Color.theme.petPrimary500 : Color.theme.petGray800, lineWidth: 1)
                     .frame(maxWidth: .infinity, maxHeight: 48)
+                
+                if text.isEmpty {
+                    HStack {
+                        Text(placeholder)
+                            .foregroundColor(Color.theme.petGray300)
+                            .font(placeHolderFont)
+                        Spacer()
+                    }
+                    .padding(.leading, 16)
+                }
+
                 HStack {
                     if textContentType == .password {
                         if !isVisiblePassword {
-                            SecureField(placeholder, text: $text)
+                            SecureField(emptyPlaceholder, text: $text)
                                 .focused($isFocused)
                                 .onChange(of: isFocused, perform: { changed in
-                                        if !changed {
-                                            hasToShowErrorMessage = !validateFieldCallBack(text)
-                                        }
-                                        isFocused = changed
-                                    })
+                                    if !changed {
+                                        hasToShowErrorMessage = !validateFieldCallBack(text)
+                                    }
+                                    isFocused = changed
+                                })
                                 .font(placeHolderFont)
+                                .foregroundStyle(Color.theme.petBlack)
+                                .frame(height: 58)
+                                .disableAutocorrection(true)
+                                .textContentType(.password)
+                                .keyboardType(setKeyboardType())
+                                .autocapitalization(.none)
+                        } else {
+                            TextField(emptyPlaceholder, text: $text)
+                                .focused($isFocused)
+                                .onChange(of: isFocused, perform: { changed in
+                                    if !changed {
+                                        hasToShowErrorMessage = !validateFieldCallBack(text)
+                                    }
+                                    isFocused = changed
+                                })
+                                .font(placeHolderFont)
+                                .foregroundStyle(Color.theme.petBlack)
                                 .frame(height: 58)
                                 .disableAutocorrection(true)
                                 .textContentType(.password)
                                 .keyboardType(setKeyboardType())
                                 .autocapitalization(.none)
                         }
-                        else {
-                            TextField(placeholder, text: $text)
-                                .focused($isFocused)
-                                .onChange(of: isFocused, perform: { changed in
-                                        if !changed {
-                                            hasToShowErrorMessage = !validateFieldCallBack(text)
-                                        }
-                                        isFocused = changed
-                                    })
-                                .font(placeHolderFont)
-                                .frame(height: 58)
-                                .disableAutocorrection(true)
-                                .textContentType(.password)
-                                .keyboardType(setKeyboardType())
-                                .autocapitalization(.none)
-                        }
-                        
+
                         Button {
                             isVisiblePassword.toggle()
                         } label: {
@@ -89,17 +103,17 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                                 .frame(width: 20, height: 20)
                         }
                         .padding(.horizontal, -3)
-                    }
-                    else {
-                        TextField(placeholder, text: $text)
+                    } else {
+                        TextField(emptyPlaceholder, text: $text)
                             .focused($isFocused)
                             .onChange(of: isFocused, perform: { changed in
-                                    if !changed {
-                                        hasToShowErrorMessage = !validateFieldCallBack(text)
-                                    }
-                                    isFocused = changed
-                                })
+                                if !changed {
+                                    hasToShowErrorMessage = !validateFieldCallBack(text)
+                                }
+                                isFocused = changed
+                            })
                             .font(placeHolderFont)
+                            .foregroundStyle(Color.theme.petBlack)
                             .frame(height: 58)
                             .disableAutocorrection(true)
                             .textContentType(textContentType)

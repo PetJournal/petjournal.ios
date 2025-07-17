@@ -34,7 +34,6 @@
 		7542A4782D95C6BF00F712C2 /* PetListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4772D95C6BF00F712C2 /* PetListService.swift */; };
 		7542A47A2D95DDA500F712C2 /* PetListingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4792D95DDA500F712C2 /* PetListingError.swift */; };
 		754EAA582D85C694000FC465 /* PetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAA572D85C694000FC465 /* PetButton.swift */; };
-		759363C32E0B3B6D00B0B69E /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759363C22E0B3B6D00B0B69E /* Extension+String.swift */; };
 		75950CB12E04A25A001EC58B /* PetTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75950CB02E04A25A001EC58B /* PetTaskModel.swift */; };
 		75AF95572DAAAB9500CF0A02 /* TaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF95562DAAAB9500CF0A02 /* TaskButton.swift */; };
 		75C8958F2D84BDA6007BEBA3 /* PetRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */; };
@@ -151,7 +150,6 @@
 		7542A4772D95C6BF00F712C2 /* PetListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListService.swift; sourceTree = "<group>"; };
 		7542A4792D95DDA500F712C2 /* PetListingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListingError.swift; sourceTree = "<group>"; };
 		754EAA572D85C694000FC465 /* PetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetButton.swift; sourceTree = "<group>"; };
-		759363C22E0B3B6D00B0B69E /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		75950CB02E04A25A001EC58B /* PetTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskModel.swift; sourceTree = "<group>"; };
 		75AF95562DAAAB9500CF0A02 /* TaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskButton.swift; sourceTree = "<group>"; };
 		75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterViewModel.swift; sourceTree = "<group>"; };
@@ -1048,6 +1046,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HL9ADSR8LD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = petJournal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1078,6 +1077,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HL9ADSR8LD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = petJournal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
