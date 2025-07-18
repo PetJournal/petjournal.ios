@@ -11,7 +11,13 @@ class PetListService: PetListServiceProtocol {
             return
         }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        let body = ""        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(body)
+        
+        URLSession.shared.debugDataTask(with: request) { data, response, error in
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(.failure(.invalidResponse))
                 return
