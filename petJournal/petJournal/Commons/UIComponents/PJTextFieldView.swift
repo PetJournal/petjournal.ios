@@ -144,3 +144,59 @@ extension PJTextFieldView {
         }
     }
 }
+struct PJTextFieldView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            // Light mode
+            VStack {
+                PJTextFieldView(
+                    error: "Endereço de email inválido",
+                    errorValidation: false,
+                    title: "Email",
+                    placeholder: "Digite seu email",
+                    textContentType: .emailAddress,
+                    validateFieldCallBack: { _ in true },
+                    text: .constant("")
+                )
+                
+                PJTextFieldView(
+                    error: "A senha deve ter 8 dígitos",
+                    errorValidation: true,
+                    title: "Senha",
+                    placeholder: "Digite sua senha",
+                    textContentType: .password,
+                    validateFieldCallBack: { _ in false },
+                    text: .constant("")
+                )
+            }
+            .padding()
+            .previewDisplayName("Light Mode")
+            
+            // Dark mode
+            VStack {
+                PJTextFieldView(
+                    error: "Endereço de email inválido",
+                    errorValidation: false,
+                    title: "Email",
+                    placeholder: "Digite seu email",
+                    textContentType: .emailAddress,
+                    validateFieldCallBack: { _ in true },
+                    text: .constant("user@example.com")
+                )
+                
+                PJTextFieldView(
+                    error: "A senha deve ter 8 dígitos",
+                    errorValidation: true,
+                    title: "Senha",
+                    placeholder: "Digite sua senha",
+                    textContentType: .password,
+                    validateFieldCallBack: { _ in false },
+                    text: .constant("short")
+                )
+            }
+            .padding()
+            .preferredColorScheme(.dark)
+            .previewDisplayName("Dark Mode")
+        }
+    }
+}
