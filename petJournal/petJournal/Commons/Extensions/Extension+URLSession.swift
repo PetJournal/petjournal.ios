@@ -9,6 +9,7 @@ extension URLSession {
     func debugDataTask(with request: URLRequest,
                       completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         
+        #if DEBUG
         // Imprime cabeçalho de debug da requisição
         print("\n🌐 Request Debug:")
         // Mostra a URL da requisição
@@ -35,9 +36,11 @@ extension URLSession {
                 print(String(data: body, encoding: .utf8) ?? "Can't decode body")
             }
         }
+        #endif
         
         // Cria e retorna a data task com logging da resposta
         return dataTask(with: request) { data, response, error in
+            #if DEBUG
             // Imprime cabeçalho de debug da resposta
             print("\n🔵 Response Debug:")
             
@@ -66,6 +69,7 @@ extension URLSession {
                     print(String(data: data, encoding: .utf8) ?? "Can't decode response data")
                 }
             }
+            #endif
             
             // Chama o completion handler original com os dados recebidos
             completionHandler(data, response, error)
