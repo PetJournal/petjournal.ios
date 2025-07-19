@@ -53,7 +53,7 @@ class PetRegisterService: PetRegisterServiceProtocol {
         
         request.httpBody = body
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.debugDataTask(with: request) { (data, response, error) in
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(.failure(.invalidResponse))
                 return

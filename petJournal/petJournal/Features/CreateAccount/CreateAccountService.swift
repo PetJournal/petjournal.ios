@@ -34,7 +34,7 @@ class CreateAccountService: CreateAccountServiceProtocol {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONEncoder().encode(body)
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        URLSession.shared.debugDataTask(with: request) { (data, response, error) in
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(.failure(.invalidResponse))
                 return
