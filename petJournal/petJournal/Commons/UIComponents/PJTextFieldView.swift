@@ -26,7 +26,7 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
     var titleFont: Font = .fredokaMedium(size: .small)
     var placeHolderFont: Font = .fredokaMedium(size: .small)
     var validateFieldCallBack: (String) -> Bool
-
+    
     @State var hasToShowErrorMessage: Bool = false
     @State private var isVisiblePassword: Bool = false
     @State private var isEditing: Bool = false
@@ -34,14 +34,14 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
     @FocusState private var isFocused: Bool
     
     let emptyPlaceholder = ""
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
                 .foregroundColor(Color.theme.petPrimary500)
                 .font(titleFont)
                 .padding(.bottom, -3)
-
+            
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke((isFocused || text.count > 0) ? errorValidation ? Color.theme.petGray800 : Color.theme.petPrimary500 : Color.theme.petGray800, lineWidth: 1)
@@ -56,7 +56,7 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                     }
                     .padding(.leading, 16)
                 }
-
+                
                 HStack {
                     if textContentType == .password {
                         if !isVisiblePassword {
@@ -92,7 +92,7 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                                 .keyboardType(setKeyboardType())
                                 .autocapitalization(.none)
                         }
-
+                        
                         Button {
                             isVisiblePassword.toggle()
                         } label: {
@@ -144,59 +144,61 @@ extension PJTextFieldView {
         }
     }
 }
+
 struct PJTextFieldView_Previews: PreviewProvider {
+    struct InteractivePreview: View {
+        @State private var emailText = ""
+        @State private var passwordText = ""
+        @State private var phoneText = ""
+        
+        var body: some View {
+            VStack(spacing: 20) {
+                PJTextFieldView(
+                    error: "Endereço de email inválido",
+                    errorValidation: false,
+                    title: "Email",
+                    placeholder: "Digite seu email",
+                    textContentType: .emailAddress,
+                    validateFieldCallBack: { text in
+                        // Simulação de validação
+                        text.contains("@") && text.contains(".")
+                    },
+                    text: $emailText
+                )
+                
+                PJTextFieldView(
+                    error: "A senha precisa ter pelo menos 8 digitos",
+                    errorValidation: passwordText.count < 8,
+                    title: "Senha",
+                    placeholder: "Digite sua senha",
+                    textContentType: .password,
+                    validateFieldCallBack: { text in
+                        text.count >= 8
+                    },
+                    text: $passwordText
+                )
+                
+                PJTextFieldView(
+                    error: "Telefone inválido",
+                    errorValidation: phoneText.count < 11,
+                    title: "Telefone",
+                    placeholder: "Digite seu telefone",
+                    textContentType: .telephoneNumber,
+                    validateFieldCallBack: { number in
+                        number.count >= 11
+                    },
+                    text: $phoneText
+                )
+            }
+            .padding()
+        }
+    }
+    
     static var previews: some View {
         Group {
-            // Light mode
-            VStack {
-                PJTextFieldView(
-                    error: "Endereço de email inválido",
-                    errorValidation: false,
-                    title: "Email",
-                    placeholder: "Digite seu email",
-                    textContentType: .emailAddress,
-                    validateFieldCallBack: { _ in true },
-                    text: .constant("")
-                )
-                
-                PJTextFieldView(
-                    error: "A senha deve ter 8 dígitos",
-                    errorValidation: true,
-                    title: "Senha",
-                    placeholder: "Digite sua senha",
-                    textContentType: .password,
-                    validateFieldCallBack: { _ in false },
-                    text: .constant("")
-                )
-            }
-            .padding()
-            .previewDisplayName("Light Mode")
-            
-            // Dark mode
-            VStack {
-                PJTextFieldView(
-                    error: "Endereço de email inválido",
-                    errorValidation: false,
-                    title: "Email",
-                    placeholder: "Digite seu email",
-                    textContentType: .emailAddress,
-                    validateFieldCallBack: { _ in true },
-                    text: .constant("user@example.com")
-                )
-                
-                PJTextFieldView(
-                    error: "A senha deve ter 8 dígitos",
-                    errorValidation: true,
-                    title: "Senha",
-                    placeholder: "Digite sua senha",
-                    textContentType: .password,
-                    validateFieldCallBack: { _ in false },
-                    text: .constant("short")
-                )
-            }
-            .padding()
-            .preferredColorScheme(.dark)
-            .previewDisplayName("Dark Mode")
+            InteractivePreview()
+                .previewDisplayName("Light Mode")
+                .padding()
         }
     }
 }
