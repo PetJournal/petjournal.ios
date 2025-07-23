@@ -30,6 +30,7 @@
 		7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */; };
 		7509EDD92D7223150036B9B8 /* ImageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD82D7223150036B9B8 /* ImageAssets.swift */; };
 		750A36432E2328EF00EF8075 /* Extension+URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A36422E2328EF00EF8075 /* Extension+URLSession.swift */; };
+		750A36452E23374500EF8075 /* PetHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A36442E23374500EF8075 /* PetHomeViewModel.swift */; };
 		751DDCA82DEDEA5000D312F2 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751DDCA72DEDEA5000D312F2 /* TaskListView.swift */; };
 		7542A4762D95C6A100F712C2 /* PetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4752D95C6A100F712C2 /* PetListViewModel.swift */; };
 		7542A4782D95C6BF00F712C2 /* PetListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4772D95C6BF00F712C2 /* PetListService.swift */; };
@@ -103,7 +104,7 @@
 		C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */; };
 		C9F5F4B42A420517002C21F7 /* ServiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */; };
 		C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B72A420553002C21F7 /* SideMenuView.swift */; };
-		C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B92A420562002C21F7 /* HomePageView.swift */; };
+		C9F5F4BA2A420562002C21F7 /* PetHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B92A420562002C21F7 /* PetHomeView.swift */; };
 		C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */; };
 		C9F9D8372A1424E700DD72F1 /* PJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8362A1424E700DD72F1 /* PJButton.swift */; };
 		C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8382A14251500DD72F1 /* CustomButtonStyle.swift */; };
@@ -147,6 +148,7 @@
 		7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Image.swift"; sourceTree = "<group>"; };
 		7509EDD82D7223150036B9B8 /* ImageAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssets.swift; sourceTree = "<group>"; };
 		750A36422E2328EF00EF8075 /* Extension+URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URLSession.swift"; sourceTree = "<group>"; };
+		750A36442E23374500EF8075 /* PetHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHomeViewModel.swift; sourceTree = "<group>"; };
 		751DDCA72DEDEA5000D312F2 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		7542A4752D95C6A100F712C2 /* PetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListViewModel.swift; sourceTree = "<group>"; };
 		7542A4772D95C6BF00F712C2 /* PetListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListService.swift; sourceTree = "<group>"; };
@@ -221,7 +223,7 @@
 		C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTabView.swift; sourceTree = "<group>"; };
 		C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceItemView.swift; sourceTree = "<group>"; };
 		C9F5F4B72A420553002C21F7 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
-		C9F5F4B92A420562002C21F7 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		C9F5F4B92A420562002C21F7 /* PetHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHomeView.swift; sourceTree = "<group>"; };
 		C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountView.swift; sourceTree = "<group>"; };
 		C9F9D8362A1424E700DD72F1 /* PJButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJButton.swift; sourceTree = "<group>"; };
 		C9F9D8382A14251500DD72F1 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
@@ -502,7 +504,8 @@
 			isa = PBXGroup;
 			children = (
 				C9F5F4B72A420553002C21F7 /* SideMenuView.swift */,
-				C9F5F4B92A420562002C21F7 /* HomePageView.swift */,
+				750A36442E23374500EF8075 /* PetHomeViewModel.swift */,
+				C9F5F4B92A420562002C21F7 /* PetHomeView.swift */,
 				C9F5F4A72A420449002C21F7 /* Subviews */,
 			);
 			path = Home;
@@ -814,6 +817,7 @@
 				C9A324932A2FE7F9008FE6F4 /* RegisterAPIError.swift in Sources */,
 				13033C232D9B64BF0037F2BD /* PetRegisterView.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
+				750A36452E23374500EF8075 /* PetHomeViewModel.swift in Sources */,
 				C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */,
 				75C895932D84C0B6007BEBA3 /* PetRegisterService.swift in Sources */,
 				C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */,
@@ -855,7 +859,7 @@
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
 				5089312E2DB03A4300E403A5 /* PetSelectionList.swift in Sources */,
 				75F9E5872DF740CE00079D56 /* PetProfileView.swift in Sources */,
-				C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */,
+				C9F5F4BA2A420562002C21F7 /* PetHomeView.swift in Sources */,
 				C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */,
 				75AF95572DAAAB9500CF0A02 /* TaskButton.swift in Sources */,
 				754EAA582D85C694000FC465 /* PetButton.swift in Sources */,

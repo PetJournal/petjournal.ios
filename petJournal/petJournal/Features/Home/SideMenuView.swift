@@ -28,12 +28,12 @@ struct SideMenuView: View {
                 
                 HStack(alignment: .top, spacing: 12) {
                     VStack(alignment: .trailing, spacing: 12) {
-                        Text("Camila Queiroz")
+                        Text(UserSession.init().firstName ?? "Time iOS")
                             .font(.title3)
                             .fontWeight(.bold)
                             .foregroundColor(Color.theme.petGray300)
                         
-                        Text("cmz@petjournal.com")
+                        Text(UserSession.init().email ?? "iOS_petjournal_new@outlook.com")
                             .foregroundColor(Color.theme.petGray300)
                     }
                 }

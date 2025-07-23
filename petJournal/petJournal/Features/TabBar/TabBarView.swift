@@ -12,7 +12,7 @@ struct TabBarView: View {
     
     var body: some View {
         TabView(selection: $tabViewModel.currentTab) {
-            HomePageView()
+            PetHomeView()
                 .environmentObject(tabViewModel)
                 .tabItem {
                     Label("Home", image: ImageAsset.home.rawValue)

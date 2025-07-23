@@ -13,7 +13,7 @@ struct ProfileComponentView: View {
     
     var body: some View {
         HStack {
-            Text("Olá, Camila")
+            Text(UserSession.init().firstName ?? "Time iOS")
                 .font(.title2)
             Spacer()
             sideMenu
