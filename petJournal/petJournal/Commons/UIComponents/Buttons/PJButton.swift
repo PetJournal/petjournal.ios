@@ -1,10 +1,3 @@
-//
-//  PJButton.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 16/05/23.
-//
-
 import SwiftUI
 
 enum ButtonType {
@@ -37,5 +30,20 @@ struct PJButton: View {
                                            foregroundColor: buttonType == .primaryType ? Color.theme.petWhite : Color.theme.petPrimary500))
         }
         .frame(maxWidth:.infinity)
+    }
+}
+
+struct PJButton_Previews: PreviewProvider {
+    static var previews: some View {
+            VStack(spacing: 20) {
+                PJButton(title: "Primário",
+                         buttonType: .primaryType,
+                         action: {})
+                PJButton(title: "Secundário",
+                         buttonType: .secundaryType,
+                         action: {})
+            }
+            .padding()
+            .previewDisplayName("Possíveis tipos")
     }
 }
