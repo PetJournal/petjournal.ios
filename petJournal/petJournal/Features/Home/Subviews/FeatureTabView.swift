@@ -1,21 +1,23 @@
-//
-//  FeatureTabView.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 20/06/23.
-//
-
 import SwiftUI
 
 struct FeatureTabView: View {
+    let banners: [HomeBanner]
+    
     var body: some View {
         TabView {
-            ForEach(mock_banners) { ban in
-                BannerView(banner: ban)
-                    .padding(.top, 10)
-                    .padding(.horizontal, 15)
+            ForEach(banners) { banner in
+                BannerView(banner: banner)
+                    .padding(.top, 12)
+                    .padding(.horizontal, 20)
             }
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+    }
+}
+
+struct FeatureTabView_Previews: PreviewProvider {
+    static var previews: some View {
+        return FeatureTabView(banners: HomeBanner.sampleBanners)
+            .padding()
     }
 }

@@ -6,6 +6,7 @@ struct PetHomeView: View {
     var pets: [PetModel]?
     var tasks: [PetTaskModel]?
     var services: [ServiceModel]?
+    var banners: [HomeBanner]?
     
     var body: some View {
         ZStack {
@@ -15,7 +16,8 @@ struct PetHomeView: View {
                     lastName: viewModel.lastName,
                     pets: pets,
                     tasks: tasks,
-                    services: services
+                    services: services, 
+                    banners: banners
                 )
             }
             .disabled(viewModel.isLoading)
@@ -37,11 +39,12 @@ private struct MainContentView: View {
     var pets: [PetModel]?
     var tasks: [PetTaskModel]?
     var services: [ServiceModel]?
+    let banners: [HomeBanner]?
     
     var body: some View {
         VStack(spacing: 20) {
             TitleView(firstName: firstName, lastName: lastName)
-            BannersView()
+            BannersView(banners: banners)
             PetsView(pets: pets)
             TasksView(tasks: tasks)
             KnowMoreView(services: services)
@@ -69,17 +72,20 @@ private struct TitleView: View {
 }
 
 private struct BannersView: View {
+    let banners: [HomeBanner]?    
     var body: some View {
-        TabView {
-            ForEach(mock_banners) { banner in
-                BannerView(banner: banner)
-                    .padding(.horizontal, 4)
-                    .cornerRadius(12)
+        if let banners = banners, !banners.isEmpty {
+            TabView {
+                ForEach(banners) { banner in
+                    BannerView(banner: banner)
+                        .padding(.horizontal, 4)
+                        .cornerRadius(12)
+                }
             }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 3)
+            .frame(height: 180)
         }
-        .tabViewStyle(.page(indexDisplayMode: .never))
-        .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 3)
-        .frame(height: 180)
     }
 }
 
