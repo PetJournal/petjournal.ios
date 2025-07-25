@@ -90,6 +90,7 @@ private struct BannersView: View {
 }
 
 private struct PetsView: View {
+    @State var showingAddPet: Bool = false
     var pets: [PetModel]?
     
     var body: some View {
@@ -99,13 +100,18 @@ private struct PetsView: View {
                     Text("Meus pets:")
                         .font(.robotoMedium(size: .big))
                     Spacer()
-                    AddPetButton()
+                    CircularButton(size: 30,
+                                   font: .robotoSemiBold(size: .great),
+                                   action: { showingAddPet = true })
+                    .sheet(isPresented: $showingAddPet) {
+                        PetRegisterView()
+                    }
                 }
                 
                 if let pets = pets, !pets.isEmpty {
                     PetsScrollView(pets: pets)
                 } else {
-                    AddPetButton()
+                    NoPetsButton()
                 }
             }
             Spacer()
@@ -131,26 +137,7 @@ private struct PetsScrollView: View {
     }
 }
 
-private struct AddPetButton: View {
-    @State var showingAddPet: Bool = false
-    
-    var body: some View {
-        Button(action: { showingAddPet = true }) {
-            Image(systemName: "plus")
-                .font(.robotoSemiBold(size: .great))
-                .frame(width: 30, height: 30)
-                .background(Color.theme.petPrimary500)
-                .foregroundColor(.white)
-                .clipShape(Circle())
-                .shadow(radius: 4)
-        }
-        .sheet(isPresented: $showingAddPet) {
-            PetRegisterView()
-        }
-    }
-}
-
-private struct NoPetButton: View {
+private struct NoPetsButton: View {
     var body: some View {
         PetButton(
             //FIXME: Make proper placeholder
@@ -177,15 +164,23 @@ private struct TasksView: View {
 }
 
 private struct TasksListView: View {
+    @State private var showingAddTask = false
     let tasks: [PetTaskModel]
     
     var body: some View {
-        Group {
-            Text("Próximas tarefas:")
-                .font(.robotoMedium(size: .big))
-            
-            ForEach(tasks) { task in
-                PetTaskCard(presenter: PetTaskCardPresenter(task: task))
+        ZStack(alignment: .bottomTrailing) {
+            VStack {
+                Text("Próximas tarefas:")
+                    .font(.robotoMedium(size: .big))
+                ForEach(tasks) { task in
+                    PetTaskCard(presenter: PetTaskCardPresenter(task: task))
+                }
+            }
+            CircularButton(font:.robotoMedium(size: .biggest),
+                           action: { showingAddTask = true })
+            .sheet(isPresented: $showingAddTask) {
+                //FIXME: Integrate future view
+                // CreateTaskView()
             }
         }
     }
