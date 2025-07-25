@@ -95,8 +95,12 @@ private struct PetsView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 20) {
-                Text("Meus pets:")
-                    .font(.robotoMedium(size: .big))
+                HStack {
+                    Text("Meus pets:")
+                        .font(.robotoMedium(size: .big))
+                    Spacer()
+                    AddPetButton()
+                }
                 
                 if let pets = pets, !pets.isEmpty {
                     PetsScrollView(pets: pets)
@@ -128,8 +132,28 @@ private struct PetsScrollView: View {
 }
 
 private struct AddPetButton: View {
+    @State var showingAddPet: Bool = false
+    
+    var body: some View {
+        Button(action: { showingAddPet = true }) {
+            Image(systemName: "plus")
+                .font(.robotoSemiBold(size: .great))
+                .frame(width: 30, height: 30)
+                .background(Color.theme.petPrimary500)
+                .foregroundColor(.white)
+                .clipShape(Circle())
+                .shadow(radius: 4)
+        }
+        .sheet(isPresented: $showingAddPet) {
+            PetRegisterView()
+        }
+    }
+}
+
+private struct NoPetButton: View {
     var body: some View {
         PetButton(
+            //FIXME: Make proper placeholder
             pet: PetModel.makePlaceholder(type: .addPet),
             action: {}
         )
