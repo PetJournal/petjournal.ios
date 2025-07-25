@@ -101,7 +101,7 @@
 		C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */; };
 		C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */; };
 		C9F5F4B42A420517002C21F7 /* ServiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */; };
-		C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B72A420553002C21F7 /* SideMenuView.swift */; };
+		C9F5F4B82A420553002C21F7 /* TutorProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B72A420553002C21F7 /* TutorProfileView.swift */; };
 		C9F5F4BA2A420562002C21F7 /* PetHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B92A420562002C21F7 /* PetHomeView.swift */; };
 		C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */; };
 		C9F9D8372A1424E700DD72F1 /* PJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8362A1424E700DD72F1 /* PJButton.swift */; };
@@ -218,7 +218,7 @@
 		C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
 		C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceItemView.swift; sourceTree = "<group>"; };
-		C9F5F4B72A420553002C21F7 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		C9F5F4B72A420553002C21F7 /* TutorProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorProfileView.swift; sourceTree = "<group>"; };
 		C9F5F4B92A420562002C21F7 /* PetHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHomeView.swift; sourceTree = "<group>"; };
 		C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountView.swift; sourceTree = "<group>"; };
 		C9F9D8362A1424E700DD72F1 /* PJButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJButton.swift; sourceTree = "<group>"; };
@@ -296,6 +296,7 @@
 				75C8958D2D84BD92007BEBA3 /* PetRegister */,
 				C9F5F49D2A41FEE6002C21F7 /* TabBar */,
 				751DDCA62DEDEA3400D312F2 /* TaskList */,
+				75AE06562E32B64C00584BD2 /* TutorProfile */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -382,6 +383,14 @@
 				751DDCA72DEDEA5000D312F2 /* TaskListView.swift */,
 			);
 			path = TaskList;
+			sourceTree = "<group>";
+		};
+		75AE06562E32B64C00584BD2 /* TutorProfile */ = {
+			isa = PBXGroup;
+			children = (
+				C9F5F4B72A420553002C21F7 /* TutorProfileView.swift */,
+			);
+			path = TutorProfile;
 			sourceTree = "<group>";
 		};
 		75C8958D2D84BD92007BEBA3 /* PetRegister */ = {
@@ -499,9 +508,8 @@
 		C94A23FC29CE239300C71D01 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C9F5F4B72A420553002C21F7 /* SideMenuView.swift */,
-				750A36442E23374500EF8075 /* PetHomeViewModel.swift */,
 				C9F5F4B92A420562002C21F7 /* PetHomeView.swift */,
+				750A36442E23374500EF8075 /* PetHomeViewModel.swift */,
 				C9F5F4A72A420449002C21F7 /* Subviews */,
 			);
 			path = Home;
@@ -866,7 +874,7 @@
 				C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */,
 				7509EDD52D71E9DC0036B9B8 /* ComponentPrivacy.swift in Sources */,
 				7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */,
-				C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */,
+				C9F5F4B82A420553002C21F7 /* TutorProfileView.swift in Sources */,
 				13033C212D9AB6390037F2BD /* AutoCompleteSelect.swift in Sources */,
 				75C895912D84BDC5007BEBA3 /* PetModel.swift in Sources */,
 				50F77A3E2D820ABE00606345 /* PetListView.swift in Sources */,

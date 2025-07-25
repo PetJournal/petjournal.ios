@@ -1,10 +1,3 @@
-//
-//  TabBarView.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 20/06/23.
-//
-
 import SwiftUI
 
 struct TabBarView: View {
@@ -27,13 +20,13 @@ struct TabBarView: View {
             
             PetListView()
                 .tabItem {
-                    Label("Pet", image: ImageAsset.paw.rawValue)
+                    Label("Pets", image: ImageAsset.paw.rawValue)
                 }
                 .tag(2)
             
-            Text("Tutor")
+            TutorProfileView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
                 .tabItem {
-                    Label("User", image: ImageAsset.user.rawValue)
+                    Label("Perfil", image: ImageAsset.user.rawValue)
                 }
                 .tag(3)
         }
