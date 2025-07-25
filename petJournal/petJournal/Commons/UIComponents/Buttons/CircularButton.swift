@@ -6,12 +6,14 @@ struct CircularButton: View {
     let iconName: String
     let backgroundColor: Color
     let foregroundColor: Color
+    let font: Font
     
     init(
         size: CGFloat = 60,
         iconName: String = "plus",
         backgroundColor: Color = Color.theme.petPrimary500,
         foregroundColor: Color = Color.theme.petWhite,
+        font: Font = .robotoMedium(size: .great),
         action: @escaping () -> Void
     ) {
         self.size = size
@@ -19,12 +21,13 @@ struct CircularButton: View {
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
         self.action = action
+        self.font = font
     }
     
     var body: some View {
         Button(action: action) {
             Image(systemName: iconName)
-                .font(.robotoMedium(size: .great))
+                .font(font)
                 .frame(width: size, height: size)
                 .background(backgroundColor)
                 .foregroundColor(foregroundColor)
@@ -43,6 +46,7 @@ struct CircularButton_Previews: PreviewProvider {
             // 2. Botão maior
             CircularButton(
                 size: 80,
+                font: .robotoLight(size: .biggest), 
                 action: {}
             )
             
