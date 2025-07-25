@@ -93,7 +93,10 @@ private extension PetHomeView {
                 if let tasks = tasks, !tasks.isEmpty {
                     tasksListView(tasks: tasks)
                 } else {
-                    noTasksView
+                    NoTasksView { viewModel.presentAddTask()}
+                        .sheet(isPresented: $viewModel.showAddTaskSheet) {
+                            // CreateTaskView()
+                        }
                 }
             }
         }
@@ -172,36 +175,6 @@ private extension PetHomeView {
         .sheet(isPresented: $viewModel.showAddTaskSheet) {
             // CreateTaskView()
         }
-    }
-    
-    var noTasksView: some View {
-        HStack(spacing: 16) {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Você não tem nenhuma tarefa!")
-                    .font(.robotoMedium(size: .medium))
-                    .foregroundColor(.primary)
-                
-                Text("Crie tarefas para organizar o seu dia")
-                    .font(.robotoLight(size: .small))
-                    .foregroundColor(.secondary)
-                
-                PJButton(
-                    title: "Criar tarefa",
-                    buttonType: .primaryType,
-                    action: { /* Action */ }
-                )
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Image(asset: .tasks)
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity)
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(12)
-        .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 3)
     }
     
     // Services Components
