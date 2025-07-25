@@ -5,6 +5,8 @@ class PetHomeViewModel: ObservableObject {
     @Published var lastName: String = ""
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
+    @Published var showAddPetSheet: Bool = false
+    @Published var showAddTaskSheet: Bool = false
     
     private let userService: UserServiceProtocol
     
@@ -28,6 +30,14 @@ class PetHomeViewModel: ObservableObject {
         }
         
         isLoading = false
+    }
+    
+    func presentAddPet() {
+        showAddPetSheet = true
+    }
+    
+    func presentAddTask() {
+        showAddTaskSheet = true
     }
 }
 

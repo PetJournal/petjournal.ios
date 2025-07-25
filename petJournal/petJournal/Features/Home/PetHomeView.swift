@@ -11,14 +11,15 @@ struct PetHomeView: View {
     var body: some View {
         ZStack {
             ScrollView(.vertical, showsIndicators: false) {
-                MainContentView(
-                    firstName: viewModel.firstName,
-                    lastName: viewModel.lastName,
-                    pets: pets,
-                    tasks: tasks,
-                    services: services, 
-                    banners: banners
-                )
+                VStack(spacing: 20) {
+                    titleSection
+                    bannersSection
+                    petsSection
+                    tasksSection
+                    knowMoreSection
+                    Spacer(minLength: 20)
+                }
+                .padding(.horizontal, 16)
             }
             .disabled(viewModel.isLoading)
             
@@ -32,86 +33,81 @@ struct PetHomeView: View {
     }
 }
 
-// MARK: - Main Content Components
-private struct MainContentView: View {
-    let firstName: String
-    let lastName: String
-    var pets: [PetModel]?
-    var tasks: [PetTaskModel]?
-    var services: [ServiceModel]?
-    let banners: [HomeBanner]?
-    
-    var body: some View {
-        VStack(spacing: 20) {
-            TitleView(firstName: firstName, lastName: lastName)
-            BannersView(banners: banners)
-            PetsView(pets: pets)
-            TasksView(tasks: tasks)
-            KnowMoreView(services: services)
-            Spacer(minLength: 20)
-        }
-        .padding(.horizontal, 16)
-    }
-}
-
-// MARK: - Subcomponents
-private struct TitleView: View {
-    let firstName: String
-    let lastName: String
-    
-    var body: some View {
+// MARK: - View Sections
+private extension PetHomeView {
+    // Title Section
+    var titleSection: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Olá, \(firstName) \(lastName)!")
+                Text("Olá, \(viewModel.firstName) \(viewModel.lastName)!")
                     .font(.robotoLight(size: .large))
             }
             Spacer()
         }
         .padding(.top, 20)
     }
-}
-
-private struct BannersView: View {
-    let banners: [HomeBanner]?    
-    var body: some View {
-        if let banners = banners, !banners.isEmpty {
-            TabView {
-                ForEach(banners) { banner in
-                    BannerView(banner: banner)
-                        .padding(.horizontal, 4)
-                        .cornerRadius(12)
+    
+    // Banners Section
+    var bannersSection: some View {
+        Group {
+            if let banners = banners, !banners.isEmpty {
+                TabView {
+                    ForEach(banners) { banner in
+                        BannerView(banner: banner)
+                            .padding(.horizontal, 4)
+                            .cornerRadius(12)
+                    }
                 }
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 3)
+                .frame(height: 180)
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 3)
-            .frame(height: 180)
         }
     }
-}
-
-private struct PetsView: View {
-    @State var showingAddPet: Bool = false
-    var pets: [PetModel]?
     
-    var body: some View {
+    // Pets Section
+    var petsSection: some View {
         HStack {
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Text("Meus pets:")
                         .font(.robotoMedium(size: .big))
                     Spacer()
-                    CircularButton(size: 30,
-                                   font: .robotoSemiBold(size: .great),
-                                   action: { showingAddPet = true })
-                    .sheet(isPresented: $showingAddPet) {
-                        PetRegisterView()
-                    }
+                    addPetButton
                 }
                 
                 if let pets = pets, !pets.isEmpty {
-                    PetsScrollView(pets: pets)
+                    petsScrollView(pets: pets)
                 } else {
-                    NoPetsButton()
+                    noPetsButton
+                }
+            }
+            Spacer()
+        }
+    }
+    
+    // Tasks Section
+    var tasksSection: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 20) {
+                if let tasks = tasks, !tasks.isEmpty {
+                    tasksListView(tasks: tasks)
+                } else {
+                    noTasksView
+                }
+            }
+        }
+    }
+    
+    // Know More Section
+    var knowMoreSection: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Saiba mais:")
+                    .font(.robotoMedium(size: .big))
+                
+                if let services = services, !services.isEmpty {
+                    servicesScrollView(services: services)
                 }
             }
             Spacer()
@@ -119,10 +115,21 @@ private struct PetsView: View {
     }
 }
 
-private struct PetsScrollView: View {
-    let pets: [PetModel]
+// MARK: - Subcomponents
+private extension PetHomeView {
+    // Pets Components
+    var addPetButton: some View {
+        CircularButton(
+            size: 30,
+            font: .robotoSemiBold(size: .great),
+            action: { viewModel.presentAddPet() }
+        )
+        .sheet(isPresented: $viewModel.showAddPetSheet) {
+            PetRegisterView()
+        }
+    }
     
-    var body: some View {
+    func petsScrollView(pets: [PetModel]) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(pets) { pet in
@@ -135,39 +142,16 @@ private struct PetsScrollView: View {
             }
         }
     }
-}
-
-private struct NoPetsButton: View {
-    var body: some View {
+    
+    var noPetsButton: some View {
         PetButton(
-            //FIXME: Make proper placeholder
             pet: PetModel.makePlaceholder(type: .addPet),
             action: {}
         )
     }
-}
-
-private struct TasksView: View {
-    var tasks: [PetTaskModel]?
     
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 20) {
-                if let tasks = tasks, !tasks.isEmpty {
-                    TasksListView(tasks: tasks)
-                } else {
-                    NoTasksView()
-                }
-            }
-        }
-    }
-}
-
-private struct TasksListView: View {
-    @State private var showingAddTask = false
-    let tasks: [PetTaskModel]
-    
-    var body: some View {
+    // Tasks Components
+    func tasksListView(tasks: [PetTaskModel]) -> some View {
         ZStack(alignment: .bottomTrailing) {
             VStack {
                 Text("Próximas tarefas:")
@@ -176,18 +160,21 @@ private struct TasksListView: View {
                     PetTaskCard(presenter: PetTaskCardPresenter(task: task))
                 }
             }
-            CircularButton(font:.robotoMedium(size: .biggest),
-                           action: { showingAddTask = true })
-            .sheet(isPresented: $showingAddTask) {
-                //FIXME: Integrate future view
-                // CreateTaskView()
-            }
+            addTaskButton
         }
     }
-}
-
-private struct NoTasksView: View {
-    var body: some View {
+    
+    var addTaskButton: some View {
+        CircularButton(
+            font: .robotoMedium(size: .biggest),
+            action: { viewModel.presentAddTask() }
+        )
+        .sheet(isPresented: $viewModel.showAddTaskSheet) {
+            // CreateTaskView()
+        }
+    }
+    
+    var noTasksView: some View {
         HStack(spacing: 16) {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Você não tem nenhuma tarefa!")
@@ -198,10 +185,11 @@ private struct NoTasksView: View {
                     .font(.robotoLight(size: .small))
                     .foregroundColor(.secondary)
                 
-                PJButton(title: "Criar tarefa",
-                         buttonType: .primaryType) {
-                    // Action
-                }
+                PJButton(
+                    title: "Criar tarefa",
+                    buttonType: .primaryType,
+                    action: { /* Action */ }
+                )
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
@@ -215,30 +203,9 @@ private struct NoTasksView: View {
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 3)
     }
-}
-
-private struct KnowMoreView: View {
-    var services: [ServiceModel]?
     
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Saiba mais:")
-                    .font(.robotoMedium(size: .big))
-                
-                if let services = services, !services.isEmpty {
-                    ServicesScrollView(services: services)
-                }
-            }
-            Spacer()
-        }
-    }
-}
-
-private struct ServicesScrollView: View {
-    let services: [ServiceModel]
-    
-    var body: some View {
+    // Services Components
+    func servicesScrollView(services: [ServiceModel]) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack() {
                 ForEach(services) { service in
