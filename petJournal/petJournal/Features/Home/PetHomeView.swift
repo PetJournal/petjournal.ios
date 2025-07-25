@@ -79,7 +79,7 @@ private extension PetHomeView {
                 if let pets = pets, !pets.isEmpty {
                     petsScrollView(pets: pets)
                 } else {
-                    noPetsButton
+                    noPetsView
                 }
             }
             Spacer()
@@ -146,11 +146,13 @@ private extension PetHomeView {
         }
     }
     
-    var noPetsButton: some View {
-        PetButton(
-            pet: PetModel.makePlaceholder(type: .addPet),
-            action: {}
-        )
+    var noPetsView: some View {
+        Text("Ainda sem pet.")
+            .padding()
+            .frame(width: 100,height: 100)
+            .background(Color.theme.petGray300)
+            .foregroundColor(Color.theme.petGray800)
+            .cornerRadius(16)
     }
     
     // Tasks Components
