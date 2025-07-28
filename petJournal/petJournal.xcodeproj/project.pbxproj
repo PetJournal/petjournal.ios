@@ -95,10 +95,8 @@
 		C9D95F6F2A37A6E6001C271F /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */; };
 		C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D95F712A37AA0D001C271F /* BlurView.swift */; };
 		C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017029E72D7D0014F9C4 /* FontFamily.swift */; };
-		C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */; };
 		C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F49E2A41FEF8002C21F7 /* TabBarView.swift */; };
 		C9F5F4A12A41FF0F002C21F7 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A02A41FF0F002C21F7 /* TabBarViewModel.swift */; };
-		C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */; };
 		C9F5F4AA2A42046E002C21F7 /* HomeBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A92A42046E002C21F7 /* HomeBanner.swift */; };
 		C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */; };
 		C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */; };
@@ -214,10 +212,8 @@
 		C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		C9D95F712A37AA0D001C271F /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		C9E5017029E72D7D0014F9C4 /* FontFamily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFamily.swift; sourceTree = "<group>"; };
-		C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		C9F5F49E2A41FEF8002C21F7 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		C9F5F4A02A41FF0F002C21F7 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
-		C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModifier.swift; sourceTree = "<group>"; };
 		C9F5F4A92A42046E002C21F7 /* HomeBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBanner.swift; sourceTree = "<group>"; };
 		C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
 		C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
@@ -611,7 +607,6 @@
 				131BCFCB2D6C7A5800AEDE56 /* Extension+View.swift */,
 				C9BAE60C29DE298900542620 /* Extension+Color.swift */,
 				C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */,
-				C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */,
 				C93943F62A9C0EDD0085E623 /* Extension+Alert.swift */,
 				C93943F82A9C0F140085E623 /* Extension+UIColor.swift */,
 				6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */,
@@ -666,7 +661,6 @@
 		C9F5F4A22A41FF65002C21F7 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */,
 				C96853C02AC397560020AD1F /* CustomGlassView.swift */,
 			);
 			path = CustomViews;
@@ -879,7 +873,6 @@
 				750A36432E2328EF00EF8075 /* Extension+URLSession.swift in Sources */,
 				C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */,
 				75E295612DD243DB00DC1CCA /* PetTaskCard.swift in Sources */,
-				C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */,
 				7509EDD52D71E9DC0036B9B8 /* ComponentPrivacy.swift in Sources */,
 				7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */,
 				C9F5F4B82A420553002C21F7 /* TutorProfileView.swift in Sources */,
@@ -901,7 +894,6 @@
 				7542A47A2D95DDA500F712C2 /* PetListingError.swift in Sources */,
 				C9D8450D2A2249650007A316 /* SessionModel.swift in Sources */,
 				6196CDB52AE2F47A0021DA5F /* Extension+Font.swift in Sources */,
-				C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */,
 				C9D95F6F2A37A6E6001C271F /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1069,7 +1061,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1100,7 +1092,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
