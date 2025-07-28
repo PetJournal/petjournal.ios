@@ -36,6 +36,7 @@
 		7542A4782D95C6BF00F712C2 /* PetListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4772D95C6BF00F712C2 /* PetListService.swift */; };
 		7542A47A2D95DDA500F712C2 /* PetListingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4792D95DDA500F712C2 /* PetListingError.swift */; };
 		754EAA582D85C694000FC465 /* PetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAA572D85C694000FC465 /* PetButton.swift */; };
+		7561564D2E37D803008DB0EA /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561564C2E37D803008DB0EA /* CustomTabBar.swift */; };
 		75950CB12E04A25A001EC58B /* PetTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75950CB02E04A25A001EC58B /* PetTaskModel.swift */; };
 		759A42812E33D93C00C9CE26 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42802E33D93C00C9CE26 /* CircularButton.swift */; };
 		759A42832E33E62B00C9CE26 /* NoTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42822E33E62B00C9CE26 /* NoTasksView.swift */; };
@@ -152,6 +153,7 @@
 		7542A4772D95C6BF00F712C2 /* PetListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListService.swift; sourceTree = "<group>"; };
 		7542A4792D95DDA500F712C2 /* PetListingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListingError.swift; sourceTree = "<group>"; };
 		754EAA572D85C694000FC465 /* PetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetButton.swift; sourceTree = "<group>"; };
+		7561564C2E37D803008DB0EA /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		75950CB02E04A25A001EC58B /* PetTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskModel.swift; sourceTree = "<group>"; };
 		759A42802E33D93C00C9CE26 /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		759A42822E33E62B00C9CE26 /* NoTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTasksView.swift; sourceTree = "<group>"; };
@@ -638,10 +640,11 @@
 		C9E5017329E76FDA0014F9C4 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				C9F9D82F2A14232300DD72F1 /* Buttons */,
 				13033C202D9AB62C0037F2BD /* AutoCompleteSelect.swift */,
 				C9D95F712A37AA0D001C271F /* BlurView.swift */,
-				C9F9D82F2A14232300DD72F1 /* Buttons */,
 				C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */,
+				7561564C2E37D803008DB0EA /* CustomTabBar.swift */,
 				C96853C32AC397D00020AD1F /* LoadingView.swift */,
 				C93943F42A9C0E6C0085E623 /* PJTextFieldView.swift */,
 				75E295602DD243DB00DC1CCA /* PetTaskCard.swift */,
@@ -844,6 +847,7 @@
 				1F8298312A18151500595FB7 /* CreateAccountService.swift in Sources */,
 				C930B5CB2A3A89FD0008F502 /* WaitingCodeView.swift in Sources */,
 				75C8958F2D84BDA6007BEBA3 /* PetRegisterViewModel.swift in Sources */,
+				7561564D2E37D803008DB0EA /* CustomTabBar.swift in Sources */,
 				C96853C42AC397D00020AD1F /* LoadingView.swift in Sources */,
 				C930B5DA2A3A8E820008F502 /* CompRememberAndForgotPassword.swift in Sources */,
 				C9C094892AC11915006FB438 /* AuthenticationStatus.swift in Sources */,
