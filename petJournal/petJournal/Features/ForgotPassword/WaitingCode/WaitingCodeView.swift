@@ -68,7 +68,7 @@ struct WaitingCodeView: View {
             }
             .padding()
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            .onChange(of: viewModel.codeFields) { newValue in
+            .onChange(of: viewModel.codeFields) { _, newValue in
                 viewModel.checkValueField(value: newValue)
                 nextField(value: newValue)
             }
