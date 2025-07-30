@@ -114,3 +114,8 @@ extension HomePageView {
         }
     }
 }
+
+#Preview {
+    HomePageView()
+        .environmentObject(TabBarViewModel())
+}

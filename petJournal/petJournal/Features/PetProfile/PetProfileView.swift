@@ -1,12 +1,8 @@
 import SwiftUI
 
-protocol PetProfileCoordinatorProtocol {
-    func navigateToEditPet(pet: PetModel)
-}
-
 struct PetProfileView: View {
+    @EnvironmentObject var router: NavigationRouter
     let pet: PetModel
-    let coordinator: PetProfileCoordinatorProtocol
     
     var body: some View {
         ScrollView {
@@ -130,7 +126,7 @@ struct PetProfileView: View {
     
     private var editButton: some View {
         Button(action: {
-            coordinator.navigateToEditPet(pet: pet)
+            router.navigate(to: .petRegister)
         }) {
             Image(asset: .edit)
         }
@@ -144,19 +140,10 @@ struct PetProfileView: View {
 // MARK: - Preview
 struct PetProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        let mockCoordinator = MockPetProfileCoordinator()
-        
         return NavigationView {
             PetProfileView(
-                pet: PetModel.samplePets.randomElement()!,
-                coordinator: mockCoordinator
+                pet: PetModel.samplePets.randomElement()!
             )
         }.previewDisplayName("Inicio Perfil de Pet")
-    }
-}
-
-class MockPetProfileCoordinator: PetProfileCoordinatorProtocol {
-    func navigateToEditPet(pet: PetModel) {
-        print("Navigate to edit pet: \(pet.petName)")
     }
 }

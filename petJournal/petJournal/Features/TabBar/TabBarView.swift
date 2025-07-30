@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @EnvironmentObject var router: NavigationRouter
     @ObservedObject private var tabViewModel = TabBarViewModel()
     
     var body: some View {

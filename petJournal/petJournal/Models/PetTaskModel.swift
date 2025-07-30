@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PetTaskModel: Identifiable {
+struct PetTaskModel: Identifiable, Hashable {
     let id = UUID()
     let title: String
     let schedule: String
@@ -12,7 +12,7 @@ struct PetTaskModel: Identifiable {
     var startAt: String
     var isPast: Bool
     
-    init(title: String, schedule: String, 
+    init(title: String, schedule: String,
          description: String, petImages: [Image],
          accentColor: Color, backgroundIcon: Image,
          taskType: TaskType, startAt: String = "2026-05-04T13:00:00Z") {
@@ -25,6 +25,27 @@ struct PetTaskModel: Identifiable {
         self.taskType = taskType
         self.startAt = startAt
         self.isPast = startAt.isDateInThePast()
+    }
+    
+    // Hashable manually to exclude non-hashable properties
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(title)
+        hasher.combine(schedule)
+        hasher.combine(description)
+        hasher.combine(taskType)
+        hasher.combine(startAt)
+        hasher.combine(isPast)
+    }
+    
+    static func == (lhs: PetTaskModel, rhs: PetTaskModel) -> Bool {
+        return lhs.id == rhs.id &&
+               lhs.title == rhs.title &&
+               lhs.schedule == rhs.schedule &&
+               lhs.description == rhs.description &&
+               lhs.taskType == rhs.taskType &&
+               lhs.startAt == rhs.startAt &&
+               lhs.isPast == rhs.isPast
     }
     
     static var sampleTasks = [

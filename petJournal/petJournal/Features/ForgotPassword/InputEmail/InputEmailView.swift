@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct InputEmailView: View {
+    @EnvironmentObject var router: NavigationRouter
     @StateObject var viewModel: ForgotPasswordViewModel
-    @State private var isWaitingCode: Bool = false
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -91,12 +91,10 @@ extension InputEmailView {
         VStack(spacing: 5) {
             PJButton(title: "Entrar", buttonType: .primaryType) {
                 viewModel.reAuthentication()
-                self.isWaitingCode = true
+                router.navigate(to: .waitingCode)
             }
             .disabled(!viewModel.isCorrectCredentials)
             .opacity(viewModel.isCorrectCredentials ? 1 : 0.5)
-            
-            waitingCode
             
             PJButton(title: "Cancelar", buttonType: .secundaryType) {
                 dismiss()
@@ -104,16 +102,8 @@ extension InputEmailView {
         }
         .padding([.leading,.trailing], 60)
     }
-    
-    private var waitingCode: some View {
-        HStack {
-            NavigationLink(
-                destination:
-                    WaitingCodeView()
-                    .navigationBarHidden(true),
-                isActive: self.$isWaitingCode) {EmptyView()}
-                .isDetailLink(false)
-                .navigationBarHidden(true)
-        }
-    }
+}
+
+#Preview {
+    InputEmailView(viewModel: ForgotPasswordViewModel(service: ForgotPasswordService()))
 }

@@ -12,11 +12,10 @@ struct AccessAccountView: View {
     @StateObject var viewModel: AccessAccountViewModel
     
     @EnvironmentObject var loginAuth: SessionManager
+    @EnvironmentObject var router: NavigationRouter
     
     // MARK: - State
     @State private var isPasswordVisible: Bool = false
-    @State private var isAccessAccount: Bool = false
-    @State private var isCreateAccount: Bool = false
     
     // MARK: - Body
     var body: some View {
@@ -84,15 +83,13 @@ extension AccessAccountView {
         HStack {
             CompRememberAndForgotPassword()
             
-            NavigationLink(
-                destination: InputEmailView(viewModel: ForgotPasswordViewModel(service: ForgotPasswordService())).navigationBarHidden(true),
-                isActive: self.$isAccessAccount) {
-                    Text("Esqueci minha senha")
-                        .font(.fredokaMedium(size: .tiny))
-                        .foregroundColor(Color.theme.petBlack)
-                }
-                .isDetailLink(false)
-                .navigationBarHidden(true)
+            Button {
+                router.navigate(to: .forgotPassword)
+            } label: {
+                Text("Esqueci minha senha")
+                    .font(.fredokaMedium(size: .tiny))
+                    .foregroundColor(Color.theme.petBlack)
+            }
         }
     }
     
@@ -101,15 +98,17 @@ extension AccessAccountView {
             Text("Não tem uma conta?")
                 .font(.fredokaMedium(size: .tiny))
             
-            NavigationLink(
-                destination: CreateAccountView().navigationBarHidden(true),
-                isActive: self.$isCreateAccount) {
-                    Text("Inscrever-se")
-                        .font(.fredokaMedium(size: .tiny))
-                        .foregroundColor(Color.theme.petBlack)
-                }
-                .isDetailLink(false)
-                .navigationBarHidden(true)
+            Button {
+                router.navigate(to: .createAccount)
+            } label: {
+                Text("Inscrever-se")
+                    .font(.fredokaMedium(size: .tiny))
+                    .foregroundColor(Color.theme.petBlack)
+            }
         }
     }
+}
+#Preview {
+    AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
+        .environmentObject(SessionManager())
 }

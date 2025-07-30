@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct CreateAccountView: View {
+    @EnvironmentObject var router: NavigationRouter
     @StateObject var viewModel = CreateAccountViewModel(service: CreateAccountService())
     @State private var showWebview = false
-    @State private var isLoginView: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -24,7 +24,6 @@ struct CreateAccountView: View {
                 buttonRegister
                     .frame(width: geometry.size.width * 0.45)
                 Spacer()
-                loginNavigation
             }
             .sheet(isPresented: $showWebview) {
                 WebView(link: "https://www.google.com")
@@ -134,10 +133,8 @@ extension CreateAccountView {
                   secondaryButton: .destructive(
                     Text("OK"),
                     action: {
-                        if viewModel.isRegister {
-                            self.isLoginView = false
-                        } else {
-                            self.isLoginView = true
+                        if !viewModel.isRegister {
+                            router.navigate(to: .accessAccount)
                         }
                     }
                   )
@@ -159,14 +156,9 @@ extension CreateAccountView {
         }
         .padding()
     }
-    
-    private var loginNavigation: some View {
-        HStack {
-            NavigationLink(
-                destination: AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService())).navigationBarHidden(true),
-                isActive: self.$isLoginView) {EmptyView()}
-                .isDetailLink(false)
-                .navigationBarHidden(true)
-        }
-    }
+}
+
+#Preview {
+    CreateAccountView()
+        .environmentObject(CreateAccountViewModel(service: CreateAccountService()))
 }
