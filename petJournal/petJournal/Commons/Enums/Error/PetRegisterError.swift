@@ -7,6 +7,7 @@ enum PetRegisterError: Int, Error {
     case internalServerError = 500
     case invalidURL
     case invalidResponse
+    case decodingError
     
     var localizedDescription: String {
         switch self {
@@ -22,6 +23,8 @@ enum PetRegisterError: Int, Error {
             return "Invalid URL"
         case .invalidResponse:
             return "Invalid Response"
+        case .decodingError:
+            return "Decoding Error"
         }
     }
 }
