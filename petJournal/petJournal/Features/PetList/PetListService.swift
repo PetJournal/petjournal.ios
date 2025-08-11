@@ -6,16 +6,14 @@ protocol PetListServiceProtocol {
 
 class PetListService: PetListServiceProtocol {    
     static func fetchPets(completion: @escaping (Result<[PetModel], PetListingError>) -> Void) {
-        guard let url = URLManager.shared.makeURL(path: URLManager.shared.petListing) else {
+        guard let url = URLManager.shared.makeURL(path: URLManager.shared.pet) else {
             completion(.failure(.invalidURL))
             return
         }
         
-        let body = ""        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(body)
         
         URLSession.shared.debugDataTask(with: request) { data, response, error in
             guard let httpResponse = response as? HTTPURLResponse else {

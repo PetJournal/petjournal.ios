@@ -19,9 +19,7 @@ class URLManager {
     let guardianChangePassword = "/guardian/change-password"
     let forgetPassword = "/forget-password"
     let waitingCode = "/waiting-code"
-    //FIXME: - Check paths before testing
-    let petRegister = "/pet-register"
-    let petListing = "/pets"
+    let pet = "/pet"
     
     func makeURL(path: String) -> URL? {
         guard let fullURL = URL(string: baseURL + path) else {

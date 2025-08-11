@@ -9,7 +9,7 @@ class PetRegisterService: PetRegisterServiceProtocol {
     static func registerPet(petToBeRegistered: PetModel,
                      completion: @escaping(Result<PetModel, PetRegisterError>) -> Void) {
         
-        guard let url = URLManager.shared.makeURL(path: URLManager.shared.petRegister) else {
+        guard let url = URLManager.shared.makeURL(path: URLManager.shared.pet) else {
             completion(.failure(.invalidURL))
             return
         }
