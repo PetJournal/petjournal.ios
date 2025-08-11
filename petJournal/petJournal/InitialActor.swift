@@ -30,10 +30,6 @@ struct InitialActor: View {
                     HomePageView()
                 case .petList:
                     PetListView()
-                case .petProfile(let pet):
-                    PetProfileView(pet: pet)
-                case .petRegister:
-                    PetRegisterView()
                 case .taskList(let tasks, let filterType):
                     TaskListView(tasks: tasks, filterType: filterType)
                 }
