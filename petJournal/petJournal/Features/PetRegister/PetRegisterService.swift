@@ -2,12 +2,12 @@ import Foundation
 
 protocol PetRegisterServiceProtocol {
     static func registerPet(petToBeRegistered: PetModel,
-                     completion: @escaping(Result<Bool, PetRegisterError>) -> Void)
+                     completion: @escaping(Result<PetModel, PetRegisterError>) -> Void)
 }
 
 class PetRegisterService: PetRegisterServiceProtocol {
     static func registerPet(petToBeRegistered: PetModel,
-                     completion: @escaping(Result<Bool, PetRegisterError>) -> Void) {
+                     completion: @escaping(Result<PetModel, PetRegisterError>) -> Void) {
         
         guard let url = URLManager.shared.makeURL(path: URLManager.shared.petRegister) else {
             completion(.failure(.invalidURL))
@@ -28,7 +28,7 @@ class PetRegisterService: PetRegisterServiceProtocol {
             "petName": petToBeRegistered.petName,
             "gender": petToBeRegistered.gender,
             "breedName": petToBeRegistered.breed.name,
-            "size": petToBeRegistered.size,
+            "size": petToBeRegistered.size.name,
             "castrated": petToBeRegistered.castrated,
             "dateOfBirth": petToBeRegistered.dateOfBirth
         ]
@@ -59,15 +59,28 @@ class PetRegisterService: PetRegisterServiceProtocol {
                 return
             }
             
-            switch httpResponse.statusCode {
-            case PetRegisterError.success.rawValue:
-                completion(.success(true))
-            case PetRegisterError.invalidRequest.rawValue:
-                completion(.failure(.invalidRequest))
-            case PetRegisterError.notAccepted.rawValue:
-                completion(.failure(.notAccepted))
-            default:
-                completion(.failure(.internalServerError))
+            guard let data = data else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            
+            do {
+                if (200...299).contains(httpResponse.statusCode) {
+                    let decoder = JSONDecoder()
+                    let responsePet = try decoder.decode(PetModel.self, from: data)
+                    completion(.success(responsePet))
+                } else {
+                    switch httpResponse.statusCode {
+                    case 400:
+                        completion(.failure(.invalidRequest))
+                    case 406:
+                        completion(.failure(.notAccepted))
+                    default:
+                        completion(.failure(.internalServerError))
+                    }
+                }
+            } catch {
+                completion(.failure(.decodingError))
             }
         }.resume()
     }
