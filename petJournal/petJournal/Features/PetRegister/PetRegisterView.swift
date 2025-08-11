@@ -12,6 +12,14 @@ struct PetRegisterView: View {
             }
         }
         .navigationBarHidden(true)
+        .alert("Erro", isPresented: Binding<Bool>(
+            get: { viewModel.errorMessage != nil },
+            set: { _ in viewModel.errorMessage = nil }
+        )) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(viewModel.errorMessage ?? "")
+        }
     }
     
     // MARK: - Main Components
@@ -98,8 +106,9 @@ struct PetRegisterView: View {
                 .font(.robotoMedium(size: .great))
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            TextField("Data de nascimento", text: $viewModel.dateOfBirth)
+            TextField("dd/mm/aaaa", text: $viewModel.dateOfBirth)
                 .textFieldStyle()
+                .keyboardType(.numberPad)
         }
     }
     
@@ -111,6 +120,7 @@ struct PetRegisterView: View {
             
             TextField("Peso", text: $viewModel.weight)
                 .textFieldStyle()
+                .keyboardType(.decimalPad)
         }
     }
     
@@ -139,16 +149,16 @@ struct PetRegisterView: View {
             HStack {
                 selectionButton(
                     text: "Macho",
-                    isSelected: true, // This should be bound to a viewModel property
-                    action: { /* Update gender in viewModel */ }
+                    isSelected: viewModel.gender.lowercased() == "macho",
+                    action: { viewModel.gender = "Macho" }
                 )
                 
                 Spacer()
                 
                 selectionButton(
                     text: "Fêmea",
-                    isSelected: false, // This should be bound to a viewModel property
-                    action: { /* Update gender in viewModel */ }
+                    isSelected: viewModel.gender.lowercased() == "fêmea",
+                    action: { viewModel.gender = "Fêmea" }
                 )
             }
             .padding(.horizontal)
@@ -164,16 +174,16 @@ struct PetRegisterView: View {
             HStack {
                 selectionButton(
                     text: "Sim",
-                    isSelected: false, // This should be bound to a viewModel property
-                    action: { /* Update castration status in viewModel */ }
+                    isSelected: viewModel.castrated.lowercased() == "sim",
+                    action: { viewModel.castrated = "Sim" }
                 )
                 
                 Spacer()
                 
                 selectionButton(
                     text: "Não",
-                    isSelected: true, // This should be bound to a viewModel property
-                    action: { /* Update castration status in viewModel */ }
+                    isSelected: viewModel.castrated.lowercased() == "não",
+                    action: { viewModel.castrated = "Não" }
                 )
             }
             .padding(.horizontal)
@@ -184,21 +194,27 @@ struct PetRegisterView: View {
     
     private func saveButton() -> some View {
         Button(action: {
-            // Save data in viewModel
+            viewModel.registerPet()
         }) {
-            Text("Salvar")
-                .font(.headline)
-                .foregroundColor(Color(.petPrimary500))
-                .frame(minWidth: 121.00, maxWidth: 121.00, minHeight: 40.00, maxHeight: 40.00)
-                .background(Color(.white))
-                .cornerRadius(50)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 50)
-                        .stroke(Color.gray, lineWidth: 1)
-                )
-                .shadow(color: Color.black.opacity(0.25), radius: 10, x: 3, y: 4)
+            if viewModel.isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color(.petPrimary500)))
+            } else {
+                Text("Salvar")
+                    .font(.headline)
+                    .foregroundColor(Color(.petPrimary500))
+            }
         }
+        .frame(minWidth: 121.00, maxWidth: 121.00, minHeight: 40.00, maxHeight: 40.00)
+        .background(Color(.white))
+        .cornerRadius(50)
+        .overlay(
+            RoundedRectangle(cornerRadius: 50)
+                .stroke(Color.gray, lineWidth: 1)
+        )
+        .shadow(color: Color.black.opacity(0.25), radius: 10, x: 3, y: 4)
         .padding(.top, 16)
+        .disabled(viewModel.isLoading)
     }
     
     // MARK: - Helper Views
@@ -223,7 +239,7 @@ struct PetRegisterView: View {
     
     private func editImageButton() -> some View {
         Button {
-            // action
+            // TODO: Implementar seleção de imagem da galeria
         } label: {
             VStack {
                 Image(.icPencil)
@@ -238,7 +254,7 @@ struct PetRegisterView: View {
     
     private func deleteImageButton() -> some View {
         Button {
-            // action
+            viewModel.image = UIImage(named: "banner_01")!
         } label: {
             Image("ic_trash")
         }

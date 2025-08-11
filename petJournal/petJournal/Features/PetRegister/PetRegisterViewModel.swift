@@ -7,6 +7,7 @@ class PetRegisterViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var isRequestSuccessful: Bool = false
     @Published var errorMessage: String? = nil
+    @Published var registeredPet: PetModel?
     
     static let shared: PetRegisterViewModel = .init()
     
@@ -19,19 +20,42 @@ class PetRegisterViewModel: ObservableObject {
     @Published var type: String? = nil
     @Published var gender: String = ""
     @Published var castrated: String = ""
-    @Published var image: UIImage = UIImage(named: "banner_01")!
+    @Published var image: UIImage = UIImage(named: "pet_logoLightPink")!
     
     // MARK: - ViewModel Functions
     func registerPet() {
+        guard isFieldsFilled else { return }
+        
         isLoading = true
         errorMessage = nil
         
-        PetRegisterService.registerPet(petToBeRegistered: pet) { [weak self] result in
+        // Converter a imagem para Data
+        let imageData = image.jpegData(compressionQuality: 0.8)
+        
+        // Criar o modelo com os dados atuais
+        let petToRegister = PetModel(
+            id: UUID().uuidString,
+            guardian: nil,
+            specie: Species(id: UUID().uuidString, name: type ?? ""),
+            specieAlias: nil,
+            petName: petName,
+            gender: gender,
+            breed: Breed(id: UUID().uuidString, name: breedName ?? ""),
+            breedAlias: nil,
+            size: PetSize(id: UUID().uuidString, name: size ?? ""),
+            castrated: castrated.lowercased() == "sim",
+            dateOfBirth: dateOfBirth,
+            image: imageData,
+            weight: Double(weight) ?? 0.0
+        )
+        
+        PetRegisterService.registerPet(petToBeRegistered: petToRegister) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 switch result {
-                case .success:
+                case .success(let registeredPet):
                     self?.isRequestSuccessful = true
+                    self?.registeredPet = registeredPet
                 case .failure(let error):
                     self?.errorMessage = "Erro na requisição: \(error.localizedDescription)"
                 }
@@ -58,7 +82,7 @@ class PetRegisterViewModel: ObservableObject {
             }
             image = imageFetched
         } catch {
-            image = UIImage(named: "banner_01")!
+            image = UIImage(named: "pet_logoLightPink")!
         }
     }
 }
@@ -66,15 +90,20 @@ class PetRegisterViewModel: ObservableObject {
 //MARK: - Validation
 extension PetRegisterViewModel {
     var isFieldsFilled: Bool {
-        if !pet.specie.name.isEmpty,
-           !pet.petName.isEmpty,
-           !pet.gender.isEmpty,
-           !pet.breed.name.isEmpty,
-           !pet.size.name.isEmpty,
-           !pet.dateOfBirth.isEmpty {
+        let requiredFields: [Bool] = [
+            !petName.isEmpty,
+            !gender.isEmpty,
+            !(type?.isEmpty ?? true),
+            !(breedName?.isEmpty ?? true),
+            !(size?.isEmpty ?? true),
+            !dateOfBirth.isEmpty,
+            !castrated.isEmpty
+        ]
+        
+        if requiredFields.allSatisfy({ $0 }) {
             return true
         } else {
-            errorMessage = "Por favor, preencha todos os campos."
+            errorMessage = "Por favor, preencha todos os campos obrigatórios."
             return false
         }
     }
