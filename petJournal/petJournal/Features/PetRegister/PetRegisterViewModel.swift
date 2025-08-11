@@ -66,11 +66,11 @@ class PetRegisterViewModel: ObservableObject {
 //MARK: - Validation
 extension PetRegisterViewModel {
     var isFieldsFilled: Bool {
-        if !pet.specie.detail.isEmpty,
+        if !pet.specie.name.isEmpty,
            !pet.petName.isEmpty,
            !pet.gender.isEmpty,
-           !pet.breed.detail.isEmpty,
-           !pet.size.detail.isEmpty,
+           !pet.breed.name.isEmpty,
+           !pet.size.name.isEmpty,
            !pet.dateOfBirth.isEmpty {
             return true
         } else {

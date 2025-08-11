@@ -24,10 +24,10 @@ class PetRegisterService: PetRegisterServiceProtocol {
         var body = Data()
         
         let fields: [String: Any] = [
-            "specieName": petToBeRegistered.specie.detail,
+            "specieName": petToBeRegistered.specie.name,
             "petName": petToBeRegistered.petName,
             "gender": petToBeRegistered.gender,
-            "breedName": petToBeRegistered.breed.detail,
+            "breedName": petToBeRegistered.breed.name,
             "size": petToBeRegistered.size,
             "castrated": petToBeRegistered.castrated,
             "dateOfBirth": petToBeRegistered.dateOfBirth

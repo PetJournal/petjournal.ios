@@ -97,7 +97,7 @@ struct PetProfileView: View {
     
     private var specieAndGenderView: some View {
         HStack {
-            Text(pet.specie.detail)
+            Text(pet.specie.name)
                 .font(.robotoSemiBold(size: .medium))
             Text(".")
                 .font(.robotoSemiBold(size: .medium))
@@ -119,7 +119,7 @@ struct PetProfileView: View {
                 .font(.robotoSemiBold(size: .medium))
             Text(".")
                 .font(.robotoSemiBold(size: .medium))
-            Text("\(pet.weight, specifier: "%.1f") kg")
+            Text("\(pet.weight ?? 0, specifier: "%.1f") kg")
                 .font(.robotoSemiBold(size: .medium))
         }
     }

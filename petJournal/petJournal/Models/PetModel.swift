@@ -4,18 +4,18 @@ import SwiftUI
 // MARK: - Main Models
 struct PetModel: Identifiable, Hashable, Codable {
     let id: String
-    let guardianID: String?
+    let guardian: Guardian?
     let specie: Species
     let specieAlias: String?
     let petName: String
     let gender: String
-    let breedAlias: String?
     let breed: Breed
+    let breedAlias: String?
     let size: PetSize
     let castrated: Bool
     let dateOfBirth: String
     let image: Data?
-    let weight: Double
+    let weight: Double?
     var isAddPetPlaceholder: Bool = false
     var allPetsPlaceholder: Bool = false
     var isSelected: Bool = false
@@ -39,19 +39,27 @@ struct PetModel: Identifiable, Hashable, Codable {
 }
 
 // MARK: - Supporting Models
+struct Guardian: Identifiable, Hashable, Codable {
+    let id: String
+    let firstName: String
+    let lastName: String
+    let email: String
+    let phone: String
+}
+
 struct Species: Identifiable, Hashable, Codable {
     let id: String
-    let detail: String
+    let name: String
 }
 
 struct Breed: Identifiable, Hashable, Codable {
     let id: String
-    let detail: String
+    let name: String
 }
 
 struct PetSize: Identifiable, Hashable, Codable {
     let id: String
-    let detail: String
+    let name: String
 }
 
 // MARK: - Image Handling
@@ -78,14 +86,14 @@ extension PetModel {
                                 isSelected: Bool = false) -> PetModel {
         return PetModel(
             id: UUID().uuidString,
-            guardianID: nil,
-            specie: Species(id: UUID().uuidString, detail: ""),
+            guardian: nil,
+            specie: Species(id: UUID().uuidString, name: ""),
             specieAlias: nil,
             petName: type.displayName,
             gender: "",
+            breed: Breed(id: UUID().uuidString, name: ""),
             breedAlias: nil,
-            breed: Breed(id: UUID().uuidString, detail: ""),
-            size: PetSize(id: UUID().uuidString, detail: ""),
+            size: PetSize(id: UUID().uuidString, name: ""),
             castrated: false,
             dateOfBirth: "",
             image: nil,
@@ -120,14 +128,14 @@ extension PetModel {
     ) -> PetModel {
         return PetModel(
             id: UUID().uuidString,
-            guardianID: nil,
-            specie: Species(id: UUID().uuidString, detail: species),
+            guardian: nil,
+            specie: Species(id: UUID().uuidString, name: species),
             specieAlias: nil,
             petName: name,
             gender: gender,
+            breed: Breed(id: UUID().uuidString, name: breed),
             breedAlias: nil,
-            breed: Breed(id: UUID().uuidString, detail: breed),
-            size: PetSize(id: UUID().uuidString, detail: size),
+            size: PetSize(id: UUID().uuidString, name: size),
             castrated: isCastrated,
             dateOfBirth: dateOfBirth,
             image: nil,
