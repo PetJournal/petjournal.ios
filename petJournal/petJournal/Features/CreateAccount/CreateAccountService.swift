@@ -1,55 +1,34 @@
-//
-//  CreateAccountService.swift
-//  petJournal
-//
-//  Created by Daiane Goncalves on 19/05/23.
-//
-
-import Foundation
-
 protocol CreateAccountServiceProtocol {
-    func registerUser(model: UserModel,
-                      completion: @escaping(Result<Bool, RegisterAPIError>) -> Void)
+    func registerUser(model: UserModel) async throws -> Bool
 }
 
 class CreateAccountService: CreateAccountServiceProtocol {
-    func registerUser(model: UserModel,
-                      completion: @escaping(Result<Bool, RegisterAPIError>) -> Void) {
-        
+    func registerUser(model: UserModel) async throws -> Bool {
         guard let url = URLManager.shared.makeURL(path: URLManager.shared.signupURL) else {
-            completion(.failure(.invalidURL))
-            return
+            throw NetworkError.invalidURL
         }
         
-        let body = RegisterRequestBody(firstName: model.firstName,
-                                       lastName: model.lastName,
-                                       email: model.email,
-                                       password: model.password,
-                                       passwordConfirmation: model.passwordConfirmation,
-                                       phone: model.phone,
-                                       isPrivacyPolicyAccepted: model.isPrivacyPolicyAccepted)
+        let body = RegisterRequestBody(
+            firstName: model.firstName,
+            lastName: model.lastName,
+            email: model.email,
+            password: model.password,
+            passwordConfirmation: model.passwordConfirmation,
+            phone: model.phone,
+            isPrivacyPolicyAccepted: model.isPrivacyPolicyAccepted
+        )
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(body)
-        
-        URLSession.shared.debugDataTask(with: request) { (data, response, error) in
-            guard let httpResponse = response as? HTTPURLResponse else {
-                completion(.failure(.invalidResponse))
-                return
-            }
-            
-            switch httpResponse.statusCode {
-            case RegisterAPIError.success.rawValue:
-                completion(.success(true))
-            case RegisterAPIError.invalidRequest.rawValue:
-                completion(.failure(.invalidRequest))
-            case RegisterAPIError.conflictRequest.rawValue:
-                completion(.failure(.conflictRequest))
-            default:
-                completion(.failure(.internalServerError))
-            }
-        }.resume()
+        do {
+            let _: EmptyResponse = try await NetworkManager.shared.jsonRequest(
+                url: url,
+                method: .post,
+                body: body
+            )
+            return true
+        } catch {
+            throw error
+        }
     }
 }
+
+struct EmptyResponse: Decodable {}

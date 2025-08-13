@@ -4,28 +4,29 @@ import Combine
 class PetListViewModel: ObservableObject {
     @Published var pets: [PetModel] = []
     @Published var isLoading = false
-    @Published var error: Error?
-    
-    private var cancellables = Set<AnyCancellable>()
+    @Published var error: NetworkError?
     static let shared: PetListViewModel = .init()
     
-    func fetchPets() {
+    private let service: PetListServiceProtocol
+    
+    init(service: PetListServiceProtocol = PetListService()) {
+        self.service = service
+    }
+    
+    @MainActor
+    func fetchPets() async {
         isLoading = true
         error = nil
         
-        PetListService.fetchPets { [weak self] result in
-            DispatchQueue.main.async {
-                self?.isLoading = false
-                
-                switch result {
-                case .success(let pets):
-                    self?.pets = self?.preparePetsForDisplay(pets) ?? []
-                case .failure(let error):
-                    self?.error = error
-                    print("Error fetching pets: \(error.localizedDescription)")
-                }
-            }
+        do {
+            pets = try await service.fetchPets()
+        } catch let error as NetworkError {
+            self.error = error
+        } catch {
+            self.error = .unknown(statusCode: -1)
         }
+        
+        isLoading = false
     }
     // Here we sort by pet name
     private func preparePetsForDisplay(_ pets: [PetModel]) -> [PetModel] {

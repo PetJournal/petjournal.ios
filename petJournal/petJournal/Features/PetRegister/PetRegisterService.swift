@@ -1,87 +1,40 @@
-import Foundation
-
 protocol PetRegisterServiceProtocol {
-    static func registerPet(petToBeRegistered: PetModel,
-                     completion: @escaping(Result<PetModel, PetRegisterError>) -> Void)
+    func registerPet(petToBeRegistered: PetModel) async throws -> PetModel
 }
 
 class PetRegisterService: PetRegisterServiceProtocol {
-    static func registerPet(petToBeRegistered: PetModel,
-                     completion: @escaping(Result<PetModel, PetRegisterError>) -> Void) {
-        
+    func registerPet(petToBeRegistered: PetModel) async throws -> PetModel {
         guard let url = URLManager.shared.makeURL(path: URLManager.shared.pet) else {
-            completion(.failure(.invalidURL))
-            return
+            throw NetworkError.invalidURL
         }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        var formData = MultipartFormData()
         
-        let boundary = UUID().uuidString
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        // Add fields
+        formData.append(petToBeRegistered.specie.name, for: "specieName")
+        formData.append(petToBeRegistered.petName, for: "petName")
+        formData.append(petToBeRegistered.gender, for: "gender")
+        formData.append(petToBeRegistered.breed.name, for: "breedName")
+        formData.append(petToBeRegistered.size.name, for: "size")
+        formData.append(petToBeRegistered.castrated ? "true" : "false", for: "castrated")
+        formData.append(petToBeRegistered.dateOfBirth, for: "dateOfBirth")
         
-        var body = Data()
-        
-        let fields: [String: Any] = [
-            "specieName": petToBeRegistered.specie.name,
-            "petName": petToBeRegistered.petName,
-            "gender": petToBeRegistered.gender,
-            "breedName": petToBeRegistered.breed.name,
-            "size": petToBeRegistered.size.name,
-            "castrated": petToBeRegistered.castrated,
-            "dateOfBirth": petToBeRegistered.dateOfBirth
-        ]
-        
-        for (key, value) in fields {
-            body.append("--\(boundary)\r\n".data(using: .utf8)!)
-            body.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n".data(using: .utf8)!)
-            body.append("\(value)\r\n".data(using: .utf8)!)
-        }
-        
-        // Adiciona o arquivo de imagem, se existir
+        // Add image if exists
         if let imageData = petToBeRegistered.image {
-            body.append("--\(boundary)\r\n".data(using: .utf8)!)
-            body.append("Content-Disposition: form-data; name=\"image\"; filename=\"pet_image.jpg\"\r\n".data(using: .utf8)!)
-            body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
-            body.append(imageData)
-            body.append("\r\n".data(using: .utf8)!)
+            formData.append(
+                imageData,
+                for: "image",
+                fileName: "pet_image.jpg",
+                mimeType: "image/jpeg"
+            )
         }
         
-        // Finaliza o corpo
-        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+        formData.finalize()
         
-        request.httpBody = body
-        
-        URLSession.shared.debugDataTask(with: request) { (data, response, error) in
-            guard let httpResponse = response as? HTTPURLResponse else {
-                completion(.failure(.invalidResponse))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(.invalidResponse))
-                return
-            }
-            
-            do {
-                if (200...299).contains(httpResponse.statusCode) {
-                    let decoder = JSONDecoder()
-                    let responsePet = try decoder.decode(PetModel.self, from: data)
-                    completion(.success(responsePet))
-                } else {
-                    switch httpResponse.statusCode {
-                    case 400:
-                        completion(.failure(.invalidRequest))
-                    case 406:
-                        completion(.failure(.notAccepted))
-                    default:
-                        completion(.failure(.internalServerError))
-                    }
-                }
-            } catch {
-                completion(.failure(.decodingError))
-            }
-        }.resume()
+        return try await NetworkManager.shared.multipartRequest(
+            url: url,
+            method: .post,
+            formData: formData
+        )
     }
 }

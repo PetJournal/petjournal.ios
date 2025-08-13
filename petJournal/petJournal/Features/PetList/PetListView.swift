@@ -2,7 +2,8 @@ import SwiftUI
 
 struct PetListView: View {
     @State private var path = NavigationPath()
-    @StateObject private var viewModel = PetListViewModel.shared
+    @StateObject private var viewModel = PetListViewModel()
+    @State private var showErrorAlert = false
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -18,13 +19,23 @@ struct PetListView: View {
                     EmptyView()
                 }
             }
-            .onAppear {
-                viewModel.fetchPets()
+            .task {
+                await viewModel.fetchPets()
+            }
+            .onChange(of: viewModel.error?.localizedDescription) { _,_ in
+                showErrorAlert = viewModel.error != nil
+            }
+            .alert("Erro", isPresented: $showErrorAlert) {
+                Button("OK", role: .cancel) {
+                    viewModel.error = nil
+                }
+            } message: {
+                Text(viewModel.error?.localizedDescription ?? "Erro desconhecido")
             }
         }
     }
     
-    // MARK: Subviews    
+    // MARK: Subviews
     private var backgroundImage: some View {
         Image(asset: .petListBackground)
             .resizable()

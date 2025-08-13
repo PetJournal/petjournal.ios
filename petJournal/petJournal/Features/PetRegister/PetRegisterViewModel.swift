@@ -9,9 +9,7 @@ class PetRegisterViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
     @Published var registeredPet: PetModel?
     
-    static let shared: PetRegisterViewModel = .init()
-    
-    // MARK: - Mock de Estado para a PetRegisterView (seguindo os nomes de PetModel)
+    // MARK: - Form Fields
     @Published var petName: String = ""
     @Published var breedName: String? = nil
     @Published var size: String? = nil
@@ -22,12 +20,20 @@ class PetRegisterViewModel: ObservableObject {
     @Published var castrated: String = ""
     @Published var image: UIImage = UIImage(named: "pet_logoLightPink")!
     
+    private let petRegisterService: PetRegisterServiceProtocol
+    
+    init(service: PetRegisterServiceProtocol = PetRegisterService()) {
+        self.petRegisterService = service
+    }
+    
     // MARK: - ViewModel Functions
-    func registerPet() {
+    func registerPet() async {
         guard isFieldsFilled else { return }
         
-        isLoading = true
-        errorMessage = nil
+        await MainActor.run {
+            isLoading = true
+            errorMessage = nil
+        }
         
         // Converter a imagem para Data
         let imageData = image.jpegData(compressionQuality: 0.8)
@@ -49,20 +55,23 @@ class PetRegisterViewModel: ObservableObject {
             weight: Double(weight) ?? 0.0
         )
         
-        PetRegisterService.registerPet(petToBeRegistered: petToRegister) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.isLoading = false
-                switch result {
-                case .success(let registeredPet):
-                    self?.isRequestSuccessful = true
-                    self?.registeredPet = registeredPet
-                case .failure(let error):
-                    self?.errorMessage = "Erro na requisição: \(error.localizedDescription)"
-                }
+        do {
+            let registeredPet = try await petRegisterService.registerPet(petToBeRegistered: petToRegister)
+            
+            await MainActor.run {
+                self.isRequestSuccessful = true
+                self.registeredPet = registeredPet
+                self.isLoading = false
+            }
+        } catch {
+            await MainActor.run {
+                self.errorMessage = "Erro na requisição: \(error.localizedDescription)"
+                self.isLoading = false
             }
         }
     }
     
+    // MARK: - Data Options
     func getBreed() -> [String] {
         return ["Labrador", "Lhasa Apso", "Shit Zhu", "Golden", "Sem raça definida"]
     }
@@ -78,16 +87,24 @@ class PetRegisterViewModel: ObservableObject {
     func getImage() async {
         do {
             guard let imageFetched = try await AsyncImageService.asyncImage(from: "https://img.freepik.com/fotos-gratis/imagem-vertical-de-foco-raso-de-um-filhote-de-cachorro-golden-retriever-fofo-sentado-em-um-gramado_181624-27259.jpg?semt=ais_hybrid&w=740") else {
+                await MainActor.run {
+                    image = UIImage(named: "pet_logoLightPink")!
+                }
                 return
             }
-            image = imageFetched
+            
+            await MainActor.run {
+                image = imageFetched
+            }
         } catch {
-            image = UIImage(named: "pet_logoLightPink")!
+            await MainActor.run {
+                image = UIImage(named: "pet_logoLightPink")!
+            }
         }
     }
 }
 
-//MARK: - Validation
+// MARK: - Validation
 extension PetRegisterViewModel {
     var isFieldsFilled: Bool {
         let requiredFields: [Bool] = [

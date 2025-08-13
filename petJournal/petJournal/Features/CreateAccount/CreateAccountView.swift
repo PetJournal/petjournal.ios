@@ -1,15 +1,8 @@
-//
-//  CreateAccountView.swift
-//  petJournal
-//
-//  Created by Daiane Goncalves on 16/05/23.
-//
-
 import SwiftUI
 
 struct CreateAccountView: View {
     @EnvironmentObject var router: NavigationRouter
-    @StateObject var viewModel = CreateAccountViewModel(service: CreateAccountService())
+    @StateObject var viewModel = CreateAccountViewModel()
     @State private var showWebview = false
     
     var body: some View {
@@ -31,8 +24,16 @@ struct CreateAccountView: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(Color.theme.petWhite)
+            .alert("Registro", isPresented: $viewModel.showAlert) {
+                Button("OK") {
+                    if viewModel.isRegister {
+                        router.navigate(to: .accessAccount)
+                    }
+                }
+            } message: {
+                Text(viewModel.registrationStatusMessage)
+            }
         }
-        .environmentObject(viewModel)
     }
 }
 
@@ -121,24 +122,20 @@ extension CreateAccountView {
     
     private var buttonRegister: some View {
         VStack {
-            PJButton(title: "Continuar", buttonType: .primaryType) {
-                viewModel.registerUser()
+            PJButton(
+                title: viewModel.isLoading ? "" : "Continuar",
+                buttonType: .primaryType
+            ) {
+                Task {
+                    await viewModel.registerUser()
+                }
             }
-            .disabled(!viewModel.completeRegister)
-        }
-        .alert(isPresented: $viewModel.cancel) {
-            Alert(title: Text("Registro"),
-                  message: Text("\(viewModel.emailAlreadyRegistered)"),
-                  primaryButton: .cancel(),
-                  secondaryButton: .destructive(
-                    Text("OK"),
-                    action: {
-                        if !viewModel.isRegister {
-                            router.navigate(to: .accessAccount)
-                        }
-                    }
-                  )
-            )
+            .disabled(!viewModel.completeRegister || viewModel.isLoading)
+            .overlay {
+                if viewModel.isLoading {
+                    ProgressView()
+                }
+            }
         }
     }
     
@@ -160,5 +157,5 @@ extension CreateAccountView {
 
 #Preview {
     CreateAccountView()
-        .environmentObject(CreateAccountViewModel(service: CreateAccountService()))
+        .environmentObject(CreateAccountViewModel())
 }

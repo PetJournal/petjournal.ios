@@ -1,14 +1,8 @@
 import Foundation
 
 extension URLSession {
-    /// Cria e retorna uma URLSessionDataTask com logs detalhados da requisição e resposta
-    /// - Parameters:
-    ///   - request: O objeto URLRequest contendo os detalhes da requisição
-    ///   - completionHandler: Closure de completion que recebe os dados da resposta, a resposta em si e possíveis erros
-    /// - Returns: Uma URLSessionDataTask pronta para ser executada
-    func debugDataTask(with request: URLRequest,
-                      completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        
+    /// Executa uma requisição com logging detalhado
+    func debugRequest(_ request: URLRequest) async throws -> (Data, URLResponse) {
         #if DEBUG
         // MARK: - Request Logging
         print("\n🌐 ===== 📤 Request Debug 📤 ==== 🌐")
@@ -29,20 +23,17 @@ extension URLSession {
                contentType.contains("multipart/form-data"),
                let boundary = contentType.components(separatedBy: "boundary=").last {
                 
-                // Split into parts using boundary
                 let parts = String(data: body, encoding: .ascii)?
                     .components(separatedBy: "--\(boundary)")
                     .filter { !$0.trimmed.isEmpty } ?? []
                 
                 for part in parts {
-                    // Split into headers and content
                     let components = part.components(separatedBy: "\r\n\r\n")
                     guard components.count > 1 else { continue }
                     
                     let headers = components[0]
                     let content = components[1...].joined(separator: "\r\n\r\n").trimmed
                     
-                    // Print headers compactly
                     let headerLines = headers.components(separatedBy: "\r\n")
                         .filter { !$0.isEmpty }
                         .map { "🔸 \($0)" }
@@ -50,27 +41,25 @@ extension URLSession {
                     
                     print(headerLines)
                     
-                    // Handle content based on type
                     if headers.contains("image/jpeg") || headers.contains("application/octet-stream") {
                         print("🔹 [binary data omitted]")
                     } else if !content.isEmpty {
-                        print("🔹 Content: \(content.prefix(200))") // Show beginning of non-binary content
+                        print("🔹 Content: \(content.prefix(200))")
                     }
                 }
             }
-            // JSON or plain text
             else if let bodyString = String(data: body, encoding: .utf8) {
-                print("🔹 \(bodyString.prefix(500))") // Limit output length
+                print("🔹 \(bodyString.prefix(500))")
             }
-            // Binary data
             else {
                 print("🔹 [binary data: \(body.count) bytes]")
             }
         }
         #endif
         
-        // MARK: - Task Execution
-        return dataTask(with: request) { data, response, error in
+        do {
+            let (data, response) = try await data(for: request)
+            
             #if DEBUG
             // MARK: - Response Logging
             print("\n🌐 ===== 📥 Response Debug 📥 ==== 🌐")
@@ -82,23 +71,25 @@ extension URLSession {
                 }
             }
             
-            if let error = error {
-                print("🔴 Error: \(error.localizedDescription)")
-            }
-            
-            if let data = data {
-                print("🟢 Data (\(data.count) bytes):")
-                if let string = String(data: data, encoding: .utf8) {
-                    print("🔹 \(string.prefix(500))") // Limit output length
-                } else {
-                    print("🔹 [binary data]")
-                }
+            print("🟢 Data (\(data.count) bytes):")
+            if let string = String(data: data, encoding: .utf8) {
+                print("🔹 \(string.prefix(500))")
+            } else {
+                print("🔹 [binary data]")
             }
             
             print("═══════════════════════════════════════")
             #endif
             
-            completionHandler(data, response, error)
+            return (data, response)
+        } catch {
+            #if DEBUG
+            print("\n🌐 ===== ❌ Error Debug ❌ ==== 🌐")
+            print("🔴 Error: \(error.localizedDescription)")
+            print("═══════════════════════════════════════")
+            #endif
+            
+            throw error
         }
     }
 }

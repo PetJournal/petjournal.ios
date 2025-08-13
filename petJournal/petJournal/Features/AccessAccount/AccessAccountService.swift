@@ -1,48 +1,41 @@
-//
-//  LoginService.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 18/04/23.
-//
-
 import Foundation
 
 protocol AccessAccountServiceProtocol {
-    func authenticationEmail(email: String, password: String, completion: @escaping(Result<String, AuthenticationError>) -> Void)
+    func authenticationEmail(email: String, password: String) async throws -> String
 }
 
 final class AccessAccountService: AccessAccountServiceProtocol {
-    func authenticationEmail(email: String, password: String, completion: @escaping(Result<String, AuthenticationError>) -> Void) {
-        let url = URLManager.shared.makeURL(path: URLManager.shared.loginURL)!
+    func authenticationEmail(email: String, password: String) async throws -> String {
+        guard let url = URLManager.shared.makeURL(path: URLManager.shared.loginURL) else {
+            throw NetworkError.invalidURL
+        }
         
         let body = LoginRequestBodyAuth(email: email, password: password)
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
-            request.httpBody = try JSONEncoder().encode(body)
-        } catch {
-            completion(.failure(.failedToEncode))
-            return
-        }
-        
-        URLSession.shared.debugDataTask(with: request) { (data, response, error) in
-            guard let data = data, error == nil else {
-                completion(.failure(.noData))
-                return
+            let response: LoginResponse = try await NetworkManager.shared.jsonRequest(
+                url: url,
+                method: .post,
+                body: body
+            )
+            
+            guard let token = response.accessToken else {
+                throw AuthenticationError.invalidCredentials
             }
             
-            do {
-                let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
-                guard let token = loginResponse.accessToken else {
-                    completion(.failure(.invalidCredentials))
-                    return
-                }
-                completion(.success(token))
-            } catch {
-                completion(.failure(.invalidCredentials))
+            return token
+        } catch let error as NetworkError {
+            // Map network errors to authentication errors
+            switch error {
+            case .unauthorized:
+                throw AuthenticationError.invalidCredentials
+            case .noData, .decodingFailed:
+                throw AuthenticationError.invalidResponse
+            default:
+                throw AuthenticationError.unknown
             }
-        }.resume()
+        } catch {
+            throw AuthenticationError.unknown
+        }
     }
 }

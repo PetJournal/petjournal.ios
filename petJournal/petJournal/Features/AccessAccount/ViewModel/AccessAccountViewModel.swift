@@ -1,62 +1,68 @@
-//
-//  AccessAccountViewModel.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 24/03/23.
-//
-
 import SwiftUI
 
+@MainActor
 final class AccessAccountViewModel: ObservableObject {
     @Published var user: UserModel = UserModel.newUser
-    @Published var cancel: Bool = false
-    @Published var alertErrorMessage: Bool = false
+    @Published var isLoading: Bool = false
+    @Published var showAlert: Bool = false
+    @Published var errorMessage: String = ""
     
-    var service: AccessAccountServiceProtocol!
-    init(service: AccessAccountServiceProtocol) {
+    private let service: AccessAccountServiceProtocol
+    private let sessionManager: SessionManager
+    
+    init(
+        service: AccessAccountServiceProtocol = AccessAccountService(),
+        sessionManager: SessionManager = .shared
+    ) {
         self.service = service
+        self.sessionManager = sessionManager
     }
     
-    func authUser() {
-        service.authenticationEmail(email: user.email, password: user.password) { result in
-            switch result {
-            case .success(let token):
-                SessionManager.shared.login(withToken: token)
-                DispatchQueue.main.async {
-                    SessionManager.shared.statusLogin = .unknown
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    SessionManager.shared.statusLogin = .signIn
-                }
-            case .failure:
-                DispatchQueue.main.async {
-                    self.alertErrorMessage = true
-                    self.cancel.toggle()
-                }
-                DispatchQueue.main.async {
-                    SessionManager.shared.statusLogin = .signOut
-                }
-            }
+    func authUser() async {
+        guard isValidEmail && isValidPassword else { return }
+        
+        isLoading = true
+        showAlert = false
+        errorMessage = ""
+        
+        do {
+            let token = try await service.authenticationEmail(
+                email: user.email,
+                password: user.password
+            )
+            
+            sessionManager.login(withToken: token)
+            sessionManager.statusLogin = .unknown
+            
+            // Simulate processing delay if needed
+            try await Task.sleep(nanoseconds: 3_000_000_000)
+            sessionManager.statusLogin = .signIn
+            
+        } catch let error as AuthenticationError {
+            errorMessage = error.localizedDescription
+            showAlert = true
+            sessionManager.statusLogin = .signOut
+        } catch {
+            errorMessage = "Ocorreu um erro inesperado"
+            showAlert = true
+            sessionManager.statusLogin = .signOut
         }
+        
+        isLoading = false
     }
     
     func logout() {
-        if SessionManager.shared.isAuthenticated {
-            DispatchQueue.main.async {
-                SessionManager.shared.logout()
-                SessionManager.shared.statusLogin = .signOut
-            }
+        if sessionManager.isAuthenticated {
+            sessionManager.logout()
+            sessionManager.statusLogin = .signOut
         }
     }
 }
 
+// MARK: - Validation
 extension AccessAccountViewModel {
-    func completeLogin() -> Bool {
-        if (ValidationsModel.shared.validateInput(user.password, of: .password(.default)) == nil) &&
-            (ValidationsModel.shared.validateInput(user.email, of: .email(.default)) == nil) {
-            return false
-        }
-        return true
+    var completeLogin: Bool {
+        isValidEmail && isValidPassword
     }
     
     var isValidEmail: Bool {
@@ -67,26 +73,11 @@ extension AccessAccountViewModel {
         ValidationsModel.shared.validateInput(user.password, of: .password(.default)) == nil
     }
     
-    var emailOrPasswordIncorrect: String {
-        if alertErrorMessage {
-            return "Usuário ou senha incorretos"
-        }
-        return ""
-    }
-    
     var emailErrorMessage: String {
-        if let errorValidation = ValidationsModel.shared.validateInput(user.email, of: .email(.default)) {
-            let message = errorValidation.reason
-            return message
-        }
-        return String()
+        ValidationsModel.shared.validateInput(user.email, of: .email(.default))?.reason ?? ""
     }
     
     var passwordErrorMessage: String {
-        if let errorValidation = ValidationsModel.shared.validateInput(user.password, of: .password(.default)) {
-            let message = errorValidation.reason
-            return message
-        }
-        return String()
+        ValidationsModel.shared.validateInput(user.password, of: .password(.default))?.reason ?? ""
     }
 }

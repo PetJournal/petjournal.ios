@@ -24,18 +24,18 @@ enum KeysUser: String {
 
 struct UserSession: Codable {
     var hasSession: Bool {
-        set { UserDefaults.standard.set(newValue, forKey: KeysGeneral.hasSession.rawValue) }
         get { UserDefaults.standard.bool(forKey: KeysGeneral.hasSession.rawValue) }
+        set { UserDefaults.standard.set(newValue, forKey: KeysGeneral.hasSession.rawValue) }
+    }
+    
+    var token: String? {
+        get { UserDefaults.standard.string(forKey: KeysGeneral.token.rawValue) }
+        set { UserDefaults.standard.set(newValue, forKey: KeysGeneral.token.rawValue) }
     }
     
     var registerUser: String? {
         set { UserDefaults.standard.set(newValue, forKey: KeysGeneral.registerUser.rawValue) }
         get { UserDefaults.standard.string(forKey: KeysGeneral.registerUser.rawValue) }
-    }
-    
-    var token: String? {
-        set { UserDefaults.standard.set(newValue, forKey: KeysGeneral.token.rawValue) }
-        get { UserDefaults.standard.string(forKey: KeysGeneral.token.rawValue) }
     }
 
     var firstName: String? {

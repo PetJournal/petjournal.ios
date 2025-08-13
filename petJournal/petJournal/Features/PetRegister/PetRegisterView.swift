@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PetRegisterView: View {
-    @StateObject private var viewModel = PetRegisterViewModel.shared
+    @StateObject private var viewModel = PetRegisterViewModel()
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -194,7 +194,9 @@ struct PetRegisterView: View {
     
     private func saveButton() -> some View {
         Button(action: {
-            viewModel.registerPet()
+            Task {
+                await viewModel.registerPet()
+            }
         }) {
             if viewModel.isLoading {
                 ProgressView()
@@ -205,8 +207,9 @@ struct PetRegisterView: View {
                     .foregroundColor(Color(.petPrimary500))
             }
         }
-        .frame(minWidth: 121.00, maxWidth: 121.00, minHeight: 40.00, maxHeight: 40.00)
-        .background(Color(.white))
+        .frame(minWidth: 121.00, maxWidth: 121.00,
+               minHeight: 40.00, maxHeight: 40.00)
+        .background(Color.theme.petWhite)
         .cornerRadius(50)
         .overlay(
             RoundedRectangle(cornerRadius: 50)
