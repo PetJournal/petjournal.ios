@@ -158,7 +158,7 @@ private extension PetHomeView {
     // Tasks Components
     func tasksListView(tasks: [PetTaskModel]) -> some View {
         ZStack(alignment: .bottomTrailing) {
-            VStack {
+            LazyVStack(alignment: .leading) {
                 Text("Próximas tarefas:")
                     .font(.robotoMedium(size: .big))
                 ForEach(tasks) { task in
