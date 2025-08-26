@@ -1,22 +1,28 @@
-//
-//  LoadingView.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 26/09/23.
-//
-
 import SwiftUI
 
 struct LoadingView: View {
     var body: some View {
-        CustomGlassView(width: 200, height: 200, alignment: .center) {
-            VStack {
-                ProgressView("Aguarde")
-                    .font(.footnote)
-                    .padding()
+        ZStack {
+            // Fundo semi-transparente
+            Color.black.opacity(0.4)
+                .edgesIgnoringSafeArea(.all)
+            
+            // Conteúdo central
+            CustomGlassView(width: 280, height: 280, alignment: .center) {
+                VStack(spacing: 20) {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .scaleEffect(1.5)
+                    
+                    Text("Aguarde")
+                        .font(.robotoSemiBold(size: .big))
+                        .foregroundColor(Color.theme.petWhite)
+                }
+                .padding(30)
             }
-            .padding()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.clear)
     }
 }
 

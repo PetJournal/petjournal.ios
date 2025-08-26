@@ -65,8 +65,10 @@ struct TaskListView: View {
                 frequencySelectorView
                 tasksListView
             }
-            
-            addTaskButton
+            CircularButton(font: .robotoMedium(size: .biggest),
+                           action: { showingAddTask = true })
+            .padding()
+            .offset(x: -10, y: -10)
         }
         .navigationDestination(for: Route.self) { route in
             switch route {
@@ -141,20 +143,6 @@ struct TaskListView: View {
             }
         }
         .listStyle(PlainListStyle())
-    }
-    
-    private var addTaskButton: some View {
-        Button(action: { showingAddTask = true }) {
-            Image(systemName: "plus")
-                .font(.robotoMedium(size: .biggest))
-                .frame(width: 60, height: 60)
-                .background(Color.theme.petPrimary500)
-                .foregroundColor(.white)
-                .clipShape(Circle())
-                .shadow(radius: 4)
-        }
-        .padding()
-        .offset(x: -10, y: -10)
     }
 }
 

@@ -27,7 +27,7 @@ struct InitialActor: View {
                 case .editPassword:
                     EditPasswordView(viewModel: EditPasswordViewModel())
                 case .home:
-                    HomePageView()
+                    PetHomeView()
                 case .petList:
                     PetListView()
                 case .petProfile(let pet):

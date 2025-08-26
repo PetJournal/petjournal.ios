@@ -36,11 +36,6 @@ struct ServiceItemView_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack() {
-                ServiceItemView(service: ServiceModel(id: 0,
-                                                      name: "Todos",
-                                                      image: ImageAsset.all.rawValue,
-                                                      color: .theme.petWhite,
-                                                      backgroundColor: .theme.petPrimary500))
                 ForEach(ServiceModel.mockServices) { service in
                     ServiceItemView(service: service)
                 }

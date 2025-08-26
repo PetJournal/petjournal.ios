@@ -1,10 +1,3 @@
-//
-//  TabBarView.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 20/06/23.
-//
-
 import SwiftUI
 
 struct TabBarView: View {
@@ -12,33 +5,32 @@ struct TabBarView: View {
     @ObservedObject private var tabViewModel = TabBarViewModel()
     
     var body: some View {
+        ZStack(alignment: .bottom) {
+            TabContentContainerView(tabViewModel: tabViewModel)
+            CustomTabBar(viewModel: tabViewModel)
+        }
+    }
+}
+
+struct TabContentContainerView: View {
+    @ObservedObject var tabViewModel: TabBarViewModel
+    
+    var body: some View {
         TabView(selection: $tabViewModel.currentTab) {
-            HomePageView()
+            PetHomeView()
                 .environmentObject(tabViewModel)
-                .tabItem {
-                    Label("Home", image: ImageAsset.home.rawValue)
-                }
                 .tag(0)
             
-            Text("Agenda")
-                .tabItem {
-                    Label("Agenda", image: ImageAsset.petsCalendar.rawValue)
-                }
+            TaskListView(tasks: [])
                 .tag(1)
             
             PetListView()
-                .tabItem {
-                    Label("Pet", image: ImageAsset.paw.rawValue)
-                }
                 .tag(2)
             
-            Text("Tutor")
-                .tabItem {
-                    Label("User", image: ImageAsset.user.rawValue)
-                }
+            TutorProfileView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
                 .tag(3)
         }
-        .withDefaultTabBar()
+        .tabViewStyle(.page(indexDisplayMode: .never))
     }
 }
 
