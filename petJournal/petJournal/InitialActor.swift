@@ -49,7 +49,7 @@ struct InitialActor: View {
         
         // Home
         case .home:
-            HomePageView()
+            PetHomeView()
         }
     }
 }

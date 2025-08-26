@@ -32,7 +32,6 @@ struct PetTaskCard: View {
         ZStack(alignment: .bottomLeading) {
             cardContent
         }
-        .padding(.horizontal)
     }
     
     private var cardContent: some View {

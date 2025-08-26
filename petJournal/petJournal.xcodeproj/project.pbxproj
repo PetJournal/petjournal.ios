@@ -30,12 +30,16 @@
 		7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */; };
 		7509EDD92D7223150036B9B8 /* ImageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD82D7223150036B9B8 /* ImageAssets.swift */; };
 		750A36432E2328EF00EF8075 /* Extension+URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A36422E2328EF00EF8075 /* Extension+URLSession.swift */; };
+		750A36452E23374500EF8075 /* PetHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A36442E23374500EF8075 /* PetHomeViewModel.swift */; };
 		751DDCA82DEDEA5000D312F2 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751DDCA72DEDEA5000D312F2 /* TaskListView.swift */; };
 		7542A4762D95C6A100F712C2 /* PetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4752D95C6A100F712C2 /* PetListViewModel.swift */; };
 		7542A4782D95C6BF00F712C2 /* PetListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4772D95C6BF00F712C2 /* PetListService.swift */; };
 		7542A47A2D95DDA500F712C2 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4792D95DDA500F712C2 /* NetworkError.swift */; };
 		754EAA582D85C694000FC465 /* PetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAA572D85C694000FC465 /* PetButton.swift */; };
+		7561564D2E37D803008DB0EA /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561564C2E37D803008DB0EA /* CustomTabBar.swift */; };
 		75950CB12E04A25A001EC58B /* PetTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75950CB02E04A25A001EC58B /* PetTaskModel.swift */; };
+		759A42812E33D93C00C9CE26 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42802E33D93C00C9CE26 /* CircularButton.swift */; };
+		759A42832E33E62B00C9CE26 /* NoTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42822E33E62B00C9CE26 /* NoTasksView.swift */; };
 		75AF95572DAAAB9500CF0A02 /* TaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF95562DAAAB9500CF0A02 /* TaskButton.swift */; };
 		75AFB52E2E4AAB39002D88CB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFB52D2E4AAB38002D88CB /* NetworkManager.swift */; };
 		75C8958F2D84BDA6007BEBA3 /* PetRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */; };
@@ -92,18 +96,14 @@
 		C9D95F6F2A37A6E6001C271F /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */; };
 		C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D95F712A37AA0D001C271F /* BlurView.swift */; };
 		C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017029E72D7D0014F9C4 /* FontFamily.swift */; };
-		C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */; };
 		C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F49E2A41FEF8002C21F7 /* TabBarView.swift */; };
 		C9F5F4A12A41FF0F002C21F7 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A02A41FF0F002C21F7 /* TabBarViewModel.swift */; };
-		C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */; };
-		C9F5F4AA2A42046E002C21F7 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A92A42046E002C21F7 /* HomeModel.swift */; };
+		C9F5F4AA2A42046E002C21F7 /* HomeBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4A92A42046E002C21F7 /* HomeBanner.swift */; };
 		C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */; };
-		C9F5F4AE2A4204C7002C21F7 /* ProfileComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */; };
 		C9F5F4B02A4204EB002C21F7 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */; };
-		C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */; };
 		C9F5F4B42A420517002C21F7 /* ServiceItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */; };
-		C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B72A420553002C21F7 /* SideMenuView.swift */; };
-		C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B92A420562002C21F7 /* HomePageView.swift */; };
+		C9F5F4B82A420553002C21F7 /* TutorProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B72A420553002C21F7 /* TutorProfileView.swift */; };
+		C9F5F4BA2A420562002C21F7 /* PetHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F5F4B92A420562002C21F7 /* PetHomeView.swift */; };
 		C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */; };
 		C9F9D8372A1424E700DD72F1 /* PJButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8362A1424E700DD72F1 /* PJButton.swift */; };
 		C9F9D8392A14251500DD72F1 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9D8382A14251500DD72F1 /* CustomButtonStyle.swift */; };
@@ -147,12 +147,16 @@
 		7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Image.swift"; sourceTree = "<group>"; };
 		7509EDD82D7223150036B9B8 /* ImageAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssets.swift; sourceTree = "<group>"; };
 		750A36422E2328EF00EF8075 /* Extension+URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URLSession.swift"; sourceTree = "<group>"; };
+		750A36442E23374500EF8075 /* PetHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHomeViewModel.swift; sourceTree = "<group>"; };
 		751DDCA72DEDEA5000D312F2 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		7542A4752D95C6A100F712C2 /* PetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListViewModel.swift; sourceTree = "<group>"; };
 		7542A4772D95C6BF00F712C2 /* PetListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListService.swift; sourceTree = "<group>"; };
 		7542A4792D95DDA500F712C2 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		754EAA572D85C694000FC465 /* PetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetButton.swift; sourceTree = "<group>"; };
+		7561564C2E37D803008DB0EA /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		75950CB02E04A25A001EC58B /* PetTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskModel.swift; sourceTree = "<group>"; };
+		759A42802E33D93C00C9CE26 /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
+		759A42822E33E62B00C9CE26 /* NoTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTasksView.swift; sourceTree = "<group>"; };
 		75AF95562DAAAB9500CF0A02 /* TaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskButton.swift; sourceTree = "<group>"; };
 		75AFB52D2E4AAB38002D88CB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterViewModel.swift; sourceTree = "<group>"; };
@@ -210,18 +214,14 @@
 		C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		C9D95F712A37AA0D001C271F /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		C9E5017029E72D7D0014F9C4 /* FontFamily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFamily.swift; sourceTree = "<group>"; };
-		C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		C9F5F49E2A41FEF8002C21F7 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		C9F5F4A02A41FF0F002C21F7 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
-		C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModifier.swift; sourceTree = "<group>"; };
-		C9F5F4A92A42046E002C21F7 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		C9F5F4A92A42046E002C21F7 /* HomeBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBanner.swift; sourceTree = "<group>"; };
 		C9F5F4AB2A42049F002C21F7 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
-		C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComponentView.swift; sourceTree = "<group>"; };
 		C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
-		C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureTabView.swift; sourceTree = "<group>"; };
 		C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceItemView.swift; sourceTree = "<group>"; };
-		C9F5F4B72A420553002C21F7 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
-		C9F5F4B92A420562002C21F7 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		C9F5F4B72A420553002C21F7 /* TutorProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorProfileView.swift; sourceTree = "<group>"; };
+		C9F5F4B92A420562002C21F7 /* PetHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHomeView.swift; sourceTree = "<group>"; };
 		C9F9D82C2A14230600DD72F1 /* AccessAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessAccountView.swift; sourceTree = "<group>"; };
 		C9F9D8362A1424E700DD72F1 /* PJButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJButton.swift; sourceTree = "<group>"; };
 		C9F9D8382A14251500DD72F1 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
@@ -298,6 +298,7 @@
 				75C8958D2D84BD92007BEBA3 /* PetRegister */,
 				C9F5F49D2A41FEE6002C21F7 /* TabBar */,
 				751DDCA62DEDEA3400D312F2 /* TaskList */,
+				75AE06562E32B64C00584BD2 /* TutorProfile */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -387,6 +388,14 @@
 			path = TaskList;
 			sourceTree = "<group>";
 		};
+		75AE06562E32B64C00584BD2 /* TutorProfile */ = {
+			isa = PBXGroup;
+			children = (
+				C9F5F4B72A420553002C21F7 /* TutorProfileView.swift */,
+			);
+			path = TutorProfile;
+			sourceTree = "<group>";
+		};
 		75C8958D2D84BD92007BEBA3 /* PetRegister */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,7 +417,7 @@
 		C910E2B82AC78E1E00DD3C23 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C9F5F4A92A42046E002C21F7 /* HomeModel.swift */,
+				C9F5F4A92A42046E002C21F7 /* HomeBanner.swift */,
 				C9A324902A2FE7D5008FE6F4 /* LoginResponse.swift */,
 				75C895902D84BDC5007BEBA3 /* PetModel.swift */,
 				75950CB02E04A25A001EC58B /* PetTaskModel.swift */,
@@ -502,8 +511,8 @@
 		C94A23FC29CE239300C71D01 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C9F5F4B72A420553002C21F7 /* SideMenuView.swift */,
-				C9F5F4B92A420562002C21F7 /* HomePageView.swift */,
+				C9F5F4B92A420562002C21F7 /* PetHomeView.swift */,
+				750A36442E23374500EF8075 /* PetHomeViewModel.swift */,
 				C9F5F4A72A420449002C21F7 /* Subviews */,
 			);
 			path = Home;
@@ -600,7 +609,6 @@
 				131BCFCB2D6C7A5800AEDE56 /* Extension+View.swift */,
 				C9BAE60C29DE298900542620 /* Extension+Color.swift */,
 				C9FD536729E4B2D9003033FB /* Extension+UIFont.swift */,
-				C9E5017829E7756F0014F9C4 /* Extension+UIView.swift */,
 				C93943F62A9C0EDD0085E623 /* Extension+Alert.swift */,
 				C93943F82A9C0F140085E623 /* Extension+UIColor.swift */,
 				6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */,
@@ -632,10 +640,11 @@
 		C9E5017329E76FDA0014F9C4 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				C9F9D82F2A14232300DD72F1 /* Buttons */,
 				13033C202D9AB62C0037F2BD /* AutoCompleteSelect.swift */,
 				C9D95F712A37AA0D001C271F /* BlurView.swift */,
-				C9F9D82F2A14232300DD72F1 /* Buttons */,
 				C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */,
+				7561564C2E37D803008DB0EA /* CustomTabBar.swift */,
 				C96853C32AC397D00020AD1F /* LoadingView.swift */,
 				C93943F42A9C0E6C0085E623 /* PJTextFieldView.swift */,
 				75E295602DD243DB00DC1CCA /* PetTaskCard.swift */,
@@ -655,7 +664,6 @@
 		C9F5F4A22A41FF65002C21F7 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				C9F5F4A32A41FF88002C21F7 /* TabBarModifier.swift */,
 				C96853C02AC397560020AD1F /* CustomGlassView.swift */,
 			);
 			path = CustomViews;
@@ -664,10 +672,9 @@
 		C9F5F4A72A420449002C21F7 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				C9F5F4AD2A4204C7002C21F7 /* ProfileComponentView.swift */,
 				C9F5F4AF2A4204EB002C21F7 /* BannerView.swift */,
-				C9F5F4B12A420502002C21F7 /* FeatureTabView.swift */,
 				C9F5F4B32A420517002C21F7 /* ServiceItemView.swift */,
+				759A42822E33E62B00C9CE26 /* NoTasksView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -680,6 +687,7 @@
 				C9F9D8382A14251500DD72F1 /* CustomButtonStyle.swift */,
 				754EAA572D85C694000FC465 /* PetButton.swift */,
 				75AF95562DAAAB9500CF0A02 /* TaskButton.swift */,
+				759A42802E33D93C00C9CE26 /* CircularButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -811,8 +819,12 @@
 				C930B5C22A3A87E20008F502 /* InputEmailView.swift in Sources */,
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
 				C91CF52F2AE9F51B00CDC49E /* RegisterResponse.swift in Sources */,
+				759A42812E33D93C00C9CE26 /* CircularButton.swift in Sources */,
+				C9A324932A2FE7F9008FE6F4 /* RegisterAPIError.swift in Sources */,
 				13033C232D9B64BF0037F2BD /* PetRegisterView.swift in Sources */,
+				759A42832E33E62B00C9CE26 /* NoTasksView.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
+				750A36452E23374500EF8075 /* PetHomeViewModel.swift in Sources */,
 				C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */,
 				75C895932D84C0B6007BEBA3 /* PetRegisterService.swift in Sources */,
 				C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */,
@@ -835,13 +847,13 @@
 				1F8298312A18151500595FB7 /* CreateAccountService.swift in Sources */,
 				C930B5CB2A3A89FD0008F502 /* WaitingCodeView.swift in Sources */,
 				75C8958F2D84BDA6007BEBA3 /* PetRegisterViewModel.swift in Sources */,
+				7561564D2E37D803008DB0EA /* CustomTabBar.swift in Sources */,
 				C96853C42AC397D00020AD1F /* LoadingView.swift in Sources */,
 				C930B5DA2A3A8E820008F502 /* CompRememberAndForgotPassword.swift in Sources */,
 				C9C094892AC11915006FB438 /* AuthenticationStatus.swift in Sources */,
 				C9A324912A2FE7D5008FE6F4 /* LoginResponse.swift in Sources */,
 				C9F5F4B42A420517002C21F7 /* ServiceItemView.swift in Sources */,
-				C9F5F4AE2A4204C7002C21F7 /* ProfileComponentView.swift in Sources */,
-				C9F5F4AA2A42046E002C21F7 /* HomeModel.swift in Sources */,
+				C9F5F4AA2A42046E002C21F7 /* HomeBanner.swift in Sources */,
 				7542A4762D95C6A100F712C2 /* PetListViewModel.swift in Sources */,
 				C930B5D32A3A8B240008F502 /* EditPasswordViewModel.swift in Sources */,
 				7542A4782D95C6BF00F712C2 /* PetListService.swift in Sources */,
@@ -854,7 +866,7 @@
 				C9FD536D29E4B3CB003033FB /* FontType.swift in Sources */,
 				5089312E2DB03A4300E403A5 /* PetSelectionList.swift in Sources */,
 				75F9E5872DF740CE00079D56 /* PetProfileView.swift in Sources */,
-				C9F5F4BA2A420562002C21F7 /* HomePageView.swift in Sources */,
+				C9F5F4BA2A420562002C21F7 /* PetHomeView.swift in Sources */,
 				C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */,
 				75AF95572DAAAB9500CF0A02 /* TaskButton.swift in Sources */,
 				754EAA582D85C694000FC465 /* PetButton.swift in Sources */,
@@ -865,10 +877,9 @@
 				750A36432E2328EF00EF8075 /* Extension+URLSession.swift in Sources */,
 				C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */,
 				75E295612DD243DB00DC1CCA /* PetTaskCard.swift in Sources */,
-				C9F5F4A42A41FF88002C21F7 /* TabBarModifier.swift in Sources */,
 				7509EDD52D71E9DC0036B9B8 /* ComponentPrivacy.swift in Sources */,
 				7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */,
-				C9F5F4B82A420553002C21F7 /* SideMenuView.swift in Sources */,
+				C9F5F4B82A420553002C21F7 /* TutorProfileView.swift in Sources */,
 				13033C212D9AB6390037F2BD /* AutoCompleteSelect.swift in Sources */,
 				75C895912D84BDC5007BEBA3 /* PetModel.swift in Sources */,
 				50F77A3E2D820ABE00606345 /* PetListView.swift in Sources */,
@@ -882,6 +893,7 @@
 				1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				C93943F32A9C0E040085E623 /* UIKitCustom.swift in Sources */,
+				75C895952D84C19B007BEBA3 /* PetRegisterError.swift in Sources */,
 				75FC505D2E398E06007B3348 /* NavigationRouter.swift in Sources */,
 				C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */,
 				751DDCA82DEDEA5000D312F2 /* TaskListView.swift in Sources */,
@@ -889,7 +901,6 @@
 				7542A47A2D95DDA500F712C2 /* NetworkError.swift in Sources */,
 				C9D8450D2A2249650007A316 /* SessionModel.swift in Sources */,
 				6196CDB52AE2F47A0021DA5F /* Extension+Font.swift in Sources */,
-				C9E5017929E7756F0014F9C4 /* Extension+UIView.swift in Sources */,
 				C9D95F6F2A37A6E6001C271F /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
