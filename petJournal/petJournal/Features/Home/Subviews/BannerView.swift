@@ -1,19 +1,19 @@
-//
-//  BannerView.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 20/06/23.
-//
-
 import SwiftUI
 
 struct BannerView: View {
-    let banner: HomeModel
+    let banner: HomeBanner
     
     var body: some View {
         Image(banner.image)
             .resizable()
             .scaledToFit()
             .cornerRadius(12)
+    }
+}
+
+struct BannerView_Previews: PreviewProvider {
+    static var previews: some View {
+        BannerView(banner: HomeBanner.sampleBanners[0])
+            .padding()
     }
 }

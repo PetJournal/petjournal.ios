@@ -1,10 +1,3 @@
-//
-//  PJButton.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 16/05/23.
-//
-
 import SwiftUI
 
 enum ButtonType {
@@ -13,7 +6,7 @@ enum ButtonType {
 }
 
 struct PJButton: View {
-    @State var buttonType: ButtonType = .primaryType
+    private var buttonType: ButtonType = .primaryType
     private let title: String
     private let action: () -> Void
     private let titleFont: Font = .robotoSemiBold(size: .small)
@@ -23,7 +16,7 @@ struct PJButton: View {
          action: @escaping () -> Void) {
         self.title = title
         self.action = action
-        _buttonType = State(initialValue: buttonType)
+        self.buttonType = buttonType
     }
     
     var body: some View {
@@ -37,5 +30,20 @@ struct PJButton: View {
                                            foregroundColor: buttonType == .primaryType ? Color.theme.petWhite : Color.theme.petPrimary500))
         }
         .frame(maxWidth:.infinity)
+    }
+}
+
+struct PJButton_Previews: PreviewProvider {
+    static var previews: some View {
+            VStack(spacing: 20) {
+                PJButton(title: "Primário",
+                         buttonType: .primaryType,
+                         action: {})
+                PJButton(title: "Secundário",
+                         buttonType: .secundaryType,
+                         action: {})
+            }
+            .padding()
+            .previewDisplayName("Possíveis tipos")
     }
 }
