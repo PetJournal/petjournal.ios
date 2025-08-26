@@ -6,7 +6,7 @@ enum ButtonType {
 }
 
 struct PJButton: View {
-    @State var buttonType: ButtonType = .primaryType
+    private var buttonType: ButtonType = .primaryType
     private let title: String
     private let action: () -> Void
     private let titleFont: Font = .robotoSemiBold(size: .small)
@@ -16,7 +16,7 @@ struct PJButton: View {
          action: @escaping () -> Void) {
         self.title = title
         self.action = action
-        _buttonType = State(initialValue: buttonType)
+        self.buttonType = buttonType
     }
     
     var body: some View {
