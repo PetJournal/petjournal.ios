@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct EditPasswordView: View {
+    @EnvironmentObject var router: NavigationRouter
     @StateObject var viewModel: EditPasswordViewModel
     @State var showAlert = false
-    @State private var isLoginView: Bool = false
     
     var body: some View {
         VStack {
@@ -19,8 +19,6 @@ struct EditPasswordView: View {
                 .frame(width: 148, height: 128)
             
             Spacer()
-            
-            loginNavigation
             
             VStack(spacing: 10) {
                 Text("Criar uma nova senha?")
@@ -96,14 +94,8 @@ extension EditPasswordView {
                 .multilineTextAlignment(.leading)
         }
     }
-    
-    private var loginNavigation: some View {
-        HStack {
-            NavigationLink(
-                destination: AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService())).navigationBarHidden(true),
-                isActive: self.$isLoginView) {EmptyView()}
-                .isDetailLink(false)
-                .navigationBarHidden(true)
-        }
-    }
+}
+
+#Preview {
+    EditPasswordView(viewModel: EditPasswordViewModel())
 }

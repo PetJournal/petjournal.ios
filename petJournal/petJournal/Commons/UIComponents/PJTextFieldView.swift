@@ -62,12 +62,12 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                         if !isVisiblePassword {
                             SecureField(emptyPlaceholder, text: $text)
                                 .focused($isFocused)
-                                .onChange(of: isFocused, perform: { changed in
-                                    if !changed {
+                                .onChange(of: isFocused) { _, newValue in
+                                    if !newValue {
                                         hasToShowErrorMessage = !validateFieldCallBack(text)
                                     }
-                                    isFocused = changed
-                                })
+                                    isFocused = newValue
+                                }
                                 .font(placeHolderFont)
                                 .foregroundStyle(Color.theme.petBlack)
                                 .frame(height: 58)
@@ -78,12 +78,12 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                         } else {
                             TextField(emptyPlaceholder, text: $text)
                                 .focused($isFocused)
-                                .onChange(of: isFocused, perform: { changed in
-                                    if !changed {
+                                .onChange(of: isFocused) { _, newValue in
+                                    if !newValue {
                                         hasToShowErrorMessage = !validateFieldCallBack(text)
                                     }
-                                    isFocused = changed
-                                })
+                                    isFocused = newValue
+                                }
                                 .font(placeHolderFont)
                                 .foregroundStyle(Color.theme.petBlack)
                                 .frame(height: 58)
@@ -106,12 +106,12 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                     } else {
                         TextField(emptyPlaceholder, text: $text)
                             .focused($isFocused)
-                            .onChange(of: isFocused, perform: { changed in
-                                if !changed {
+                            .onChange(of: isFocused) { _, newValue in
+                                if !newValue {
                                     hasToShowErrorMessage = !validateFieldCallBack(text)
                                 }
-                                isFocused = changed
-                            })
+                                isFocused = newValue
+                            }
                             .font(placeHolderFont)
                             .foregroundStyle(Color.theme.petBlack)
                             .frame(height: 58)

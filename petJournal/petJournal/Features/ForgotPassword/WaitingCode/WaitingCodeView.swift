@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct WaitingCodeView: View {
+    @EnvironmentObject var router: NavigationRouter
     @StateObject private var viewModel: WaitingViewModel = .init()
     @FocusState private var activeField: FocusStateOTP?
-    @State private var isEditPassword: Bool = false
     @State private var showAlert = false
     
     var body: some View {
@@ -52,12 +52,11 @@ struct WaitingCodeView: View {
                 
                 PJButton(title: "Enviar", buttonType: .primaryType) {
                     if viewModel.codeCheck {
-                        isEditPassword = true
+                        router.navigate(to: .editPassword)
                     }
                 }
                 .disabled(viewModel.checkState())
                 .opacity(viewModel.checkState() ? 0.3 : 1)
-                editPassword
                 
                 Text("Dica: Caso não encontre o e-mail na sua caixa de entrada, verifique a pasta de Spam!")
                     .font(.footnote)
@@ -68,7 +67,7 @@ struct WaitingCodeView: View {
             }
             .padding()
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            .onChange(of: viewModel.codeFields) { newValue in
+            .onChange(of: viewModel.codeFields) { _, newValue in
                 viewModel.checkValueField(value: newValue)
                 nextField(value: newValue)
             }
@@ -80,7 +79,7 @@ struct WaitingCodeView: View {
                         Text("OK"),
                         action: {
                             if viewModel.codeCheck {
-                                self.isEditPassword = false
+                               //TODO
                             }
                         }
                       )
@@ -93,18 +92,6 @@ struct WaitingCodeView: View {
                   primaryButton: .cancel(),
                   secondaryButton: .default( Text("OK") )
             )
-        }
-    }
-}
-
-extension WaitingCodeView {
-    private var editPassword: some View {
-        HStack {
-            NavigationLink(
-                destination: EditPasswordView(viewModel: EditPasswordViewModel()).navigationBarHidden(true),
-                isActive: self.$isEditPassword) {EmptyView()}
-                .isDetailLink(false)
-                .navigationBarHidden(true)
         }
     }
 }

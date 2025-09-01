@@ -46,7 +46,7 @@ struct AutoCompleteSelect: View {
                 TextField(placeholder, text: $searchText)
                     .padding(.vertical, 10)
                     .padding(.horizontal, 12)
-                    .onChange(of: searchText) { newValue in
+                    .onChange(of: searchText) {
                         filterItems()
                         if !isExpanded {
                             isExpanded = true

@@ -7,7 +7,7 @@ enum TaskFrequency: String, CaseIterable {
     case monthly = "Mensal"
 }
 
-enum TaskType: String, CaseIterable {
+enum TaskType: String, CaseIterable, Hashable {
     case vaccine = "Vacina"
     case medicine = "Medicamento"
     case consultation = "Consulta"
@@ -16,6 +16,7 @@ enum TaskType: String, CaseIterable {
 
 // MARK: - View
 struct TaskListView: View {
+    @EnvironmentObject var router: NavigationRouter
     @State private var selectedFrequency: TaskFrequency = .daily
     @State private var showingAddTask = false
     private let filterType: TaskType
@@ -69,8 +70,13 @@ struct TaskListView: View {
             .padding()
             .offset(x: -10, y: -10)
         }
-        .sheet(isPresented: $showingAddTask) {
-            // CreateTaskView()
+        .navigationDestination(for: Route.self) { route in
+            switch route {
+            case .petProfile(let pet):
+                PetProfileView(pet: pet)
+            default:
+                EmptyView()
+            }
         }
     }
     
@@ -206,16 +212,11 @@ private struct TaskSection: View {
     }
 }
 
-// MARK: - PreviewProvider
-struct TaskListView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            TaskListView(tasks: PetTaskModel.sampleTasks,
-                         filterType: .all)
-        }.previewDisplayName("Todas as tarefas")
-        NavigationView {
-            TaskListView(tasks: PetTaskModel.sampleTasks,
-                         filterType: .vaccine)
-        }.previewDisplayName("Filtro por vacina")
-    }
+// MARK: - Previews
+#Preview {
+    TaskListView(tasks: PetTaskModel.sampleTasks, filterType: .all)
+}
+
+#Preview("Filtro por vacina") {
+    TaskListView(tasks: PetTaskModel.sampleTasks, filterType: .vaccine)
 }

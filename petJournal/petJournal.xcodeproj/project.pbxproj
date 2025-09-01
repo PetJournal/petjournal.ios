@@ -48,6 +48,7 @@
 		75D74D402E098C400012B726 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D74D3F2E098C3F0012B726 /* Extension+String.swift */; };
 		75E295612DD243DB00DC1CCA /* PetTaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E295602DD243DB00DC1CCA /* PetTaskCard.swift */; };
 		75F9E5872DF740CE00079D56 /* PetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F9E5862DF740CE00079D56 /* PetProfileView.swift */; };
+		75FC505D2E398E06007B3348 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC505C2E398E06007B3348 /* NavigationRouter.swift */; };
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
 		C904B18E2A40CFD2005ED7E7 /* ForgotState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */; };
 		C910E2BB2AC78F0800DD3C23 /* URLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C910E2BA2AC78F0800DD3C23 /* URLManager.swift */; };
@@ -165,6 +166,7 @@
 		75D74D3F2E098C3F0012B726 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		75E295602DD243DB00DC1CCA /* PetTaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskCard.swift; sourceTree = "<group>"; };
 		75F9E5862DF740CE00079D56 /* PetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProfileView.swift; sourceTree = "<group>"; };
+		75FC505C2E398E06007B3348 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
 		C904B18D2A40CFD2005ED7E7 /* ForgotState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotState.swift; sourceTree = "<group>"; };
 		C910E2BA2AC78F0800DD3C23 /* URLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLManager.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				1FF4608529C8E8740026F680 /* LaunchScreen.storyboard */,
 				1FF4607A29C8E8720026F680 /* AppDelegate.swift */,
 				C9D8450E2A224AC10007A316 /* InitialActor.swift */,
+				75FC505C2E398E06007B3348 /* NavigationRouter.swift */,
 				1FF4607C29C8E8720026F680 /* SceneDelegate.swift */,
 			);
 			name = AppStart;
@@ -893,6 +896,8 @@
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				C93943F32A9C0E040085E623 /* UIKitCustom.swift in Sources */,
 				75C895952D84C19B007BEBA3 /* PetRegisterError.swift in Sources */,
+				75FC505D2E398E06007B3348 /* NavigationRouter.swift in Sources */,
+				C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */,
 				751DDCA82DEDEA5000D312F2 /* TaskListView.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+Color.swift in Sources */,
 				7542A47A2D95DDA500F712C2 /* PetListingError.swift in Sources */,
@@ -1065,7 +1070,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1096,7 +1101,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

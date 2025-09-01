@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct PetListView: View {
+    @EnvironmentObject var router: NavigationRouter
+    
     var body: some View {
         ZStack {
             Image(asset: .petListBackground)
@@ -19,6 +21,10 @@ struct PetListView: View {
                     .padding(.top, 120)
 
                 Spacer()
+            }
+            .onTapGesture {
+                // Example navigation
+                router.navigate(to: .petProfile(pet: PetModel.samplePets.first!))
             }
         }
     }
