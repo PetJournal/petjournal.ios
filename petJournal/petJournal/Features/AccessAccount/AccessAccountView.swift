@@ -56,8 +56,8 @@ struct AccessAccountView: View {
                         viewModel.authUser()
                     }
                     .frame(width: geometry.size.width * 0.45)
-                    .disabled(viewModel.completeLogin())
-                    .opacity(!viewModel.completeLogin() ? 1 : 0.4)
+                    .disabled(!viewModel.areCredentialsValid())
+                    .opacity(viewModel.areCredentialsValid() ? 1 : 0.4)
                     .alert(isPresented: $viewModel.cancel) {
                         Alert(title: Text("Login"),
                               message: Text("\(viewModel.emailOrPasswordIncorrect)"),

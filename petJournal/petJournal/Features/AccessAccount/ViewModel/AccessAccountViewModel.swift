@@ -51,12 +51,12 @@ final class AccessAccountViewModel: ObservableObject {
 }
 
 extension AccessAccountViewModel {
-    func completeLogin() -> Bool {
+    func areCredentialsValid() -> Bool {
         if (ValidationsModel.shared.validateInput(user.password, of: .password(.default)) == nil) &&
             (ValidationsModel.shared.validateInput(user.email, of: .email(.default)) == nil) {
-            return false
+            return true
         }
-        return true
+        return false
     }
     
     var isValidEmail: Bool {
