@@ -26,7 +26,6 @@
 		50F77A3E2D820ABE00606345 /* PetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F77A3D2D820ABE00606345 /* PetListView.swift */; };
 		50F77A402D821FFD00606345 /* Roboto-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50F77A3F2D821FFD00606345 /* Roboto-SemiBold.ttf */; };
 		6196CDB52AE2F47A0021DA5F /* Extension+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */; };
-		7509EDD52D71E9DC0036B9B8 /* ComponentPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD42D71E9DC0036B9B8 /* ComponentPrivacy.swift */; };
 		7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */; };
 		7509EDD92D7223150036B9B8 /* ImageAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD82D7223150036B9B8 /* ImageAssets.swift */; };
 		750A36432E2328EF00EF8075 /* Extension+URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A36422E2328EF00EF8075 /* Extension+URLSession.swift */; };
@@ -143,7 +142,6 @@
 		50F77A3D2D820ABE00606345 /* PetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetListView.swift; sourceTree = "<group>"; };
 		50F77A3F2D821FFD00606345 /* Roboto-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-SemiBold.ttf"; sourceTree = "<group>"; };
 		6196CDB42AE2F47A0021DA5F /* Extension+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Font.swift"; sourceTree = "<group>"; };
-		7509EDD42D71E9DC0036B9B8 /* ComponentPrivacy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentPrivacy.swift; sourceTree = "<group>"; };
 		7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Image.swift"; sourceTree = "<group>"; };
 		7509EDD82D7223150036B9B8 /* ImageAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAssets.swift; sourceTree = "<group>"; };
 		750A36422E2328EF00EF8075 /* Extension+URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URLSession.swift"; sourceTree = "<group>"; };
@@ -521,7 +519,6 @@
 		C94C42002A213D2A00A949F4 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				7509EDD42D71E9DC0036B9B8 /* ComponentPrivacy.swift */,
 				C94C42012A21543B00A949F4 /* WebView.swift */,
 			);
 			path = Subviews;
@@ -820,7 +817,6 @@
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
 				C91CF52F2AE9F51B00CDC49E /* RegisterResponse.swift in Sources */,
 				759A42812E33D93C00C9CE26 /* CircularButton.swift in Sources */,
-				C9A324932A2FE7F9008FE6F4 /* RegisterAPIError.swift in Sources */,
 				13033C232D9B64BF0037F2BD /* PetRegisterView.swift in Sources */,
 				759A42832E33E62B00C9CE26 /* NoTasksView.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
@@ -877,7 +873,6 @@
 				750A36432E2328EF00EF8075 /* Extension+URLSession.swift in Sources */,
 				C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */,
 				75E295612DD243DB00DC1CCA /* PetTaskCard.swift in Sources */,
-				7509EDD52D71E9DC0036B9B8 /* ComponentPrivacy.swift in Sources */,
 				7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */,
 				C9F5F4B82A420553002C21F7 /* TutorProfileView.swift in Sources */,
 				13033C212D9AB6390037F2BD /* AutoCompleteSelect.swift in Sources */,
@@ -893,9 +888,7 @@
 				1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				C93943F32A9C0E040085E623 /* UIKitCustom.swift in Sources */,
-				75C895952D84C19B007BEBA3 /* PetRegisterError.swift in Sources */,
 				75FC505D2E398E06007B3348 /* NavigationRouter.swift in Sources */,
-				C9F5F4B22A420502002C21F7 /* FeatureTabView.swift in Sources */,
 				751DDCA82DEDEA5000D312F2 /* TaskListView.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+Color.swift in Sources */,
 				7542A47A2D95DDA500F712C2 /* NetworkError.swift in Sources */,

@@ -11,7 +11,7 @@ struct CreateAccountView: View {
                 headerView
                 textFieldsRegister
                 
-                ComponentPrivacy { self.showWebview = true }
+                privacyPolicyLink
                     .padding(.vertical, 10)
                 
                 buttonRegister
@@ -20,7 +20,7 @@ struct CreateAccountView: View {
             }
             .sheet(isPresented: $showWebview) {
                 WebView(link: "https://www.google.com")
-                buttonsPrivacyPolicy
+                privacyPolicyAgreementButtons
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(Color.theme.petWhite)
@@ -139,7 +139,7 @@ extension CreateAccountView {
         }
     }
     
-    private var buttonsPrivacyPolicy: some View {
+    private var privacyPolicyAgreementButtons: some View {
         HStack(spacing: 10) {
             PJButton(title: "Concordo", buttonType: .primaryType) {
                 viewModel.isCheckBox = true
@@ -152,6 +152,25 @@ extension CreateAccountView {
             }
         }
         .padding()
+    }
+    
+    private var privacyPolicyLink: some View {
+        HStack {
+            Button(action: {
+                viewModel.isCheckBox.toggle()
+            }) {
+                Image(asset: viewModel.isCheckBox ? .checkBoxSelect : .checkBoxClear)
+                    .resizable()
+                    .frame(width: 20, height: 20)
+            }
+            Button(action: {
+                self.showWebview = true
+            }) {
+                Text("Eu concordo com a política de privacidade")
+                    .foregroundColor(Color.theme.petBlack)
+                    .font(.fredokaMedium(size: .tiny))
+            }
+        }
     }
 }
 
