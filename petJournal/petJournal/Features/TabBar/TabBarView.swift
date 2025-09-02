@@ -26,7 +26,7 @@ struct TabContentContainerView: View {
             .tag(0)
             
             NavigationStack {
-                Text("Agenda")
+                TaskListView(tasks: PetTaskModel.sampleTasks)
             }
             .tabItem {
                 Label("Agenda", image: ImageAsset.petsCalendar.rawValue)
@@ -42,7 +42,7 @@ struct TabContentContainerView: View {
             .tag(2)
             
             NavigationStack {
-                Text("Tutor")
+                TutorProfileView()
             }
             .tabItem {
                 Label("User", image: ImageAsset.user.rawValue)
