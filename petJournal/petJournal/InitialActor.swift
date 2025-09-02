@@ -14,7 +14,28 @@ struct InitialActor: View {
                 }
             }
             .navigationDestination(for: Route.self) { route in
-                view(for: route)
+                switch route {
+                case .accessAccount:
+                    AccessAccountView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
+                case .createAccount:
+                    CreateAccountView()
+                case .forgotPassword:
+                    InputEmailView(viewModel: ForgotPasswordViewModel(service: ForgotPasswordService()))
+                case .waitingCode:
+                    WaitingCodeView()
+                case .editPassword:
+                    EditPasswordView(viewModel: EditPasswordViewModel())
+                case .home:
+                    PetHomeView()
+                case .petList:
+                    PetListView()
+                case .petProfile(let pet):
+                    PetProfileView(pet: pet)
+                case .petRegister:
+                    PetRegisterView()
+                case .taskList(let tasks, let filterType):
+                    TaskListView(tasks: tasks, filterType: filterType)
+                }
             }
         }
         .environmentObject(router)
