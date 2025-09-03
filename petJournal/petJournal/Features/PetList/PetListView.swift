@@ -2,8 +2,7 @@ import SwiftUI
 
 struct PetListView: View {
     @State private var path = NavigationPath()
-    @StateObject private var viewModel = PetListViewModel()
-    @State private var showErrorAlert = false
+    @StateObject private var viewModel = PetListViewModel.shared
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -11,32 +10,16 @@ struct PetListView: View {
                 backgroundImage
                 mainContent
             }
-            .navigationDestination(for: Route.self) { route in
-                switch route {
-                case .petRegister:
-                    PetRegisterView()
-                default:
-                    EmptyView()
-                }
-            }
-            .task {
-                await viewModel.fetchPets()
-            }
-            .onChange(of: viewModel.error?.localizedDescription) { _,_ in
-                showErrorAlert = viewModel.error != nil
-            }
-            .alert("Erro", isPresented: $showErrorAlert) {
-                Button("OK", role: .cancel) {
-                    viewModel.error = nil
-                }
-            } message: {
-                Text(viewModel.error?.localizedDescription ?? "Erro desconhecido")
-            }
+            .navigationDestination(for: Route.self,
+                                   destination: handleNavigation)
+            .task{ await viewModel.fetchPets() }
         }
     }
-    
-    // MARK: Subviews
-    private var backgroundImage: some View {
+}
+
+// MARK: - Subviews
+private extension PetListView {
+    var backgroundImage: some View {
         Image(asset: .petListBackground)
             .resizable()
             .scaledToFill()
@@ -46,48 +29,52 @@ struct PetListView: View {
             .offset(y: -70)
     }
     
-    private var mainContent: some View {
+    var mainContent: some View {
         VStack(spacing: 30) {
             titleView
             addPetButton
-            petsList
+            petsContent
             Spacer()
         }
     }
     
-    private var titleView: some View {
+    var titleView: some View {
         Text("Vamos ver qual pet?")
             .font(.robotoSemiBold(size: .large))
             .padding(.top, 120)
     }
     
-    private var addPetButton: some View {
+    var addPetButton: some View {
         PetButton(pet: PetModel.makePlaceholder(type: .addPet)) {
             path.append(Route.petRegister)
         }
     }
     
-    private var petsList: some View {
+    var petsContent: some View {
         Group {
             if viewModel.isLoading {
-                loadingView
+                ProgressView()
+                    .padding()
             } else {
-                scrollablePetsView
+                PetsScrollView(pets: viewModel.pets) { pet in
+                    path.append(Route.petProfile(pet: pet))
+                }
             }
         }
     }
+}
+
+// MARK: - Subcomponents
+private struct PetsScrollView: View {
+    let pets: [PetModel]
+    let onPetTap: (PetModel) -> Void
     
-    private var loadingView: some View {
-        ProgressView()
-            .padding()
-    }
-    
-    private var scrollablePetsView: some View {
+    var body: some View {
         ScrollView {
             LazyVStack(spacing: 16) {
-                ForEach(viewModel.pets, id: \.id) { pet in
+                ForEach(pets, id: \.id) { pet in
                     PetButton(pet: pet) {
-                        path.append(Route.petProfile(pet: pet))
+                        onPetTap(pet)
                     }
                 }
             }
@@ -96,7 +83,25 @@ struct PetListView: View {
     }
 }
 
+// MARK: - Navigation
+private extension PetListView {
+    @ViewBuilder
+    func handleNavigation(for route: Route) -> some View {
+        switch route {
+        case .petRegister:
+            PetRegisterView()
+        case .petProfile(let pet):
+            PetProfileView(pet: pet)
+        default:
+            EmptyView()
+        }
+    }
+}
+
+// MARK: - Preview
 #Preview {
     PetListView()
         .environmentObject(NavigationRouter())
 }
+
+
