@@ -58,7 +58,17 @@ extension PetRegisterViewModel {
     }
     
     func getBreed() -> [String] {
-        return ["Labrador", "Lhasa Apso", "Shit Zhu", "Golden", "Sem raça definida"]
+        return ["Labrador Retriever","Bulldog Francês",
+                "Golden Retriever","Poodle",
+                "Shih Tzu","Siamês",
+                "Persa","Maine Coon",
+                "Sphynx","Bengal","Calopsita",
+                "Periquito Australiano","Agapornis",
+                "Canário","Cacatua","Holandês Anão",
+                "Lionhead","Rex","Angorá",
+                "Flemish Giant","Sírio",
+                "Anão Russo","Roborovski","Chinês",
+                "Campbell","Outra"]
     }
     
     func getSize() -> [String] {
@@ -68,7 +78,8 @@ extension PetRegisterViewModel {
     }
     
     func getAnimalType() -> [String] {
-        return ["Cachorro", "Gato", "Pássaro"]
+        return ["Cachorro","Gato","Pássaro",
+            "Coelho","Hamster","Outro"]
     }
 }
 
@@ -88,7 +99,7 @@ private extension PetRegisterViewModel {
             breedAlias: nil,
             size: PetSize(id: UUID().uuidString, name: size ?? ""),
             castrated: castrated.lowercased() == "sim",
-            dateOfBirth: dateOfBirth,
+            dateOfBirth: dateOfBirth.toAPIDateFormat() ?? dateOfBirth,
             image: imageData,
             weight: Double(weight) ?? 0.0
         )

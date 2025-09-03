@@ -48,7 +48,9 @@ private extension PetRegisterView {
             .scaledToFill()
             .ignoresSafeArea()
             .foregroundStyle(Color(.petPrimary500))
-            .frame(width: geo.size.width, height: geo.size.height - 200, alignment: .center)
+            .frame(width: geo.size.width, 
+                   height: geo.size.height - 200,
+                   alignment: .center)
             .offset(y: 200)
             .opacity(1.0)
     }
@@ -88,6 +90,7 @@ private extension PetRegisterView {
             TextField("dd/mm/aaaa", text: $viewModel.dateOfBirth)
                 .textFieldStyle()
                 .keyboardType(.numberPad)
+                .dateFormatter(text: $viewModel.dateOfBirth)
         }
     }
     
@@ -117,7 +120,7 @@ private extension PetRegisterView {
             HStack {
                 selectionButton(
                     text: "Macho",
-                    isSelected: viewModel.gender.lowercased() == "macho",
+                    isSelected: viewModel.gender == "M",
                     action: { viewModel.gender = "M" }
                 )
                 
@@ -125,7 +128,7 @@ private extension PetRegisterView {
                 
                 selectionButton(
                     text: "Fêmea",
-                    isSelected: viewModel.gender.lowercased() == "fêmea",
+                    isSelected: viewModel.gender == "F",
                     action: { viewModel.gender = "F" }
                 )
             }
