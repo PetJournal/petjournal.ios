@@ -9,7 +9,6 @@ class PetRegisterViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
     @Published var registeredPet: PetModel?
     
-    // MARK: - Form Fields
     @Published var petName: String = ""
     @Published var breedName: String? = nil
     @Published var size: String? = nil
@@ -19,27 +18,66 @@ class PetRegisterViewModel: ObservableObject {
     @Published var gender: String = ""
     @Published var castrated: String = ""
     @Published var image: UIImage = UIImage(named: "pet_logoLightPink")!
-    
+
     private let petRegisterService: PetRegisterServiceProtocol
+    static let shared: PetRegisterViewModel = .init()
     
     init(service: PetRegisterServiceProtocol = PetRegisterService()) {
         self.petRegisterService = service
     }
-    
-    // MARK: - ViewModel Functions
+}
+
+// MARK: - Public Methods
+extension PetRegisterViewModel {
     func registerPet() async {
         guard isFieldsFilled else { return }
         
-        await MainActor.run {
-            isLoading = true
-            errorMessage = nil
-        }
+        await setLoadingState(true)
         
-        // Converter a imagem para Data
+        do {
+            let petToRegister = createPetModel()
+            let registeredPet = try await petRegisterService.registerPet(petToBeRegistered: petToRegister)
+            
+            await handleSuccess(registeredPet: registeredPet)
+        } catch {
+            await handleError(error)
+        }
+    }
+    
+    func getImage() async {
+        do {
+            guard let imageFetched = try await AsyncImageService.asyncImage(from: Constants.imageURL) else {
+                await setDefaultImage()
+                return
+            }
+            
+            await setImage(imageFetched)
+        } catch {
+            await setDefaultImage()
+        }
+    }
+    
+    func getBreed() -> [String] {
+        return ["Labrador", "Lhasa Apso", "Shit Zhu", "Golden", "Sem raça definida"]
+    }
+    
+    func getSize() -> [String] {
+        return ["Mini (Até 6Kgs)", "Pequeno (6 à 14Kgs)",
+                "Médio (15 à 24Kgs)", "Grande (25 à 45Kgs)",
+                "Gigante (Acima de 45Kgs)"]
+    }
+    
+    func getAnimalType() -> [String] {
+        return ["Cachorro", "Gato", "Pássaro"]
+    }
+}
+
+// MARK: - Private Methods
+private extension PetRegisterViewModel {
+    func createPetModel() -> PetModel {
         let imageData = image.jpegData(compressionQuality: 0.8)
         
-        // Criar o modelo com os dados atuais
-        let petToRegister = PetModel(
+        return PetModel(
             id: UUID().uuidString,
             guardian: nil,
             specie: Species(id: UUID().uuidString, name: type ?? ""),
@@ -54,53 +92,37 @@ class PetRegisterViewModel: ObservableObject {
             image: imageData,
             weight: Double(weight) ?? 0.0
         )
-        
-        do {
-            let registeredPet = try await petRegisterService.registerPet(petToBeRegistered: petToRegister)
-            
-            await MainActor.run {
-                self.isRequestSuccessful = true
-                self.registeredPet = registeredPet
-                self.isLoading = false
-            }
-        } catch {
-            await MainActor.run {
-                self.errorMessage = "Erro na requisição: \(error.localizedDescription)"
-                self.isLoading = false
-            }
+    }
+    
+    @MainActor
+    func setLoadingState(_ loading: Bool) {
+        isLoading = loading
+        if loading {
+            errorMessage = nil
         }
     }
     
-    // MARK: - Data Options
-    func getBreed() -> [String] {
-        return ["Labrador", "Lhasa Apso", "Shit Zhu", "Golden", "Sem raça definida"]
+    @MainActor
+    func handleSuccess(registeredPet: PetModel) {
+        isRequestSuccessful = true
+        self.registeredPet = registeredPet
+        isLoading = false
     }
     
-    func getSize() -> [String] {
-        return ["Pequeno", "Médio", "Grande"]
+    @MainActor
+    func handleError(_ error: Error) {
+        errorMessage = error.localizedDescription
+        isLoading = false
     }
     
-    func getAnimalType() -> [String] {
-        return ["Cão", "Gato", "Pássaro"]
+    @MainActor
+    func setImage(_ image: UIImage) {
+        self.image = image
     }
     
-    func getImage() async {
-        do {
-            guard let imageFetched = try await AsyncImageService.asyncImage(from: "https://img.freepik.com/fotos-gratis/imagem-vertical-de-foco-raso-de-um-filhote-de-cachorro-golden-retriever-fofo-sentado-em-um-gramado_181624-27259.jpg?semt=ais_hybrid&w=740") else {
-                await MainActor.run {
-                    image = UIImage(named: "pet_logoLightPink")!
-                }
-                return
-            }
-            
-            await MainActor.run {
-                image = imageFetched
-            }
-        } catch {
-            await MainActor.run {
-                image = UIImage(named: "pet_logoLightPink")!
-            }
-        }
+    @MainActor
+    func setDefaultImage() {
+        self.image = UIImage(named: "pet_logoLightPink")!
     }
 }
 
@@ -124,4 +146,9 @@ extension PetRegisterViewModel {
             return false
         }
     }
+}
+
+// MARK: - Constants
+private enum Constants {
+    static let imageURL = "https://img.freepik.com/fotos-gratis/imagem-vertical-de-foco-raso-de-um-filhote-de-cachorro-golden-retriever-fofo-sentado-em-um-gramado_181624-27259.jpg?semt=ais_hybrid&w=740"
 }

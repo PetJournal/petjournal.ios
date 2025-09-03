@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PetRegisterView: View {
-    @StateObject private var viewModel = PetRegisterViewModel()
+    @StateObject private var viewModel = PetRegisterViewModel.shared
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -12,18 +12,12 @@ struct PetRegisterView: View {
             }
         }
         .navigationBarHidden(true)
-        .alert("Erro", isPresented: Binding<Bool>(
-            get: { viewModel.errorMessage != nil },
-            set: { _ in viewModel.errorMessage = nil }
-        )) {
-            Button("OK", role: .cancel) { }
-        } message: {
-            Text(viewModel.errorMessage ?? "")
-        }
+        .errorAlert(viewModel: viewModel)
     }
-    
-    // MARK: - Main Components
-    
+}
+
+// MARK: - Main Components
+private extension PetRegisterView {
     private func mainContent(geo: GeometryProxy) -> some View {
         VStack(alignment: .leading, spacing: 16) {
             customNavigationBar(title: "Editar dados do Pet") {
@@ -58,26 +52,19 @@ struct PetRegisterView: View {
             .offset(y: 200)
             .opacity(1.0)
     }
-    
-    // MARK: - Form Fields
-    
-    private func petNameField() -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Nome do pet")
-                .font(.robotoMedium(size: .great))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
+}
+
+// MARK: - Form Fields Components
+private extension PetRegisterView {
+    func petNameField() -> some View {
+        FormField(title: "Nome do pet") {
             TextField("Nome do pet", text: $viewModel.petName)
                 .textFieldStyle()
         }
     }
     
-    private func breedField() -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Raça")
-                .font(.robotoMedium(size: .great))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
+    func breedField() -> some View {
+        FormField(title: "Raça") {
             AutoCompleteSelect(
                 selectedItem: $viewModel.breedName,
                 items: viewModel.getBreed(),
@@ -86,12 +73,8 @@ struct PetRegisterView: View {
         }
     }
     
-    private func sizeField() -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Porte")
-                .font(.robotoMedium(size: .great))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
+    func sizeField() -> some View {
+        FormField(title: "Porte") {
             AutoCompleteSelect(
                 selectedItem: $viewModel.size,
                 items: viewModel.getSize(),
@@ -100,36 +83,24 @@ struct PetRegisterView: View {
         }
     }
     
-    private func birthDateField() -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Data de nascimento")
-                .font(.robotoMedium(size: .great))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
+    func birthDateField() -> some View {
+        FormField(title: "Data de nascimento") {
             TextField("dd/mm/aaaa", text: $viewModel.dateOfBirth)
                 .textFieldStyle()
                 .keyboardType(.numberPad)
         }
     }
     
-    private func weightField() -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Peso")
-                .font(.robotoMedium(size: .great))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
+    func weightField() -> some View {
+        FormField(title: "Peso") {
             TextField("Peso", text: $viewModel.weight)
                 .textFieldStyle()
                 .keyboardType(.decimalPad)
         }
     }
     
-    private func animalTypeField() -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Tipo")
-                .font(.robotoMedium(size: .great))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
+    func animalTypeField() -> some View {
+        FormField(title: "Tipo") {
             AutoCompleteSelect(
                 selectedItem: $viewModel.type,
                 items: viewModel.getAnimalType(),
@@ -137,20 +108,17 @@ struct PetRegisterView: View {
             )
         }
     }
-    
-    // MARK: - Selection Components
-    
-    private func genderSelection() -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Sexo")
-                .font(.robotoMedium(size: .great))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
+}
+
+// MARK: - Selection Components
+private extension PetRegisterView {
+    func genderSelection() -> some View {
+        SelectionField(title: "Sexo") {
             HStack {
                 selectionButton(
                     text: "Macho",
                     isSelected: viewModel.gender.lowercased() == "macho",
-                    action: { viewModel.gender = "Macho" }
+                    action: { viewModel.gender = "M" }
                 )
                 
                 Spacer()
@@ -158,19 +126,15 @@ struct PetRegisterView: View {
                 selectionButton(
                     text: "Fêmea",
                     isSelected: viewModel.gender.lowercased() == "fêmea",
-                    action: { viewModel.gender = "Fêmea" }
+                    action: { viewModel.gender = "F" }
                 )
             }
             .padding(.horizontal)
         }
     }
     
-    private func castrationSelection() -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Castrado")
-                .font(.robotoMedium(size: .great))
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
+    func castrationSelection() -> some View {
+        SelectionField(title: "Castrado") {
             HStack {
                 selectionButton(
                     text: "Sim",
@@ -189,10 +153,11 @@ struct PetRegisterView: View {
             .padding(.horizontal)
         }
     }
-    
-    // MARK: - Action Components
-    
-    private func saveButton() -> some View {
+}
+
+// MARK: - Action Components
+private extension PetRegisterView {
+    func saveButton() -> some View {
         Button(action: {
             Task {
                 await viewModel.registerPet()
@@ -207,32 +172,19 @@ struct PetRegisterView: View {
                     .foregroundColor(Color(.petPrimary500))
             }
         }
-        .frame(minWidth: 121.00, maxWidth: 121.00,
-               minHeight: 40.00, maxHeight: 40.00)
-        .background(Color.theme.petWhite)
-        .cornerRadius(50)
-        .overlay(
-            RoundedRectangle(cornerRadius: 50)
-                .stroke(Color.gray, lineWidth: 1)
-        )
-        .shadow(color: Color.black.opacity(0.25), radius: 10, x: 3, y: 4)
-        .padding(.top, 16)
+        .buttonStyle(PrimaryButtonStyle())
         .disabled(viewModel.isLoading)
     }
-    
-    // MARK: - Helper Views
-    
-    private func petImageSection() -> some View {
+}
+
+// MARK: - Image Components
+private extension PetRegisterView {
+    func petImageSection() -> some View {
         HStack {
-            Image(uiImage: viewModel.image)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
+            PetImageView(image: viewModel.image)
                 .task {
                     await viewModel.getImage()
                 }
-                .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 153)
-                .clipped()
-                .cornerRadius(18.0)
             
             editImageButton()
             deleteImageButton()
@@ -240,7 +192,7 @@ struct PetRegisterView: View {
         .offset(x: 35)
     }
     
-    private func editImageButton() -> some View {
+    func editImageButton() -> some View {
         Button {
             // TODO: Implementar seleção de imagem da galeria
         } label: {
@@ -255,7 +207,7 @@ struct PetRegisterView: View {
         .offset(x: -50, y: +50)
     }
     
-    private func deleteImageButton() -> some View {
+    func deleteImageButton() -> some View {
         Button {
             viewModel.image = UIImage(named: "banner_01")!
         } label: {
@@ -263,8 +215,11 @@ struct PetRegisterView: View {
         }
         .offset(x: 30, y: -50)
     }
-    
-    private func selectionButton(text: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
+}
+
+// MARK: - Helper Views
+private extension PetRegisterView {
+    func selectionButton(text: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Text(text)
                 .font(.headline)
@@ -281,8 +236,92 @@ struct PetRegisterView: View {
     }
 }
 
-// MARK: - TextField Style Extension
+// MARK: - View Modifiers
+private struct FormField<Content: View>: View {
+    let title: String
+    let content: Content
+    
+    init(title: String, @ViewBuilder content: () -> Content) {
+        self.title = title
+        self.content = content()
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title)
+                .font(.robotoMedium(size: .great))
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            content
+        }
+    }
+}
 
+private struct SelectionField<Content: View>: View {
+    let title: String
+    let content: Content
+    
+    init(title: String, @ViewBuilder content: () -> Content) {
+        self.title = title
+        self.content = content()
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title)
+                .font(.robotoMedium(size: .great))
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            content
+        }
+    }
+}
+
+private struct PetImageView: View {
+    let image: UIImage
+    
+    var body: some View {
+        Image(uiImage: image)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 153)
+            .clipped()
+            .cornerRadius(18.0)
+    }
+}
+
+private struct PrimaryButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(minWidth: 121.00, maxWidth: 121.00,
+                   minHeight: 40.00, maxHeight: 40.00)
+            .background(Color.theme.petWhite)
+            .cornerRadius(50)
+            .overlay(
+                RoundedRectangle(cornerRadius: 50)
+                    .stroke(Color.gray, lineWidth: 1)
+            )
+            .shadow(color: Color.black.opacity(0.25), radius: 10, x: 3, y: 4)
+            .padding(.top, 16)
+            .opacity(configuration.isPressed ? 0.8 : 1.0)
+    }
+}
+
+// MARK: - View Extensions
+private extension View {
+    func errorAlert(viewModel: PetRegisterViewModel) -> some View {
+        alert("Erro", isPresented: Binding<Bool>(
+            get: { viewModel.errorMessage != nil },
+            set: { _ in viewModel.errorMessage = nil }
+        )) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(viewModel.errorMessage ?? "")
+        }
+    }
+}
+
+// MARK: - TextField Style Extension
 extension TextField {
     func textFieldStyle() -> some View {
         self
@@ -295,7 +334,6 @@ extension TextField {
 }
 
 // MARK: - Previews
-
 #Preview {
     PetRegisterView()
         .environmentObject(NavigationRouter())
