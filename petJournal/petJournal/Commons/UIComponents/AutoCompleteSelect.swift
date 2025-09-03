@@ -41,12 +41,11 @@ struct AutoCompleteSelect: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: 8) {
             searchField
             optionsList
         }
         .onAppear { filteredItems = items }
-        .onTapGesture { isExpanded = false }
     }
 }
 
@@ -66,12 +65,12 @@ private extension AutoCompleteSelect {
             toggleButton
         }
         .padding(.horizontal, 12)
-        .background(searchFieldBackground)
+        .background(fieldsBackground)
     }
     
     private var optionsList: some View {
         Group {
-            if isExpanded {
+            if isExpanded && !filteredItems.isEmpty {
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 2) {
                         ForEach(filteredItems, id: \.self) { item in
@@ -80,7 +79,7 @@ private extension AutoCompleteSelect {
                     }
                 }
                 .frame(height: min(CGFloat(filteredItems.count) * 44, 220))
-                .background(optionsListBackground)
+                .background(fieldsBackground)
             }
         }
     }
@@ -93,26 +92,26 @@ private extension AutoCompleteSelect {
     }
     
     private var toggleButton: some View {
-        Button(action: { isExpanded.toggle() }) {
+        Button(action: {
+            if filteredItems.isEmpty && selectedItem != nil {
+                // Se não há itens para mostrar, restaura a lista completa
+                filteredItems = items.filter { $0 != selectedItem }
+            }
+            isExpanded.toggle()
+        }) {
             Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                 .foregroundColor(Color.theme.petGray800)
         }
     }
     
-    private var searchFieldBackground: some View {
+    private var fieldsBackground: some View {
         RoundedRectangle(cornerRadius: 8)
-            .stroke(borderColor, lineWidth: 1)
-    }
-    
-    private var optionsListBackground: some View {
-        RoundedRectangle(cornerRadius: 8)
-            .fill(Color.white)
-            .shadow(color: Color.theme.petBlack.opacity(0.1),
-                    radius: 4)
+            .fill(Color.theme.petWhite)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(borderColor, lineWidth: 1)
             )
+            .shadow(color: Color.theme.petPrimary500.opacity(0.2), radius: 10)
     }
 }
 
@@ -129,8 +128,22 @@ private extension AutoCompleteSelect {
     }
     
     private func handleTextChange() {
-        filterItems()
-        if !isExpanded { isExpanded = true }
+        // Filtra normalmente, mas remove o item selecionado se existir
+        let filtered = searchText.isEmpty
+            ? items
+            : items.filter { $0.lowercased().contains(searchText.lowercased()) }
+        
+        filteredItems = filtered.filter { $0 != selectedItem }
+        
+        // Só expande se houver itens para mostrar
+        if !isExpanded && !filteredItems.isEmpty {
+            isExpanded = true
+        }
+        
+        // Se não há itens após a filtragem, fecha a lista
+        if filteredItems.isEmpty {
+            isExpanded = false
+        }
     }
     
     private func filterItems() {
