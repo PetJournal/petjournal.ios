@@ -108,4 +108,22 @@ extension String {
         }
         return date < Date()
     }
+    
+    func toAPIDateFormat() -> String? {
+        guard !self.trimmed.isEmpty else { return nil }
+         
+         let dateFormatter = DateFormatter()
+         dateFormatter.dateFormat = "dd/MM/yyyy"
+         dateFormatter.locale = Locale(identifier: "pt_BR")
+         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+         
+         guard let date = dateFormatter.date(from: trimmed) else { return nil }
+         
+         let outputFormatter = DateFormatter()
+         outputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+         outputFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+         outputFormatter.locale = Locale(identifier: "en_US_POSIX")
+         
+         return outputFormatter.string(from: date)
+     }
 }
