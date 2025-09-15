@@ -62,7 +62,6 @@ struct UserSession: Codable {
         get { UserDefaults.standard.string(forKey: KeysUser.phone.rawValue) }
     }
 
-    // TODO: mudar de UserDefault para Keychain na Password
     var password: String? {
         set {
             UserDefaults.standard.set(newValue, forKey: KeysUser.password.rawValue)
