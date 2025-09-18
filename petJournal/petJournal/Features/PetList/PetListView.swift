@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PetListView: View {
     @State private var path = NavigationPath()
-    @StateObject private var viewModel = PetListViewModel.shared
+    @StateObject private var viewModel = PetListViewModel()
     
     var body: some View {
         NavigationStack(path: $path) {

@@ -6,8 +6,6 @@ class PetListViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var error: NetworkError?
     
-    static let shared: PetListViewModel = .init()
-    
     private let service: PetListServiceProtocol
     
     init(service: PetListServiceProtocol = PetListService()) {
@@ -42,13 +40,15 @@ private extension PetListViewModel {
 extension PetListViewModel {
     func formattedDateOfBirth(for pet: PetModel) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
         guard let date = dateFormatter.date(from: pet.dateOfBirth) else {
             return pet.dateOfBirth
         }
         
         dateFormatter.dateStyle = .medium
+        dateFormatter.timeZone = TimeZone.current
         return dateFormatter.string(from: date)
     }
     
@@ -60,7 +60,7 @@ extension PetListViewModel {
         pet.castrated ? "Sim" : "Não"
     }
     
-    func getImage(for pet: PetModel) -> PetImage {
+    func getImage(for pet: PetModel) -> PetImage? {
         pet.petImage
     }
 }

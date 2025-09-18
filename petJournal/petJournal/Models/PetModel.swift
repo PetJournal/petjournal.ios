@@ -4,7 +4,7 @@ import SwiftUI
 // MARK: - Main Models
 struct PetModel: Identifiable, Hashable, Codable {
     let id: String
-    let guardian: Guardian?
+    let guardianId: String?
     let specie: Species
     let specieAlias: String?
     let petName: String
@@ -15,26 +15,77 @@ struct PetModel: Identifiable, Hashable, Codable {
     let castrated: Bool
     let dateOfBirth: String
     let image: Data?
+    
+    // Propriedades computadas para placeholders
     let weight: Double?
     var isAddPetPlaceholder: Bool = false
     var allPetsPlaceholder: Bool = false
     var isSelected: Bool = false
     
-    // Computed property for easier image handling
+    // Inicializador personalizado
+    init(
+        id: String, guardianId: String? = nil,
+        specie: Species, specieAlias: String? = nil,
+        petName: String, gender: String,
+        breed: Breed, breedAlias: String? = nil,
+        size: PetSize, castrated: Bool,
+        dateOfBirth: String, image: Data? = nil,
+        weight: Double? = nil, isAddPetPlaceholder: Bool = false,
+        allPetsPlaceholder: Bool = false, isSelected: Bool = false
+    ) {
+        self.id = id
+        self.guardianId = guardianId
+        self.specie = specie
+        self.specieAlias = specieAlias
+        self.petName = petName
+        self.gender = gender
+        self.breed = breed
+        self.breedAlias = breedAlias
+        self.size = size
+        self.castrated = castrated
+        self.dateOfBirth = dateOfBirth
+        self.image = image
+        self.weight = weight
+        self.isAddPetPlaceholder = isAddPetPlaceholder
+        self.allPetsPlaceholder = allPetsPlaceholder
+        self.isSelected = isSelected
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        guardianId = try container.decodeIfPresent(String.self, forKey: .guardianId)
+        specie = try container.decode(Species.self, forKey: .specie)
+        specieAlias = try container.decodeIfPresent(String.self, forKey: .specieAlias)
+        petName = try container.decode(String.self, forKey: .petName)
+        gender = try container.decode(String.self, forKey: .gender)
+        breed = try container.decode(Breed.self, forKey: .breed)
+        breedAlias = try container.decodeIfPresent(String.self, forKey: .breedAlias)
+        size = try container.decode(PetSize.self, forKey: .size)
+        castrated = try container.decode(Bool.self, forKey: .castrated)
+        dateOfBirth = try container.decode(String.self, forKey: .dateOfBirth)
+        image = try container.decodeIfPresent(Data.self, forKey: .image)
+        
+        //Propriedades que não vêm da API
+        weight = nil
+        isAddPetPlaceholder = false
+        allPetsPlaceholder = false
+        isSelected = false
+    }
+    
+    // Computed property para imagens
     var petImage: PetImage {
         if isAddPetPlaceholder {
             return .image(Image(asset: .addSignal))
-        }
-        if allPetsPlaceholder {
+        } else if allPetsPlaceholder {
             return .image(Image(asset: isSelected ? .petSelected : .petUnselected))
-        }
-        if let imageData = self.image, let uiImage = UIImage(data: imageData) {
+        } else if let imageString = self.image, !imageString.isEmpty,
+           let imageData = Data(base64Encoded: imageString),
+           let uiImage = UIImage(data: imageData) {
             return .image(Image(uiImage: uiImage))
+        } else {
+            return .placeholder
         }
-        if image == nil {
-            return .image(PetModel.samplePetImages.randomElement()!)
-        }
-        return .placeholder
     }
 }
 
@@ -75,18 +126,18 @@ enum PetImage {
         case .systemSymbol(let symbol):
             return Image(systemName: symbol)
         case .placeholder:
-            return Image(asset: .paw)
+            return PetModel.samplePetImages.randomElement()!
         }
     }
 }
 
 // MARK: - Factory Methods & Sample Data
 extension PetModel {
-    static func makePlaceholder(type: PlaceholderType,
+    static func makePlaceholder(type: PlaceholderType, 
                                 isSelected: Bool = false) -> PetModel {
         return PetModel(
             id: UUID().uuidString,
-            guardian: nil,
+            guardianId: nil,
             specie: Species(id: UUID().uuidString, name: ""),
             specieAlias: nil,
             petName: type.displayName,
@@ -124,11 +175,11 @@ extension PetModel {
         gender: String,
         isCastrated: Bool,
         dateOfBirth: String,
-        weight: Double
+        weight: Double?
     ) -> PetModel {
         return PetModel(
             id: UUID().uuidString,
-            guardian: nil,
+            guardianId: nil,
             specie: Species(id: UUID().uuidString, name: species),
             specieAlias: nil,
             petName: name,
@@ -139,7 +190,10 @@ extension PetModel {
             castrated: isCastrated,
             dateOfBirth: dateOfBirth,
             image: nil,
-            weight: weight
+            weight: weight,
+            isAddPetPlaceholder: false,
+            allPetsPlaceholder: false,
+            isSelected: false
         )
     }
 }

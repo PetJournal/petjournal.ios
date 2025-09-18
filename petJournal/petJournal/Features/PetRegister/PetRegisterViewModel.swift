@@ -72,9 +72,10 @@ extension PetRegisterViewModel {
     }
     
     func getSize() -> [String] {
-        return ["Mini (Até 6Kgs)", "Pequeno (6 à 14Kgs)",
-                "Médio (15 à 24Kgs)", "Grande (25 à 45Kgs)",
-                "Gigante (Acima de 45Kgs)"]
+        return ["Mini (Até 6Kg)", "Pequeno (Até 10kg)",
+                "Médio (11 à 24Kg)", "Grande (25 à 45Kg)",
+                "Gigante (Acima de 45Kg)","Sem porte Pássaro","Sem porte Peixe",
+                "Sem porte Réptil","Sem porte Roedor","Sem porte", ]
     }
     
     func getAnimalType() -> [String] {
@@ -90,7 +91,7 @@ private extension PetRegisterViewModel {
         
         return PetModel(
             id: UUID().uuidString,
-            guardian: nil,
+            guardianId: nil,
             specie: Species(id: UUID().uuidString, name: type ?? ""),
             specieAlias: nil,
             petName: petName,
