@@ -15,9 +15,12 @@ enum KeychainHelper {
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: key,
             kSecValueData as String: data,
+            kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked
         ]
 
         SecItemDelete(query as CFDictionary)
+        
+        SecItemAdd(query as CFDictionary, nil)
     }
 
     static func getValue(for key: String) -> String? {

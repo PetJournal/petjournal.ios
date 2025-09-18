@@ -33,7 +33,12 @@ struct UserSession: Codable {
             return KeychainHelper.getValue(for: KeysGeneral.token.rawValue)
         }
         set {
-            KeychainHelper.setValue(value: KeysGeneral.token.rawValue, for: newValue ?? "")
+            guard let newValue = newValue else {
+                // Se for nil, deleta o token
+                _ = KeychainHelper.deleteValue(for: KeysGeneral.token.rawValue)
+                return
+            }
+            KeychainHelper.setValue(value: newValue, for: KeysGeneral.token.rawValue)
         }
     }
 
@@ -64,8 +69,12 @@ struct UserSession: Codable {
 
     var password: String? {
         set {
-            UserDefaults.standard.set(newValue, forKey: KeysUser.password.rawValue)
-            KeychainHelper.setValue(value: KeysUser.password.rawValue, for: newValue ?? "")
+            guard let newValue = newValue else {
+                // Se for nil, deleta o password
+                _ = KeychainHelper.deleteValue(for: KeysUser.password.rawValue)
+                return
+            }
+            KeychainHelper.setValue(value: newValue, for: KeysUser.password.rawValue)
         }
         get {
             return KeychainHelper.getValue(for: KeysUser.password.rawValue)

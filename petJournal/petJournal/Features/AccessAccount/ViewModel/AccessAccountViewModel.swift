@@ -32,30 +32,22 @@ final class AccessAccountViewModel: ObservableObject {
             )
             
             sessionManager.login(withToken: token)
-            sessionManager.statusLogin = .unknown
-            
-            // Simulate processing delay if needed
-            try await Task.sleep(nanoseconds: 3_000_000_000)
-            sessionManager.statusLogin = .signIn
             
         } catch let error as AuthenticationError {
             errorMessage = error.localizedDescription
             showAlert = true
-            sessionManager.statusLogin = .signOut
+            sessionManager.logout()
         } catch {
             errorMessage = "Ocorreu um erro inesperado"
             showAlert = true
-            sessionManager.statusLogin = .signOut
+            sessionManager.logout()
         }
         
         isLoading = false
     }
-    
+
     func logout() {
-        if sessionManager.isAuthenticated {
-            sessionManager.logout()
-            sessionManager.statusLogin = .signOut
-        }
+        sessionManager.logout()
     }
 }
 
