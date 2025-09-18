@@ -69,6 +69,10 @@ extension String {
         return outputFormatter.string(from: date)
     }
     
+    var trimmed: String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
     func toDate() -> Date? {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]

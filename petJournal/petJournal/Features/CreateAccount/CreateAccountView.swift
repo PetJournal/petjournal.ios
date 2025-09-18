@@ -1,15 +1,8 @@
-//
-//  CreateAccountView.swift
-//  petJournal
-//
-//  Created by Daiane Goncalves on 16/05/23.
-//
-
 import SwiftUI
 
 struct CreateAccountView: View {
     @EnvironmentObject var router: NavigationRouter
-    @StateObject var viewModel = CreateAccountViewModel(service: CreateAccountService())
+    @StateObject var viewModel = CreateAccountViewModel()
     @State private var showWebview = false
     
     var body: some View {
@@ -18,7 +11,7 @@ struct CreateAccountView: View {
                 headerView
                 textFieldsRegister
                 
-                ComponentPrivacy { self.showWebview = true }
+                privacyPolicyLink
                     .padding(.vertical, 10)
                 
                 buttonRegister
@@ -27,12 +20,20 @@ struct CreateAccountView: View {
             }
             .sheet(isPresented: $showWebview) {
                 WebView(link: "https://www.google.com")
-                buttonsPrivacyPolicy
+                privacyPolicyAgreementButtons
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(Color.theme.petWhite)
+            .alert("Registro", isPresented: $viewModel.showAlert) {
+                Button("OK") {
+                    if viewModel.isRegister {
+                        router.navigate(to: .accessAccount)
+                    }
+                }
+            } message: {
+                Text(viewModel.registrationStatusMessage)
+            }
         }
-        .environmentObject(viewModel)
     }
 }
 
@@ -121,28 +122,24 @@ extension CreateAccountView {
     
     private var buttonRegister: some View {
         VStack {
-            PJButton(title: "Continuar", buttonType: .primaryType) {
-                viewModel.registerUser()
+            PJButton(
+                title: viewModel.isLoading ? "" : "Continuar",
+                buttonType: .primaryType
+            ) {
+                Task {
+                    await viewModel.registerUser()
+                }
             }
-            .disabled(!viewModel.completeRegister)
-        }
-        .alert(isPresented: $viewModel.cancel) {
-            Alert(title: Text("Registro"),
-                  message: Text("\(viewModel.emailAlreadyRegistered)"),
-                  primaryButton: .cancel(),
-                  secondaryButton: .destructive(
-                    Text("OK"),
-                    action: {
-                        if !viewModel.isRegister {
-                            router.navigate(to: .accessAccount)
-                        }
-                    }
-                  )
-            )
+            .disabled(!viewModel.completeRegister || viewModel.isLoading)
+            .overlay {
+                if viewModel.isLoading {
+                    ProgressView()
+                }
+            }
         }
     }
     
-    private var buttonsPrivacyPolicy: some View {
+    private var privacyPolicyAgreementButtons: some View {
         HStack(spacing: 10) {
             PJButton(title: "Concordo", buttonType: .primaryType) {
                 viewModel.isCheckBox = true
@@ -156,9 +153,28 @@ extension CreateAccountView {
         }
         .padding()
     }
+    
+    private var privacyPolicyLink: some View {
+        HStack {
+            Button(action: {
+                viewModel.isCheckBox.toggle()
+            }) {
+                Image(asset: viewModel.isCheckBox ? .checkBoxSelect : .checkBoxClear)
+                    .resizable()
+                    .frame(width: 20, height: 20)
+            }
+            Button(action: {
+                self.showWebview = true
+            }) {
+                Text("Eu concordo com a política de privacidade")
+                    .foregroundColor(Color.theme.petBlack)
+                    .font(.fredokaMedium(size: .tiny))
+            }
+        }
+    }
 }
 
 #Preview {
     CreateAccountView()
-        .environmentObject(CreateAccountViewModel(service: CreateAccountService()))
+        .environmentObject(CreateAccountViewModel())
 }

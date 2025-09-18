@@ -1,4 +1,3 @@
-// InitialActor.swift
 import SwiftUI
 
 struct InitialActor: View {
@@ -40,5 +39,38 @@ struct InitialActor: View {
             }
         }
         .environmentObject(router)
+    }
+
+    @ViewBuilder
+    private func view(for route: Route) -> some View {
+        switch route {
+        // Autenticação
+        case .accessAccount:
+            AccessAccountView(viewModel: .init(service: AccessAccountService()))
+        case .createAccount:
+            CreateAccountView()
+        case .forgotPassword:
+            InputEmailView(viewModel: .init(service: ForgotPasswordService()))
+        case .waitingCode:
+            WaitingCodeView()
+        case .editPassword:
+            EditPasswordView(viewModel: .init())
+        
+        // Pets
+        case .petList:
+            PetListView()
+        case .petProfile(let pet):
+            PetProfileView(pet: pet)
+        case .petRegister:
+            PetRegisterView()
+        
+        // Tarefas
+        case .taskList(let tasks, let filterType):
+            TaskListView(tasks: tasks, filterType: filterType)
+        
+        // Home
+        case .home:
+            PetHomeView()
+        }
     }
 }

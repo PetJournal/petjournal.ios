@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TutorProfileView: View {
     @State private var showAlert = false
-    @StateObject var viewModel: AccessAccountViewModel
+    @StateObject var viewModel = AccessAccountViewModel()
     
     var body: some View {
         ScrollView() {
@@ -27,6 +27,6 @@ struct TutorProfileView: View {
 
 struct TutorProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        TutorProfileView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
+        TutorProfileView()
     }
 }

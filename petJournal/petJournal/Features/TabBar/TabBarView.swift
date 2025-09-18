@@ -17,18 +17,37 @@ struct TabContentContainerView: View {
     
     var body: some View {
         TabView(selection: $tabViewModel.currentTab) {
-            PetHomeView()
-                .environmentObject(tabViewModel)
-                .tag(0)
+            NavigationStack {
+                PetHomeView()
+            }
+            .tabItem {
+                Label("Home", image: ImageAsset.home.rawValue)
+            }
+            .tag(0)
             
-            TaskListView(tasks: [])
-                .tag(1)
+            NavigationStack {
+                TaskListView(tasks: PetTaskModel.sampleTasks)
+            }
+            .tabItem {
+                Label("Agenda", image: ImageAsset.petsCalendar.rawValue)
+            }
+            .tag(1)
             
-            PetListView()
-                .tag(2)
+            NavigationStack {
+                PetListView()
+            }
+            .tabItem {
+                Label("Pet", image: ImageAsset.paw.rawValue)
+            }
+            .tag(2)
             
-            TutorProfileView(viewModel: AccessAccountViewModel(service: AccessAccountService()))
-                .tag(3)
+            NavigationStack {
+                TutorProfileView()
+            }
+            .tabItem {
+                Label("User", image: ImageAsset.user.rawValue)
+            }
+            .tag(3)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
     }
