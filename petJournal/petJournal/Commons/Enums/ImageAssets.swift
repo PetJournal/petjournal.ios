@@ -1,14 +1,8 @@
-//
-//  ImageAssets.swift
-//  petJournal
-//
-//  Created by Rafael Nunes on 28/02/25.
-//
-
 enum ImageAsset: String {
     // Icons
     case addSignal = "ic_plus"
     case all = "ic_all"
+    case allPets = "ic_allPets"
     case checkBoxClear = "ic_checkBox_clear"
     case checkBoxSelect = "ic_checkBox_select"
     case closeEye = "ic_closeEye"
@@ -21,10 +15,8 @@ enum ImageAsset: String {
     case menuBurger = "menu-burger"
     case openEye = "ic_openEye"
     case paw = "ic_paw"
-    case pawFill = "ic_paw_fill"
+    case pawFilled = "ic_paw_filled"
     case pencil = "ic_pencil"
-    case petSelected = "ic_pet_selected"
-    case petUnselected = "ic_pet_unselected"
     case petsCalendar = "pets_calendar"
     case petshop = "petshop"
     case registerVacine = "register_vacine"

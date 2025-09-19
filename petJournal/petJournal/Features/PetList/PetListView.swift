@@ -45,7 +45,7 @@ private extension PetListView {
     }
     
     var addPetButton: some View {
-        PetButton(pet: PetModel.makePlaceholder(type: .addPet)) {
+        PetButton(type: .addPet) {
             path.append(Route.petRegister)
         }
     }
@@ -73,7 +73,7 @@ private struct PetsScrollView: View {
         ScrollView {
             LazyVStack(spacing: 16) {
                 ForEach(pets, id: \.id) { pet in
-                    PetButton(pet: pet) {
+                    PetButton(type: .pet(pet)) {
                         onPetTap(pet)
                     }
                 }

@@ -37,10 +37,8 @@ struct PetSelectionList: View {
     }
     
     private var selectAllButton: some View {
-        PetButtonWrapper(
-            pet: .makePlaceholder(type: .allPets, isSelected: allPetsSelected),
-            action: toggleAllPets
-        )
+        PetButton(type: .allPets(isSelected: allPetsSelected),
+                  action: toggleAllPets)
     }
     
     private var petButtonsList: some View {
@@ -98,7 +96,7 @@ struct PetButtonWrapper: View {
     
     var body: some View {
         PetButton(
-            pet: pet,
+            type: .pet(pet),
             isBordered: isBordered,
             isSelected: isSelected,
             action: action

@@ -57,10 +57,30 @@ struct PetProfileView: View {
     }
     
     private var petImageView: some View {
-        pet.petImage.image
-            .resizable()
-            .clipShape(RoundedRectangle(cornerRadius: 16))
-            .aspectRatio(1, contentMode: .fit)
+        ZStack {
+            if let petImage = pet.petImage {
+                petImage
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .aspectRatio(1, contentMode: .fit)
+            } else {
+                Image(asset: .pawFilled)
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .aspectRatio(1, contentMode: .fit)
+                    .foregroundColor(.theme.petGray300)
+            }
+            RoundedRectangle(cornerRadius: 16)
+                .stroke( Color.theme.petGray300, lineWidth: 2)
+        }
+    }
+    
+    var petImage: Image {
+        if let petImage = pet.petImage {
+            return petImage
+        } else {
+            return Image(asset: .pawFilled)
+        }
     }
     
     private var petInfoView: some View {
@@ -119,7 +139,7 @@ struct PetProfileView: View {
                 .font(.robotoSemiBold(size: .medium))
             Text(".")
                 .font(.robotoSemiBold(size: .medium))
-            Text("\(pet.weight ?? 0, specifier: "%.1f") kg")
+            Text("\(pet.size.name)")
                 .font(.robotoSemiBold(size: .medium))
         }
     }

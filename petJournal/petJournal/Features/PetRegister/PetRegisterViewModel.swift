@@ -3,7 +3,6 @@ import SwiftUI
 
 class PetRegisterViewModel: ObservableObject {
     
-    @Published var pet: PetModel = PetModel.makePlaceholder(type: .addPet)
     @Published var isLoading: Bool = false
     @Published var isRequestSuccessful: Bool = false
     @Published var errorMessage: String? = nil
@@ -101,8 +100,7 @@ private extension PetRegisterViewModel {
             size: PetSize(id: UUID().uuidString, name: size ?? ""),
             castrated: castrated.lowercased() == "sim",
             dateOfBirth: dateOfBirth.toAPIDateFormat() ?? dateOfBirth,
-            image: imageData,
-            weight: Double(weight) ?? 0.0
+            image: imageData
         )
     }
     

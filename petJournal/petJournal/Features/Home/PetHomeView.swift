@@ -137,7 +137,7 @@ private extension PetHomeView {
             HStack {
                 ForEach(pets) { pet in
                     PetButton(
-                        pet: pet,
+                        type: .pet(pet),
                         isSelected: false,
                         action: {}
                     )

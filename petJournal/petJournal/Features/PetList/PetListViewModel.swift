@@ -60,7 +60,7 @@ extension PetListViewModel {
         pet.castrated ? "Sim" : "Não"
     }
     
-    func getImage(for pet: PetModel) -> PetImage? {
+    func getImage(for pet: PetModel) -> Image? {
         pet.petImage
     }
 }
