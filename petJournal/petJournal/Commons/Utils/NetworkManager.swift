@@ -56,8 +56,14 @@ class NetworkManager {
         
         do {
             return try JSONDecoder().decode(T.self, from: data)
-        } catch {
-            throw NetworkError.decodingFailed
+        } catch let decodingError {
+            #if DEBUG
+            print("❌ Decoding Error: \(decodingError)")
+            if let responseString = String(data: data, encoding: .utf8) {
+                print("📦 Raw Response: \(responseString)")
+            }
+            #endif
+            throw NetworkError.decodingFailed(decodingError)
         }
     }
     

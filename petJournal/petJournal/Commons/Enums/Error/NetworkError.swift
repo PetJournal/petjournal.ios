@@ -4,7 +4,7 @@ enum NetworkError: Error {
     case invalidURL
     case invalidResponse
     case noData
-    case decodingFailed
+    case decodingFailed(Error)
     case badRequest
     case unauthorized
     case forbidden
@@ -19,7 +19,7 @@ enum NetworkError: Error {
         case .invalidURL: return "Invalid URL"
         case .invalidResponse: return "Invalid response from server"
         case .noData: return "No data received"
-        case .decodingFailed: return "Failed to decode response"
+        case .decodingFailed(let error): return "Decoding failed: \(error.localizedDescription)"
         case .badRequest: return "Bad request"
         case .unauthorized: return "Unauthorized access"
         case .forbidden: return "Forbidden access"
