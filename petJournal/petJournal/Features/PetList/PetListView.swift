@@ -32,7 +32,6 @@ private extension PetListView {
     var mainContent: some View {
         VStack(spacing: 30) {
             titleView
-            addPetButton
             petsContent
             Spacer()
         }
@@ -44,21 +43,21 @@ private extension PetListView {
             .padding(.top, 120)
     }
     
-    var addPetButton: some View {
-        PetButton(type: .addPet) {
-            path.append(Route.petRegister)
-        }
-    }
-    
     var petsContent: some View {
         Group {
             if viewModel.isLoading {
                 ProgressView()
                     .padding()
             } else {
-                PetsScrollView(pets: viewModel.pets) { pet in
-                    path.append(Route.petProfile(pet: pet))
-                }
+                PetsScrollView(
+                    pets: viewModel.pets,
+                    addPetAction: {
+                        path.append(Route.petRegister)
+                    },
+                    onPetTap: { pet in
+                        path.append(Route.petProfile(pet: pet))
+                    }
+                )
             }
         }
     }
@@ -67,18 +66,27 @@ private extension PetListView {
 // MARK: - Subcomponents
 private struct PetsScrollView: View {
     let pets: [PetModel]
+    let addPetAction: () -> Void
     let onPetTap: (PetModel) -> Void
+    let gridColumns = Array(repeating: GridItem(.flexible()),
+                            count: 2)
     
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 16) {
-                ForEach(pets, id: \.id) { pet in
-                    PetButton(type: .pet(pet)) {
-                        onPetTap(pet)
+            VStack {
+                LazyVGrid(
+                    columns: gridColumns) {
+                    ForEach(pets, id: \.id) { pet in
+                        PetButton(type: .pet(pet)) {
+                            onPetTap(pet)
+                        }
+                    }
+                    PetButton(type: .addPet) {
+                        addPetAction()
                     }
                 }
             }
-            .padding()
+            .frame(maxWidth: 250)
         }
     }
 }
@@ -103,5 +111,3 @@ private extension PetListView {
     PetListView()
         .environmentObject(NavigationRouter())
 }
-
-
