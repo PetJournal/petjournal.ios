@@ -2,59 +2,60 @@ import SwiftUI
 
 struct TabBarView: View {
     @EnvironmentObject var router: NavigationRouter
-    @ObservedObject private var tabViewModel = TabBarViewModel()
+    @StateObject private var tabViewModel = TabBarViewModel()
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            TabContentContainerView(tabViewModel: tabViewModel)
+        VStack(spacing: 0) {
+            Group {
+                switch tabViewModel.currentTab {
+                case 0:
+                    NavigationStack(path: $router.homePath) {
+                        PetHomeView()
+                            .navigationDestination(for: HomeRoute.self, 
+                                                   destination: NavigationDestinationHandler.handleHomeNavigation)
+                    }
+                case 1:
+                    NavigationStack(path: $router.agendaPath) {
+                        TaskListView(tasks: PetTaskModel.sampleTasks)
+                            .navigationDestination(for: AgendaRoute.self, 
+                                                   destination: NavigationDestinationHandler.handleAgendaNavigation)
+                    }
+                case 2:
+                    NavigationStack(path: $router.petPath) {
+                        PetListView()
+                            .navigationDestination(for: PetRoute.self, 
+                                                   destination: NavigationDestinationHandler.handlePetNavigation)
+                    }
+                case 3:
+                    NavigationStack(path: $router.userPath) {
+                        TutorProfileView()
+                            .navigationDestination(for: UserRoute.self, 
+                                                   destination: NavigationDestinationHandler.handleUserNavigation)
+                    }
+                default:
+                    NavigationStack(path: $router.homePath) {
+                        PetHomeView()
+                            .navigationDestination(for: HomeRoute.self, 
+                                                   destination: NavigationDestinationHandler.handleHomeNavigation)
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onChange(of: tabViewModel.currentTab) { _, newTab in
+                router.currentTab = newTab
+            }
+            .onAppear {
+                router.currentTab = tabViewModel.currentTab
+            }
+            
             CustomTabBar(viewModel: tabViewModel)
         }
-    }
-}
-
-struct TabContentContainerView: View {
-    @ObservedObject var tabViewModel: TabBarViewModel
-    
-    var body: some View {
-        TabView(selection: $tabViewModel.currentTab) {
-            NavigationStack {
-                PetHomeView()
-            }
-            .tabItem {
-                Label("Home", image: ImageAsset.home.rawValue)
-            }
-            .tag(0)
-            
-            NavigationStack {
-                TaskListView(tasks: PetTaskModel.sampleTasks)
-            }
-            .tabItem {
-                Label("Agenda", image: ImageAsset.petsCalendar.rawValue)
-            }
-            .tag(1)
-            
-            NavigationStack {
-                PetListView()
-            }
-            .tabItem {
-                Label("Pet", image: ImageAsset.paw.rawValue)
-            }
-            .tag(2)
-            
-            NavigationStack {
-                TutorProfileView()
-            }
-            .tabItem {
-                Label("User", image: ImageAsset.user.rawValue)
-            }
-            .tag(3)
-        }
-        .tabViewStyle(.page(indexDisplayMode: .never))
     }
 }
 
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
         TabBarView()
+            .environmentObject(NavigationRouter())
     }
 }

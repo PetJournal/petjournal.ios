@@ -52,7 +52,7 @@ struct WaitingCodeView: View {
                 
                 PJButton(title: "Enviar", buttonType: .primaryType) {
                     if viewModel.codeCheck {
-                        router.navigate(to: .editPassword)
+                        router.navigateAuth(to: .editPassword)
                     }
                 }
                 .disabled(viewModel.checkState())
@@ -116,4 +116,8 @@ extension WaitingCodeView {
             }
         }
     }
+}
+
+#Preview {
+    WaitingCodeView()
 }

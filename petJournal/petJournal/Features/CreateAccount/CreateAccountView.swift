@@ -27,7 +27,7 @@ struct CreateAccountView: View {
             .alert("Registro", isPresented: $viewModel.showAlert) {
                 Button("OK") {
                     if viewModel.isRegister {
-                        router.navigate(to: .accessAccount)
+                        router.navigateAuth(to: .accessAccount)
                     }
                 }
             } message: {
@@ -176,5 +176,5 @@ extension CreateAccountView {
 
 #Preview {
     CreateAccountView()
-        .environmentObject(CreateAccountViewModel())
+        .environmentObject(NavigationRouter())
 }

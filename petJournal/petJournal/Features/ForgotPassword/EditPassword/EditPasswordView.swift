@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditPasswordView: View {
     @EnvironmentObject var router: NavigationRouter
-    @StateObject var viewModel: EditPasswordViewModel
+    @StateObject var viewModel = EditPasswordViewModel()
     @State var showAlert = false
     
     var body: some View {
@@ -97,5 +97,5 @@ extension EditPasswordView {
 }
 
 #Preview {
-    EditPasswordView(viewModel: EditPasswordViewModel())
+    EditPasswordView()
 }

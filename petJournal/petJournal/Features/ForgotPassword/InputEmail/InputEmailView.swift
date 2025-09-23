@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InputEmailView: View {
     @EnvironmentObject var router: NavigationRouter
-    @StateObject var viewModel: ForgotPasswordViewModel
+    @StateObject var viewModel = ForgotPasswordViewModel()
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -91,7 +91,7 @@ extension InputEmailView {
         VStack(spacing: 5) {
             PJButton(title: "Entrar", buttonType: .primaryType) {
                 viewModel.reAuthentication()
-                router.navigate(to: .waitingCode)
+                router.navigateAuth(to: .waitingCode)
             }
             .disabled(!viewModel.isCorrectCredentials)
             .opacity(viewModel.isCorrectCredentials ? 1 : 0.5)
@@ -105,5 +105,6 @@ extension InputEmailView {
 }
 
 #Preview {
-    InputEmailView(viewModel: ForgotPasswordViewModel(service: ForgotPasswordService()))
+    InputEmailView()
+        .environmentObject(NavigationRouter())
 }

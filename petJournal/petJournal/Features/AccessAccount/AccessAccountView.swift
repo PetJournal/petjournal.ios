@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct AccessAccountView: View {
-    // MARK: - StateObject
     @StateObject var viewModel = AccessAccountViewModel()
     
     @EnvironmentObject var router: NavigationRouter
@@ -83,7 +82,7 @@ extension AccessAccountView {
             CompRememberAndForgotPassword()
             
             Button {
-                router.navigate(to: .forgotPassword)
+                router.navigateAuth(to: .forgotPassword)
             } label: {
                 Text("Esqueci minha senha")
                     .font(.fredokaMedium(size: .tiny))
@@ -111,7 +110,7 @@ extension AccessAccountView {
                 .font(.fredokaMedium(size: .tiny))
             
             Button {
-                router.navigate(to: .createAccount)
+                router.navigateAuth(to: .createAccount)
             } label: {
                 Text("Inscrever-se")
                     .font(.fredokaMedium(size: .tiny))

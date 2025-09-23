@@ -164,6 +164,8 @@ struct PetProfileView_Previews: PreviewProvider {
             PetProfileView(
                 pet: PetModel.samplePets.randomElement()!
             )
-        }.previewDisplayName("Inicio Perfil de Pet")
+        }
+        .environmentObject(NavigationRouter())
+        .previewDisplayName("Inicio Perfil de Pet")
     }
 }

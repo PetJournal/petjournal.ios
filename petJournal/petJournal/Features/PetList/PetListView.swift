@@ -1,19 +1,15 @@
 import SwiftUI
 
 struct PetListView: View {
-    @State private var path = NavigationPath()
+    @EnvironmentObject private var navigationRouter: NavigationRouter
     @StateObject private var viewModel = PetListViewModel()
     
     var body: some View {
-        NavigationStack(path: $path) {
-            ZStack {
-                backgroundImage
-                mainContent
-            }
-            .navigationDestination(for: Route.self,
-                                   destination: handleNavigation)
-            .task{ await viewModel.fetchPets() }
+        ZStack {
+            backgroundImage
+            mainContent
         }
+        .task { await viewModel.fetchPets() }
     }
 }
 
@@ -52,10 +48,10 @@ private extension PetListView {
                 PetsScrollView(
                     pets: viewModel.pets,
                     addPetAction: {
-                        path.append(Route.petRegister)
+                        navigationRouter.navigate(to: .petRegister)
                     },
                     onPetTap: { pet in
-                        path.append(Route.petProfile(pet: pet))
+                        navigationRouter.navigate(to: .petProfile(pet: pet))
                     }
                 )
             }
@@ -91,20 +87,7 @@ private struct PetsScrollView: View {
     }
 }
 
-// MARK: - Navigation
-private extension PetListView {
-    @ViewBuilder
-    func handleNavigation(for route: Route) -> some View {
-        switch route {
-        case .petRegister:
-            PetRegisterView()
-        case .petProfile(let pet):
-            PetProfileView(pet: pet)
-        default:
-            EmptyView()
-        }
-    }
-}
+
 
 // MARK: - Preview
 #Preview {

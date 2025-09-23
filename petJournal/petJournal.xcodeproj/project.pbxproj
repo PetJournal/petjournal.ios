@@ -37,6 +37,8 @@
 		7542A47A2D95DDA500F712C2 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542A4792D95DDA500F712C2 /* NetworkError.swift */; };
 		754EAA582D85C694000FC465 /* PetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAA572D85C694000FC465 /* PetButton.swift */; };
 		7561564D2E37D803008DB0EA /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561564C2E37D803008DB0EA /* CustomTabBar.swift */; };
+		757B8DE62E832F93004DE267 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757B8DE52E832F93004DE267 /* CustomNavigationBar.swift */; };
+		757B8DE82E833A1B004DE267 /* NavigationDestinationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757B8DE72E833A1B004DE267 /* NavigationDestinationHandler.swift */; };
 		75950CB12E04A25A001EC58B /* PetTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75950CB02E04A25A001EC58B /* PetTaskModel.swift */; };
 		759A42812E33D93C00C9CE26 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42802E33D93C00C9CE26 /* CircularButton.swift */; };
 		759A42832E33E62B00C9CE26 /* NoTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42822E33E62B00C9CE26 /* NoTasksView.swift */; };
@@ -154,6 +156,8 @@
 		7542A4792D95DDA500F712C2 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		754EAA572D85C694000FC465 /* PetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetButton.swift; sourceTree = "<group>"; };
 		7561564C2E37D803008DB0EA /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		757B8DE52E832F93004DE267 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		757B8DE72E833A1B004DE267 /* NavigationDestinationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationDestinationHandler.swift; sourceTree = "<group>"; };
 		75950CB02E04A25A001EC58B /* PetTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskModel.swift; sourceTree = "<group>"; };
 		759A42802E33D93C00C9CE26 /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		759A42822E33E62B00C9CE26 /* NoTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTasksView.swift; sourceTree = "<group>"; };
@@ -374,6 +378,7 @@
 				1FF4607A29C8E8720026F680 /* AppDelegate.swift */,
 				C9D8450E2A224AC10007A316 /* InitialActor.swift */,
 				75FC505C2E398E06007B3348 /* NavigationRouter.swift */,
+				757B8DE72E833A1B004DE267 /* NavigationDestinationHandler.swift */,
 				1FF4607C29C8E8720026F680 /* SceneDelegate.swift */,
 			);
 			name = AppStart;
@@ -644,6 +649,7 @@
 				13033C202D9AB62C0037F2BD /* AutoCompleteSelect.swift */,
 				C9D95F712A37AA0D001C271F /* BlurView.swift */,
 				C9D95F6E2A37A6E6001C271F /* CustomAlert.swift */,
+				757B8DE52E832F93004DE267 /* CustomNavigationBar.swift */,
 				7561564C2E37D803008DB0EA /* CustomTabBar.swift */,
 				C96853C32AC397D00020AD1F /* LoadingView.swift */,
 				C93943F42A9C0E6C0085E623 /* PJTextFieldView.swift */,
@@ -841,6 +847,7 @@
 				13D8991F2E78B90C003FD05C /* KeychainHelper.swift in Sources */,
 				1FED054A29E7329E005411D1 /* CreateAccountViewModel.swift in Sources */,
 				C930B5D52A3A8B320008F502 /* EditPasswordView.swift in Sources */,
+				757B8DE62E832F93004DE267 /* CustomNavigationBar.swift in Sources */,
 				C9F5F4A12A41FF0F002C21F7 /* TabBarViewModel.swift in Sources */,
 				C9D845092A22491F0007A316 /* UserSession.swift in Sources */,
 				C9F9D8372A1424E700DD72F1 /* PJButton.swift in Sources */,
@@ -873,6 +880,7 @@
 				1FF4607B29C8E8720026F680 /* AppDelegate.swift in Sources */,
 				C930B5D02A3A8AA60008F502 /* WaitingViewModel.swift in Sources */,
 				C9F5F4AC2A42049F002C21F7 /* ServicesModel.swift in Sources */,
+				757B8DE82E833A1B004DE267 /* NavigationDestinationHandler.swift in Sources */,
 				C9A3248A2A2FB25A008FE6F4 /* RegisterStatus.swift in Sources */,
 				750A36432E2328EF00EF8075 /* Extension+URLSession.swift in Sources */,
 				C9F5F49F2A41FEF8002C21F7 /* TabBarView.swift in Sources */,
