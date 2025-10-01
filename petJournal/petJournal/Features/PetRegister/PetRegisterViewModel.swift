@@ -1,4 +1,3 @@
-import Foundation
 import SwiftUI
 
 class PetRegisterViewModel: ObservableObject {
@@ -6,17 +5,17 @@ class PetRegisterViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var isRequestSuccessful: Bool = false
     @Published var errorMessage: String? = nil
-    @Published var registeredPet: PetModel?
+    @Published var pet: PetModel?
     
     @Published var petName: String = ""
     @Published var breedName: String? = nil
     @Published var size: String? = nil
     @Published var dateOfBirth: String = ""
-    @Published var weight: String = ""
+//    @Published var weight: String = ""
     @Published var type: String? = nil
     @Published var gender: String = ""
     @Published var castrated: String = ""
-    @Published var image: UIImage = UIImage(named: "pet_logoLightPink")!
+    @Published var image: UIImage = UIImage()
 
     private let petRegisterService: PetRegisterServiceProtocol
     static let shared: PetRegisterViewModel = .init()
@@ -35,9 +34,9 @@ extension PetRegisterViewModel {
         
         do {
             let petToRegister = createPetModel()
-            let registeredPet = try await petRegisterService.registerPet(petToBeRegistered: petToRegister)
+            let pet = try await petRegisterService.registerPet(petToBeRegistered: petToRegister)
             
-            await handleSuccess(registeredPet: registeredPet)
+            await handleSuccess(registeredPet: pet)
         } catch {
             await handleError(error)
         }
@@ -45,14 +44,10 @@ extension PetRegisterViewModel {
     
     func getImage() async {
         do {
-            guard let imageFetched = try await AsyncImageService.asyncImage(from: Constants.imageURL) else {
-                await setDefaultImage()
-                return
-            }
-            
+            guard let imageFetched = try await AsyncImageService.asyncImage(from: Constants.imageURL) else { return }
             await setImage(imageFetched)
         } catch {
-            await setDefaultImage()
+            debugPrint("No image found")
         }
     }
     
@@ -80,6 +75,18 @@ extension PetRegisterViewModel {
     func getAnimalType() -> [String] {
         return ["Cachorro","Gato","Pássaro",
             "Coelho","Hamster","Outro"]
+    }
+    
+    func populateFields(with pet: PetModel) {
+        self.pet = pet
+        petName = pet.petName
+        breedName = pet.breed.name
+        size = pet.size.name
+        dateOfBirth = pet.dateOfBirth
+//        weight = pet.weight ?? ""
+        type = pet.specie.name
+        gender = pet.gender
+        castrated = pet.castrated ? "Sim" : "Não"
     }
 }
 
@@ -115,7 +122,7 @@ private extension PetRegisterViewModel {
     @MainActor
     func handleSuccess(registeredPet: PetModel) {
         isRequestSuccessful = true
-        self.registeredPet = registeredPet
+        self.pet = registeredPet
         isLoading = false
     }
     
@@ -126,13 +133,11 @@ private extension PetRegisterViewModel {
     }
     
     @MainActor
-    func setImage(_ image: UIImage) {
-        self.image = image
-    }
-    
-    @MainActor
-    func setDefaultImage() {
-        self.image = UIImage(named: "pet_logoLightPink")!
+    func setImage(_ image: UIImage?) {
+        if let image = image, var currentPet = self.pet {
+            currentPet.petImage = Image(uiImage: image)
+            self.pet = currentPet
+        }
     }
 }
 

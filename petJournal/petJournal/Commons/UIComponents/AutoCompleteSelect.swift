@@ -45,7 +45,19 @@ struct AutoCompleteSelect: View {
             searchField
             optionsList
         }
-        .onAppear { filteredItems = items }
+        .onAppear {
+            filteredItems = items
+            if let selectedItem = selectedItem {
+                searchText = selectedItem
+            }
+        }
+        .onChange(of: selectedItem) { _, newValue in
+            if let newValue = newValue {
+                searchText = newValue
+            } else {
+                searchText = ""
+            }
+        }
     }
 }
 

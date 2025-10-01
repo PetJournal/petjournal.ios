@@ -2,14 +2,14 @@ import SwiftUI
 
 //MARK: - Button Types
 enum PetButtonType: Equatable {
-    case pet(PetModel)
+    case pet(PetModel?)
     case allPets(isSelected: Bool = false)
     case addPet
     
     var displayName: String {
         switch self {
         case .pet(let pet):
-            return pet.petName
+            return pet?.petName ?? ""
         case .allPets:
             return "Todos"
         case .addPet:
@@ -20,7 +20,7 @@ enum PetButtonType: Equatable {
     var image: Image {
         switch self {
         case .pet(let pet):
-            if let petImage = pet.petImage {
+            if let petImage = pet?.computedPetImage {
                 return petImage
             } else {
                 return Image(.icPawFilled)
@@ -48,6 +48,7 @@ struct PetButton: View {
     let type: PetButtonType
     var isBordered: Bool = false
     var isSelected: Bool = false
+    var frameSize: CGFloat = 100
     let action: () -> Void
     
     var body: some View {
@@ -71,7 +72,8 @@ extension PetButton {
     private func imageContent() -> some View {
         type.image
             .resizable()
-            .scaledToFit()
+            .scaledToFill()
+            .frame(width: frameSize, height: frameSize)
             .cornerRadius(12)
             .foregroundColor((type == .allPets(isSelected: false)) ? .theme.petPrimary500 : .theme.petGray300)
     }
@@ -82,7 +84,7 @@ extension PetButton {
             createOverlayContent(isBordered: isBordered,
                                  isSelected: isSelected && type.isSelectable)
         }
-        .frame(width: 100, height: 100)
+        .frame(width: frameSize, height: frameSize)
     }
     
     private func createBorder(isBordered: Bool) -> some View {

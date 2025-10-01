@@ -4,6 +4,12 @@ struct PetRegisterView: View {
     @StateObject private var viewModel = PetRegisterViewModel.shared
     @Environment(\.dismiss) var dismiss
     
+    init(pet: PetModel? = nil) {
+        if let pet = pet {
+            PetRegisterViewModel.shared.populateFields(with: pet)
+        }
+    }
+    
     var body: some View {
         mainContent()
             .background(
@@ -20,18 +26,18 @@ struct PetRegisterView: View {
 private extension PetRegisterView {
     private func mainContent() -> some View {
         VStack(alignment: .leading, spacing: 16) {
-            customNavigationBar(title: "Editar dados do Pet") {
+            customNavigationBar(title: viewModel.pet != nil ? "Editar dados do Pet" : "Cadastrar novo Pet") {
                 dismiss()
             }
             
             ScrollView {
-                VStack(spacing: 16) {
+                VStack(alignment: .center, spacing: 16) {
                     petImageSection()
                     petNameField()
                     breedField()
                     sizeField()
                     birthDateField()
-                    weightField()
+//                    weightField() Não está sendo enviado na request
                     animalTypeField()
                     genderSelection()
                     castrationSelection()
@@ -81,13 +87,13 @@ private extension PetRegisterView {
         }
     }
     
-    func weightField() -> some View {
-        FormField(title: "Peso") {
-            TextField("Peso", text: $viewModel.weight)
-                .textFieldStyle()
-                .keyboardType(.decimalPad)
-        }
-    }
+//    func weightField() -> some View {
+//        FormField(title: "Peso") {
+//            TextField("Peso", text: $viewModel.weight)
+//                .textFieldStyle()
+//                .keyboardType(.decimalPad)
+//        }
+//    }
     
     func animalTypeField() -> some View {
         FormField(title: "Tipo") {
@@ -170,16 +176,21 @@ private extension PetRegisterView {
 // MARK: - Image Components
 private extension PetRegisterView {
     func petImageSection() -> some View {
-        HStack {
-            PetImageView(image: viewModel.image)
-                .task {
-                    await viewModel.getImage()
-                }
-            
-            editImageButton()
-            deleteImageButton()
+        ZStack {
+            PetButton(type: .pet(viewModel.pet),
+                      frameSize: 150, action: {})
+            .task {
+                await viewModel.getImage()
+            }
         }
-        .offset(x: 35)
+        .overlay(alignment: .bottomTrailing) {
+            editImageButton()
+                .offset(x: -10, y: -35)
+        }
+        .overlay(alignment: .topTrailing) {
+            deleteImageButton()
+                .offset(x: 60)
+        }
     }
     
     func editImageButton() -> some View {
@@ -194,16 +205,10 @@ private extension PetRegisterView {
             .background(Color(.petPrimary500))
             .cornerRadius(12)
         }
-        .offset(x: -50, y: +50)
     }
     
     func deleteImageButton() -> some View {
-        Button {
-            viewModel.image = UIImage(named: "banner_01")!
-        } label: {
-            Image("ic_trash")
-        }
-        .offset(x: 30, y: -50)
+        Button {} label: { Image(.icTrash) }
     }
 }
 
@@ -267,19 +272,6 @@ private struct SelectionField<Content: View>: View {
     }
 }
 
-private struct PetImageView: View {
-    let image: UIImage
-    
-    var body: some View {
-        Image(uiImage: image)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(minWidth: 150, maxWidth: 150, minHeight: 150, maxHeight: 153)
-            .clipped()
-            .cornerRadius(18.0)
-    }
-}
-
 private struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -324,7 +316,11 @@ extension TextField {
 }
 
 // MARK: - Previews
-#Preview {
+#Preview("Cadastrar") {
     PetRegisterView()
+        .environmentObject(NavigationRouter())
+}
+#Preview("Editar") {
+    PetRegisterView(pet: PetModel.samplePets[0])
         .environmentObject(NavigationRouter())
 }
