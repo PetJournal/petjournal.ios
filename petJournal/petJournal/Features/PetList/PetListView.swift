@@ -5,26 +5,20 @@ struct PetListView: View {
     @StateObject private var viewModel = PetListViewModel()
     
     var body: some View {
-        ZStack {
-            backgroundImage
-            mainContent
-        }
-        .task { await viewModel.fetchPets() }
+        mainContent
+            .background(
+                Image(.stepsBackground)
+                    .resizable()
+                    .scaledToFill()
+                    .opacity(0.9)
+            )
+            .task { await viewModel.fetchPets() }
     }
 }
 
 // MARK: - Subviews
 private extension PetListView {
-    var backgroundImage: some View {
-        Image(.stepsBackground)
-            .resizable()
-            .scaledToFill()
-            .ignoresSafeArea()
-            .foregroundStyle(Color.theme.petPrimary100)
-            .padding(.top, 80)
-            .offset(y: -70)
-    }
-    
+
     var mainContent: some View {
         VStack(spacing: 30) {
             titleView
