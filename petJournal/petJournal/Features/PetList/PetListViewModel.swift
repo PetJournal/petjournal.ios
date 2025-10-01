@@ -3,29 +3,42 @@ import SwiftUI
 @MainActor
 class PetListViewModel: ObservableObject {
     @Published var pets: [PetModel] = []
-    @Published var isLoading = false
     @Published var error: NetworkError?
     
     private let service: PetListServiceProtocol
+    private let cacheKey = "cached_pets"
     
     init(service: PetListServiceProtocol = PetListService()) {
         self.service = service
+        loadCachedPets()
+    }
+    
+    private func loadCachedPets() {
+        guard let data = UserDefaultsUtils.get(key: cacheKey) as? Data,
+              let cachedPets = try? JSONDecoder().decode([PetModel].self, from: data) else {
+            return
+        }
+        pets = cachedPets
+    }
+    
+    private func cachePets(_ pets: [PetModel]) {
+        guard let data = try? JSONEncoder().encode(pets) else { return }
+        UserDefaultsUtils.save(value: data, key: cacheKey)
     }
     
     func fetchPets() async {
-        isLoading = true
         error = nil
         
         do {
             let fetchedPets = try await service.fetchPets()
-            pets = preparePetsForDisplay(fetchedPets)
+            let sortedPets = preparePetsForDisplay(fetchedPets)
+            pets = sortedPets
+            cachePets(sortedPets)
         } catch let error as NetworkError {
             self.error = error
         } catch {
             self.error = .unknown(statusCode: -1)
         }
-        
-        isLoading = false
     }
 }
 

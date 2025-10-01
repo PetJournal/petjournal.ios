@@ -40,22 +40,19 @@ private extension PetListView {
     }
     
     var petsContent: some View {
-        Group {
-            if viewModel.isLoading {
-                ProgressView()
-                    .padding()
-            } else {
-                PetsScrollView(
-                    pets: viewModel.pets,
-                    addPetAction: {
-                        navigationRouter.navigate(to: .petRegister)
-                    },
-                    onPetTap: { pet in
-                        navigationRouter.navigate(to: .petProfile(pet: pet))
-                    }
-                )
+        PetsScrollView(
+            pets: viewModel.pets,
+            addPetAction: {
+                navigationRouter.navigate(to: .petRegister)
+            },
+            onPetTap: { pet in
+                navigationRouter.navigate(to: .petProfile(pet: pet))
+            },
+            reloadAction: {
+                await viewModel.fetchPets()
             }
-        }
+        )
+        .animation(.easeInOut(duration: 0.3), value: viewModel.pets)
     }
 }
 
@@ -64,6 +61,7 @@ private struct PetsScrollView: View {
     let pets: [PetModel]
     let addPetAction: () -> Void
     let onPetTap: (PetModel) -> Void
+    let reloadAction: () async -> Void
     let gridColumns = Array(repeating: GridItem(.flexible()),
                             count: 2)
     
@@ -83,6 +81,9 @@ private struct PetsScrollView: View {
                 }
             }
             .frame(maxWidth: 250)
+        }
+        .refreshable {
+            await reloadAction()
         }
     }
 }
