@@ -41,7 +41,7 @@ struct CreateAccountView: View {
 extension CreateAccountView {
     private var headerView: some View {
         VStack(spacing: 8) {
-            Image(asset: .logoPrimary)
+            Image(.petLogoPrimary)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 76, height: 76)
@@ -159,7 +159,7 @@ extension CreateAccountView {
             Button(action: {
                 viewModel.isCheckBox.toggle()
             }) {
-                Image(asset: viewModel.isCheckBox ? .checkBoxSelect : .checkBoxClear)
+                Image(viewModel.isCheckBox ? .icCheckBoxSelect : .icCheckBoxClear)
                     .resizable()
                     .frame(width: 20, height: 20)
             }

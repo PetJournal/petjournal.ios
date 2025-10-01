@@ -23,13 +23,13 @@ enum PetButtonType: Equatable {
             if let petImage = pet.petImage {
                 return petImage
             } else {
-                return Image(asset: .pawFilled)
+                return Image(.icPawFilled)
 //                return PetModel.samplePetImages.randomElement()! //Mock com fotos dos pets
             }
         case .allPets(let isSelected):
-            return isSelected ? Image(asset: .allPets) : Image(asset: .pawFilled)
+            return isSelected ? Image(.icAllPets) : Image(.icPawFilled)
         case .addPet:
-            return Image(asset: .addSignal)
+            return Image(.icPlus)
         }
     }
     
@@ -97,7 +97,7 @@ extension PetButton {
     private func createSelectionIcon(isSelected: Bool) -> some View {
         Group {
             if isSelected {
-                Image(asset: .pawFilled)
+                Image(.icPawFilled)
                     .resizable()
                     .foregroundColor(.theme.petPrimary500)
             }
