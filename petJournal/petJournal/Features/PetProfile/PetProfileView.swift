@@ -64,7 +64,7 @@ struct PetProfileView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     .aspectRatio(1, contentMode: .fit)
             } else {
-                Image(asset: .pawFilled)
+                Image(.icPawFilled)
                     .resizable()
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     .aspectRatio(1, contentMode: .fit)
@@ -79,7 +79,7 @@ struct PetProfileView: View {
         if let petImage = pet.petImage {
             return petImage
         } else {
-            return Image(asset: .pawFilled)
+            return Image(.icPawFilled)
         }
     }
     
@@ -148,7 +148,7 @@ struct PetProfileView: View {
         Button(action: {
             router.navigate(to: .petRegister)
         }) {
-            Image(asset: .edit)
+            Image(.icEdit)
         }
     }
     

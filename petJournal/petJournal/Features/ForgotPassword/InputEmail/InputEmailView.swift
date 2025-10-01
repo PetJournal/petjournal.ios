@@ -43,7 +43,7 @@ struct InputEmailView: View {
 extension InputEmailView {
     private var headerPage: some View {
         VStack(spacing: 5) {
-            Image(asset: .logoPrimary)
+            Image(.petLogoPrimary)
                 .resizable()
                 .frame(width: 138, height: 118)
                 .padding([.bottom, .top], 25)

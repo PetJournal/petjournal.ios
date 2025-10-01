@@ -23,7 +23,7 @@ struct CustomTabBar: View {
             ForEach(0..<4, id: \.self) { index in
                 Button(action: { viewModel.currentTab = index }) {
                     tabItem(
-                        iconName: iconName(for: index),
+                        icon: icon(for: index),
                         title: title(for: index),
                         isSelected: viewModel.currentTab == index
                     )
@@ -34,10 +34,10 @@ struct CustomTabBar: View {
         .padding(.horizontal, 20)
     }
     
-    private func tabItem(iconName: String, title: String,
+    private func tabItem(icon: Image, title: String,
                          isSelected: Bool) -> some View {
         VStack(spacing: 4) {
-            Image(iconName)
+            icon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 24, height: 24)
@@ -49,13 +49,13 @@ struct CustomTabBar: View {
         .frame(maxWidth: .infinity)
     }
     
-    private func iconName(for index: Int) -> String {
+    private func icon(for index: Int) -> Image {
         switch index {
-        case 0: return ImageAsset.home.rawValue
-        case 1: return ImageAsset.petsCalendar.rawValue
-        case 2: return ImageAsset.paw.rawValue
-        case 3: return ImageAsset.user.rawValue
-        default: return ""
+        case 0: return Image(.icHome)
+        case 1: return Image(.petsCalendar)
+        case 2: return Image(.icPaw)
+        case 3: return Image(.icUser)
+        default: return Image(.icPaw)
         }
     }
     

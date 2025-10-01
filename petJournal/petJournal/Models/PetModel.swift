@@ -145,8 +145,8 @@ extension PetModel {
     ]
     
     static var samplePetImages: [Image] = [
-        Image(asset: .pet01), Image(asset: .pet02),
-        Image(asset: .pet03), Image(asset: .pet04),
-        Image(asset: .pet05), Image(asset: .pet06)
+        Image(.pet1), Image(.pet2),
+        Image(.pet3), Image(.pet4),
+        Image(.pet5), Image(.pet6)
     ]
 }

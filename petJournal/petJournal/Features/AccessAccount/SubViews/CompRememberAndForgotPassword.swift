@@ -16,7 +16,7 @@ struct CompRememberAndForgotPassword: View {
                 Button(action: {
                     isRemember.toggle()
                 }) {
-                    Image(asset: isRemember ? .checkBoxClear : .checkBoxSelect)
+                    Image(isRemember ? .icCheckBoxClear : .icCheckBoxSelect)
                         .resizable()
                         .frame(width: 20, height: 20)
                 }

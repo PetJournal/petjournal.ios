@@ -13,7 +13,7 @@ import SwiftUI
 //MARK: - Protocol
 protocol CustomAlertProtocol {
     var message: String { get }
-    var imageAsset: ImageAsset { get }
+    var image: Image { get }
     var primaryButton: PJButton { get }
     var secondaryButton: PJButton? { get }
     var buttonDirection: Axis { get }
@@ -23,7 +23,7 @@ protocol CustomAlertProtocol {
 struct CustomAlertView: CustomAlertProtocol, View {
     
     @Binding var isPresented: Bool
-    var imageAsset: ImageAsset
+    var image: Image
     var message: String
     var primaryButton: PJButton
     var secondaryButton: PJButton?
@@ -44,7 +44,7 @@ struct CustomAlertView: CustomAlertProtocol, View {
                     .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)
                 
-                Image(asset: imageAsset)
+                image
                     .resizable()
                     .scaledToFit()
                     .frame(height: 100)
@@ -112,7 +112,7 @@ struct CustomAlertPreview: View {
                 //Create the button when variable is toogled passing the args
                 CustomAlertView(
                     isPresented: $showAlert,
-                    imageAsset: .cryingDog,
+                    image: Image(.imgCryingDog),
                     message: "Você realmente quer sair do app?",
                     primaryButton: PJButton(title: "Excluir", buttonType: .secundaryType, action: {
                         print("Botão EXCLUIR pressionado")
@@ -127,7 +127,7 @@ struct CustomAlertPreview: View {
             if secondAlert {
                 CustomAlertView(
                     isPresented: $secondAlert,
-                    imageAsset: .dogAndCat,
+                    image: Image(.imgDogAndCat),
                     message: "Tarefa adicionada com sucesso!",
                     primaryButton: PJButton(title: "+ Nova tarefa", buttonType: .secundaryType, action: {
                         print("Botão EXCLUIR pressionado")

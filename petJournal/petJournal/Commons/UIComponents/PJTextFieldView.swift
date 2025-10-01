@@ -96,7 +96,7 @@ struct PJTextFieldView: PJTextFieldViewProtocol, View {
                         Button {
                             isVisiblePassword.toggle()
                         } label: {
-                            Image(asset: isVisiblePassword ? .openEye : .closeEye)
+                            Image(isVisiblePassword ? .icOpenEye : .icCloseEye)
                                 .resizable()
                                 .scaledToFit()
                                 .foregroundColor(Color.theme.petGray800)

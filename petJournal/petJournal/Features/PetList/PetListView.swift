@@ -16,7 +16,7 @@ struct PetListView: View {
 // MARK: - Subviews
 private extension PetListView {
     var backgroundImage: some View {
-        Image(asset: .petListBackground)
+        Image(.stepsBackground)
             .resizable()
             .scaledToFill()
             .ignoresSafeArea()

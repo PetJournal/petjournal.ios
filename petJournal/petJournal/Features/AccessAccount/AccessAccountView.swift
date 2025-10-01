@@ -42,7 +42,7 @@ struct AccessAccountView: View {
 extension AccessAccountView {
     private var headerView: some View {
         VStack {
-            Image(asset: .logoPrimary)
+            Image(.petLogoPrimary)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 148, height: 118)

@@ -55,7 +55,7 @@ struct PetTaskModel: Identifiable, Hashable {
             description: "Anti-inflamatório não esteroide para alívio da dor e inflamação.\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
             petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petSecondary500,
-            backgroundIcon: Image(asset: .medicine), 
+            backgroundIcon: Image(.icMedicine), 
             taskType: .medicine, startAt: "2025-12-04T13:00:00Z"
         ),
         PetTaskModel(
@@ -64,7 +64,7 @@ struct PetTaskModel: Identifiable, Hashable {
             description: "Check-up anual\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
             petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petGreen,
-            backgroundIcon: Image(asset: .vetAppointment),
+            backgroundIcon: Image(.icVetAppointment),
             taskType: .consultation, startAt: "2025-11-04T12:00:00Z"
         ),
         PetTaskModel(
@@ -73,7 +73,7 @@ struct PetTaskModel: Identifiable, Hashable {
             description: "Dose anual da vacina antirrábica",
             petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petOrange,
-            backgroundIcon: Image(asset: .vaccine),
+            backgroundIcon: Image(.icVaccine),
             taskType: .vaccine, startAt: "2025-10-12T09:00:00Z"
         )
     ]
@@ -85,7 +85,7 @@ struct PetTaskModel: Identifiable, Hashable {
             description: "Anti-inflamatório não esteroide para alívio da dor e inflamação.\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
             petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petPrimary100,
-            backgroundIcon: Image(asset: .medicine), 
+            backgroundIcon: Image(.icMedicine), 
             taskType: .medicine, startAt: "2024-03-04T15:00:00Z"
         ),
         PetTaskModel(
@@ -94,7 +94,7 @@ struct PetTaskModel: Identifiable, Hashable {
             description: "Check-up anual\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
             petImages: PetModel.samplePetImages,
             accentColor: Color.theme.petPrimary100,
-            backgroundIcon: Image(asset: .vetAppointment),
+            backgroundIcon: Image(.icVetAppointment),
             taskType: .consultation, startAt: "2024-02-04T16:00:00Z"
         )
     ]

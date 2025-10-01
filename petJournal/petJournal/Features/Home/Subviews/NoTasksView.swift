@@ -4,14 +4,14 @@ struct NoTasksView: View {
     let title: String
     let subtitle: String
     let buttonTitle: String
-    let image: ImageAsset
+    let image: Image
     let onCreateAction: () -> Void
 
     init(
         title: String = "Você não tem nenhuma tarefa!",
         subtitle: String = "Crie tarefas para organizar o seu dia",
         buttonTitle: String = "Criar tarefa",
-        image: ImageAsset = .tasks,
+        image: Image = Image(.tasks),
         onCreateAction: @escaping () -> Void
     ) {
         self.title = title
@@ -40,7 +40,7 @@ struct NoTasksView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
-            Image(asset: image)
+            image
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity)
@@ -60,7 +60,7 @@ struct NoTasksView_Previews: PreviewProvider {
                 title: "Sem tarefa",
                 subtitle: "Descrição personalizada",
                 buttonTitle: "+ Tarefa",
-                image: ImageAsset.dogAndCat,
+                image: Image(.imgDogAndCat),
                 onCreateAction: {}
             )
         }
