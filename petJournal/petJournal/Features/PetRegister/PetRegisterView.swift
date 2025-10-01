@@ -5,20 +5,20 @@ struct PetRegisterView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                backgroundImage(geo: geo)
-                mainContent(geo: geo)
-            }
-        }
-        .navigationBarHidden(true)
-        .errorAlert(viewModel: viewModel)
+        mainContent()
+            .background(
+                Image(.petPaws)
+                    .opacity(0.9),
+                alignment: .bottom
+            )
+            .navigationBarHidden(true)
+            .errorAlert(viewModel: viewModel)
     }
 }
 
 // MARK: - Main Components
 private extension PetRegisterView {
-    private func mainContent(geo: GeometryProxy) -> some View {
+    private func mainContent() -> some View {
         VStack(alignment: .leading, spacing: 16) {
             customNavigationBar(title: "Editar dados do Pet") {
                 dismiss()
@@ -40,19 +40,6 @@ private extension PetRegisterView {
                 .padding()
             }
         }
-    }
-    
-    private func backgroundImage(geo: GeometryProxy) -> some View {
-        Image(.petPaws)
-            .resizable()
-            .scaledToFill()
-            .ignoresSafeArea()
-            .foregroundStyle(Color(.petPrimary500))
-            .frame(width: geo.size.width, 
-                   height: geo.size.height - 200,
-                   alignment: .center)
-            .offset(y: 200)
-            .opacity(1.0)
     }
 }
 
