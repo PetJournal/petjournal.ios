@@ -7,10 +7,9 @@ struct TutorProfileView: View {
     var body: some View {
         ScrollView() {
             VStack() {
-                PJButton(title: "Logout",
-                         buttonType: .secundaryType) {
+                PJButton.secondary("Logout", action: {
                     showAlert = true
-                }
+                })
                 .actionSheet(isPresented: $showAlert) {
                     ActionSheet(title: Text("Deseja realmente sair?"), buttons: [
                         .cancel(Text("Cancelar")) { },

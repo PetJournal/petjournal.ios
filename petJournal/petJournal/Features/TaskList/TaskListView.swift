@@ -128,7 +128,7 @@ struct TaskListView: View {
                             frequency: selectedFrequency)
             }
             
-            PJButton(title: "Adicionar tarefa", buttonType: .primaryType) {
+            PJButton.primary("Adicionar tarefa") {
                 showingAddTask = true
             }
             .padding(.horizontal, UIScreen.main.bounds.width / 4)

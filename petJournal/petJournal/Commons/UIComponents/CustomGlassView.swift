@@ -1,10 +1,3 @@
-//
-//  CustomGlassView.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 26/09/23.
-//
-
 import SwiftUI
 
 struct CustomGlassView<Content: View>: View {

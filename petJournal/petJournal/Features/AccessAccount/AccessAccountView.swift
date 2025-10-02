@@ -92,10 +92,7 @@ extension AccessAccountView {
     }
     
     private func loginButton(geometry: GeometryProxy) -> some View {
-        PJButton(
-            title: "Continuar",
-            buttonType: .primaryType
-        ) {
+        PJButton.primary("Continuar") {
             Task {
                 await viewModel.authUser()
             }

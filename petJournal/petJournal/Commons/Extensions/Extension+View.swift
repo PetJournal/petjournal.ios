@@ -8,6 +8,17 @@ extension View {
     func dateFormatter(text: Binding<String>) -> some View {
         self.modifier(DateFormatterModifier(text: text))
     }
+    
+    func errorAlert(viewModel: PetRegisterViewModel) -> some View {
+        alert("Erro", isPresented: Binding<Bool>(
+            get: { viewModel.errorMessage != nil },
+            set: { _ in viewModel.errorMessage = nil }
+        )) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(viewModel.errorMessage ?? "")
+        }
+    }
 }
 
 struct DateFormatterModifier: ViewModifier {

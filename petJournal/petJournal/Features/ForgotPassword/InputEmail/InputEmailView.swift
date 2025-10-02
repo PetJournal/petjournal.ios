@@ -89,14 +89,14 @@ extension InputEmailView {
     
     private var buttonsStack: some View {
         VStack(spacing: 5) {
-            PJButton(title: "Entrar", buttonType: .primaryType) {
+            PJButton.primary("Entrar") {
                 viewModel.reAuthentication()
                 router.navigateAuth(to: .waitingCode)
             }
             .disabled(!viewModel.isCorrectCredentials)
             .opacity(viewModel.isCorrectCredentials ? 1 : 0.5)
             
-            PJButton(title: "Cancelar", buttonType: .secundaryType) {
+            PJButton.secondary("Cancelar") {
                 dismiss()
             }
         }

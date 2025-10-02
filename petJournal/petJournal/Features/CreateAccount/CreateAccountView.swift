@@ -122,10 +122,7 @@ extension CreateAccountView {
     
     private var buttonRegister: some View {
         VStack {
-            PJButton(
-                title: viewModel.isLoading ? "" : "Continuar",
-                buttonType: .primaryType
-            ) {
+            PJButton.primary(viewModel.isLoading ? "" : "Continuar") {
                 Task {
                     await viewModel.registerUser()
                 }
@@ -141,12 +138,12 @@ extension CreateAccountView {
     
     private var privacyPolicyAgreementButtons: some View {
         HStack(spacing: 10) {
-            PJButton(title: "Concordo", buttonType: .primaryType) {
+            PJButton.primary("Concordo") {
                 viewModel.isCheckBox = true
                 showWebview = false
             }
             
-            PJButton(title: "Discordo", buttonType: .secundaryType) {
+            PJButton.secondary("Discordo") {
                 viewModel.isCheckBox = false
                 showWebview = false
             }

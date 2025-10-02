@@ -117,10 +117,10 @@ private extension AutoCompleteSelect {
     }
     
     private var fieldsBackground: some View {
-        RoundedRectangle(cornerRadius: 8)
+        RoundedRectangle(cornerRadius: 14)
             .fill(Color.theme.petWhite)
             .overlay(
-                RoundedRectangle(cornerRadius: 8)
+                RoundedRectangle(cornerRadius: 14)
                     .stroke(borderColor, lineWidth: 1)
             )
             .shadow(color: Color.theme.petPrimary500.opacity(0.2), radius: 10)

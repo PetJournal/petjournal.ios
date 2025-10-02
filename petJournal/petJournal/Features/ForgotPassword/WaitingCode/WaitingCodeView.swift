@@ -50,7 +50,7 @@ struct WaitingCodeView: View {
                 
                 Spacer()
                 
-                PJButton(title: "Enviar", buttonType: .primaryType) {
+                PJButton.primary("Enviar") {
                     if viewModel.codeCheck {
                         router.navigateAuth(to: .editPassword)
                     }

@@ -32,11 +32,7 @@ struct NoTasksView: View {
                     .font(.robotoLight(size: .small))
                     .foregroundColor(.secondary)
                 
-                PJButton(
-                    title: buttonTitle,
-                    buttonType: .primaryType,
-                    action: onCreateAction
-                )
+                PJButton.primary(buttonTitle, action: onCreateAction)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             

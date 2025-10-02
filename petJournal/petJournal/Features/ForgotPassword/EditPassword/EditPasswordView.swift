@@ -43,7 +43,7 @@ struct EditPasswordView: View {
 extension EditPasswordView {
     private var buttonResetPassword: some View {
         VStack {
-            PJButton(title: "Redefinir Senha", buttonType: .primaryType) {
+            PJButton.primary("Redefinir Senha") {
                 viewModel.editPassword(value: viewModel.user.password)
             }
         }
