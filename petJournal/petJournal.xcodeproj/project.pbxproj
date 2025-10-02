@@ -31,6 +31,7 @@
 		7507C3C22E8EE6DA0012E919 /* Extension+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507C3C12E8EE6DA0012E919 /* Extension+TextField.swift */; };
 		7507C3C52E8EEDDF0012E919 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507C3C42E8EEDDF0012E919 /* ActionButton.swift */; };
 		7507C3C72E8EF17E0012E919 /* FieldModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507C3C62E8EF17E0012E919 /* FieldModifiers.swift */; };
+		7507C3C92E8EFC7C0012E919 /* PetRegisterAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7507C3C82E8EFC7C0012E919 /* PetRegisterAlert.swift */; };
 		7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */; };
 		750A36432E2328EF00EF8075 /* Extension+URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A36422E2328EF00EF8075 /* Extension+URLSession.swift */; };
 		750A36452E23374500EF8075 /* PetHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750A36442E23374500EF8075 /* PetHomeViewModel.swift */; };
@@ -153,6 +154,7 @@
 		7507C3C12E8EE6DA0012E919 /* Extension+TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+TextField.swift"; sourceTree = "<group>"; };
 		7507C3C42E8EEDDF0012E919 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		7507C3C62E8EF17E0012E919 /* FieldModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldModifiers.swift; sourceTree = "<group>"; };
+		7507C3C82E8EFC7C0012E919 /* PetRegisterAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetRegisterAlert.swift; sourceTree = "<group>"; };
 		7509EDD62D7203EF0036B9B8 /* Extension+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Image.swift"; sourceTree = "<group>"; };
 		750A36422E2328EF00EF8075 /* Extension+URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+URLSession.swift"; sourceTree = "<group>"; };
 		750A36442E23374500EF8075 /* PetHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetHomeViewModel.swift; sourceTree = "<group>"; };
@@ -380,9 +382,10 @@
 		7507C3C32E8EEDB20012E919 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				13033C222D9B64BA0037F2BD /* PetRegisterView.swift */,
 				7507C3C42E8EEDDF0012E919 /* ActionButton.swift */,
 				7507C3C62E8EF17E0012E919 /* FieldModifiers.swift */,
+				7507C3C82E8EFC7C0012E919 /* PetRegisterAlert.swift */,
+				13033C222D9B64BA0037F2BD /* PetRegisterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7507C3C02E8EDC3B0012E919 /* PetCache.swift in Sources */,
+				7507C3C92E8EFC7C0012E919 /* PetRegisterAlert.swift in Sources */,
 				1FB7998429F1C8CC00673233 /* UserPJModel.swift in Sources */,
 				13BB693B2DA3302300E0A3B5 /* AsyncImageService.swift in Sources */,
 				13BB693C2DA3302300E0A3B5 /* LoginService.swift in Sources */,

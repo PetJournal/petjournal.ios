@@ -5,6 +5,9 @@ class PetRegisterViewModel: ObservableObject {
     @Published var isSuccess = false
     @Published var errorMessage: String?
     @Published var pet: PetModel?
+    @Published var showAlert = false
+    @Published var alertMessage = ""
+    @Published var isSuccessAlert = false
     
     @Published var name = ""
     @Published var breed: String?
@@ -16,7 +19,6 @@ class PetRegisterViewModel: ObservableObject {
     @Published var image = UIImage()
 
     private let service: PetRegisterServiceProtocol
-    static let shared = PetRegisterViewModel()
     
     init(service: PetRegisterServiceProtocol = PetService()) {
         self.service = service
@@ -25,6 +27,18 @@ class PetRegisterViewModel: ObservableObject {
 
 // MARK: - Public Methods
 extension PetRegisterViewModel {
+    func dismissAlert() {
+        showAlert = false
+    }
+    
+    var alertImage: Image {
+        isSuccessAlert ? Image(.imgDogAndCat) : Image(.imgCryingDog)
+    }
+    
+    var alertButtonTitle: String {
+        isSuccessAlert ? "Veja seus Pets" : "Tente novamente mais tarde"
+    }
+    
     func save() async {
         guard isValid else { return }
         
@@ -107,12 +121,18 @@ private extension PetRegisterViewModel {
         isSuccess = true
         pet = savedPet
         isLoading = false
+        alertMessage = "Pet cadastrado com sucesso!"
+        isSuccessAlert = true
+        showAlert = true
     }
     
     @MainActor
     func handleError(_ error: Error) {
         errorMessage = error.localizedDescription
         isLoading = false
+        alertMessage = "Erro ao cadastrar pet"
+        isSuccessAlert = false
+        showAlert = true
     }
     
     @MainActor

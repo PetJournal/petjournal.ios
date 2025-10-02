@@ -1,15 +1,13 @@
 import SwiftUI
 
 struct PetRegisterView: View {
-    @StateObject private var viewModel = PetRegisterViewModel.shared
+    @StateObject private var viewModel = PetRegisterViewModel()
     @Environment(\.dismiss) var dismiss
     
+    private let pet: PetModel?
+    
     init(pet: PetModel? = nil) {
-        if let pet = pet {
-            viewModel.populate(with: pet)
-        } else {
-            viewModel.clear()
-        }
+        self.pet = pet
     }
     
     var body: some View {
@@ -21,6 +19,16 @@ struct PetRegisterView: View {
             )
             .navigationBarHidden(true)
             .errorAlert(viewModel: viewModel)
+            .onAppear {
+                if let pet = pet {
+                    viewModel.populate(with: pet)
+                } else {
+                    viewModel.clear()
+                }
+            }
+            .overlay {
+                PetRegisterAlert(viewModel: viewModel)
+            }
     }
 }
 
