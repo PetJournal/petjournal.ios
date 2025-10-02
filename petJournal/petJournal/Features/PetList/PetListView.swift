@@ -12,7 +12,7 @@ struct PetListView: View {
                     .scaledToFill()
                     .opacity(0.9)
             )
-            .task { await viewModel.fetchPets() }
+            .task { await viewModel.fetch() }
     }
 }
 
@@ -42,8 +42,8 @@ private extension PetListView {
             onPetTap: { pet in
                 navigationRouter.navigate(to: .petProfile(pet: pet))
             },
-            reloadAction: {
-                await viewModel.fetchPets()
+            onRefresh: {
+                await viewModel.fetch()
             }
         )
         .animation(.easeInOut(duration: 0.3), value: viewModel.pets)
@@ -55,15 +55,14 @@ private struct PetsScrollView: View {
     let pets: [PetModel]
     let addPetAction: () -> Void
     let onPetTap: (PetModel) -> Void
-    let reloadAction: () async -> Void
-    let gridColumns = Array(repeating: GridItem(.flexible()),
-                            count: 2)
+    let onRefresh: () async -> Void
+    
+    private let columns = Array(repeating: GridItem(.flexible()), count: 2)
     
     var body: some View {
         ScrollView {
             VStack {
-                LazyVGrid(
-                    columns: gridColumns) {
+                LazyVGrid(columns: columns) {
                     ForEach(pets, id: \.id) { pet in
                         PetButton(type: .pet(pet)) {
                             onPetTap(pet)
@@ -77,12 +76,10 @@ private struct PetsScrollView: View {
             .frame(maxWidth: 250)
         }
         .refreshable {
-            await reloadAction()
+            await onRefresh()
         }
     }
 }
-
-
 
 // MARK: - Preview
 #Preview {
