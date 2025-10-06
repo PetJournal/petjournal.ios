@@ -1,10 +1,3 @@
-//
-//  URLManager.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 29/09/23.
-//
-
 import Foundation
 
 class URLManager {
@@ -20,6 +13,14 @@ class URLManager {
     let forgetPassword = "/forget-password"
     let waitingCode = "/waiting-code"
     let pet = "/pet"
+    
+    var petUpdate: (String) -> String {
+        { petId in "\(self.pet)/\(petId)" }
+    }
+    
+    var deletePet: (String) -> String {
+        { petId in "\(self.pet)/\(petId)" }
+    }
     
     func makeURL(path: String) -> URL? {
         guard let fullURL = URL(string: baseURL + path) else {

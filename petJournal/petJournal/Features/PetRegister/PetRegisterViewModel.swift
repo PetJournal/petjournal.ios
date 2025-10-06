@@ -20,8 +20,19 @@ class PetRegisterViewModel: ObservableObject {
 
     private let service: PetRegisterServiceProtocol
     
-    init(service: PetRegisterServiceProtocol = PetService()) {
+    init(pet: PetModel? = nil, service: PetRegisterServiceProtocol = PetService()) {
         self.service = service
+        self.pet = pet
+        
+        if let pet = pet {
+            name = pet.petName
+            breed = pet.breed.name
+            size = pet.size.name
+            birthDate = pet.dateOfBirth.toBrazilianDateFormat()
+            type = pet.specie.name
+            gender = pet.gender
+            isCastrated = pet.castrated ? "Sim" : "Não"
+        }
     }
 }
 
@@ -31,12 +42,41 @@ extension PetRegisterViewModel {
         showAlert = false
     }
     
+    func showDeleteConfirmation() {
+        alertMessage = "Você realmente quer excluir o pet?"
+        isSuccessAlert = false
+        showAlert = true
+    }
+    
+    func deletePet() async {
+        guard let petId = pet?.id else { return }
+        
+        await setLoading(true)
+        
+        do {
+            try await service.delete(petId: petId)
+            await handleDeleteSuccess()
+        } catch {
+            await handleError(error)
+        }
+    }
+    
     var alertImage: Image {
         isSuccessAlert ? Image(.imgDogAndCat) : Image(.imgCryingDog)
     }
     
     var alertButtonTitle: String {
-        isSuccessAlert ? "Veja seus Pets" : "Tente novamente mais tarde"
+        if isSuccessAlert {
+            return "Veja seus Pets"
+        } else if alertMessage.contains("excluir") {
+            return "Cancelar"
+        } else {
+            return "Tente novamente mais tarde"
+        }
+    }
+    
+    var alertSecondaryButtonTitle: String? {
+        alertMessage.contains("excluir") ? "Deletar" : nil
     }
     
     func save() async {
@@ -46,7 +86,14 @@ extension PetRegisterViewModel {
         
         do {
             let petModel = buildPetModel()
-            let savedPet = try await service.register(petModel)
+            let savedPet: PetModel
+            
+            if pet != nil {
+                savedPet = try await service.update(petModel)
+            } else {
+                savedPet = try await service.register(petModel)
+            }
+            
             await handleSuccess(savedPet)
         } catch {
             await handleError(error)
@@ -95,8 +142,8 @@ private extension PetRegisterViewModel {
         let imageData = image.jpegData(compressionQuality: 0.8)
         
         return PetModel(
-            id: UUID().uuidString,
-            guardianId: nil,
+            id: pet?.id ?? UUID().uuidString,
+            guardianId: pet?.guardianId,
             specie: Species(id: UUID().uuidString, name: type ?? ""),
             specieAlias: nil,
             petName: name,
@@ -132,6 +179,14 @@ private extension PetRegisterViewModel {
         isLoading = false
         alertMessage = "Erro ao cadastrar pet"
         isSuccessAlert = false
+        showAlert = true
+    }
+    
+    @MainActor
+    func handleDeleteSuccess() {
+        isLoading = false
+        alertMessage = "Pet excluído com sucesso!"
+        isSuccessAlert = true
         showAlert = true
     }
     

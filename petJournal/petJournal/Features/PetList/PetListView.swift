@@ -37,7 +37,7 @@ private extension PetListView {
         PetsScrollView(
             pets: viewModel.pets,
             addPetAction: {
-                navigationRouter.navigate(to: .petRegister)
+                navigationRouter.navigate(to: .petRegister(pet: nil))
             },
             onPetTap: { pet in
                 navigationRouter.navigate(to: .petProfile(pet: pet))

@@ -1,13 +1,11 @@
 import SwiftUI
 
 struct PetRegisterView: View {
-    @StateObject private var viewModel = PetRegisterViewModel()
+    @StateObject private var viewModel: PetRegisterViewModel
     @Environment(\.dismiss) var dismiss
     
-    private let pet: PetModel?
-    
     init(pet: PetModel? = nil) {
-        self.pet = pet
+        _viewModel = StateObject(wrappedValue: PetRegisterViewModel(pet: pet))
     }
     
     var body: some View {
@@ -19,13 +17,7 @@ struct PetRegisterView: View {
             )
             .navigationBarHidden(true)
             .errorAlert(viewModel: viewModel)
-            .onAppear {
-                if let pet = pet {
-                    viewModel.populate(with: pet)
-                } else {
-                    viewModel.clear()
-                }
-            }
+
             .overlay {
                 PetRegisterAlert(viewModel: viewModel)
             }
@@ -75,8 +67,10 @@ private extension PetRegisterView {
             .offset(x: -10, y: -35)
         }
         .overlay(alignment: .topTrailing) {
-            ActionButton(.icTrash) {}
-                .offset(x: 60)
+            ActionButton(.icTrash) {
+                viewModel.showDeleteConfirmation()
+            }
+            .offset(x: 60)
         }
     }
 }

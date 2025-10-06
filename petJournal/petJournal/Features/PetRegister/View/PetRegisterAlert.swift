@@ -12,11 +12,15 @@ struct PetRegisterAlert: View {
                 message: viewModel.alertMessage,
                 primaryButton: AnyView(PJButton.primary(viewModel.alertButtonTitle) {
                     if viewModel.isSuccessAlert {
-                        router.navigateBack(in: 2)
+                        router.navigateBack()
                     }
                     viewModel.dismissAlert()
                 }),
-                secondaryButton: nil,
+                secondaryButton: viewModel.alertSecondaryButtonTitle != nil ? AnyView(
+                    PJButton.secondary(viewModel.alertSecondaryButtonTitle!) {
+                        Task { await viewModel.deletePet() }
+                    }
+                ) : nil,
                 buttonDirection: .vertical
             )
         }

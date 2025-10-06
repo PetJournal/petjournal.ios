@@ -1,16 +1,13 @@
 protocol PetRegisterServiceProtocol {
     func register(_ pet: PetModel) async throws -> PetModel
+    func update(_ pet: PetModel) async throws -> PetModel
+    func delete(petId: String) async throws
 }
 
 extension PetService: PetRegisterServiceProtocol {
-    func register(_ pet: PetModel) async throws -> PetModel {
-        guard let url = URLManager.shared.makeURL(path: URLManager.shared.pet) else {
-            throw NetworkError.invalidURL
-        }
-        
+    private func createFormData(for pet: PetModel) -> MultipartFormData {
         var formData = MultipartFormData()
         
-        // Add fields
         formData.append(pet.specie.name, for: "specieName")
         formData.append(pet.petName, for: "petName")
         formData.append(pet.gender, for: "gender")
@@ -19,7 +16,6 @@ extension PetService: PetRegisterServiceProtocol {
         formData.append(pet.castrated ? "true" : "false", for: "castrated")
         formData.append(pet.dateOfBirth, for: "dateOfBirth")
         
-        // Add image if exists
         if let imageData = pet.image {
             formData.append(
                 imageData,
@@ -30,11 +26,45 @@ extension PetService: PetRegisterServiceProtocol {
         }
         
         formData.finalize()
+        return formData
+    }
+    
+    func register(_ pet: PetModel) async throws -> PetModel {
+        guard let url = URLManager.shared.makeURL(path: URLManager.shared.pet) else {
+            throw NetworkError.invalidURL
+        }
+        
+        let formData = createFormData(for: pet)
         
         return try await NetworkManager.shared.multipartRequest(
             url: url,
             method: .post,
             formData: formData
+        )
+    }
+    
+    func update(_ pet: PetModel) async throws -> PetModel {
+        guard let url = URLManager.shared.makeURL(path: URLManager.shared.petUpdate(pet.id)) else {
+            throw NetworkError.invalidURL
+        }
+        
+        let formData = createFormData(for: pet)
+        
+        return try await NetworkManager.shared.multipartRequest(
+            url: url,
+            method: .put,
+            formData: formData
+        )
+    }
+    
+    func delete(petId: String) async throws {
+        guard let url = URLManager.shared.makeURL(path: URLManager.shared.deletePet(petId)) else {
+            throw NetworkError.invalidURL
+        }
+        
+        let _: EmptyResponse = try await NetworkManager.shared.request(
+            url: url,
+            method: .delete
         )
     }
 }

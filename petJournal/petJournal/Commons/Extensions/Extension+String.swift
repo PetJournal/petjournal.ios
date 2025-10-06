@@ -126,4 +126,20 @@ extension String {
          
          return outputFormatter.string(from: date)
      }
+    
+    func toBrazilianDateFormat() -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        inputFormatter.locale = Locale(identifier: "en_US_POSIX")
+        inputFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        guard let date = inputFormatter.date(from: self) else { return self }
+        
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "dd/MM/yyyy"
+        outputFormatter.locale = Locale(identifier: "pt_BR")
+        outputFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        
+        return outputFormatter.string(from: date)
+    }
 }

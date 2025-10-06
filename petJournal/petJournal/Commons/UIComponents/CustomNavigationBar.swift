@@ -25,7 +25,7 @@ struct CustomNavigationBar: View {
                         router.navigateBackAuth()
                     } else {
                         // Use current tab for navigation back
-                        router.navigateBack(in: router.currentTab)
+                        router.navigateBack()
                     }
                 }
             } label: {
