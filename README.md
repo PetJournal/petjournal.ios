@@ -31,14 +31,13 @@ This folder contains subfolders related to project helpers: Custom Classes, Exte
 
 ```
 Commons 
-└───CustomViews
 └───Enums
 └───Extensions
 └───Utils 
+└───Services
 └───UIComponents
+└───Utils
 ```
-#### CustomViews
-This folder contains subfolders, related to Custom views(ViewModifier), most of them are created to be reusable in more than one part or screen of the app.
 
 #### Enums
 This folder contains enumerations that will support application development.
@@ -46,7 +45,10 @@ Not related to the application itself, they are generally generic.
 
 #### Extensions
 This folder contains all the extensions. Default is: Type+Extensions.
-Example: View+Extensions / Color+Extension
+Example: Extension+View / Extension+Color
+
+#### Services
+This folder contains files related to services used in the project.
 
 #### Utils
 This folder contains files related to Project Utilities and constants used in the project.
@@ -101,8 +103,8 @@ When opening the file, select the iPhone version you want. Then select the butto
 
 - Marcylene Barreto /  [@Marbarret](https://github.com/Marbarret) - start: not found ~ until: 05/2023
 - Daiane Gonçalves / [@daigoncalves14](https://github.com/daigoncalves14) - start: not found ~ until: 05/2023
+- Giovanni Favorin / [@giovannifavorin](https://github.com/giovannifavorin) - start: 01/2025 ~ until: 05/2025
 - Rafael Seron / [@rafaseron](https://github.com/rafaseron) - start: 01/2025 ~ until: currently
-- Giovanni Favorin / [@giovannifavorin](https://github.com/giovannifavorin) - start: 01/2025 ~ until: currently
 - Rafael Melo / [@rafaelnmelo](https://github.com/rafaelnmelo) - start: 01/2025 ~ until: currently
 
 #### Mentor 
