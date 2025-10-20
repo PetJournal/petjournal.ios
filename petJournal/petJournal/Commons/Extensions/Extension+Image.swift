@@ -1,11 +1,6 @@
 import SwiftUI
 
 extension Image {
-    // Initialize a image using its name from Asset Catalog
-    init(asset: ImageAsset) {
-        self.init(asset.rawValue)
-    }
-    
     func asUIImage() -> UIImage? {
         let controller = UIHostingController(rootView: self)
         

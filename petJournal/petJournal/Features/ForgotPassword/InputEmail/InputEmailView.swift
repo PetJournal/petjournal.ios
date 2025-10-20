@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InputEmailView: View {
     @EnvironmentObject var router: NavigationRouter
-    @StateObject var viewModel: ForgotPasswordViewModel
+    @StateObject var viewModel = ForgotPasswordViewModel()
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -43,7 +43,7 @@ struct InputEmailView: View {
 extension InputEmailView {
     private var headerPage: some View {
         VStack(spacing: 5) {
-            Image(asset: .logoPrimary)
+            Image(.petLogoPrimary)
                 .resizable()
                 .frame(width: 138, height: 118)
                 .padding([.bottom, .top], 25)
@@ -89,14 +89,14 @@ extension InputEmailView {
     
     private var buttonsStack: some View {
         VStack(spacing: 5) {
-            PJButton(title: "Entrar", buttonType: .primaryType) {
+            PJButton.primary("Entrar") {
                 viewModel.reAuthentication()
-                router.navigate(to: .waitingCode)
+                router.navigateAuth(to: .waitingCode)
             }
             .disabled(!viewModel.isCorrectCredentials)
             .opacity(viewModel.isCorrectCredentials ? 1 : 0.5)
             
-            PJButton(title: "Cancelar", buttonType: .secundaryType) {
+            PJButton.secondary("Cancelar") {
                 dismiss()
             }
         }
@@ -105,5 +105,6 @@ extension InputEmailView {
 }
 
 #Preview {
-    InputEmailView(viewModel: ForgotPasswordViewModel(service: ForgotPasswordService()))
+    InputEmailView()
+        .environmentObject(NavigationRouter())
 }

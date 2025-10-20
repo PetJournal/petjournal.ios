@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct AccessAccountView: View {
-    // MARK: - StateObject
     @StateObject var viewModel = AccessAccountViewModel()
     
     @EnvironmentObject var router: NavigationRouter
@@ -43,7 +42,7 @@ struct AccessAccountView: View {
 extension AccessAccountView {
     private var headerView: some View {
         VStack {
-            Image(asset: .logoPrimary)
+            Image(.petLogoPrimary)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 148, height: 118)
@@ -83,7 +82,7 @@ extension AccessAccountView {
             CompRememberAndForgotPassword()
             
             Button {
-                router.navigate(to: .forgotPassword)
+                router.navigateAuth(to: .forgotPassword)
             } label: {
                 Text("Esqueci minha senha")
                     .font(.fredokaMedium(size: .tiny))
@@ -93,10 +92,7 @@ extension AccessAccountView {
     }
     
     private func loginButton(geometry: GeometryProxy) -> some View {
-        PJButton(
-            title: "Continuar",
-            buttonType: .primaryType
-        ) {
+        PJButton.primary("Continuar") {
             Task {
                 await viewModel.authUser()
             }
@@ -111,7 +107,7 @@ extension AccessAccountView {
                 .font(.fredokaMedium(size: .tiny))
             
             Button {
-                router.navigate(to: .createAccount)
+                router.navigateAuth(to: .createAccount)
             } label: {
                 Text("Inscrever-se")
                     .font(.fredokaMedium(size: .tiny))

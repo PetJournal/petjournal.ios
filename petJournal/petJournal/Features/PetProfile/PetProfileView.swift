@@ -57,10 +57,30 @@ struct PetProfileView: View {
     }
     
     private var petImageView: some View {
-        pet.petImage.image
-            .resizable()
-            .clipShape(RoundedRectangle(cornerRadius: 16))
-            .aspectRatio(1, contentMode: .fit)
+        ZStack {
+            if let petImage = pet.petImage {
+                petImage
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .aspectRatio(1, contentMode: .fit)
+            } else {
+                Image(.icPawFilled)
+                    .resizable()
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .aspectRatio(1, contentMode: .fit)
+                    .foregroundColor(.theme.petGray300)
+            }
+            RoundedRectangle(cornerRadius: 16)
+                .stroke( Color.theme.petGray300, lineWidth: 2)
+        }
+    }
+    
+    var petImage: Image {
+        if let petImage = pet.petImage {
+            return petImage
+        } else {
+            return Image(.icPawFilled)
+        }
     }
     
     private var petInfoView: some View {
@@ -119,7 +139,7 @@ struct PetProfileView: View {
                 .font(.robotoSemiBold(size: .medium))
             Text(".")
                 .font(.robotoSemiBold(size: .medium))
-            Text("\(pet.weight ?? 0, specifier: "%.1f") kg")
+            Text("\(pet.size.name)")
                 .font(.robotoSemiBold(size: .medium))
         }
     }
@@ -128,7 +148,7 @@ struct PetProfileView: View {
         Button(action: {
             router.navigate(to: .petRegister)
         }) {
-            Image(asset: .edit)
+            Image(.icEdit)
         }
     }
     
@@ -144,6 +164,8 @@ struct PetProfileView_Previews: PreviewProvider {
             PetProfileView(
                 pet: PetModel.samplePets.randomElement()!
             )
-        }.previewDisplayName("Inicio Perfil de Pet")
+        }
+        .environmentObject(NavigationRouter())
+        .previewDisplayName("Inicio Perfil de Pet")
     }
 }

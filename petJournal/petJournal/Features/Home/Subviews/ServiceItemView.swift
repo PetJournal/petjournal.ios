@@ -17,7 +17,7 @@ struct ServiceItemView: View {
     }
     
     private var serviceIcon: some View {
-        Image(service.image)
+        service.image
             .foregroundColor(service.color)
             .frame(height: itemHeight / 2)
     }

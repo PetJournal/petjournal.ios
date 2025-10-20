@@ -13,9 +13,9 @@ import SwiftUI
 //MARK: - Protocol
 protocol CustomAlertProtocol {
     var message: String { get }
-    var imageAsset: ImageAsset { get }
-    var primaryButton: PJButton { get }
-    var secondaryButton: PJButton? { get }
+    var image: Image { get }
+    var primaryButton: AnyView { get }
+    var secondaryButton: AnyView? { get }
     var buttonDirection: Axis { get }
 }
 
@@ -23,10 +23,10 @@ protocol CustomAlertProtocol {
 struct CustomAlertView: CustomAlertProtocol, View {
     
     @Binding var isPresented: Bool
-    var imageAsset: ImageAsset
+    var image: Image
     var message: String
-    var primaryButton: PJButton
-    var secondaryButton: PJButton?
+    var primaryButton: AnyView
+    var secondaryButton: AnyView?
     var buttonDirection: Axis
     
     var body: some View {
@@ -44,7 +44,7 @@ struct CustomAlertView: CustomAlertProtocol, View {
                     .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)
                 
-                Image(asset: imageAsset)
+                image
                     .resizable()
                     .scaledToFit()
                     .frame(height: 100)
@@ -98,12 +98,12 @@ struct CustomAlertPreview: View {
         //Embed the button stack and the logic in a ZStack
         ZStack {
             VStack {
-                PJButton(title: "Mostrar alerta", buttonType: .primaryType) {
+                PJButton.primary("Mostrar alerta") {
                     //Toogle the variable in your button
                     self.showAlert.toggle()
                 }
                 
-                PJButton(title: "Segundo alerta", buttonType: .primaryType) {
+                PJButton.primary("Segundo alerta") {
                     self.secondAlert.toggle()
                 }
             }.padding()
@@ -112,12 +112,12 @@ struct CustomAlertPreview: View {
                 //Create the button when variable is toogled passing the args
                 CustomAlertView(
                     isPresented: $showAlert,
-                    imageAsset: .cryingDog,
+                    image: Image(.imgCryingDog),
                     message: "Você realmente quer sair do app?",
-                    primaryButton: PJButton(title: "Excluir", buttonType: .secundaryType, action: {
+                    primaryButton: AnyView(PJButton.secondary("Excluir") {
                         print("Botão EXCLUIR pressionado")
                     }),
-                    secondaryButton: PJButton(title: "Cancelar", buttonType: .primaryType, action: {
+                    secondaryButton: AnyView(PJButton.primary("Cancelar") {
                         print("Botão CANCELAR pressionado")
                         self.showAlert.toggle()
                     }),
@@ -127,12 +127,12 @@ struct CustomAlertPreview: View {
             if secondAlert {
                 CustomAlertView(
                     isPresented: $secondAlert,
-                    imageAsset: .dogAndCat,
+                    image: Image(.imgDogAndCat),
                     message: "Tarefa adicionada com sucesso!",
-                    primaryButton: PJButton(title: "+ Nova tarefa", buttonType: .secundaryType, action: {
+                    primaryButton: AnyView(PJButton.secondary("+ Nova tarefa") {
                         print("Botão EXCLUIR pressionado")
                     }),
-                    secondaryButton: PJButton(title: "Ir para a HomePage", buttonType: .primaryType, action: {
+                    secondaryButton: AnyView(PJButton.primary("Ir para a HomePage") {
                         print("Botão CANCELAR pressionado")
                         self.secondAlert.toggle()
                     }),

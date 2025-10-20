@@ -27,7 +27,7 @@ struct CreateAccountView: View {
             .alert("Registro", isPresented: $viewModel.showAlert) {
                 Button("OK") {
                     if viewModel.isRegister {
-                        router.navigate(to: .accessAccount)
+                        router.navigateAuth(to: .accessAccount)
                     }
                 }
             } message: {
@@ -41,7 +41,7 @@ struct CreateAccountView: View {
 extension CreateAccountView {
     private var headerView: some View {
         VStack(spacing: 8) {
-            Image(asset: .logoPrimary)
+            Image(.petLogoPrimary)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 76, height: 76)
@@ -122,10 +122,7 @@ extension CreateAccountView {
     
     private var buttonRegister: some View {
         VStack {
-            PJButton(
-                title: viewModel.isLoading ? "" : "Continuar",
-                buttonType: .primaryType
-            ) {
+            PJButton.primary(viewModel.isLoading ? "" : "Continuar") {
                 Task {
                     await viewModel.registerUser()
                 }
@@ -141,12 +138,12 @@ extension CreateAccountView {
     
     private var privacyPolicyAgreementButtons: some View {
         HStack(spacing: 10) {
-            PJButton(title: "Concordo", buttonType: .primaryType) {
+            PJButton.primary("Concordo") {
                 viewModel.isCheckBox = true
                 showWebview = false
             }
             
-            PJButton(title: "Discordo", buttonType: .secundaryType) {
+            PJButton.secondary("Discordo") {
                 viewModel.isCheckBox = false
                 showWebview = false
             }
@@ -159,7 +156,7 @@ extension CreateAccountView {
             Button(action: {
                 viewModel.isCheckBox.toggle()
             }) {
-                Image(asset: viewModel.isCheckBox ? .checkBoxSelect : .checkBoxClear)
+                Image(viewModel.isCheckBox ? .icCheckBoxSelect : .icCheckBoxClear)
                     .resizable()
                     .frame(width: 20, height: 20)
             }
@@ -176,5 +173,5 @@ extension CreateAccountView {
 
 #Preview {
     CreateAccountView()
-        .environmentObject(CreateAccountViewModel())
+        .environmentObject(NavigationRouter())
 }

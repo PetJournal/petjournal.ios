@@ -35,8 +35,10 @@ class NetworkManager {
         request.httpMethod = method.rawValue
         request.addValue(contentType.headerValue, forHTTPHeaderField: "Content-Type")
         
-        if let token = SessionManager.shared.getToken() {
+        if let token = SessionManager.shared.getToken(), !token.isEmpty {
             request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        } else {
+            print("Warning: No token available for request")
         }
         
         headers?.forEach { request.addValue($1, forHTTPHeaderField: $0) }
@@ -54,8 +56,14 @@ class NetworkManager {
         
         do {
             return try JSONDecoder().decode(T.self, from: data)
-        } catch {
-            throw NetworkError.decodingFailed
+        } catch let decodingError {
+            #if DEBUG
+            print("❌ Decoding Error: \(decodingError)")
+            if let responseString = String(data: data, encoding: .utf8) {
+                print("📦 Raw Response: \(responseString)")
+            }
+            #endif
+            throw NetworkError.decodingFailed(decodingError)
         }
     }
     

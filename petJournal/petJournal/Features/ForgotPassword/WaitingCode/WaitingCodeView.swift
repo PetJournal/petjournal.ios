@@ -16,7 +16,7 @@ struct WaitingCodeView: View {
     var body: some View {
         ZStack {
             VStack {
-                Image(asset: .logoPrimary)
+                Image(.petLogoPrimary)
                     .resizable()
                     .frame(width: 148, height: 128)
                 
@@ -50,9 +50,9 @@ struct WaitingCodeView: View {
                 
                 Spacer()
                 
-                PJButton(title: "Enviar", buttonType: .primaryType) {
+                PJButton.primary("Enviar") {
                     if viewModel.codeCheck {
-                        router.navigate(to: .editPassword)
+                        router.navigateAuth(to: .editPassword)
                     }
                 }
                 .disabled(viewModel.checkState())
@@ -116,4 +116,8 @@ extension WaitingCodeView {
             }
         }
     }
+}
+
+#Preview {
+    WaitingCodeView()
 }

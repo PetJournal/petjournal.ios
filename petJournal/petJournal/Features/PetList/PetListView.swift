@@ -1,101 +1,87 @@
 import SwiftUI
 
 struct PetListView: View {
-    @State private var path = NavigationPath()
+    @EnvironmentObject private var navigationRouter: NavigationRouter
     @StateObject private var viewModel = PetListViewModel()
-    @State private var showErrorAlert = false
     
     var body: some View {
-        NavigationStack(path: $path) {
-            ZStack {
-                backgroundImage
-                mainContent
-            }
-            .navigationDestination(for: Route.self) { route in
-                switch route {
-                case .petRegister:
-                    PetRegisterView()
-                default:
-                    EmptyView()
-                }
-            }
-            .task {
-                await viewModel.fetchPets()
-            }
-            .onChange(of: viewModel.error?.localizedDescription) { _,_ in
-                showErrorAlert = viewModel.error != nil
-            }
-            .alert("Erro", isPresented: $showErrorAlert) {
-                Button("OK", role: .cancel) {
-                    viewModel.error = nil
-                }
-            } message: {
-                Text(viewModel.error?.localizedDescription ?? "Erro desconhecido")
-            }
-        }
+        mainContent
+            .background(
+                Image(.stepsBackground)
+                    .resizable()
+                    .scaledToFill()
+                    .opacity(0.9)
+            )
+            .task { await viewModel.fetch() }
     }
-    
-    // MARK: Subviews
-    private var backgroundImage: some View {
-        Image(asset: .petListBackground)
-            .resizable()
-            .scaledToFill()
-            .ignoresSafeArea()
-            .foregroundStyle(Color.theme.petPrimary100)
-            .padding(.top, 80)
-            .offset(y: -70)
-    }
-    
-    private var mainContent: some View {
+}
+
+// MARK: - Subviews
+private extension PetListView {
+
+    var mainContent: some View {
         VStack(spacing: 30) {
             titleView
-            addPetButton
-            petsList
+            petsContent
             Spacer()
         }
     }
     
-    private var titleView: some View {
+    var titleView: some View {
         Text("Vamos ver qual pet?")
             .font(.robotoSemiBold(size: .large))
             .padding(.top, 120)
     }
     
-    private var addPetButton: some View {
-        PetButton(pet: PetModel.makePlaceholder(type: .addPet)) {
-            path.append(Route.petRegister)
-        }
-    }
-    
-    private var petsList: some View {
-        Group {
-            if viewModel.isLoading {
-                loadingView
-            } else {
-                scrollablePetsView
+    var petsContent: some View {
+        PetsScrollView(
+            pets: viewModel.pets,
+            addPetAction: {
+                navigationRouter.navigate(to: .petRegister)
+            },
+            onPetTap: { pet in
+                navigationRouter.navigate(to: .petProfile(pet: pet))
+            },
+            onRefresh: {
+                await viewModel.fetch()
             }
-        }
+        )
+        .animation(.easeInOut(duration: 0.3), value: viewModel.pets)
     }
+}
+
+// MARK: - Subcomponents
+private struct PetsScrollView: View {
+    let pets: [PetModel]
+    let addPetAction: () -> Void
+    let onPetTap: (PetModel) -> Void
+    let onRefresh: () async -> Void
     
-    private var loadingView: some View {
-        ProgressView()
-            .padding()
-    }
+    private let columns = Array(repeating: GridItem(.flexible()), count: 2)
     
-    private var scrollablePetsView: some View {
+    var body: some View {
         ScrollView {
-            LazyVStack(spacing: 16) {
-                ForEach(viewModel.pets, id: \.id) { pet in
-                    PetButton(pet: pet) {
-                        path.append(Route.petProfile(pet: pet))
+            VStack {
+                LazyVGrid(columns: columns) {
+                    ForEach(pets, id: \.id) { pet in
+                        PetButton(type: .pet(pet)) {
+                            onPetTap(pet)
+                        }
+                    }
+                    PetButton(type: .addPet) {
+                        addPetAction()
                     }
                 }
             }
-            .padding()
+            .frame(maxWidth: 250)
+        }
+        .refreshable {
+            await onRefresh()
         }
     }
 }
 
+// MARK: - Preview
 #Preview {
     PetListView()
         .environmentObject(NavigationRouter())

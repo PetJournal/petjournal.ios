@@ -16,7 +16,7 @@ class ForgotPasswordViewModel: ObservableObject {
     @Published var cancel: Bool = false
     
     var service: ForgotPasswordServiceProtocol!
-    init(service: ForgotPasswordServiceProtocol) {
+    init(service: ForgotPasswordServiceProtocol = ForgotPasswordService()) {
         self.service = service
     }
     

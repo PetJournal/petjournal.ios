@@ -9,12 +9,12 @@ import SwiftUI
 
 struct EditPasswordView: View {
     @EnvironmentObject var router: NavigationRouter
-    @StateObject var viewModel: EditPasswordViewModel
+    @StateObject var viewModel = EditPasswordViewModel()
     @State var showAlert = false
     
     var body: some View {
         VStack {
-            Image(asset: .logoPrimary)
+            Image(.petLogoPrimary)
                 .resizable()
                 .frame(width: 148, height: 128)
             
@@ -43,7 +43,7 @@ struct EditPasswordView: View {
 extension EditPasswordView {
     private var buttonResetPassword: some View {
         VStack {
-            PJButton(title: "Redefinir Senha", buttonType: .primaryType) {
+            PJButton.primary("Redefinir Senha") {
                 viewModel.editPassword(value: viewModel.user.password)
             }
         }
@@ -83,7 +83,7 @@ extension EditPasswordView {
             Button(action: {
                 viewModel.isCheckBox.toggle()
             }) {
-                Image(asset: viewModel.isCheckBox ? .checkBoxSelect : .checkBoxClear)
+                Image(viewModel.isCheckBox ? .icCheckBoxSelect : .icCheckBoxClear)
                     .resizable()
                     .frame(width: 20, height: 20)
             }
@@ -97,5 +97,5 @@ extension EditPasswordView {
 }
 
 #Preview {
-    EditPasswordView(viewModel: EditPasswordViewModel())
+    EditPasswordView()
 }

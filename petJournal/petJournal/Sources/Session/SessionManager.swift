@@ -8,12 +8,14 @@ class SessionManager: ObservableObject {
     @Published var statusRegister: RegisterStatus = .unknown
     
     var isAuthenticated: Bool {
-        return getToken() != nil
+        return userSession.token != nil && !(userSession.token?.isEmpty ?? true)
     }
     
     func login(withToken token: String) {
         userSession.token = token
         userSession.hasSession = true
+        statusLogin = .signIn
+        debugTokenStatus()
     }
     
     func getToken() -> String? {
@@ -23,11 +25,27 @@ class SessionManager: ObservableObject {
     func logout() {
         userSession.token = nil
         userSession.hasSession = false
+        userSession.firstName = nil
+        userSession.lastName = nil
+        userSession.email = nil
+        userSession.phone = nil
+        userSession.password = nil
+        userSession.registerUser = nil
+        
+        statusLogin = .signOut
+        debugTokenStatus()
     }
     
-    func hasSession() {
-        if isAuthenticated {
-            statusLogin = .signIn
-        }
+    func hasSession() -> Bool {
+        return isAuthenticated
+    }
+    
+    private func debugTokenStatus() {
+        #if DEBUG
+        print("Token exists: \(userSession.token != nil)")
+        print("Token value: \(userSession.token ?? "nil")")
+        print("Has session: \(userSession.hasSession)")
+        print("Is authenticated: \(isAuthenticated)")
+        #endif
     }
 }

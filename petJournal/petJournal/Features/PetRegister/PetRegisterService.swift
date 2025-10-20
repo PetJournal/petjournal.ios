@@ -1,9 +1,9 @@
 protocol PetRegisterServiceProtocol {
-    func registerPet(petToBeRegistered: PetModel) async throws -> PetModel
+    func register(_ pet: PetModel) async throws -> PetModel
 }
 
-class PetRegisterService: PetRegisterServiceProtocol {
-    func registerPet(petToBeRegistered: PetModel) async throws -> PetModel {
+extension PetService: PetRegisterServiceProtocol {
+    func register(_ pet: PetModel) async throws -> PetModel {
         guard let url = URLManager.shared.makeURL(path: URLManager.shared.pet) else {
             throw NetworkError.invalidURL
         }
@@ -11,16 +11,16 @@ class PetRegisterService: PetRegisterServiceProtocol {
         var formData = MultipartFormData()
         
         // Add fields
-        formData.append(petToBeRegistered.specie.name, for: "specieName")
-        formData.append(petToBeRegistered.petName, for: "petName")
-        formData.append(petToBeRegistered.gender, for: "gender")
-        formData.append(petToBeRegistered.breed.name, for: "breedName")
-        formData.append(petToBeRegistered.size.name, for: "size")
-        formData.append(petToBeRegistered.castrated ? "true" : "false", for: "castrated")
-        formData.append(petToBeRegistered.dateOfBirth, for: "dateOfBirth")
+        formData.append(pet.specie.name, for: "specieName")
+        formData.append(pet.petName, for: "petName")
+        formData.append(pet.gender, for: "gender")
+        formData.append(pet.breed.name, for: "breedName")
+        formData.append(pet.size.name, for: "size")
+        formData.append(pet.castrated ? "true" : "false", for: "castrated")
+        formData.append(pet.dateOfBirth, for: "dateOfBirth")
         
         // Add image if exists
-        if let imageData = petToBeRegistered.image {
+        if let imageData = pet.image {
             formData.append(
                 imageData,
                 for: "image",
