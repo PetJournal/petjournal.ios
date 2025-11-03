@@ -217,7 +217,7 @@ extension PetRegisterViewModel {
 private enum PetData {
     static let breeds = ["Labrador Retriever", "Bulldog Francês", "Golden Retriever", "Poodle", "Shih Tzu", "Siamês", "Persa", "Maine Coon", "Sphynx", "Bengal", "Calopsita", "Periquito Australiano", "Agapornis", "Canário", "Cacatua", "Holandês Anão", "Lionhead", "Rex", "Angorá", "Flemish Giant", "Sírio", "Anão Russo", "Roborovski", "Chinês", "Campbell", "Outra"]
     
-    static let sizes = ["Mini (Até 6Kg)", "Pequeno (Até 10kg)", "Médio (11 à 24Kg)", "Grande (25 à 45Kg)", "Gigante (Acima de 45Kg)", "Sem porte Pássaro", "Sem porte Peixe", "Sem porte Réptil", "Sem porte Roedor", "Sem porte"]
+    static let sizes = ["Mini (Até 6Kg)", "Pequeno (Até 10kg)", "Médio (15 à 24Kg)", "Grande (25 à 45Kg)", "Gigante (Acima de 45Kg)", "Sem porte Pássaro", "Sem porte Peixe", "Sem porte Réptil", "Sem porte Roedor", "Sem porte"]
     
     static let types = ["Cachorro", "Gato", "Pássaro", "Coelho", "Hamster", "Outro"]
 }

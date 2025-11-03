@@ -4,7 +4,29 @@ protocol PetRegisterServiceProtocol {
     func delete(petId: String) async throws
 }
 
+struct PetUpdateRequest: Codable {
+    let specieName: String
+    let petName: String
+    let gender: String
+    let breedName: String
+    let size: String
+    let castrated: Bool
+    let dateOfBirth: String
+}
+
 extension PetService: PetRegisterServiceProtocol {
+    private func createJSONBody(for pet: PetModel) -> PetUpdateRequest {
+        return PetUpdateRequest(
+            specieName: pet.specie.name,
+            petName: pet.petName,
+            gender: pet.gender,
+            breedName: pet.breed.name,
+            size: pet.size.name,
+            castrated: pet.castrated,
+            dateOfBirth: pet.dateOfBirth
+        )
+    }
+    
     private func createFormData(for pet: PetModel) -> MultipartFormData {
         var formData = MultipartFormData()
         
@@ -48,12 +70,12 @@ extension PetService: PetRegisterServiceProtocol {
             throw NetworkError.invalidURL
         }
         
-        let formData = createFormData(for: pet)
+        let body = createJSONBody(for: pet)
         
-        return try await NetworkManager.shared.multipartRequest(
+        return try await NetworkManager.shared.jsonRequest(
             url: url,
             method: .put,
-            formData: formData
+            body: body
         )
     }
     
