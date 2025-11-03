@@ -53,6 +53,7 @@
 		75C895932D84C0B6007BEBA3 /* PetRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C895922D84C0B6007BEBA3 /* PetRegisterService.swift */; };
 		75D74D402E098C400012B726 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D74D3F2E098C3F0012B726 /* Extension+String.swift */; };
 		75E295612DD243DB00DC1CCA /* PetTaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E295602DD243DB00DC1CCA /* PetTaskCard.swift */; };
+		75EB8DE32EB8F01C00F98E25 /* PetDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EB8DE22EB8F01C00F98E25 /* PetDataCache.swift */; };
 		75F9E5872DF740CE00079D56 /* PetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F9E5862DF740CE00079D56 /* PetProfileView.swift */; };
 		75FC505D2E398E06007B3348 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC505C2E398E06007B3348 /* NavigationRouter.swift */; };
 		C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */; };
@@ -176,6 +177,7 @@
 		75C895922D84C0B6007BEBA3 /* PetRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterService.swift; sourceTree = "<group>"; };
 		75D74D3F2E098C3F0012B726 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		75E295602DD243DB00DC1CCA /* PetTaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskCard.swift; sourceTree = "<group>"; };
+		75EB8DE22EB8F01C00F98E25 /* PetDataCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetDataCache.swift; sourceTree = "<group>"; };
 		75F9E5862DF740CE00079D56 /* PetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProfileView.swift; sourceTree = "<group>"; };
 		75FC505C2E398E06007B3348 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		C904B18B2A40CFBB005ED7E7 /* ForgotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotError.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				7507C3C32E8EEDB20012E919 /* View */,
 				75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */,
 				75C895922D84C0B6007BEBA3 /* PetRegisterService.swift */,
+				75EB8DE22EB8F01C00F98E25 /* PetDataCache.swift */,
 			);
 			path = PetRegister;
 			sourceTree = "<group>";
@@ -618,8 +621,8 @@
 			isa = PBXGroup;
 			children = (
 				13D8991E2E78B905003FD05C /* KeychainHelper.swift */,
-				C93943F22A9C0E040085E623 /* UIKitCustom.swift */,
 				C910E2BA2AC78F0800DD3C23 /* URLManager.swift */,
+				C93943F22A9C0E040085E623 /* UIKitCustom.swift */,
 				C9D4E1E62A2932740030164A /* UserDefaultsUtils.swift */,
 				C9B9FD9429EDE27900C7C52B /* Validations.swift */,
 				75AFB52D2E4AAB38002D88CB /* NetworkManager.swift */,
@@ -904,6 +907,7 @@
 				7509EDD72D7203EF0036B9B8 /* Extension+Image.swift in Sources */,
 				C9F5F4B82A420553002C21F7 /* TutorProfileView.swift in Sources */,
 				13033C212D9AB6390037F2BD /* AutoCompleteSelect.swift in Sources */,
+				75EB8DE32EB8F01C00F98E25 /* PetDataCache.swift in Sources */,
 				75C895912D84BDC5007BEBA3 /* PetModel.swift in Sources */,
 				50F77A3E2D820ABE00606345 /* PetListView.swift in Sources */,
 				C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */,

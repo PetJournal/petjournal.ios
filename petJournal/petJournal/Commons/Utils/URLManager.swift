@@ -13,6 +13,10 @@ class URLManager {
     let forgetPassword = "/forget-password"
     let waitingCode = "/waiting-code"
     let pet = "/pet"
+    var breedsByCat = "/breeds/cat"
+    var breedsByDog = "/breeds/dog"
+    var sizesByCat = "/sizes/cat"
+    var sizesByDog = "/sizes/dog"
     
     var petUpdate: (String) -> String {
         { petId in "\(self.pet)/\(petId)" }

@@ -56,9 +56,6 @@ private extension PetRegisterView {
         ZStack {
             PetButton(type: .pet(viewModel.pet),
                       frameSize: 150, action: {})
-            .task {
-                await viewModel.loadSampleImage()
-            }
         }
         .overlay(alignment: .bottomTrailing) {
             ActionButton(.icPencil, background: .theme.petPrimary500) {
@@ -91,6 +88,7 @@ private extension PetRegisterView {
                 items: viewModel.breeds,
                 placeholder: "Qual a raça?"
             )
+            .id(viewModel.breeds.joined())
         }
     }
     
@@ -101,6 +99,7 @@ private extension PetRegisterView {
                 items: viewModel.sizes,
                 placeholder: "Qual o porte?"
             )
+            .id(viewModel.sizes.joined())
         }
     }
     
@@ -120,6 +119,13 @@ private extension PetRegisterView {
                 items: viewModel.animalTypes,
                 placeholder: "Qual o tipo do animal?"
             )
+            .onChange(of: viewModel.type) { _ , newType in
+                if let type = newType {
+                    viewModel.loadDataForType(type)
+                    viewModel.breed = nil
+                    viewModel.size = nil
+                }
+            }
         }
     }
 }
