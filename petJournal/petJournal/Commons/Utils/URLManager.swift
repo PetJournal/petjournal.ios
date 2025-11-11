@@ -26,6 +26,11 @@ class URLManager {
         { petId in "\(self.pet)/\(petId)" }
     }
     
+    var petTasks: (String) -> String {
+        // FIXME: endpoint non existent
+        { petId in "\(self.pet)/\(petId)/tasks" }
+    }
+    
     func makeURL(path: String) -> URL? {
         guard let fullURL = URL(string: baseURL + path) else {
             return nil
