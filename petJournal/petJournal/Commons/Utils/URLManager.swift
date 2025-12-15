@@ -17,6 +17,7 @@ class URLManager {
     var breedsByDog = "/breeds/dog"
     var sizesByCat = "/sizes/cat"
     var sizesByDog = "/sizes/dog"
+    var petTasks = "/tasks/pet"
     
     var petUpdate: (String) -> String {
         { petId in "\(self.pet)/\(petId)" }
@@ -26,9 +27,12 @@ class URLManager {
         { petId in "\(self.pet)/\(petId)" }
     }
     
-    var petTasks: (String) -> String {
-        // FIXME: endpoint non existent
-        { petId in "\(self.pet)/\(petId)/tasks" }
+    var petUpcomingTasks: (String) -> String {
+        { petId in "\(self.petTasks)/next/\(petId)" }
+    }
+    
+    var petHistoricTasks: (String) -> String {
+        { petId in "\(self.petTasks)/history/\(petId)" }
     }
     
     func makeURL(path: String) -> URL? {

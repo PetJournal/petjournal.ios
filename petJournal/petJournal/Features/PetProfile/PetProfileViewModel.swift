@@ -1,7 +1,8 @@
 import SwiftUI
 
 class PetProfileViewModel: ObservableObject {
-    @Published var tasks: [TaskResponse] = []
+    @Published var upcomingTasks: [String] = []
+    @Published var historicTasks: [String] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
     
@@ -17,9 +18,14 @@ class PetProfileViewModel: ObservableObject {
         await setLoading(true)
         
         do {
-            let fetchedTasks = try await service.fetchTasks(for: petId)
+            async let upcomingResponse = service.fetchUpcomingTasks(for: petId)
+            async let historicResponse = service.fetchHistoricTasks(for: petId)
+            
+            let (upcoming, historic) = try await (upcomingResponse, historicResponse)
+            
             await MainActor.run {
-                self.tasks = fetchedTasks
+                self.upcomingTasks = upcoming.nextEvents
+                self.historicTasks = historic.history
                 self.errorMessage = nil
             }
         } catch {
@@ -34,41 +40,5 @@ class PetProfileViewModel: ObservableObject {
     @MainActor
     private func setLoading(_ loading: Bool) {
         isLoading = loading
-    }
-}
-
-struct TaskResponse: Codable {
-    let id: String
-    let schedulerId: String
-    let start: String
-    let end: String
-    let page: Int
-    let limit: Int
-    let count: Int
-}
-
-extension TaskResponse {
-    func toPetTaskModel() -> PetTaskModel {
-        return PetTaskModel(
-            title: "Task \(id.prefix(8))",
-            schedule: formatSchedule(),
-            description: "Scheduler ID: \(schedulerId)",
-            petImages: [],
-            accentColor: Color.theme.petPrimary500,
-            backgroundIcon: Image(.icMedicine),
-            taskType: .all,
-            startAt: start
-        )
-    }
-    
-    private func formatSchedule() -> String {
-        let formatter = ISO8601DateFormatter()
-        if let date = formatter.date(from: start) {
-            let displayFormatter = DateFormatter()
-            displayFormatter.dateStyle = .short
-            displayFormatter.timeStyle = .short
-            return displayFormatter.string(from: date)
-        }
-        return start
     }
 }

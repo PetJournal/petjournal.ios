@@ -178,19 +178,31 @@ private extension PetProfileView {
     
     var upcomingTasksList: some View {
         Group {
-            if viewModel.tasks.isEmpty {
+            if viewModel.upcomingTasks.isEmpty {
                 emptyTasksView
             } else {
-                ForEach(viewModel.tasks, id: \.id) { task in
-                    PetTaskCard(presenter: PetTaskCardPresenter(task: task.toPetTaskModel()))
+                ForEach(Array(viewModel.upcomingTasks.enumerated()), id: \.offset) { index, task in
+                    Text(task)
+                        .padding()
+                        .background(Color.theme.petPrimaryBackground)
+                        .cornerRadius(8)
                 }
             }
         }
     }
     
     var historicTasksList: some View {
-        ForEach(PetTaskModel.sampleHistoricTasks) { task in
-            PetTaskCard(presenter: PetTaskCardPresenter(task: task))
+        Group {
+            if viewModel.historicTasks.isEmpty {
+                emptyTasksView
+            } else {
+                ForEach(Array(viewModel.historicTasks.enumerated()), id: \.offset) { index, task in
+                    Text(task)
+                        .padding()
+                        .background(Color.theme.petGray300)
+                        .cornerRadius(8)
+                }
+            }
         }
     }
 }
