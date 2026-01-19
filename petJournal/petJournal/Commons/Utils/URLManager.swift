@@ -13,6 +13,7 @@ class URLManager {
     let forgetPassword = "/forget-password"
     let waitingCode = "/waiting-code"
     let pet = "/pet"
+    let tag = "/tag"
     var breedsByCat = "/breeds/cat"
     var breedsByDog = "/breeds/dog"
     var sizesByCat = "/sizes/cat"

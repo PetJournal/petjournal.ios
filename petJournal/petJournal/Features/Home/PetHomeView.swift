@@ -5,7 +5,7 @@ struct PetHomeView: View {
     @StateObject private var viewModel = PetHomeViewModel()
     var pets: [PetModel]?
     var tasks: [PetTaskModel]?
-    var services: [ServiceModel]?
+    var services: [TagModel]?
     var banners: [HomeBanner]?
     
     var body: some View {
@@ -28,7 +28,7 @@ struct PetHomeView: View {
             }
         }
         .task {
-            await viewModel.fetchUserData()
+            await viewModel.loadInitialData()
         }
     }
 }
@@ -109,8 +109,8 @@ private extension PetHomeView {
                 Text("Saiba mais:")
                     .font(.robotoMedium(size: .big))
                 
-                if let services = services, !services.isEmpty {
-                    servicesScrollView(services: services)
+                if !viewModel.tags.isEmpty {
+                    servicesScrollView(services: viewModel.tags)
                 }
             }
             Spacer()
@@ -180,11 +180,11 @@ private extension PetHomeView {
     }
     
     // Services Components
-    func servicesScrollView(services: [ServiceModel]) -> some View {
+    func servicesScrollView(services: [TagModel]) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack() {
                 ForEach(services) { service in
-                    ServiceItemView(service: service)
+                    ServiceTagItemView(tag: service)
                 }
             }
         }
@@ -198,11 +198,11 @@ struct PetHomeView_Previews: PreviewProvider {
             PetHomeView(
                 pets: PetModel.samplePets,
                 tasks: PetTaskModel.sampleTasks,
-                services: ServiceModel.mockServices
+                services: TagModel.mockServices
             )
             .previewDisplayName("Completa")
             
-            PetHomeView(services: ServiceModel.mockServices)
+            PetHomeView(services: nil)
                 .previewDisplayName("Sem tarefas e Pets")
         }
     }

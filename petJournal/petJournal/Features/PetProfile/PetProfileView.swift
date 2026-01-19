@@ -39,8 +39,8 @@ private extension PetProfileView {
     var servicesSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(ServiceModel.mockServices) { service in
-                    ServiceItemView(service: service)
+                ForEach(TagModel.mockServices) { service in
+                    ServiceTagItemView(tag: service)
                 }
             }
         }

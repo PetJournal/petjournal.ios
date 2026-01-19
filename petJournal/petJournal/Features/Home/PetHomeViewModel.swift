@@ -1,28 +1,43 @@
-import Foundation
+import SwiftUI
 
 class PetHomeViewModel: ObservableObject {
     @Published var firstName: String = ""
     @Published var lastName: String = ""
+    @Published var tags: [TagModel] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var showAddPetSheet: Bool = false
     @Published var showAddTaskSheet: Bool = false
     
     private let userService: UserServiceProtocol
+    private let petHomeService: PetHomeServiceProtocol
     
-    init(userService: UserServiceProtocol = UserService()) {
+    init(
+        userService: UserServiceProtocol = UserService(),
+        petHomeService: PetHomeServiceProtocol = PetHomeService()
+    ) {
         self.userService = userService
+        self.petHomeService = petHomeService
+        self.tags = [createDefaultTag()]
+    }
+    
+    private func createDefaultTag() -> TagModel {
+        TagModel(id: "0", name: "Todos", color: "#FFFFFF", image: Image(.icAll), backgroundColor: Color.theme.petPrimary500)
     }
     
     @MainActor
-    func fetchUserData() async {
+    func loadInitialData() async {
         isLoading = true
         errorMessage = nil
         
+        async let userData = userService.fetchUserData()
+        async let tagsData = petHomeService.fetchTags()
+        
         do {
-            let user = try await userService.fetchUserData()
+            let (user, fetchedTags) = try await (userData, tagsData)
             firstName = user.firstName
             lastName = user.lastName
+            tags = [createDefaultTag()] + fetchedTags
         } catch {
             errorMessage = error.localizedDescription
             firstName = "Time"
