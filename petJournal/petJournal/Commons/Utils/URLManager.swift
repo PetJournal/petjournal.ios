@@ -12,6 +12,7 @@ class URLManager {
     let guardianChangePassword = "/guardian/change-password"
     let forgetPassword = "/forget-password"
     let waitingCode = "/waiting-code"
+    let guardianName = "/guardian/name"
     let pet = "/pet"
     let tag = "/tag"
     var breedsByCat = "/breeds/cat"

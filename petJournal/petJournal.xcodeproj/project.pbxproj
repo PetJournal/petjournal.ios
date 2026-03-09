@@ -50,6 +50,7 @@
 		75950CB12E04A25A001EC58B /* PetTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75950CB02E04A25A001EC58B /* PetTaskModel.swift */; };
 		759A42812E33D93C00C9CE26 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42802E33D93C00C9CE26 /* CircularButton.swift */; };
 		759A42832E33E62B00C9CE26 /* NoTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42822E33E62B00C9CE26 /* NoTasksView.swift */; };
+		75AEE8752F5F084F00A2B1B4 /* PetGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AEE8742F5F084F00A2B1B4 /* PetGuardian.swift */; };
 		75AF95572DAAAB9500CF0A02 /* TaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF95562DAAAB9500CF0A02 /* TaskButton.swift */; };
 		75AFB52E2E4AAB39002D88CB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFB52D2E4AAB38002D88CB /* NetworkManager.swift */; };
 		75C8958F2D84BDA6007BEBA3 /* PetRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */; };
@@ -178,6 +179,7 @@
 		75950CB02E04A25A001EC58B /* PetTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskModel.swift; sourceTree = "<group>"; };
 		759A42802E33D93C00C9CE26 /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		759A42822E33E62B00C9CE26 /* NoTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTasksView.swift; sourceTree = "<group>"; };
+		75AEE8742F5F084F00A2B1B4 /* PetGuardian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetGuardian.swift; sourceTree = "<group>"; };
 		75AF95562DAAAB9500CF0A02 /* TaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskButton.swift; sourceTree = "<group>"; };
 		75AFB52D2E4AAB38002D88CB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterViewModel.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 			children = (
 				C9F5F4A92A42046E002C21F7 /* HomeBanner.swift */,
 				C9A324902A2FE7D5008FE6F4 /* LoginResponse.swift */,
+				75AEE8742F5F084F00A2B1B4 /* PetGuardian.swift */,
 				75C895902D84BDC5007BEBA3 /* PetModel.swift */,
 				75950CB02E04A25A001EC58B /* PetTaskModel.swift */,
 				C91CF52E2AE9F51B00CDC49E /* RegisterResponse.swift */,
@@ -940,6 +943,7 @@
 				752C79C72EC3A8D30098AFEA /* PetProfileViewModel.swift in Sources */,
 				C9BAE60D29DE298900542620 /* Extension+Color.swift in Sources */,
 				7542A47A2D95DDA500F712C2 /* NetworkError.swift in Sources */,
+				75AEE8752F5F084F00A2B1B4 /* PetGuardian.swift in Sources */,
 				C9D8450D2A2249650007A316 /* SessionModel.swift in Sources */,
 				6196CDB52AE2F47A0021DA5F /* Extension+Font.swift in Sources */,
 				C9D95F6F2A37A6E6001C271F /* CustomAlert.swift in Sources */,

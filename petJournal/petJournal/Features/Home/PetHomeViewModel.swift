@@ -10,16 +10,13 @@ class PetHomeViewModel: ObservableObject {
     @Published var showAddPetSheet: Bool = false
     @Published var showAddTaskSheet: Bool = false
     
-    private let userService: UserServiceProtocol
     private let petHomeService: PetHomeServiceProtocol
     private let petService: PetServiceProtocol
     
     init(
-        userService: UserServiceProtocol = UserService(),
         petHomeService: PetHomeServiceProtocol = PetHomeService(),
         petService: PetServiceProtocol = PetService()
     ) {
-        self.userService = userService
         self.petHomeService = petHomeService
         self.petService = petService
         self.tags = [createDefaultTag()]
@@ -34,20 +31,20 @@ class PetHomeViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         
-        async let userData = userService.fetchUserData()
+        async let guardianData = petHomeService.fetchGuardianName()
         async let tagsData = petHomeService.fetchTags()
         async let petsData = petService.fetch()
         
         do {
-            let (user, fetchedTags, fetchedPets) = try await (userData, tagsData, petsData)
-            firstName = user.firstName
-            lastName = user.lastName
+            let (guardian, fetchedTags, fetchedPets) = try await (guardianData, tagsData, petsData)
+            firstName = guardian.firstName
+            lastName = guardian.lastName
             tags = [createDefaultTag()] + fetchedTags
             pets = fetchedPets
         } catch {
             errorMessage = error.localizedDescription
-            firstName = "Time"
-            lastName = "iOS"
+            firstName = "Guardião"
+            lastName = ""
         }
         
         isLoading = false
@@ -60,26 +57,4 @@ class PetHomeViewModel: ObservableObject {
     func presentAddTask() {
         showAddTaskSheet = true
     }
-}
-
-// Protocol for dependency injection and testing
-protocol UserServiceProtocol {
-    func fetchUserData() async throws -> User
-}
-
-// Mock service implementation
-struct UserService: UserServiceProtocol {
-    func fetchUserData() async throws -> User {
-        try await Task.sleep(nanoseconds: 2_000_000_000)
-        if Bool.random() {
-            return User(firstName: "Time", lastName: "iOS")
-        } else {
-            throw NSError(domain: "com.pethome.error", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch user data"])
-        }
-    }
-}
-
-struct User {
-    let firstName: String
-    let lastName: String
 }
