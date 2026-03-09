@@ -51,6 +51,8 @@
 		759A42812E33D93C00C9CE26 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42802E33D93C00C9CE26 /* CircularButton.swift */; };
 		759A42832E33E62B00C9CE26 /* NoTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42822E33E62B00C9CE26 /* NoTasksView.swift */; };
 		75AEE8752F5F084F00A2B1B4 /* PetGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AEE8742F5F084F00A2B1B4 /* PetGuardian.swift */; };
+		75AEE8772F5F0BBB00A2B1B4 /* HomeCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AEE8762F5F0BBA00A2B1B4 /* HomeCache.swift */; };
+		75AEE87A2F5F0CED00A2B1B4 /* PetHomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AEE8782F5F0CED00A2B1B4 /* PetHomeRepository.swift */; };
 		75AF95572DAAAB9500CF0A02 /* TaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AF95562DAAAB9500CF0A02 /* TaskButton.swift */; };
 		75AFB52E2E4AAB39002D88CB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFB52D2E4AAB38002D88CB /* NetworkManager.swift */; };
 		75C8958F2D84BDA6007BEBA3 /* PetRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */; };
@@ -180,6 +182,8 @@
 		759A42802E33D93C00C9CE26 /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		759A42822E33E62B00C9CE26 /* NoTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTasksView.swift; sourceTree = "<group>"; };
 		75AEE8742F5F084F00A2B1B4 /* PetGuardian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetGuardian.swift; sourceTree = "<group>"; };
+		75AEE8762F5F0BBA00A2B1B4 /* HomeCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCache.swift; sourceTree = "<group>"; };
+		75AEE8782F5F0CED00A2B1B4 /* PetHomeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetHomeRepository.swift; sourceTree = "<group>"; };
 		75AF95562DAAAB9500CF0A02 /* TaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskButton.swift; sourceTree = "<group>"; };
 		75AFB52D2E4AAB38002D88CB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		75C8958E2D84BDA6007BEBA3 /* PetRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetRegisterViewModel.swift; sourceTree = "<group>"; };
@@ -432,6 +436,15 @@
 			path = TutorProfile;
 			sourceTree = "<group>";
 		};
+		75AEE87C2F5F0DA500A2B1B4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				75AEE8782F5F0CED00A2B1B4 /* PetHomeRepository.swift */,
+				75AEE8762F5F0BBA00A2B1B4 /* HomeCache.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		75C8958D2D84BD92007BEBA3 /* PetRegister */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +567,7 @@
 				C9F5F4B92A420562002C21F7 /* PetHomeView.swift */,
 				750A36442E23374500EF8075 /* PetHomeViewModel.swift */,
 				751ABF302F1E675400284842 /* PetHomeService.swift */,
+				75AEE87C2F5F0DA500A2B1B4 /* Data */,
 				C9F5F4A72A420449002C21F7 /* Subviews */,
 			);
 			path = Home;
@@ -863,6 +877,7 @@
 				759A42832E33E62B00C9CE26 /* NoTasksView.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
 				750A36452E23374500EF8075 /* PetHomeViewModel.swift in Sources */,
+				75AEE87A2F5F0CED00A2B1B4 /* PetHomeRepository.swift in Sources */,
 				C9D95F722A37AA0D001C271F /* BlurView.swift in Sources */,
 				75C895932D84C0B6007BEBA3 /* PetRegisterService.swift in Sources */,
 				C904B18C2A40CFBB005ED7E7 /* ForgotError.swift in Sources */,
@@ -929,6 +944,7 @@
 				75C895912D84BDC5007BEBA3 /* PetModel.swift in Sources */,
 				50F77A3E2D820ABE00606345 /* PetListView.swift in Sources */,
 				C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */,
+				75AEE8772F5F0BBB00A2B1B4 /* HomeCache.swift in Sources */,
 				C9D4E1E72A2932740030164A /* UserDefaultsUtils.swift in Sources */,
 				75AFB52E2E4AAB39002D88CB /* NetworkManager.swift in Sources */,
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
