@@ -4,6 +4,7 @@ class PetHomeViewModel: ObservableObject {
     @Published var firstName: String = ""
     @Published var lastName: String = ""
     @Published var tags: [TagModel] = []
+    @Published var pets: [PetModel] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var showAddPetSheet: Bool = false
@@ -11,13 +12,16 @@ class PetHomeViewModel: ObservableObject {
     
     private let userService: UserServiceProtocol
     private let petHomeService: PetHomeServiceProtocol
+    private let petService: PetServiceProtocol
     
     init(
         userService: UserServiceProtocol = UserService(),
-        petHomeService: PetHomeServiceProtocol = PetHomeService()
+        petHomeService: PetHomeServiceProtocol = PetHomeService(),
+        petService: PetServiceProtocol = PetService()
     ) {
         self.userService = userService
         self.petHomeService = petHomeService
+        self.petService = petService
         self.tags = [createDefaultTag()]
     }
     
@@ -32,12 +36,14 @@ class PetHomeViewModel: ObservableObject {
         
         async let userData = userService.fetchUserData()
         async let tagsData = petHomeService.fetchTags()
+        async let petsData = petService.fetch()
         
         do {
-            let (user, fetchedTags) = try await (userData, tagsData)
+            let (user, fetchedTags, fetchedPets) = try await (userData, tagsData, petsData)
             firstName = user.firstName
             lastName = user.lastName
             tags = [createDefaultTag()] + fetchedTags
+            pets = fetchedPets
         } catch {
             errorMessage = error.localizedDescription
             firstName = "Time"
