@@ -50,6 +50,9 @@
 		75950CB12E04A25A001EC58B /* PetTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75950CB02E04A25A001EC58B /* PetTaskModel.swift */; };
 		759A42812E33D93C00C9CE26 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42802E33D93C00C9CE26 /* CircularButton.swift */; };
 		759A42832E33E62B00C9CE26 /* NoTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759A42822E33E62B00C9CE26 /* NoTasksView.swift */; };
+		75A3168D2F62F0120029E91D /* AccessAccountViewModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A3168C2F62F0120029E91D /* AccessAccountViewModel_Test.swift */; };
+		75A316902F62F3150029E91D /* MockAccessAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A3168E2F62F3150029E91D /* MockAccessAccountService.swift */; };
+		75A316912F62F3150029E91D /* MockCreateAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A3168F2F62F3150029E91D /* MockCreateAccountService.swift */; };
 		75AEE8752F5F084F00A2B1B4 /* PetGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AEE8742F5F084F00A2B1B4 /* PetGuardian.swift */; };
 		75AEE8772F5F0BBB00A2B1B4 /* HomeCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AEE8762F5F0BBA00A2B1B4 /* HomeCache.swift */; };
 		75AEE87A2F5F0CED00A2B1B4 /* PetHomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AEE8782F5F0CED00A2B1B4 /* PetHomeRepository.swift */; };
@@ -92,9 +95,7 @@
 		C96BFB3D29E1D714003D3827 /* Fredoka-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3829E1D713003D3827 /* Fredoka-Light.ttf */; };
 		C96BFB3E29E1D714003D3827 /* Fredoka-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */; };
 		C96BFB3F29E1D714003D3827 /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */; };
-		C97A74E629F9810D001CD67E /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97A74E529F9810D001CD67E /* AuthMock.swift */; };
 		C9A3248A2A2FB25A008FE6F4 /* RegisterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324892A2FB25A008FE6F4 /* RegisterStatus.swift */; };
-		C9A3248E2A2FE6F3008FE6F4 /* SpyRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */; };
 		C9A324912A2FE7D5008FE6F4 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324902A2FE7D5008FE6F4 /* LoginResponse.swift */; };
 		C9A324952A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A324942A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift */; };
 		C9B1C8A529F9F762002C7B00 /* Validation_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B1C8A429F9F761002C7B00 /* Validation_Test.swift */; };
@@ -181,6 +182,9 @@
 		75950CB02E04A25A001EC58B /* PetTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskModel.swift; sourceTree = "<group>"; };
 		759A42802E33D93C00C9CE26 /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
 		759A42822E33E62B00C9CE26 /* NoTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTasksView.swift; sourceTree = "<group>"; };
+		75A3168C2F62F0120029E91D /* AccessAccountViewModel_Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessAccountViewModel_Test.swift; sourceTree = "<group>"; };
+		75A3168E2F62F3150029E91D /* MockAccessAccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAccessAccountService.swift; sourceTree = "<group>"; };
+		75A3168F2F62F3150029E91D /* MockCreateAccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCreateAccountService.swift; sourceTree = "<group>"; };
 		75AEE8742F5F084F00A2B1B4 /* PetGuardian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetGuardian.swift; sourceTree = "<group>"; };
 		75AEE8762F5F0BBA00A2B1B4 /* HomeCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCache.swift; sourceTree = "<group>"; };
 		75AEE8782F5F0CED00A2B1B4 /* PetHomeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetHomeRepository.swift; sourceTree = "<group>"; };
@@ -224,9 +228,7 @@
 		C96BFB3929E1D713003D3827 /* Fredoka-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Medium.ttf"; sourceTree = "<group>"; };
 		C96BFB3A29E1D714003D3827 /* Fredoka-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-SemiBold.ttf"; sourceTree = "<group>"; };
 		C97A74D929F97EEE001CD67E /* petJournal_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = petJournal_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C97A74E529F9810D001CD67E /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
 		C9A324892A2FB25A008FE6F4 /* RegisterStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterStatus.swift; sourceTree = "<group>"; };
-		C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpyRegisterService.swift; sourceTree = "<group>"; };
 		C9A324902A2FE7D5008FE6F4 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		C9A324942A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel_Test.swift; sourceTree = "<group>"; };
 		C9B1C8A429F9F761002C7B00 /* Validation_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation_Test.swift; sourceTree = "<group>"; };
@@ -603,8 +605,8 @@
 		C97A74E229F98063001CD67E /* Mock_Test */ = {
 			isa = PBXGroup;
 			children = (
-				C97A74E529F9810D001CD67E /* AuthMock.swift */,
-				C9A3248D2A2FE6F3008FE6F4 /* SpyRegisterService.swift */,
+				75A3168E2F62F3150029E91D /* MockAccessAccountService.swift */,
+				75A3168F2F62F3150029E91D /* MockCreateAccountService.swift */,
 			);
 			path = Mock_Test;
 			sourceTree = "<group>";
@@ -612,6 +614,7 @@
 		C97A74E729F9827A001CD67E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				75A3168C2F62F0120029E91D /* AccessAccountViewModel_Test.swift */,
 				C9A324942A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift */,
 			);
 			path = ViewModel;
@@ -970,10 +973,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9A3248E2A2FE6F3008FE6F4 /* SpyRegisterService.swift in Sources */,
+				75A3168D2F62F0120029E91D /* AccessAccountViewModel_Test.swift in Sources */,
+				75A316912F62F3150029E91D /* MockCreateAccountService.swift in Sources */,
 				C9A324952A2FE984008FE6F4 /* CreateAccountViewModel_Test.swift in Sources */,
 				C9B1C8A529F9F762002C7B00 /* Validation_Test.swift in Sources */,
-				C97A74E629F9810D001CD67E /* AuthMock.swift in Sources */,
+				75A316902F62F3150029E91D /* MockAccessAccountService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
