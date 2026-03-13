@@ -1,32 +1,76 @@
-import Foundation
+import SwiftUI
 
 class PetHomeViewModel: ObservableObject {
     @Published var firstName: String = ""
     @Published var lastName: String = ""
+    @Published var tags: [TagModel] = []
+    @Published var pets: [PetModel] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String?
     @Published var showAddPetSheet: Bool = false
     @Published var showAddTaskSheet: Bool = false
     
-    private let userService: UserServiceProtocol
+    private let repository: PetHomeRepositoryProtocol
     
-    init(userService: UserServiceProtocol = UserService()) {
-        self.userService = userService
+    init(repository: PetHomeRepositoryProtocol = PetHomeRepository()) {
+        self.repository = repository
+        loadCachedData()
+    }
+    
+    private func createDefaultTag() -> TagModel {
+        TagModel(id: "0", name: "Todos", color: "#FFFFFF", image: Image(.icAll), backgroundColor: Color.theme.petPrimary500)
+    }
+    
+    private func loadCachedData() {
+        let cachedData = repository.loadCachedData()
+        updateUI(with: cachedData, animated: false)
+        isLoading = isEmpty(cachedData)
+    }
+    
+    private func isEmpty(_ data: PetHomeData) -> Bool {
+        data.firstName.isEmpty && data.tags.isEmpty && data.pets.isEmpty
+    }
+    
+    private func updateUI(with data: PetHomeData, animated: Bool) {
+        let updateBlock = {
+            self.firstName = data.firstName.isEmpty ? "Guardião" : data.firstName
+            self.lastName = data.lastName
+            self.tags = [self.createDefaultTag()] + data.tags
+            self.pets = data.pets
+        }
+        
+        if animated {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                updateBlock()
+            }
+        } else {
+            updateBlock()
+        }
     }
     
     @MainActor
-    func fetchUserData() async {
-        isLoading = true
+    func loadInitialData() async {
+        let currentData = PetHomeData(
+            firstName: firstName == "Guardião" ? "" : firstName,
+            lastName: lastName,
+            tags: Array(tags.dropFirst()),
+            pets: pets
+        )
+        
+        if isEmpty(currentData) {
+            isLoading = true
+        }
         errorMessage = nil
         
         do {
-            let user = try await userService.fetchUserData()
-            firstName = user.firstName
-            lastName = user.lastName
+            let newData = try await repository.fetchRemoteData()
+            repository.saveData(newData)
+            
+            if newData.hasChanges(from: currentData) {
+                updateUI(with: newData, animated: true)
+            }
         } catch {
             errorMessage = error.localizedDescription
-            firstName = "Time"
-            lastName = "iOS"
         }
         
         isLoading = false
@@ -39,26 +83,4 @@ class PetHomeViewModel: ObservableObject {
     func presentAddTask() {
         showAddTaskSheet = true
     }
-}
-
-// Protocol for dependency injection and testing
-protocol UserServiceProtocol {
-    func fetchUserData() async throws -> User
-}
-
-// Mock service implementation
-struct UserService: UserServiceProtocol {
-    func fetchUserData() async throws -> User {
-        try await Task.sleep(nanoseconds: 2_000_000_000)
-        if Bool.random() {
-            return User(firstName: "Time", lastName: "iOS")
-        } else {
-            throw NSError(domain: "com.pethome.error", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch user data"])
-        }
-    }
-}
-
-struct User {
-    let firstName: String
-    let lastName: String
 }

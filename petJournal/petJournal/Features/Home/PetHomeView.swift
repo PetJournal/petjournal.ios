@@ -3,32 +3,24 @@ import SwiftUI
 // MARK: - Main View
 struct PetHomeView: View {
     @StateObject private var viewModel = PetHomeViewModel()
-    var pets: [PetModel]?
     var tasks: [PetTaskModel]?
-    var services: [ServiceModel]?
+    var services: [TagModel]?
     var banners: [HomeBanner]?
     
     var body: some View {
-        ZStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 20) {
-                    titleSection
-                    bannersSection
-                    petsSection
-                    tasksSection
-                    knowMoreSection
-                    Spacer(minLength: 20)
-                }
-                .padding(.horizontal, 16)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 20) {
+                titleSection
+                bannersSection
+                petsSection
+                tasksSection
+                knowMoreSection
+                Spacer(minLength: 20)
             }
-            .disabled(viewModel.isLoading)
-            
-            if viewModel.isLoading {
-                LoadingView()
-            }
+            .padding(.horizontal, 16)
         }
         .task {
-            await viewModel.fetchUserData()
+            await viewModel.loadInitialData()
         }
     }
 }
@@ -39,8 +31,13 @@ private extension PetHomeView {
     var titleSection: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Olá, \(viewModel.firstName) \(viewModel.lastName)!")
-                    .font(.robotoLight(size: .large))
+                if viewModel.isLoading {
+                    SkeletonView.text()
+                        .frame(width: 200)
+                } else {
+                    Text("Olá, \(viewModel.firstName) \(viewModel.lastName)!")
+                        .font(.robotoLight(size: .large))
+                }
             }
             Spacer()
         }
@@ -76,8 +73,10 @@ private extension PetHomeView {
                     addPetButton
                 }
                 
-                if let pets = pets, !pets.isEmpty {
-                    petsScrollView(pets: pets)
+                if viewModel.isLoading {
+                    petsSkeletonView
+                } else if !viewModel.pets.isEmpty {
+                    petsScrollView(pets: viewModel.pets)
                 } else {
                     noPetsView
                 }
@@ -109,8 +108,10 @@ private extension PetHomeView {
                 Text("Saiba mais:")
                     .font(.robotoMedium(size: .big))
                 
-                if let services = services, !services.isEmpty {
-                    servicesScrollView(services: services)
+                if viewModel.isLoading {
+                    servicesSkeletonView
+                } else if !viewModel.tags.isEmpty {
+                    servicesScrollView(services: viewModel.tags)
                 }
             }
             Spacer()
@@ -180,11 +181,32 @@ private extension PetHomeView {
     }
     
     // Services Components
-    func servicesScrollView(services: [ServiceModel]) -> some View {
+    func servicesScrollView(services: [TagModel]) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack() {
                 ForEach(services) { service in
-                    ServiceItemView(service: service)
+                    ServiceTagItemView(tag: service)
+                }
+            }
+        }
+    }
+    
+    // Skeleton Views
+    var petsSkeletonView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(0..<3, id: \.self) { _ in
+                    SkeletonView.circle(size: 80)
+                }
+            }
+        }
+    }
+    
+    var servicesSkeletonView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(0..<4, id: \.self) { _ in
+                    SkeletonView(width: 100, height: 32, cornerRadius: 16)
                 }
             }
         }
@@ -196,13 +218,12 @@ struct PetHomeView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             PetHomeView(
-                pets: PetModel.samplePets,
                 tasks: PetTaskModel.sampleTasks,
-                services: ServiceModel.mockServices
+                services: TagModel.mockServices
             )
             .previewDisplayName("Completa")
             
-            PetHomeView(services: ServiceModel.mockServices)
+            PetHomeView(services: nil)
                 .previewDisplayName("Sem tarefas e Pets")
         }
     }

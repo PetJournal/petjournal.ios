@@ -1,64 +1,69 @@
-//
-//  Validation_Test.swift
-//  petJournal_Tests
-//
-//  Created by Marcylene Barreto on 26/04/23.
-//
-
 import XCTest
 @testable import petJournal
 
 final class Validation_Test: XCTestCase {
     
-    func test_whenTheEmailIsCorrectFormat() {
-        let email = "mar@gmail.com"
-        let validation = Validations.shared.validEmail(email)
-        XCTAssertTrue(validation)
+    // MARK: - Email Validation Tests
+    func test_validEmail_shouldPass() {
+        let email = "test@example.com"
+        XCTAssertNoThrow(try Validations.shared.validate(email, type: .email(.default)))
     }
     
-    func test_whenTheEmailIsIncorrectFormat() {
-        let incorrectEmail = "mar@gmail"
-        let validation = Validations.shared.validEmail(incorrectEmail)
-        XCTAssertFalse(validation)
+    func test_invalidEmail_shouldThrowError() {
+        let email = "invalid-email"
+        XCTAssertThrowsError(try Validations.shared.validate(email, type: .email(.default))) { error in
+            let validationError = error as! Validations.ValidationError
+            XCTAssertEqual(validationError.reason, "Email inválido")
+        }
     }
     
-    func test_passwordCorrectFormat() {
-        let correctPass = "password123"
-        let validation = Validations.shared.isValidPassword(correctPass)
-        XCTAssertTrue(validation)
+    func test_emptyEmail_shouldThrowError() {
+        let email = ""
+        XCTAssertThrowsError(try Validations.shared.validate(email, type: .email(.default))) { error in
+            let validationError = error as! Validations.ValidationError
+            XCTAssertEqual(validationError.reason, "Campo é obrigatório")
+        }
     }
     
-    func test_passwordIncorrectFormat() {
-        let incorrectPass = "pass"
-        let validation = Validations.shared.isValidPassword(incorrectPass)
-        XCTAssertFalse(validation)
+    // MARK: - Password Validation Tests
+    func test_validPassword_shouldPass() {
+        let password = "Password123!"
+        XCTAssertNoThrow(try Validations.shared.validate(password, type: .password(.default)))
     }
     
-    func test_whenLoginData_areCorrect() {
-        let email = "mar@gmail.com"
-        let password = "password123"
-        XCTAssertTrue(Validations.shared.validFieldsLogin(email, password: password))
+    func test_invalidPassword_shouldThrowError() {
+        let password = "weak"
+        XCTAssertThrowsError(try Validations.shared.validate(password, type: .password(.default))) { error in
+            let validationError = error as! Validations.ValidationError
+            XCTAssertEqual(validationError.reason, "A senha deve ter pelo menos 8 caracteres. Para torná-la mais forte, use letras maiúsculas e minúsculas, números e símbolos como ! @ # $ % & * =")
+        }
     }
     
-    func test_whenLoginData_areIncorrect() {
-        let email = "mar@gmail"
-        let password = "pass"
-        XCTAssertFalse(Validations.shared.validFieldsLogin(email, password: password))
+    // MARK: - Name Validation Tests
+    func test_validName_shouldPass() {
+        let name = "Maria"
+        XCTAssertNoThrow(try Validations.shared.validate(name, type: .name(.default)))
     }
     
-    func test_whenRegisterData_areCorrect() {
-        let name = "Mar"
-        let phone = "19999999999"
-        let email = "mar@gmail.com"
-        let password = "password123"
-        XCTAssertTrue(Validations.shared.validFieldsRegister(name, email: email, phone: phone, password: password))
+    func test_invalidName_shouldThrowError() {
+        let name = "Jo"
+        XCTAssertThrowsError(try Validations.shared.validate(name, type: .name(.default))) { error in
+            let validationError = error as! Validations.ValidationError
+            XCTAssertEqual(validationError.reason, "O nome inválido.")
+        }
     }
-
-    func test_whenRegisterData_areIncorrect() {
-        let name = "Io"
-        let phone = "19999"
-        let email = "mar@gmail"
-        let password = "pass"
-        XCTAssertFalse(Validations.shared.validFieldsRegister(name, email: email, phone: phone, password: password))
+    
+    // MARK: - Phone Validation Tests
+    func test_validPhone_shouldPass() {
+        let phone = "11987654321"
+        XCTAssertNoThrow(try Validations.shared.validate(phone, type: .phone(.default)))
+    }
+    
+    func test_invalidPhone_shouldThrowError() {
+        let phone = "123"
+        XCTAssertThrowsError(try Validations.shared.validate(phone, type: .phone(.default))) { error in
+            let validationError = error as! Validations.ValidationError
+            XCTAssertEqual(validationError.reason, "O telefone inválido.")
+        }
     }
 }
