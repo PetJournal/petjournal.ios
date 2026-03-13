@@ -146,7 +146,7 @@ struct PetProfileView: View {
     
     private var editButton: some View {
         Button(action: {
-            router.navigate(to: .petRegister)
+            router.navigate(to: .petRegister(pet: pet))
         }) {
             Image(.icEdit)
         }

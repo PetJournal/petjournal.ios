@@ -62,7 +62,7 @@ enum Route: Hashable {
     case home
     case petList
     case petProfile(pet: PetModel)
-    case petRegister
+    case petRegister(pet: PetModel?)
     case taskList(tasks: [PetTaskModel], filterType: TaskType)
 }
 
@@ -79,7 +79,7 @@ enum AgendaRoute: Hashable {
 
 enum PetRoute: Hashable {
     case petProfile(pet: PetModel)
-    case petRegister
+    case petRegister(pet: PetModel?)
 }
 
 enum UserRoute: Hashable {
@@ -116,15 +116,15 @@ class NavigationRouter: ObservableObject {
         case (1, .petProfile(let pet)): agendaPath.append(AgendaRoute.petProfile(pet: pet))
         case (1, .taskList(let tasks, let filterType)): agendaPath.append(AgendaRoute.taskList(tasks: tasks, filterType: filterType))
         case (2, .petProfile(let pet)): petPath.append(PetRoute.petProfile(pet: pet))
-        case (2, .petRegister): petPath.append(PetRoute.petRegister)
+        case (2, .petRegister(let pet)): petPath.append(PetRoute.petRegister(pet: pet))
         case (3, .petProfile(let pet)): userPath.append(UserRoute.petProfile(pet: pet))
         default: break
         }
     }
     
-    func navigateBack(in tab: Int) {
-        switch tab {
-        case 0: 
+    func navigateBack() {
+        switch currentTab {
+        case 0:
             guard !homePath.isEmpty else { return }
             homePath.removeLast()
         case 1:
@@ -140,8 +140,8 @@ class NavigationRouter: ObservableObject {
         }
     }
     
-    func popToRoot(in tab: Int) {
-        switch tab {
+    func popToRoot() {
+        switch currentTab {
         case 0: homePath.removeLast(homePath.count)
         case 1: agendaPath.removeLast(agendaPath.count)
         case 2: petPath.removeLast(petPath.count)

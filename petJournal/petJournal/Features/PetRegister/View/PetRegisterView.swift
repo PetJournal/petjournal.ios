@@ -1,13 +1,11 @@
 import SwiftUI
 
 struct PetRegisterView: View {
-    @StateObject private var viewModel = PetRegisterViewModel()
+    @StateObject private var viewModel: PetRegisterViewModel
     @Environment(\.dismiss) var dismiss
     
-    private let pet: PetModel?
-    
     init(pet: PetModel? = nil) {
-        self.pet = pet
+        _viewModel = StateObject(wrappedValue: PetRegisterViewModel(pet: pet))
     }
     
     var body: some View {
@@ -19,13 +17,7 @@ struct PetRegisterView: View {
             )
             .navigationBarHidden(true)
             .errorAlert(viewModel: viewModel)
-            .onAppear {
-                if let pet = pet {
-                    viewModel.populate(with: pet)
-                } else {
-                    viewModel.clear()
-                }
-            }
+
             .overlay {
                 PetRegisterAlert(viewModel: viewModel)
             }
@@ -64,9 +56,6 @@ private extension PetRegisterView {
         ZStack {
             PetButton(type: .pet(viewModel.pet),
                       frameSize: 150, action: {})
-            .task {
-                await viewModel.loadSampleImage()
-            }
         }
         .overlay(alignment: .bottomTrailing) {
             ActionButton(.icPencil, background: .theme.petPrimary500) {
@@ -75,8 +64,10 @@ private extension PetRegisterView {
             .offset(x: -10, y: -35)
         }
         .overlay(alignment: .topTrailing) {
-            ActionButton(.icTrash) {}
-                .offset(x: 60)
+            ActionButton(.icTrash) {
+                viewModel.showDeleteConfirmation()
+            }
+            .offset(x: 60)
         }
     }
 }
@@ -97,6 +88,7 @@ private extension PetRegisterView {
                 items: viewModel.breeds,
                 placeholder: "Qual a raça?"
             )
+            .id(viewModel.breeds.joined())
         }
     }
     
@@ -107,6 +99,7 @@ private extension PetRegisterView {
                 items: viewModel.sizes,
                 placeholder: "Qual o porte?"
             )
+            .id(viewModel.sizes.joined())
         }
     }
     
@@ -126,6 +119,13 @@ private extension PetRegisterView {
                 items: viewModel.animalTypes,
                 placeholder: "Qual o tipo do animal?"
             )
+            .onChange(of: viewModel.type) { _ , newType in
+                if let type = newType {
+                    viewModel.loadDataForType(type)
+                    viewModel.breed = nil
+                    viewModel.size = nil
+                }
+            }
         }
     }
 }

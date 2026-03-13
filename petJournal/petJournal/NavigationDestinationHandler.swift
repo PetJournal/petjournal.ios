@@ -55,8 +55,8 @@ struct NavigationDestinationHandler {
     @ViewBuilder
     static func handlePetNavigation(for route: PetRoute) -> some View {
         switch route {
-        case .petRegister:
-            PetRegisterView()
+        case .petRegister(let pet):
+            PetRegisterView(pet: pet)
         case .petProfile(let pet):
             PetProfileView(pet: pet)
         }
