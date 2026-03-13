@@ -1,171 +1,249 @@
 import SwiftUI
 
 struct PetProfileView: View {
+    // MARK: - Properties
     @EnvironmentObject var router: NavigationRouter
+    @StateObject private var viewModel: PetProfileViewModel
     let pet: PetModel
     
+    // MARK: - Initialization
+    init(pet: PetModel) {
+        self.pet = pet
+        self._viewModel = StateObject(wrappedValue: PetProfileViewModel(petId: pet.id))
+    }
+    
+    // MARK: - Body
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                petHeaderView
-                servicesHorizontalScrollView
-                petTasksView
-                historicTasksView
+                headerSection
+                servicesSection
+                tasksContentSection
                 Spacer()
             }
             .padding()
+            .task { await viewModel.loadTasks() }
+        }
+    }
+}
+
+// MARK: - Main Sections
+private extension PetProfileView {
+    var headerSection: some View {
+        HStack(alignment: .top, spacing: 16) {
+            petImageSection
+            petInfoSection
         }
     }
     
-    private var historicTasksView: some View {
-        VStack(spacing: 16) {
-            Text("Histórico do pet")                .font(.robotoMedium(size: .large))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
-            ForEach(PetTaskModel.sampleHistoricTasks) { task in
-                PetTaskCard(presenter: PetTaskCardPresenter(task: task))
-            }
-        }
-    }
-    
-    private var petTasksView: some View {
-        VStack(spacing: 16) {
-            Text("Próximas tarefas:")                .font(.robotoMedium(size: .large))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
-            ForEach(PetTaskModel.sampleTasks) { task in
-                PetTaskCard(presenter: PetTaskCardPresenter(task: task))
-            }
-        }
-    }
-    
-    private var servicesHorizontalScrollView: some View {
+    var servicesSection: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack() {
-                ForEach(ServiceModel.mockServices) { serv in
-                    ServiceItemView(service: serv)
+            HStack {
+                ForEach(ServiceModel.mockServices) { service in
+                    ServiceItemView(service: service)
                 }
             }
         }
     }
     
-    private var petHeaderView: some View {
-        HStack(alignment: .top, spacing: 16) {
-            petImageView
-            petInfoView
+    var tasksContentSection: some View {
+        Group {
+            if viewModel.isLoading {
+                loadingView
+            } else if let errorMessage = viewModel.errorMessage {
+                errorView(errorMessage)
+            } else {
+                tasksSection
+            }
+        }
+    }
+}
+
+// MARK: - Pet Header Components
+private extension PetProfileView {
+    var petImageSection: some View {
+        ZStack {
+            petImageContent
+            imageBorder
         }
     }
     
-    private var petImageView: some View {
-        ZStack {
+    var petImageContent: some View {
+        Group {
             if let petImage = pet.petImage {
                 petImage
                     .resizable()
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .aspectRatio(1, contentMode: .fit)
             } else {
                 Image(.icPawFilled)
                     .resizable()
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .aspectRatio(1, contentMode: .fit)
                     .foregroundColor(.theme.petGray300)
             }
-            RoundedRectangle(cornerRadius: 16)
-                .stroke( Color.theme.petGray300, lineWidth: 2)
         }
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .aspectRatio(1, contentMode: .fit)
     }
     
-    var petImage: Image {
-        if let petImage = pet.petImage {
-            return petImage
-        } else {
-            return Image(.icPawFilled)
-        }
+    var imageBorder: some View {
+        RoundedRectangle(cornerRadius: 16)
+            .stroke(Color.theme.petGray300, lineWidth: 2)
     }
     
-    private var petInfoView: some View {
-        ZStack() {
-            backgroundView
-            petInfoContent
+    var petInfoSection: some View {
+        ZStack {
+            infoBackground
+            infoContent
             editButton
-                .offset(CGSize(width: 50, height: -50))
         }
         .aspectRatio(1, contentMode: .fit)
     }
     
-    private var backgroundView: some View {
+    var infoBackground: some View {
         RoundedRectangle(cornerRadius: 12)
             .fill(Color.theme.petPrimaryBackground)
     }
     
-    private var petInfoContent: some View {
+    var infoContent: some View {
         VStack(alignment: .leading, spacing: 8) {
-            petNameView
-            specieAndGenderView
-            breedView
-            ageAndWeightView
+            petNameText
+            specieGenderText
+            breedText
+            ageSizeText
         }
         .foregroundColor(Color.theme.petPrimary500)
         .padding()
     }
     
-    private var petNameView: some View {
+    var editButton: some View {
+        Button(action: { router.navigate(to: .petRegister(pet: pet)) }) {
+            Image(.icEdit)
+        }
+        .offset(x: 50, y: -50)
+    }
+}
+
+// MARK: - Pet Info Text Components
+private extension PetProfileView {
+    var petNameText: some View {
         Text(pet.petName)
             .font(.robotoSemiBold(size: .biggest))
             .lineLimit(1)
     }
     
-    private var specieAndGenderView: some View {
+    var specieGenderText: some View {
         HStack {
             Text(pet.specie.name)
-                .font(.robotoSemiBold(size: .medium))
             Text(".")
-                .font(.robotoSemiBold(size: .medium))
             Text(pet.gender)
-                .font(.robotoSemiBold(size: .medium))
         }
+        .font(.robotoSemiBold(size: .medium))
     }
     
-    private var breedView: some View {
-        HStack {
-            Text(pet.breedAlias ?? "")
-                .font(.robotoSemiBold(size: .medium))
-        }
+    var breedText: some View {
+        Text(pet.breedAlias ?? "")
+            .font(.robotoSemiBold(size: .medium))
     }
     
-    private var ageAndWeightView: some View {
+    var ageSizeText: some View {
         HStack {
-            Text(ageText)
-                .font(.robotoSemiBold(size: .medium))
+            Text(pet.dateOfBirth.calculateAge())
             Text(".")
-                .font(.robotoSemiBold(size: .medium))
-            Text("\(pet.size.name)")
-                .font(.robotoSemiBold(size: .medium))
+            Text(pet.size.name)
+        }
+        .font(.robotoSemiBold(size: .medium))
+    }
+}
+
+// MARK: - Tasks Components
+private extension PetProfileView {
+    var tasksSection: some View {
+        VStack(spacing: 16) {
+            upcomingTasksSection
+            historicTasksSection
         }
     }
     
-    private var editButton: some View {
-        Button(action: {
-            router.navigate(to: .petRegister(pet: pet))
-        }) {
-            Image(.icEdit)
+    var upcomingTasksSection: some View {
+        VStack(spacing: 16) {
+            sectionTitle("Próximas tarefas:")
+            upcomingTasksList
         }
     }
     
-    private var ageText: String {
-        pet.dateOfBirth.calculateAge()
+    var historicTasksSection: some View {
+        VStack(spacing: 16) {
+            sectionTitle("Histórico do pet")
+            historicTasksList
+        }
+    }
+    
+    var upcomingTasksList: some View {
+        Group {
+            if viewModel.upcomingTasks.isEmpty {
+                emptyTasksView
+            } else {
+                ForEach(Array(viewModel.upcomingTasks.enumerated()), id: \.offset) { index, task in
+                    Text(task)
+                        .padding()
+                        .background(Color.theme.petPrimaryBackground)
+                        .cornerRadius(8)
+                }
+            }
+        }
+    }
+    
+    var historicTasksList: some View {
+        Group {
+            if viewModel.historicTasks.isEmpty {
+                emptyTasksView
+            } else {
+                ForEach(Array(viewModel.historicTasks.enumerated()), id: \.offset) { index, task in
+                    Text(task)
+                        .padding()
+                        .background(Color.theme.petGray300)
+                        .cornerRadius(8)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - State Views
+private extension PetProfileView {
+    var loadingView: some View {
+        ProgressView("Carregando tarefas...")
+            .padding()
+    }
+    
+    func errorView(_ message: String) -> some View {
+        Text("Erro: \(message)")
+            .foregroundColor(.red)
+            .padding()
+    }
+    
+    var emptyTasksView: some View {
+        Text("Nenhuma tarefa encontrada")
+            .foregroundColor(.gray)
+            .padding()
+    }
+}
+
+// MARK: - Helper Views
+private extension PetProfileView {
+    func sectionTitle(_ title: String) -> some View {
+        Text(title)
+            .font(.robotoMedium(size: .large))
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
     }
 }
 
 // MARK: - Preview
 struct PetProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        return NavigationView {
-            PetProfileView(
-                pet: PetModel.samplePets.randomElement()!
-            )
+        NavigationView {
+            PetProfileView(pet: PetModel.samplePets.randomElement()!)
         }
         .environmentObject(NavigationRouter())
-        .previewDisplayName("Inicio Perfil de Pet")
+        .previewDisplayName("Perfil do Pet")
     }
 }

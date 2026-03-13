@@ -99,3 +99,17 @@ struct PetTaskModel: Identifiable, Hashable {
         )
     ]
 }
+
+struct UpcomingTasksResponse: Codable {
+    let page: Int
+    let limit: Int
+    let totalPages: Int
+    let nextEvents: [String]
+}
+
+struct HistoricTasksResponse: Codable {
+    let page: Int
+    let limit: Int
+    let totalPages: Int
+    let history: [String]
+}
