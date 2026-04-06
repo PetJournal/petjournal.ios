@@ -73,6 +73,10 @@
 		75DC54822F83E311005AB73D /* PetGuardian+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC547F2F83E311005AB73D /* PetGuardian+Mock.swift */; };
 		75DC54832F83E311005AB73D /* PetTaskModel+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC54802F83E311005AB73D /* PetTaskModel+Mock.swift */; };
 		75DC54842F83E311005AB73D /* PetModel+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC54812F83E311005AB73D /* PetModel+Mock.swift */; };
+		75DC54872F83EDCE005AB73D /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC54852F83EDCE005AB73D /* TaskListViewModel.swift */; };
+		75DC54882F83EDCE005AB73D /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC54862F83EDCE005AB73D /* TaskService.swift */; };
+		75DC548E2F83F192005AB73D /* TaskService+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC548D2F83F192005AB73D /* TaskService+Mock.swift */; };
+		75DC54902F83F839005AB73D /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DC548F2F83F838005AB73D /* EmptyResponse.swift */; };
 		75E295612DD243DB00DC1CCA /* PetTaskCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E295602DD243DB00DC1CCA /* PetTaskCard.swift */; };
 		75EB8DE32EB8F01C00F98E25 /* PetDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EB8DE22EB8F01C00F98E25 /* PetDataCache.swift */; };
 		75F9E5872DF740CE00079D56 /* PetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F9E5862DF740CE00079D56 /* PetProfileView.swift */; };
@@ -216,6 +220,10 @@
 		75DC547F2F83E311005AB73D /* PetGuardian+Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PetGuardian+Mock.swift"; sourceTree = "<group>"; };
 		75DC54802F83E311005AB73D /* PetTaskModel+Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PetTaskModel+Mock.swift"; sourceTree = "<group>"; };
 		75DC54812F83E311005AB73D /* PetModel+Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PetModel+Mock.swift"; sourceTree = "<group>"; };
+		75DC54852F83EDCE005AB73D /* TaskListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
+		75DC54862F83EDCE005AB73D /* TaskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
+		75DC548D2F83F192005AB73D /* TaskService+Mock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskService+Mock.swift"; sourceTree = "<group>"; };
+		75DC548F2F83F838005AB73D /* EmptyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		75E295602DD243DB00DC1CCA /* PetTaskCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetTaskCard.swift; sourceTree = "<group>"; };
 		75EB8DE22EB8F01C00F98E25 /* PetDataCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetDataCache.swift; sourceTree = "<group>"; };
 		75F9E5862DF740CE00079D56 /* PetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProfileView.swift; sourceTree = "<group>"; };
@@ -448,6 +456,8 @@
 		751DDCA62DEDEA3400D312F2 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
+				75DC54852F83EDCE005AB73D /* TaskListViewModel.swift */,
+				75DC54862F83EDCE005AB73D /* TaskService.swift */,
 				751DDCA72DEDEA5000D312F2 /* TaskListView.swift */,
 			);
 			path = TaskList;
@@ -497,6 +507,7 @@
 		75DC547B2F83E08C005AB73D /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				75DC548D2F83F192005AB73D /* TaskService+Mock.swift */,
 				75DC547F2F83E311005AB73D /* PetGuardian+Mock.swift */,
 				75DC54812F83E311005AB73D /* PetModel+Mock.swift */,
 				75DC54802F83E311005AB73D /* PetTaskModel+Mock.swift */,
@@ -519,6 +530,7 @@
 		C910E2B82AC78E1E00DD3C23 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				75DC548F2F83F838005AB73D /* EmptyResponse.swift */,
 				C9F5F4A92A42046E002C21F7 /* HomeBanner.swift */,
 				C9A324902A2FE7D5008FE6F4 /* LoginResponse.swift */,
 				75AEE8742F5F084F00A2B1B4 /* PetGuardian.swift */,
@@ -927,6 +939,7 @@
 				C946F54929EF4CCE00045097 /* AccessAccountService.swift in Sources */,
 				C91CF52F2AE9F51B00CDC49E /* RegisterResponse.swift in Sources */,
 				759A42812E33D93C00C9CE26 /* CircularButton.swift in Sources */,
+				75DC54872F83EDCE005AB73D /* TaskListViewModel.swift in Sources */,
 				13033C232D9B64BF0037F2BD /* PetRegisterView.swift in Sources */,
 				759A42832E33E62B00C9CE26 /* NoTasksView.swift in Sources */,
 				C9FD536829E4B2D9003033FB /* Extension+UIFont.swift in Sources */,
@@ -964,6 +977,7 @@
 				7561564D2E37D803008DB0EA /* CustomTabBar.swift in Sources */,
 				C96853C42AC397D00020AD1F /* LoadingView.swift in Sources */,
 				C930B5DA2A3A8E820008F502 /* CompRememberAndForgotPassword.swift in Sources */,
+				75DC548E2F83F192005AB73D /* TaskService+Mock.swift in Sources */,
 				C9C094892AC11915006FB438 /* AuthenticationStatus.swift in Sources */,
 				C9A324912A2FE7D5008FE6F4 /* LoginResponse.swift in Sources */,
 				C9F5F4B42A420517002C21F7 /* ServiceTagItemView.swift in Sources */,
@@ -1004,6 +1018,7 @@
 				50F77A3E2D820ABE00606345 /* PetListView.swift in Sources */,
 				C9F9D82D2A14230600DD72F1 /* AccessAccountView.swift in Sources */,
 				75AEE8772F5F0BBB00A2B1B4 /* HomeCache.swift in Sources */,
+				75DC54902F83F839005AB73D /* EmptyResponse.swift in Sources */,
 				C9D4E1E72A2932740030164A /* UserDefaultsUtils.swift in Sources */,
 				75AFB52E2E4AAB39002D88CB /* NetworkManager.swift in Sources */,
 				C9E5017129E72D7D0014F9C4 /* FontFamily.swift in Sources */,
@@ -1011,6 +1026,7 @@
 				1FF4607D29C8E8720026F680 /* SceneDelegate.swift in Sources */,
 				C93943F52A9C0E6C0085E623 /* PJTextFieldView.swift in Sources */,
 				1F656E222A1410AE004D4D99 /* CreateAccountView.swift in Sources */,
+				75DC54882F83EDCE005AB73D /* TaskService.swift in Sources */,
 				C94A240229CE45B400C71D01 /* AccessAccountViewModel.swift in Sources */,
 				75A3D7352F7AFFBA008657FF /* MonthSelector.swift in Sources */,
 				C93943F32A9C0E040085E623 /* UIKitCustom.swift in Sources */,

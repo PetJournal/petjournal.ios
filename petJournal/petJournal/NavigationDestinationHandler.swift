@@ -37,8 +37,8 @@ struct NavigationDestinationHandler {
             PetRegisterView()
         case .petProfile(let pet):
             PetProfileView(pet: pet)
-        case .taskList(let tasks, let filterType):
-            TaskListView(tasks: tasks, filterType: filterType)
+        case .taskList(let filterType):
+            TaskListView(filterType: filterType)
         }
     }
     
@@ -47,8 +47,8 @@ struct NavigationDestinationHandler {
         switch route {
         case .petProfile(let pet):
             PetProfileView(pet: pet)
-        case .taskList(let tasks, let filterType):
-            TaskListView(tasks: tasks, filterType: filterType)
+        case .taskList(let filterType):
+            TaskListView(filterType: filterType)
         }
     }
     

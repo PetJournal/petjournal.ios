@@ -181,8 +181,8 @@ private extension PetProfileView {
             if viewModel.upcomingTasks.isEmpty {
                 emptyTasksView
             } else {
-                ForEach(Array(viewModel.upcomingTasks.enumerated()), id: \.offset) { index, task in
-                    Text(task)
+                ForEach(viewModel.upcomingTasks, id: \.id) { task in
+                    Text(task.title)
                         .padding()
                         .background(Color.theme.petPrimaryBackground)
                         .cornerRadius(8)
@@ -196,8 +196,8 @@ private extension PetProfileView {
             if viewModel.historicTasks.isEmpty {
                 emptyTasksView
             } else {
-                ForEach(Array(viewModel.historicTasks.enumerated()), id: \.offset) { index, task in
-                    Text(task)
+                ForEach(viewModel.historicTasks, id: \.id) { task in
+                    Text(task.title)
                         .padding()
                         .background(Color.theme.petGray300)
                         .cornerRadius(8)

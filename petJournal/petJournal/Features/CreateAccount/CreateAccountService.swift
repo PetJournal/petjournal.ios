@@ -30,5 +30,3 @@ class CreateAccountService: CreateAccountServiceProtocol {
         }
     }
 }
-
-struct EmptyResponse: Decodable {}

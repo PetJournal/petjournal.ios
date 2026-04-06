@@ -15,11 +15,23 @@ class URLManager {
     let guardianName = "/guardian/name"
     let pet = "/pet"
     let tag = "/tag"
+    let tasks = "/tasks"
     var breedsByCat = "/breeds/cat"
     var breedsByDog = "/breeds/dog"
     var sizesByCat = "/sizes/cat"
     var sizesByDog = "/sizes/dog"
-    var petTasks = "/tasks/pet"
+    // Task endpoints - corrected according to API documentation
+    var currentDateTasks: String {
+        "\(tasks)/current-date"
+    }
+    
+    var currentWeekTasks: String {
+        "\(tasks)/current-week"
+    }
+    
+    var currentMonthTasks: String {
+        "\(tasks)/current-month"
+    }
     
     var petUpdate: (String) -> String {
         { petId in "\(self.pet)/\(petId)" }
@@ -30,11 +42,15 @@ class URLManager {
     }
     
     var petUpcomingTasks: (String) -> String {
-        { petId in "\(self.petTasks)/next/\(petId)" }
+        { petId in "\(self.tasks)/pet/next/\(petId)" }
     }
     
     var petHistoricTasks: (String) -> String {
-        { petId in "\(self.petTasks)/history/\(petId)" }
+        { petId in "\(self.tasks)/pet/history/\(petId)" }
+    }
+    
+    var petTasksByTag: (String, String) -> String {
+        { petId, tagId in "\(self.tasks)/pet/\(petId)/tag/\(tagId)" }
     }
     
     func makeURL(path: String) -> URL? {

@@ -1,12 +1,12 @@
 import Foundation
 
 protocol PetProfileServiceProtocol {
-    func fetchUpcomingTasks(for petId: String) async throws -> UpcomingTasksResponse
+    func fetchUpcomingTasks(for petId: String) async throws -> TasksResponse
     func fetchHistoricTasks(for petId: String) async throws -> HistoricTasksResponse
 }
 
 class PetProfileService: PetProfileServiceProtocol {
-    func fetchUpcomingTasks(for petId: String) async throws -> UpcomingTasksResponse {
+    func fetchUpcomingTasks(for petId: String) async throws -> TasksResponse {
         guard let url = URLManager.shared.makeURL(path: URLManager.shared.petUpcomingTasks(petId)) else {
             throw NetworkError.invalidURL
         }

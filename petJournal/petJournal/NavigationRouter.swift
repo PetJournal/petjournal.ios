@@ -63,18 +63,18 @@ enum Route: Hashable {
     case petList
     case petProfile(pet: PetModel)
     case petRegister(pet: PetModel?)
-    case taskList(tasks: [PetTaskModel], filterType: TaskType)
+    case taskList(filterType: TaskType)
 }
 
 enum HomeRoute: Hashable {
     case petProfile(pet: PetModel)
     case petRegister
-    case taskList(tasks: [PetTaskModel], filterType: TaskType)
+    case taskList(filterType: TaskType)
 }
 
 enum AgendaRoute: Hashable {
     case petProfile(pet: PetModel)
-    case taskList(tasks: [PetTaskModel], filterType: TaskType)
+    case taskList(filterType: TaskType)
 }
 
 enum PetRoute: Hashable {
@@ -112,9 +112,9 @@ class NavigationRouter: ObservableObject {
         switch (currentTab, route) {
         case (0, .petProfile(let pet)): homePath.append(HomeRoute.petProfile(pet: pet))
         case (0, .petRegister): homePath.append(HomeRoute.petRegister)
-        case (0, .taskList(let tasks, let filterType)): homePath.append(HomeRoute.taskList(tasks: tasks, filterType: filterType))
+        case (0, .taskList(let filterType)): homePath.append(HomeRoute.taskList(filterType: filterType))
         case (1, .petProfile(let pet)): agendaPath.append(AgendaRoute.petProfile(pet: pet))
-        case (1, .taskList(let tasks, let filterType)): agendaPath.append(AgendaRoute.taskList(tasks: tasks, filterType: filterType))
+        case (1, .taskList(let filterType)): agendaPath.append(AgendaRoute.taskList(filterType: filterType))
         case (2, .petProfile(let pet)): petPath.append(PetRoute.petProfile(pet: pet))
         case (2, .petRegister(let pet)): petPath.append(PetRoute.petRegister(pet: pet))
         case (3, .petProfile(let pet)): userPath.append(UserRoute.petProfile(pet: pet))

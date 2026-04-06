@@ -17,34 +17,16 @@ enum TaskType: String, CaseIterable, Hashable {
 // MARK: - View
 struct TaskListView: View {
     @EnvironmentObject var router: NavigationRouter
+    @StateObject private var viewModel: TaskListViewModel
     @State private var selectedFrequency: TaskFrequency = .daily
     @State private var showingAddTask = false
-    private let filterType: TaskType
-    private let tasks: [PetTaskModel]
     
-    init(tasks: [PetTaskModel], filterType: TaskType = .all) {
-        self.tasks = tasks
-        self.filterType = filterType
-    }
-    
-    private var filteredTasks: [PetTaskModel] {
-        filterType == .all ? tasks : tasks.filter { $0.taskType == filterType }
+    init(filterType: TaskType = .all, service: TaskServiceProtocol = TaskService()) {
+        self._viewModel = StateObject(wrappedValue: TaskListViewModel(service: service, filterType: filterType))
     }
     
     private var groupedTasks: [String: [PetTaskModel]] {
-        let groupingKey: (PetTaskModel) -> String = {
-            switch selectedFrequency {
-            case .daily: return $0.startAt.toISOFormat()
-            case .weekly: return $0.startAt.toISOWeekFormat()
-            case .monthly: return $0.startAt.toISOMonthFormat()
-            }
-        }
-        return Dictionary(grouping: filteredTasks, by: groupingKey)
-    }
-    
-    private var pastTasks: [PetTaskModel] {
-        let currentDate = Date()
-        return filteredTasks.filter { $0.startAt.toDate() ?? Date() < currentDate }
+        viewModel.groupedTasks(by: selectedFrequency)
     }
     
     private func formatSectionTitle(_ key: String) -> String {
@@ -69,6 +51,10 @@ struct TaskListView: View {
                            action: { showingAddTask = true })
             .padding()
             .offset(x: -10, y: -10)
+        }
+        .task {
+            await viewModel.fetchTasks()
+            await viewModel.fetchHistoricTasks()
         }
         .navigationDestination(for: Route.self) { route in
             switch route {
@@ -109,7 +95,7 @@ struct TaskListView: View {
     }
     
     private var historicHeaderTitle: String {
-        switch filterType {
+        switch viewModel.filterType {
         case .vaccine:
             return "Histórico de vacinas"
         case .medicine:
@@ -134,7 +120,7 @@ struct TaskListView: View {
             .padding(.horizontal, UIScreen.main.bounds.width / 4)
             
             Section(header: historicHeader) {
-                ForEach(PetTaskModel.previewHistoric) { task in
+                ForEach(viewModel.historicTasks) { task in
                     PetTaskCard(presenter: PetTaskCardPresenter(task: task))
                         .listRowInsets(EdgeInsets())
                         .listRowSeparator(.hidden)
@@ -143,6 +129,10 @@ struct TaskListView: View {
             }
         }
         .listStyle(PlainListStyle())
+        .refreshable {
+            await viewModel.fetchTasks()
+            await viewModel.fetchHistoricTasks()
+        }
     }
 }
 
@@ -214,9 +204,9 @@ private struct TaskSection: View {
 
 // MARK: - Previews
 #Preview {
-    TaskListView(tasks: PetTaskModel.previewList, filterType: .all)
+    TaskListView(filterType: .all, service: TaskService.mock())
 }
 
 #Preview("Filtro por vacina") {
-    TaskListView(tasks: PetTaskModel.previewVaccines, filterType: .vaccine)
+    TaskListView(filterType: .vaccine, service: TaskService.mock())
 }

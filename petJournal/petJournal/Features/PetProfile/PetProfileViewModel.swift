@@ -1,8 +1,8 @@
 import SwiftUI
 
 class PetProfileViewModel: ObservableObject {
-    @Published var upcomingTasks: [String] = []
-    @Published var historicTasks: [String] = []
+    @Published var upcomingTasks: [PetTaskModel] = []
+    @Published var historicTasks: [PetTaskModel] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
     
