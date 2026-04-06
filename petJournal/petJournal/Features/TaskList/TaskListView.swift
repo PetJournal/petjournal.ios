@@ -134,7 +134,7 @@ struct TaskListView: View {
             .padding(.horizontal, UIScreen.main.bounds.width / 4)
             
             Section(header: historicHeader) {
-                ForEach(PetTaskModel.sampleHistoricTasks) { task in
+                ForEach(PetTaskModel.previewHistoric) { task in
                     PetTaskCard(presenter: PetTaskCardPresenter(task: task))
                         .listRowInsets(EdgeInsets())
                         .listRowSeparator(.hidden)
@@ -214,9 +214,9 @@ private struct TaskSection: View {
 
 // MARK: - Previews
 #Preview {
-    TaskListView(tasks: PetTaskModel.sampleTasks, filterType: .all)
+    TaskListView(tasks: PetTaskModel.previewList, filterType: .all)
 }
 
 #Preview("Filtro por vacina") {
-    TaskListView(tasks: PetTaskModel.sampleTasks, filterType: .vaccine)
+    TaskListView(tasks: PetTaskModel.previewVaccines, filterType: .vaccine)
 }

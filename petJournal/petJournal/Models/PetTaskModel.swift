@@ -1,103 +1,101 @@
 import SwiftUI
 
-struct PetTaskModel: Identifiable, Hashable {
-    let id = UUID()
+struct PetTaskModel: Identifiable, Hashable, Codable {
+    let id: String
+    let tagId: String
+    let guardianId: String
     let title: String
-    let schedule: String
     let description: String
-    let petImages: [Image]
-    let accentColor: Color
-    let backgroundIcon: Image
-    var taskType: TaskType = .all
-    var startAt: String
+    let note: String
+    let startAt: String
+    let endAt: String
+    let daysOfWeek: [Int]
+    let daysOfMonth: [Int]
+    let daily: Bool
+    let pets: [PetModel]
+    
+    // UI properties (not from API)
+    let petImages: [Image]?
+    let accentColor: Color?
+    let backgroundIcon: Image?
+    var taskType: TaskType?
     var isPast: Bool
     
-    init(title: String, schedule: String,
-         description: String, petImages: [Image],
-         accentColor: Color, backgroundIcon: Image,
-         taskType: TaskType, startAt: String = "2026-05-04T13:00:00Z") {
+    init(id: String, tagId: String, guardianId: String, 
+         title: String, description: String, note: String,
+         startAt: String, endAt: String, daysOfWeek: [Int],
+         daysOfMonth: [Int], daily: Bool, pets: [PetModel],
+         petImages: [Image]? = nil, accentColor: Color? = nil,
+         backgroundIcon: Image? = nil, taskType: TaskType? = nil) {
+        self.id = id
+        self.tagId = tagId
+        self.guardianId = guardianId
         self.title = title
-        self.schedule = schedule
         self.description = description
+        self.note = note
+        self.startAt = startAt
+        self.endAt = endAt
+        self.daysOfWeek = daysOfWeek
+        self.daysOfMonth = daysOfMonth
+        self.daily = daily
+        self.pets = pets
         self.petImages = petImages
         self.accentColor = accentColor
         self.backgroundIcon = backgroundIcon
         self.taskType = taskType
-        self.startAt = startAt
         self.isPast = startAt.isDateInThePast()
     }
     
-    // Hashable manually to exclude non-hashable properties
+    enum CodingKeys: String, CodingKey {
+        case id, tagId, guardianId, title, description, note, startAt, endAt, daysOfWeek, daysOfMonth, daily, pets
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        tagId = try container.decode(String.self, forKey: .tagId)
+        guardianId = try container.decode(String.self, forKey: .guardianId)
+        title = try container.decode(String.self, forKey: .title)
+        description = try container.decode(String.self, forKey: .description)
+        note = try container.decode(String.self, forKey: .note)
+        startAt = try container.decode(String.self, forKey: .startAt)
+        endAt = try container.decode(String.self, forKey: .endAt)
+        daysOfWeek = try container.decode([Int].self, forKey: .daysOfWeek)
+        daysOfMonth = try container.decode([Int].self, forKey: .daysOfMonth)
+        daily = try container.decode(Bool.self, forKey: .daily)
+        pets = try container.decode([PetModel].self, forKey: .pets)
+        
+        // UI properties set to nil when decoding from API
+        petImages = nil
+        accentColor = nil
+        backgroundIcon = nil
+        taskType = nil
+        isPast = startAt.isDateInThePast()
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(tagId, forKey: .tagId)
+        try container.encode(guardianId, forKey: .guardianId)
+        try container.encode(title, forKey: .title)
+        try container.encode(description, forKey: .description)
+        try container.encode(note, forKey: .note)
+        try container.encode(startAt, forKey: .startAt)
+        try container.encode(endAt, forKey: .endAt)
+        try container.encode(daysOfWeek, forKey: .daysOfWeek)
+        try container.encode(daysOfMonth, forKey: .daysOfMonth)
+        try container.encode(daily, forKey: .daily)
+        try container.encode(pets, forKey: .pets)
+    }
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-        hasher.combine(title)
-        hasher.combine(schedule)
-        hasher.combine(description)
-        hasher.combine(taskType)
-        hasher.combine(startAt)
-        hasher.combine(isPast)
     }
     
     static func == (lhs: PetTaskModel, rhs: PetTaskModel) -> Bool {
-        return lhs.id == rhs.id &&
-               lhs.title == rhs.title &&
-               lhs.schedule == rhs.schedule &&
-               lhs.description == rhs.description &&
-               lhs.taskType == rhs.taskType &&
-               lhs.startAt == rhs.startAt &&
-               lhs.isPast == rhs.isPast
+        return lhs.id == rhs.id
     }
-    
-    static var sampleTasks = [
-        PetTaskModel(
-            title: "Carprofeno",
-            schedule: "Manhã e noite",
-            description: "Anti-inflamatório não esteroide para alívio da dor e inflamação.\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
-            petImages: PetModel.samplePetImages,
-            accentColor: Color.theme.petSecondary500,
-            backgroundIcon: Image(.icMedicine), 
-            taskType: .medicine, startAt: "2025-12-04T13:00:00Z"
-        ),
-        PetTaskModel(
-            title: "Consulta médica",
-            schedule: "15/06 às 14:00",
-            description: "Check-up anual\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
-            petImages: PetModel.samplePetImages,
-            accentColor: Color.theme.petGreen,
-            backgroundIcon: Image(.icVetAppointment),
-            taskType: .consultation, startAt: "2025-11-04T12:00:00Z"
-        ),
-        PetTaskModel(
-            title: "Vacina Antirrábica",
-            schedule: "15/06 às 14:00",
-            description: "Dose anual da vacina antirrábica",
-            petImages: PetModel.samplePetImages,
-            accentColor: Color.theme.petOrange,
-            backgroundIcon: Image(.icVaccine),
-            taskType: .vaccine, startAt: "2025-10-12T09:00:00Z"
-        )
-    ]
-    
-    static var sampleHistoricTasks = [
-        PetTaskModel(
-            title: "Carprofeno",
-            schedule: "Manhã e noite",
-            description: "Anti-inflamatório não esteroide para alívio da dor e inflamação.\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
-            petImages: PetModel.samplePetImages,
-            accentColor: Color.theme.petPrimary100,
-            backgroundIcon: Image(.icMedicine), 
-            taskType: .medicine, startAt: "2024-03-04T15:00:00Z"
-        ),
-        PetTaskModel(
-            title: "Consulta médica",
-            schedule: "15/06 às 14:00",
-            description: "Check-up anual\n\nAqui tem mais informação para ser lida camarada! Você pode ser até uma informação bem detalhada com todo cuidado que seu Pet merece <3",
-            petImages: PetModel.samplePetImages,
-            accentColor: Color.theme.petPrimary100,
-            backgroundIcon: Image(.icVetAppointment),
-            taskType: .consultation, startAt: "2024-02-04T16:00:00Z"
-        )
-    ]
 }
 
 struct UpcomingTasksResponse: Codable {

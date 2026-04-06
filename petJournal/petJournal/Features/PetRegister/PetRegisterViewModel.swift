@@ -172,7 +172,7 @@ private extension PetRegisterViewModel {
         
         return PetModel(
             id: pet?.id ?? UUID().uuidString,
-            guardianId: pet?.guardianId,
+            guardian: pet?.guardian,
             specie: Species(id: UUID().uuidString, name: type ?? ""),
             specieAlias: nil,
             petName: name,

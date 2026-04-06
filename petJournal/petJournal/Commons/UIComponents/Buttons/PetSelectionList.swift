@@ -108,13 +108,13 @@ struct PetButtonWrapper: View {
 // MARK: - Preview
 struct PetSelectionList_Previews: PreviewProvider {
     struct PreviewWrapper: View {
-        let samplePets = PetModel.samplePets
+        let previewPets = PetModel.previewList
         @State var selectedPets: [PetModel] = []
         
         var body: some View {
             VStack() {
                 PetSelectionList(
-                    pets: samplePets,
+                    pets: previewPets,
                     allowsMultipleSelection: true,
                     showSelectAllButton: true,
                     selectedPets: $selectedPets

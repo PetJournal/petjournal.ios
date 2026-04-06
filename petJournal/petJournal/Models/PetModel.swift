@@ -3,7 +3,7 @@ import SwiftUI
 // MARK: - Main Models
 struct PetModel: Identifiable, Hashable, Codable {
     let id: String
-    let guardianId: String?
+    let guardian: PetGuardian?
     let specie: Species
     let specieAlias: String?
     let petName: String
@@ -13,21 +13,19 @@ struct PetModel: Identifiable, Hashable, Codable {
     let size: PetSize
     let castrated: Bool
     let dateOfBirth: String
-//    let weight: String?
     let image: Data?
     var petImage: Image?
     
     init(
-        id: String, guardianId: String? = nil,
+        id: String, guardian: PetGuardian? = nil,
         specie: Species, specieAlias: String? = nil,
         petName: String, gender: String,
         breed: Breed, breedAlias: String? = nil,
         size: PetSize, castrated: Bool,
-        dateOfBirth: String,/* weight: String? = nil,*/
-        image: Data? = nil, petImage: Image? = nil
+        dateOfBirth: String, image: Data? = nil, petImage: Image? = nil
     ) {
         self.id = id
-        self.guardianId = guardianId
+        self.guardian = guardian
         self.specie = specie
         self.specieAlias = specieAlias
         self.petName = petName
@@ -37,7 +35,6 @@ struct PetModel: Identifiable, Hashable, Codable {
         self.size = size
         self.castrated = castrated
         self.dateOfBirth = dateOfBirth
-//        self.weight = weight
         self.image = image
         self.petImage = petImage
     }
@@ -56,7 +53,42 @@ struct PetModel: Identifiable, Hashable, Codable {
 // MARK: - Protocol Conformance
 extension PetModel {
     enum CodingKeys: String, CodingKey {
-        case id, guardianId, specie, specieAlias, petName, gender, breed, breedAlias, size, castrated, dateOfBirth, image
+        case id, guardian, specie, specieAlias, petName, gender, breed, breedAlias, size, castrated, dateOfBirth, image
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        guardian = try container.decodeIfPresent(PetGuardian.self, forKey: .guardian)
+        specie = try container.decode(Species.self, forKey: .specie)
+        specieAlias = try container.decodeIfPresent(String.self, forKey: .specieAlias)
+        petName = try container.decode(String.self, forKey: .petName)
+        gender = try container.decode(String.self, forKey: .gender)
+        breed = try container.decode(Breed.self, forKey: .breed)
+        breedAlias = try container.decodeIfPresent(String.self, forKey: .breedAlias)
+        size = try container.decode(PetSize.self, forKey: .size)
+        castrated = try container.decode(Bool.self, forKey: .castrated)
+        dateOfBirth = try container.decode(String.self, forKey: .dateOfBirth)
+        image = try container.decodeIfPresent(Data.self, forKey: .image)
+        
+        // UI property set to nil when decoding
+        petImage = nil
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encodeIfPresent(guardian, forKey: .guardian)
+        try container.encode(specie, forKey: .specie)
+        try container.encodeIfPresent(specieAlias, forKey: .specieAlias)
+        try container.encode(petName, forKey: .petName)
+        try container.encode(gender, forKey: .gender)
+        try container.encode(breed, forKey: .breed)
+        try container.encodeIfPresent(breedAlias, forKey: .breedAlias)
+        try container.encode(size, forKey: .size)
+        try container.encode(castrated, forKey: .castrated)
+        try container.encode(dateOfBirth, forKey: .dateOfBirth)
+        try container.encodeIfPresent(image, forKey: .image)
     }
     
     func hash(into hasher: inout Hasher) {
@@ -69,14 +101,6 @@ extension PetModel {
 }
 
 // MARK: - Supporting Models
-struct Guardian: Identifiable, Hashable, Codable {
-    let id: String
-    let firstName: String
-    let lastName: String
-    let email: String
-    let phone: String
-}
-
 struct Species: Identifiable, Hashable, Codable {
     let id: String
     let name: String
@@ -90,84 +114,4 @@ struct Breed: Identifiable, Hashable, Codable {
 struct PetSize: Identifiable, Hashable, Codable {
     let id: String
     let name: String
-}
-    
-
-// MARK: - Factory Method
-extension PetModel {
-    static func makeSamplePet(
-        name: String, species: String,
-        breed: String, size: String,
-        gender: String, isCastrated: Bool,
-        dateOfBirth: String
-    ) -> PetModel {
-        return PetModel(
-            id: UUID().uuidString, guardianId: nil,
-            specie: Species(id: UUID().uuidString, name: species),
-            specieAlias: nil, petName: name, gender: gender,
-            breed: Breed(id: UUID().uuidString, name: breed),
-            breedAlias: nil, size: PetSize(id: UUID().uuidString, name: size),
-            castrated: isCastrated, dateOfBirth: dateOfBirth, image: nil
-        )
-    }
-}
-
-// MARK: - Sample Data
-extension PetModel {
-    static var samplePets: [PetModel] = [
-        makeSamplePet(
-            name: "Rex", species: "Cachorro",
-            breed: "Poodle", size: "Médio (11 à 24Kg)",
-            gender: "M",  isCastrated: false,
-            dateOfBirth: "01/01/2020"
-        ),
-        makeSamplePet(
-            name: "Mimi", species: "Gato",
-            breed: "Siamês", size: "Pequeno (Até 10kg)",
-            gender: "F", isCastrated: false,
-            dateOfBirth: "15/05/2019"
-        ),
-        makeSamplePet(
-            name: "Luna", species: "Cachorro",
-            breed: "Labrador", size: "Grande (25 à 45Kg)",
-            gender: "F", isCastrated: true,
-            dateOfBirth: "10/10/2018"
-        ),
-        makeSamplePet(
-            name: "Thor", species: "Cachorro",
-            breed: "Husky Siberiano", size: "Grande (25 à 45Kg)",
-            gender: "M", isCastrated: false,
-            dateOfBirth: "05/07/2017"
-        ),
-        makeSamplePet(
-            name: "Bella", species: "Cachorro",
-            breed: "Golden Retriever", size: "Grande (25 à 45Kg)",
-            gender: "F", isCastrated: true,
-            dateOfBirth: "20/03/2019"
-        ),
-        makeSamplePet(
-            name: "Oliver", species: "Gato",
-            breed: "Persa", size: "Pequeno (Até 10kg)",
-            gender: "M", isCastrated: true,
-            dateOfBirth: "12/12/2020"
-        ),
-        makeSamplePet(
-            name: "Mel", species: "Cachorro",
-            breed: "Poodle", size: "Pequeno (Até 10kg)",
-            gender: "F", isCastrated: true,
-            dateOfBirth: "08/09/2021"
-        ),
-        makeSamplePet(
-            name: "Simba", species: "Gato",
-            breed: "Maine Coon", size: "Grande (25 à 45Kg)",
-            gender: "M", isCastrated: false,
-            dateOfBirth: "03/04/2018"
-        )
-    ]
-    
-    static var samplePetImages: [Image] = [
-        Image(.pet1), Image(.pet2),
-        Image(.pet3), Image(.pet4),
-        Image(.pet5), Image(.pet6)
-    ]
 }

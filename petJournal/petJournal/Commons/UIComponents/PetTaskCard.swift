@@ -60,7 +60,7 @@ struct PetTaskCard: View {
             Text(presenter.task.title)
                 .font(.robotoMedium(size: .large))
             
-            Text(presenter.task.schedule)
+            Text(presenter.task.note)
                 .font(.robotoLight(size: .medium))
                 .foregroundColor(Color.theme.petGray800)
             
@@ -74,13 +74,20 @@ struct PetTaskCard: View {
     
     private var petImagesGrid: some View {
         LazyVGrid(columns: gridColumns) {
-            ForEach(0..<presenter.task.petImages.count, 
-                    id: \.self) { index in
-                presenter.task.petImages[index]
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 30, height: 30)
-                    .clipShape(Circle())
+            ForEach(presenter.task.pets.indices, id: \.self) { index in
+                if let petImage = presenter.task.pets[index].computedPetImage {
+                    petImage
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
+                        .clipShape(Circle())
+                } else {
+                    Image(.icPawFilled)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.theme.petPrimary500)
+                }
             }
         }
         .padding(.trailing)
@@ -106,22 +113,22 @@ struct PetTaskCard: View {
     }
     
     private var backgroundIcon: some View {
-        presenter.task.backgroundIcon
+        Image(.icMedicine)
             .resizable()
             .scaledToFit()
             .frame(width: 150, height: 150)
-            .foregroundColor(presenter.task.accentColor.opacity(0.5))
+            .foregroundColor(Color.theme.petSecondary500.opacity(0.5))
             .offset(x: -140, y: -20)
     }
     
     private var editButton: some View {
         Button(action: {}) {
             Text("Editar tarefa")
-                .foregroundColor(presenter.task.accentColor)
+                .foregroundColor(Color.theme.petSecondary500)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)
         }
-        .tint(presenter.task.accentColor)
+        .tint(Color.theme.petSecondary500)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .stroke(Color.theme.petGray800, lineWidth: 1)
@@ -139,7 +146,7 @@ struct PetTaskCard: View {
         }
         .frame(height: 30)
         .buttonStyle(.borderedProminent)
-        .tint(presenter.task.accentColor)
+        .tint(Color.theme.petSecondary500)
         .clipped()
     }
 }
@@ -149,10 +156,10 @@ struct PetTaskCard_Previews: PreviewProvider {
     static var previews: some View {
         return ScrollView {
             VStack(spacing: 20) {
-                ForEach(PetTaskModel.sampleTasks) { task in
+                ForEach(PetTaskModel.previewList) { task in
                     PetTaskCard(presenter: PetTaskCardPresenter(task: task))
                 }
-                ForEach(PetTaskModel.sampleHistoricTasks) { task in
+                ForEach(PetTaskModel.previewHistoric) { task in
                     PetTaskCard(presenter: PetTaskCardPresenter(task: task))
                 }
             }

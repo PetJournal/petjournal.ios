@@ -16,7 +16,7 @@ struct TabBarView: View {
                     }
                 case 1:
                     NavigationStack(path: $router.agendaPath) {
-                        TaskListView(tasks: PetTaskModel.sampleTasks)
+                        TaskListView(tasks: PetTaskModel.previewList)
                             .navigationDestination(for: AgendaRoute.self, 
                                                    destination: NavigationDestinationHandler.handleAgendaNavigation)
                     }

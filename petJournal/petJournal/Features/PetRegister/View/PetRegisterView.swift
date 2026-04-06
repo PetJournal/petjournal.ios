@@ -188,6 +188,6 @@ private extension PetRegisterView {
         .environmentObject(NavigationRouter())
 }
 #Preview("Editar") {
-    PetRegisterView(pet: PetModel.samplePets[0])
+    PetRegisterView(pet: PetModel.preview)
         .environmentObject(NavigationRouter())
 }

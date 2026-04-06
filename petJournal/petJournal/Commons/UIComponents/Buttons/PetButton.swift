@@ -24,7 +24,7 @@ enum PetButtonType: Equatable {
                 return petImage
             } else {
                 return Image(.icPawFilled)
-//                return PetModel.samplePetImages.randomElement()! //Mock com fotos dos pets
+//                Usar imagem padrão quando não há imagem do pet
             }
         case .allPets(let isSelected):
             return isSelected ? Image(.icAllPets) : Image(.icPawFilled)
@@ -125,23 +125,23 @@ struct PetButton_Previews: PreviewProvider {
                 Text("Botões sem borda")
                     .font(.robotoMedium(size: .small))
                 PetButton(
-                    type: .pet(PetModel.samplePets[0]),
+                    type: .pet(PetModel.preview),
                     isSelected: true, action: {}
                 )
                 PetButton(
-                    type: .pet(PetModel.samplePets[0]),
+                    type: .pet(PetModel.preview),
                     isSelected: false, action: {}
                 )
                 
                 Text("Botões com borda")
                     .font(.robotoMedium(size: .small))
                 PetButton(
-                    type: .pet(PetModel.samplePets[0]),
+                    type: .pet(PetModel.preview),
                     isBordered: true, isSelected: false,
                     action: {}
                 )
                 PetButton(
-                    type: .pet(PetModel.samplePets[0]),
+                    type: .pet(PetModel.preview),
                     isBordered: true, isSelected: true,
                     action: {}
                 )

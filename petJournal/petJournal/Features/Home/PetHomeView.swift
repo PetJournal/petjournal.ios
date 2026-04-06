@@ -218,7 +218,7 @@ struct PetHomeView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             PetHomeView(
-                tasks: PetTaskModel.sampleTasks,
+                tasks: PetTaskModel.previewList,
                 services: TagModel.mockServices
             )
             .previewDisplayName("Completa")

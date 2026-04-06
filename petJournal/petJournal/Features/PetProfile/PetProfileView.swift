@@ -241,7 +241,7 @@ private extension PetProfileView {
 struct PetProfileView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PetProfileView(pet: PetModel.samplePets.randomElement()!)
+            PetProfileView(pet: PetModel.preview)
         }
         .environmentObject(NavigationRouter())
         .previewDisplayName("Perfil do Pet")
