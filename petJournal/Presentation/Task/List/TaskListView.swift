@@ -114,11 +114,6 @@ struct TaskListView: View {
                             frequency: selectedFrequency)
             }
             
-            PJButton.primary("Adicionar tarefa") {
-                showingAddTask = true
-            }
-            .padding(.horizontal, UIScreen.main.bounds.width / 4)
-            
             Section(header: historicHeader) {
                 ForEach(viewModel.historicTasks) { task in
                     PetTaskCard(presenter: PetTaskCardPresenter(task: task))
