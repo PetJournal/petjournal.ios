@@ -1,10 +1,3 @@
-//
-//  BlurView.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 12/06/23.
-//
-
 import SwiftUI
 
 struct BlurView: UIViewRepresentable {

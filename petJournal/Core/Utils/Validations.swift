@@ -1,10 +1,3 @@
-//
-//  Validations.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 17/04/23.
-//
-
 import Foundation
 
 class Validations {

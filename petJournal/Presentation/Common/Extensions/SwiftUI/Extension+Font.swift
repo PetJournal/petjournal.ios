@@ -1,10 +1,3 @@
-//
-//  Extension+Font.swift
-//  petJournal
-//
-//  Created by Giordano Mattiello on 20/10/23.
-//
-
 import SwiftUI
 
 extension Font {

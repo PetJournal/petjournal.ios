@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  petJournal
-//
-//  Created by Daiane Goncalves on 20/03/23.
-//
-
 import UIKit
 
 @main

@@ -1,10 +1,3 @@
-//
-//  UserPJModel.swift
-//  petJournal
-//
-//  Created by Daiane Goncalves on 20/04/23.
-//
-
 import Foundation
 
 public struct UserModel: Codable, Identifiable, Equatable {

@@ -1,10 +1,3 @@
-//
-//  KeychainHelper.swift
-//  petJournal
-//
-//  Created by Rafael Seron on 15/09/25.
-//
-
 import Foundation
 
 enum KeychainHelper {

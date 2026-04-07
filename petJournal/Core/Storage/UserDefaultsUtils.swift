@@ -1,10 +1,3 @@
-//
-//  UserDefaultsUtils.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 01/06/23.
-//
-
 import Foundation
 
 class UserDefaultsUtils {

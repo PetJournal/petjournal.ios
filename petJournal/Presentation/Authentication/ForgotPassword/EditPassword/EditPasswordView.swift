@@ -1,10 +1,3 @@
-//
-//  EditPasswordView.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 14/06/23.
-//
-
 import SwiftUI
 
 struct EditPasswordView: View {

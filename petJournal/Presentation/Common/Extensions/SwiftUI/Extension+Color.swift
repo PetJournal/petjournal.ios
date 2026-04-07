@@ -1,10 +1,3 @@
-//
-//  Extension+UIColor.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 05/04/23.
-//
-
 import SwiftUI
 
 extension Color {

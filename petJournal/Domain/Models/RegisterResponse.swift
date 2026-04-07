@@ -1,10 +1,3 @@
-//
-//  RegisterResponse.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 25/10/23.
-//
-
 import Foundation
 
 struct RegisterRequestBody: Codable {

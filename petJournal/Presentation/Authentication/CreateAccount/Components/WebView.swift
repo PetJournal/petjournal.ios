@@ -1,10 +1,3 @@
-//
-//  WebView.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 26/05/23.
-//
-
 import SwiftUI
 import WebKit
 

@@ -1,10 +1,3 @@
-//
-//  ReceiveInputViewModel.swift
-//  petJournal
-//
-//  Created by Marcylene Barreto on 14/06/23.
-//
-
 import Foundation
 
 class ForgotPasswordViewModel: ObservableObject {

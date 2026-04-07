@@ -1,10 +1,3 @@
-//
-//  AsyncImageService.swift
-//  petJournal
-//
-//  Created by Rafael Seron on 06/04/25.
-//
-import Foundation
 import SwiftUI
 
 struct AsyncImageService {
