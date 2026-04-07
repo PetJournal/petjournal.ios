@@ -16,11 +16,12 @@ class URLManager {
     let pet = "/pet"
     let tag = "/tag"
     let tasks = "/tasks"
+    let scheduler = "/scheduler"
     var breedsByCat = "/breeds/cat"
     var breedsByDog = "/breeds/dog"
     var sizesByCat = "/sizes/cat"
     var sizesByDog = "/sizes/dog"
-    // Task endpoints - corrected according to API documentation
+    
     var currentDateTasks: String {
         "\(tasks)/current-date"
     }
