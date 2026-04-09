@@ -101,56 +101,22 @@ struct TaskRegisterView: View {
     
     // MARK: - Task Name Field
     private var taskNameField: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Nome da tarefa")
-                .font(.robotoMedium(size: .small))
-                .foregroundColor(.theme.petBlack)
-            
-            TextEditor(text: $viewModel.taskName)
-                .frame(height: 48)
-                .padding(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.theme.petGray800, lineWidth: 1)
-                )
-                .overlay(alignment: .topLeading) {
-                    if viewModel.taskName.isEmpty {
-                        Text("Digite aqui o nome da tarefa")
-                            .foregroundColor(.theme.petGray300)
-                            .font(.robotoMedium(size: .small))
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 16)
-                            .allowsHitTesting(false)
-                    }
-                }
-        }
+        PJTextEditorView(
+            title: "Nome da tarefa",
+            placeholder: "Digite aqui o nome da tarefa",
+            text: $viewModel.taskName
+        )
+        .height(48)
     }
     
     // MARK: - Description Field
     private var descriptionField: some View {
-        VStack(alignment: .leading) {
-            Text("Descrição")
-                .font(.robotoMedium(size: .small))
-                .foregroundColor(.theme.petBlack)
-            
-            TextEditor(text: $viewModel.taskDescription)
-                .frame(height: 100)
-                .padding(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.theme.petGray800, lineWidth: 1)
-                )
-                .overlay(alignment: .topLeading) {
-                    if viewModel.taskDescription.isEmpty {
-                        Text("Digite aqui a descrição da tarefa")
-                            .foregroundColor(.theme.petGray300)
-                            .font(.robotoMedium(size: .small))
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 16)
-                            .allowsHitTesting(false)
-                    }
-                }
-        }
+        PJTextEditorView(
+            title: "Descrição",
+            placeholder: "Digite aqui a descrição da tarefa",
+            text: $viewModel.taskDescription
+        )
+        .height(100)
     }
     
     // MARK: - Pet Selection Section
@@ -183,29 +149,12 @@ struct TaskRegisterView: View {
     
     // MARK: - Observation Field
     private var observationField: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Observação")
-                .font(.robotoMedium(size: .small))
-                .foregroundColor(.theme.petBlack)
-            
-            TextEditor(text: $viewModel.observation)
-                .frame(height: 100)
-                .padding(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.theme.petGray800, lineWidth: 1)
-                )
-                .overlay(alignment: .topLeading) {
-                    if viewModel.observation.isEmpty {
-                        Text("Digite aqui a sua observação")
-                            .foregroundColor(.theme.petGray300)
-                            .font(.robotoMedium(size: .small))
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 16)
-                            .allowsHitTesting(false)
-                    }
-                }
-        }
+        PJTextEditorView(
+            title: "Observação",
+            placeholder: "Digite aqui a sua observação",
+            text: $viewModel.observation
+        )
+        .height(100)
     }
     
     // MARK: - Save Button
