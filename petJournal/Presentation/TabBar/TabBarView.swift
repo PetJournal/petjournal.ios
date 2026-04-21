@@ -16,7 +16,7 @@ struct TabBarView: View {
                     }
                 case 1:
                     NavigationStack(path: $router.agendaPath) {
-                        TaskListView(filterType: .all)
+                        TaskListView(filterTag: nil)
                             .navigationDestination(for: AgendaRoute.self, 
                                                    destination: NavigationDestinationHandler.handleAgendaNavigation)
                     }

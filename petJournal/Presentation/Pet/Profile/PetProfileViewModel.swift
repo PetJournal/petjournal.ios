@@ -24,8 +24,8 @@ class PetProfileViewModel: ObservableObject {
             let (upcoming, historic) = try await (upcomingResponse, historicResponse)
             
             await MainActor.run {
-                self.upcomingTasks = upcoming.nextEvents
-                self.historicTasks = historic.history
+                self.upcomingTasks = upcoming.data.nextEvents.map { $0.scheduler }
+                self.historicTasks = historic.data.history.map { $0.scheduler }
                 self.errorMessage = nil
             }
         } catch {

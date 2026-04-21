@@ -1,5 +1,11 @@
 import SwiftUI
 
+enum TaskFrequency: String, CaseIterable {
+    case daily = "Diária"
+    case weekly = "Semanal"
+    case monthly = "Mensal"
+}
+
 @MainActor
 class TaskListViewModel: ObservableObject {
     @Published var tasks: [PetTaskModel] = []
@@ -8,15 +14,20 @@ class TaskListViewModel: ObservableObject {
     @Published var error: NetworkError?
     
     private let service: TaskServiceProtocol
-    let filterType: TaskType
+    let filterTag: TagModel?
     
-    init(service: TaskServiceProtocol = TaskService(), filterType: TaskType = .all) {
+    init(service: TaskServiceProtocol = TaskService(), filterTag: TagModel? = nil) {
         self.service = service
-        self.filterType = filterType
+        self.filterTag = filterTag
     }
     
     var filteredTasks: [PetTaskModel] {
-        filterType == .all ? tasks : tasks.filter { $0.taskType == filterType }
+        guard let filterTag = filterTag else { return tasks }
+        
+        return tasks.filter { task in
+            guard let taskTag = task.tag else { return false }
+            return taskTag.id == filterTag.id
+        }
     }
     
     func groupedTasks(by frequency: TaskFrequency) -> [String: [PetTaskModel]] {
@@ -52,13 +63,15 @@ class TaskListViewModel: ObservableObject {
     }
     
     func fetchHistoricTasks() async {
-        do {
-            let fetchedHistoricTasks = try await service.fetchHistoricTasks()
-            historicTasks = fetchedHistoricTasks
-        } catch let networkError as NetworkError {
-            self.error = networkError
-        } catch {
-            self.error = .unknown(statusCode: -1)
-        }
+        // TODO: API endpoint for historic tasks is still under construction
+        // Temporarily disabled to avoid duplicate calls
+//        do {
+//            let fetchedHistoricTasks = try await service.fetchHistoricTasks()
+//            historicTasks = fetchedHistoricTasks
+//        } catch let networkError as NetworkError {
+//            self.error = networkError
+//        } catch {
+//            self.error = .unknown(statusCode: -1)
+//        }
     }
 }

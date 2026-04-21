@@ -51,13 +51,13 @@ struct ContentView_Previews: PreviewProvider {
         PetListView(pets: .previewList)
         
         // Usando mock de tasks
-        TaskListView(filterType: .all)
+        TaskListView(filterTag: nil)
         
         // Usando histórico de tasks
         TaskHistoryView(tasks: .previewHistoric)
         
         // Usando mocks filtrados
-        TaskListView(filterType: .medicine)
+        TaskListView(filterTag: TagModel(id: "1", name: "Medicamento", color: "#FF0000"))
         PetListView(pets: .previewDogs)
     }
 }

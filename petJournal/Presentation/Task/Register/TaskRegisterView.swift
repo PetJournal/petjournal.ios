@@ -20,11 +20,15 @@ struct TaskRegisterView: View {
                 .padding(.vertical, 16)
             }
             
-            Image(.petPaws)
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity)
-                .ignoresSafeArea(edges: .bottom)
+            VStack {
+                Spacer()
+                Image(.petPaws)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+                    .allowsHitTesting(false)
+            }
+            .ignoresSafeArea(.keyboard)
         }
         .navigationTitle("Nova tarefa")
         .navigationBarTitleDisplayMode(.inline)
@@ -57,44 +61,16 @@ struct TaskRegisterView: View {
                 .foregroundColor(.theme.petBlack)
             
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                TaskButton(
-                    title: TaskType.vaccine.rawValue,
-                    primaryColor: .theme.petOrange,
-                    isSelected: Binding(
-                        get: { viewModel.selectedTaskType == .vaccine },
-                        set: { if $0 { viewModel.selectedTaskType = .vaccine } }
+                ForEach(TagModel.mockServices) { tag in
+                    TaskButton(
+                        title: tag.name,
+                        primaryColor: tag.colorValue,
+                        isSelected: Binding(
+                            get: { viewModel.selectedTag?.id == tag.id },
+                            set: { if $0 { viewModel.selectedTag = tag } }
+                        )
                     )
-                )
-                
-                TaskButton(
-                    title: TaskType.consultation.rawValue,
-                    primaryColor: .theme.petGreen,
-                    isSelected: Binding(
-                        get: { viewModel.selectedTaskType == .consultation },
-                        set: { if $0 { viewModel.selectedTaskType = .consultation } }
-                    )
-                )
-                
-                TaskButton(
-                    title: TaskType.medicine.rawValue,
-                    primaryColor: .theme.petSecondary500,
-                    isSelected: Binding(
-                        get: { viewModel.selectedTaskType == .medicine },
-                        set: { if $0 { viewModel.selectedTaskType = .medicine } }
-                    )
-                )
-                
-                TaskButton(
-                    title: "Banho",
-                    primaryColor: .theme.petCerise,
-                    isSelected: .constant(false)
-                )
-                
-                TaskButton(
-                    title: "Ração",
-                    primaryColor: .theme.petCarnation,
-                    isSelected: .constant(false)
-                )
+                }
             }
         }
     }

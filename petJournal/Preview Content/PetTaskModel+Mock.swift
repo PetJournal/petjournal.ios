@@ -15,7 +15,8 @@ extension PetTaskModel {
             daysOfWeek: [1, 2, 3, 4, 5, 6, 7],
             daysOfMonth: [],
             daily: true,
-            pets: [PetModel.mockPets[0]]
+            tag: nil,
+            pets: [PetInfo(id: PetModel.mockPets[0].id, image: nil)]
         ),
         PetTaskModel(
             id: "task-2",
@@ -29,7 +30,8 @@ extension PetTaskModel {
             daysOfWeek: [],
             daysOfMonth: [15],
             daily: false,
-            pets: [PetModel.mockPets[0], PetModel.mockPets[1]]
+            tag: nil,
+            pets: [PetInfo(id: PetModel.mockPets[0].id, image: nil), PetInfo(id: PetModel.mockPets[1].id, image: nil)]
         ),
         PetTaskModel(
             id: "task-3",
@@ -43,7 +45,8 @@ extension PetTaskModel {
             daysOfWeek: [],
             daysOfMonth: [10],
             daily: false,
-            pets: [PetModel.mockPets[2]]
+            tag: nil,
+            pets: [PetInfo(id: PetModel.mockPets[2].id, image: nil)]
         ),
         PetTaskModel(
             id: "task-4",
@@ -57,7 +60,8 @@ extension PetTaskModel {
             daysOfWeek: [],
             daysOfMonth: [1],
             daily: false,
-            pets: [PetModel.mockPets[3]]
+            tag: nil,
+            pets: [PetInfo(id: PetModel.mockPets[3].id, image: nil)]
         )
     ]
     
@@ -74,7 +78,8 @@ extension PetTaskModel {
             daysOfWeek: [1, 2, 3, 4, 5, 6, 7],
             daysOfMonth: [],
             daily: true,
-            pets: [PetModel.mockPets[1]]
+            tag: nil,
+            pets: [PetInfo(id: PetModel.mockPets[1].id, image: nil)]
         ),
         PetTaskModel(
             id: "task-historic-2",
@@ -88,7 +93,8 @@ extension PetTaskModel {
             daysOfWeek: [],
             daysOfMonth: [20],
             daily: false,
-            pets: [PetModel.mockPets[0]]
+            tag: nil,
+            pets: [PetInfo(id: PetModel.mockPets[0].id, image: nil)]
         ),
         PetTaskModel(
             id: "task-historic-3",
@@ -102,7 +108,8 @@ extension PetTaskModel {
             daysOfWeek: [],
             daysOfMonth: [15],
             daily: false,
-            pets: [PetModel.mockPets[2]]
+            tag: nil,
+            pets: [PetInfo(id: PetModel.mockPets[2].id, image: nil)]
         )
     ]
     

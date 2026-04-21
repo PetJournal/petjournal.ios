@@ -73,24 +73,26 @@ struct PetTaskCard: View {
     }
     
     private var petImagesGrid: some View {
-        LazyVGrid(columns: gridColumns) {
-            ForEach(presenter.task.pets.indices, id: \.self) { index in
-                if let petImage = presenter.task.pets[index].computedPetImage {
-                    petImage
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 30, height: 30)
-                        .clipShape(Circle())
-                } else {
-                    Image(.icPawFilled)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.theme.petPrimary500)
-                }
-            }
-        }
-        .padding(.trailing)
+        // TODO: Implement pet images grid when PetInfo has image URL
+        EmptyView()
+//        LazyVGrid(columns: gridColumns) {
+//            ForEach(presenter.task.pets.indices, id: \.self) { index in
+//                if let petImage = presenter.task.pets[index].computedPetImage {
+//                    petImage
+//                        .resizable()
+//                        .scaledToFill()
+//                        .frame(width: 30, height: 30)
+//                        .clipShape(Circle())
+//                } else {
+//                    Image(.icPawFilled)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 30, height: 30)
+//                        .foregroundColor(.theme.petPrimary500)
+//                }
+//            }
+//        }
+//        .padding(.trailing)
     }
     
     private var descriptionSection: some View {
@@ -113,6 +115,7 @@ struct PetTaskCard: View {
     }
     
     private var backgroundIcon: some View {
+        // TODO: Use tag icon when available
         Image(.icMedicine)
             .resizable()
             .scaledToFit()

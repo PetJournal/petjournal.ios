@@ -7,11 +7,12 @@ class TaskRegisterViewModel: ObservableObject {
     @Published var alertMessage = ""
     @Published var isSuccessAlert = false
     
-    @Published var selectedTaskType: TaskType?
+    @Published var selectedTag: TagModel?
     @Published var taskName = ""
     @Published var taskDescription = ""
     @Published var selectedPets: Set<String> = []
     @Published var availablePets: [PetModel] = []
+    @Published var availableTags: [TagModel] = []
     @Published var isRecurrent = true
     @Published var selectedDate = Date()
     @Published var selectedMonths: Set<Int> = []
@@ -27,11 +28,9 @@ class TaskRegisterViewModel: ObservableObject {
     private let service: TaskRegisterServiceProtocol
     private let petService: PetServiceProtocol
     
-    var taskTypes: [TaskType] { [.vaccine, .consultation, .medicine] }
-    
     /// Validates if all required fields are filled
     var isValid: Bool {
-        guard let _ = selectedTaskType,
+        guard let _ = selectedTag,
               !taskName.isEmpty,
               !taskDescription.isEmpty,
               !selectedPets.isEmpty else {
@@ -112,7 +111,7 @@ class TaskRegisterViewModel: ObservableObject {
     
     /// Resets all form fields to their initial state
     func clear() {
-        selectedTaskType = nil
+        selectedTag = nil
         taskName = ""
         taskDescription = ""
         selectedPets.removeAll()
@@ -141,7 +140,7 @@ private extension TaskRegisterViewModel {
         let isDaily = !isRecurrent || (selectedMonths.isEmpty && selectedWeekDays.isEmpty)
         
         return TaskRegisterRequest(
-            tagId: getTagId(for: selectedTaskType ?? .vaccine),
+            tagId: selectedTag?.id ?? "",
             title: taskName,
             description: taskDescription,
             note: observation,
@@ -161,16 +160,6 @@ private extension TaskRegisterViewModel {
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter.string(from: date)
-    }
-    
-    /// Maps TaskType to corresponding tag ID for API
-    func getTagId(for taskType: TaskType) -> String {
-        switch taskType {
-        case .vaccine: return "vaccine-tag-id"
-        case .consultation: return "consultation-tag-id"
-        case .medicine: return "medicine-tag-id"
-        case .all: return ""
-        }
     }
     
     @MainActor

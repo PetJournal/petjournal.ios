@@ -28,6 +28,14 @@ class MockTaskService: TaskServiceProtocol {
         return PetTaskModel.previewList
     }
     
+    func fetchPetNextTasks(petId: String) async throws -> [PetTaskModel] {
+        return PetTaskModel.previewList
+    }
+    
+    func fetchPetHistoryTasks(petId: String) async throws -> [PetTaskModel] {
+        return PetTaskModel.previewHistoric
+    }
+    
     func fetchPetTasksByTag(petId: String, tagId: String) async throws -> [PetTaskModel] {
         return PetTaskModel.previewList.filter { $0.tagId == tagId }
     }

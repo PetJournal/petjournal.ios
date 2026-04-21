@@ -1,19 +1,5 @@
 import SwiftUI
 
-// MARK: - Enums
-enum TaskFrequency: String, CaseIterable {
-    case daily = "Diária"
-    case weekly = "Semanal"
-    case monthly = "Mensal"
-}
-
-enum TaskType: String, CaseIterable, Hashable {
-    case vaccine = "Vacina"
-    case medicine = "Medicamento"
-    case consultation = "Consulta"
-    case all = "Todos"
-}
-
 // MARK: - View
 struct TaskListView: View {
     @EnvironmentObject var router: NavigationRouter
@@ -21,8 +7,8 @@ struct TaskListView: View {
     @State private var selectedFrequency: TaskFrequency = .daily
     @State private var showingAddTask = false
     
-    init(filterType: TaskType = .all, service: TaskServiceProtocol = TaskService()) {
-        self._viewModel = StateObject(wrappedValue: TaskListViewModel(service: service, filterType: filterType))
+    init(filterTag: TagModel? = nil, service: TaskServiceProtocol = TaskService()) {
+        self._viewModel = StateObject(wrappedValue: TaskListViewModel(service: service, filterTag: filterTag))
     }
     
     private var groupedTasks: [String: [PetTaskModel]] {
@@ -30,14 +16,14 @@ struct TaskListView: View {
     }
     
     private func formatSectionTitle(_ key: String) -> String {
-            switch selectedFrequency {
-            case .daily:
-                return key.toDayMonthFormat
-            case .weekly:
-                return key.toWeekRangeFormat
-            case .monthly:
-                return key.toMonthYearFormat
-            }
+        switch selectedFrequency {
+        case .daily:
+            return key.toDayMonthFormat
+        case .weekly:
+            return key.toWeekRangeFormat
+        case .monthly:
+            return key.toMonthYearFormat
+        }
     }
     
     var body: some View {
@@ -55,6 +41,11 @@ struct TaskListView: View {
         .task {
             await viewModel.fetchTasks()
             await viewModel.fetchHistoricTasks()
+        }
+        .sheet(isPresented: $showingAddTask) {
+            NavigationStack {
+                TaskRegisterView()
+            }
         }
         .navigationDestination(for: Route.self) { route in
             switch route {
@@ -95,16 +86,10 @@ struct TaskListView: View {
     }
     
     private var historicHeaderTitle: String {
-        switch viewModel.filterType {
-        case .vaccine:
-            return "Histórico de vacinas"
-        case .medicine:
-            return "Histórico de medicamentos"
-        case .consultation:
-            return "Histórico de consultas"
-        case .all:
-            return "Histórico"
+        if let filterTag = viewModel.filterTag {
+            return "Histórico de \(filterTag.name.lowercased())"
         }
+        return "Histórico"
     }
     
     private var tasksListView: some View {
@@ -199,9 +184,9 @@ private struct TaskSection: View {
 
 // MARK: - Previews
 #Preview {
-    TaskListView(filterType: .all, service: TaskService.mock())
+    TaskListView(filterTag: nil, service: TaskService.mock())
 }
 
-#Preview("Filtro por vacina") {
-    TaskListView(filterType: .vaccine, service: TaskService.mock())
+#Preview("Filtro por tag") {
+    TaskListView(filterTag: TagModel(id: "1", name: "Vacinas", color: "#FF0000"), service: TaskService.mock())
 }

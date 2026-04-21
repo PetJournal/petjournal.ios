@@ -4,6 +4,8 @@ protocol TaskServiceProtocol {
     func fetchCurrentDateTasks() async throws -> [PetTaskModel]
     func fetchCurrentWeekTasks() async throws -> [PetTaskModel]
     func fetchCurrentMonthTasks() async throws -> [PetTaskModel]
+    func fetchPetNextTasks(petId: String) async throws -> [PetTaskModel]
+    func fetchPetHistoryTasks(petId: String) async throws -> [PetTaskModel]
     func fetchPetTasksByTag(petId: String, tagId: String) async throws -> [PetTaskModel]
 }
 
@@ -13,19 +15,13 @@ class TaskService: TaskServiceProtocol {
             throw NetworkError.invalidURL
         }
         
-        let response: TasksResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
-        return response.nextEvents
+        let response: TaskEventResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
+        return response.data.map { $0.scheduler }
     }
     
     func fetchHistoricTasks() async throws -> [PetTaskModel] {
-        // Note: There's no generic historic endpoint in the API, this might need to be implemented differently
-        // For now, using current-date as placeholder
-        guard let url = URLManager.shared.makeURL(path: URLManager.shared.currentDateTasks) else {
-            throw NetworkError.invalidURL
-        }
-        
-        let response: TasksResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
-        return response.nextEvents
+        // TODO: Use fetchPetHistoryTasks with specific petId when needed
+        return []
     }
     
     func fetchCurrentDateTasks() async throws -> [PetTaskModel] {
@@ -33,8 +29,8 @@ class TaskService: TaskServiceProtocol {
             throw NetworkError.invalidURL
         }
         
-        let response: TasksResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
-        return response.nextEvents
+        let response: TaskEventResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
+        return response.data.map { $0.scheduler }
     }
     
     func fetchCurrentWeekTasks() async throws -> [PetTaskModel] {
@@ -42,8 +38,8 @@ class TaskService: TaskServiceProtocol {
             throw NetworkError.invalidURL
         }
         
-        let response: TasksResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
-        return response.nextEvents
+        let response: TaskEventResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
+        return response.data.map { $0.scheduler }
     }
     
     func fetchCurrentMonthTasks() async throws -> [PetTaskModel] {
@@ -51,8 +47,26 @@ class TaskService: TaskServiceProtocol {
             throw NetworkError.invalidURL
         }
         
-        let response: TasksResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
-        return response.nextEvents
+        let response: TaskEventResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
+        return response.data.map { $0.scheduler }
+    }
+    
+    func fetchPetNextTasks(petId: String) async throws -> [PetTaskModel] {
+        guard let url = URLManager.shared.makeURL(path: URLManager.shared.petUpcomingTasks(petId)) else {
+            throw NetworkError.invalidURL
+        }
+        
+        let response: PetNextTasksResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
+        return response.data.nextEvents.map { $0.scheduler }
+    }
+    
+    func fetchPetHistoryTasks(petId: String) async throws -> [PetTaskModel] {
+        guard let url = URLManager.shared.makeURL(path: URLManager.shared.petHistoricTasks(petId)) else {
+            throw NetworkError.invalidURL
+        }
+        
+        let response: PetHistoryTasksResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
+        return response.data.history.map { $0.scheduler }
     }
     
     func fetchPetTasksByTag(petId: String, tagId: String) async throws -> [PetTaskModel] {
@@ -60,7 +74,7 @@ class TaskService: TaskServiceProtocol {
             throw NetworkError.invalidURL
         }
         
-        let response: TasksResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
-        return response.nextEvents
+        let response: PetTasksByTagResponse = try await NetworkManager.shared.jsonRequest(url: url, method: .get)
+        return response.data.events.map { $0.scheduler }
     }
 }
