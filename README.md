@@ -94,6 +94,7 @@ Contains shared infrastructure and utilities:
 
 ```
 Core/
+├── Extensions/                   # Shared extensions
 ├── Navigation/                   # Navigation logic
 ├── Network/                      # Network layer
 ├── Session/                      # User session management
@@ -101,12 +102,18 @@ Core/
 └── Utils/                        # Shared utilities
 ```
 
+#### Extensions
+- SwiftUI extensions (Alert, Color, Font, Image, TextField, View)
+- UIKit extensions (UIColor, UIFont)
+- Foundation extensions (String, URLSession)
+
 #### Navigation
 - Navigation routing and destination handling
 
 #### Network
 - Network manager and URL management
 - API communication layer
+- Network error handling
 
 #### Session
 - User session management
@@ -164,12 +171,12 @@ Presentation/
 #### Common Components
 - **Buttons**: Reusable button components
 - **Enums**: UI-related enumerations (errors, states, fonts)
-- **Extensions**: SwiftUI, UIKit, and Foundation extensions
 - **Forms**: Form components (text fields, selectors)
-- **Navigation**: Custom navigation components
+- **Navigation**: Custom navigation components (NavigationBar, TabBar)
 - **Pickers**: Date and time picker components
 - **Resources**: Assets, colors, fonts, icons, images
-- **UI**: Shared UI components (alerts, loading views, etc.)
+- **UI**: Shared UI components (alerts, loading views, blur views, skeleton views)
+- **UIComponents**: XIB components
 
 #### Feature Organization
 Each feature follows MVVM pattern:
