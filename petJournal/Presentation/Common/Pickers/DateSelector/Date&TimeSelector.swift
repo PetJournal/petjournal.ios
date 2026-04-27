@@ -9,13 +9,14 @@ enum Frequency: String, CaseIterable {
 
 // MARK: - Main DateTimeSelector View
 struct DateTimeSelector: View {
-    @State private var isRecorrente = true
+    @Binding var isRecorrente: Bool
+    @Binding var selectedDate: Date
+    @Binding var selectedMonths: Set<Int>
+    @Binding var selectedWeekDays: Set<Int>
+    
     @State private var selectedFrequency: Frequency = .daily
-    @State var selectedDate = Date()
     @State private var showTimePicker = false
     @State private var showDatePicker = false
-    @State var selectedMonths: Set<Int> = []
-    @State var selectedWeekDays: Set<Int> = []
     
     // MARK: - Formatters
     private let dateFormatter: DateFormatter = {
@@ -264,5 +265,10 @@ struct LegacyDatePickerSheet: View {
 
 // Preview
 #Preview {
-    DateTimeSelector()
+    DateTimeSelector(
+        isRecorrente: .constant(true),
+        selectedDate: .constant(Date()),
+        selectedMonths: .constant([]),
+        selectedWeekDays: .constant([])
+    )
 }

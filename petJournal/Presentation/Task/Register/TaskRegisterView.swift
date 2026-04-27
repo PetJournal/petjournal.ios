@@ -120,7 +120,12 @@ struct TaskRegisterView: View {
     
     // MARK: - Recurrence Section
     private var recurrenceSection: some View {
-        DateTimeSelector()
+        DateTimeSelector(
+            isRecorrente: $viewModel.isRecurrent,
+            selectedDate: $viewModel.selectedDate,
+            selectedMonths: $viewModel.selectedMonths,
+            selectedWeekDays: $viewModel.selectedWeekDays
+        )
     }
     
     // MARK: - Observation Field
