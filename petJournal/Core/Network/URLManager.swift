@@ -54,6 +54,10 @@ class URLManager {
         { petId, tagId in "\(self.tasks)/pet/\(petId)/tag/\(tagId)" }
     }
     
+    var tagByID: (String) -> String {
+        { tagId in "/tag/\(tagId)" }
+    }
+    
     func makeURL(path: String) -> URL? {
         guard let fullURL = URL(string: baseURL + path) else {
             return nil
