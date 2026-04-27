@@ -3,6 +3,8 @@ import SwiftUI
 // MARK: - Main View
 struct PetHomeView: View {
     @StateObject private var viewModel = PetHomeViewModel()
+    @State private var showingAddTask = false
+    
     var tasks: [PetTaskModel]?
     var services: [TagModel]?
     var banners: [HomeBanner]?
@@ -92,10 +94,7 @@ private extension PetHomeView {
                 if let tasks = tasks, !tasks.isEmpty {
                     tasksListView(tasks: tasks)
                 } else {
-                    NoTasksView { viewModel.presentAddTask()}
-                        .sheet(isPresented: $viewModel.showAddTaskSheet) {
-                            // CreateTaskView()
-                        }
+                    NoTasksView()
                 }
             }
         }
@@ -175,8 +174,10 @@ private extension PetHomeView {
             font: .robotoMedium(size: .biggest),
             action: { viewModel.presentAddTask() }
         )
-        .sheet(isPresented: $viewModel.showAddTaskSheet) {
-            // CreateTaskView()
+        .sheet(isPresented: $showingAddTask) {
+            NavigationStack {
+                TaskRegisterView()
+            }
         }
     }
     
